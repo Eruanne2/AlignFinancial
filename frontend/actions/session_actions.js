@@ -4,12 +4,12 @@ export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
 export const RECEIVE_SESSION_ERRORS = 'RECEIVE_SESSION_ERRORS';
 export const LOGOUT = 'LOGOUT';
 
-export const receiveCurrentUser = currentUser => {
+export const receiveCurrentUser = user => {
   return {
     type: RECEIVE_CURRENT_USER,
-    currentUser
+    user
   }
-}
+};
 
 export const receiveSessionErrors = errors => {
   return {
@@ -27,7 +27,7 @@ export const logoutUser = () => {
 export const login = userCreds => dispatch => {
   return SessionApi.createSession(userCreds)
     .then(res => dispatch(receiveCurrentUser(res)))
-    .fail(res => dispatch(receiveSessionErrors(res.responseJson)));
+    .fail(res => dispatch(receiveSessionErrors(res.responseJSON)));
 };
 
 export const logout = () => dispatch => {

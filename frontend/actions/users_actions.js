@@ -1,12 +1,12 @@
 import * as UsersApi from '../utils/users_api';
 
-export const RECEIVE_USER = 'RECEIVE_USER';
+export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
 export const RECEIVE_USER_ERRORS = 'RECEIVE_USER_ERRORS';
 
 
 export const receiveUser = user => {
   return {
-    type: RECEIVE_USER,
+    type: RECEIVE_CURRENT_USER,
     user
   };
 };
@@ -25,8 +25,14 @@ export const createUser = userData => dispatch => {
     .fail(res => dispatch(recieveUserErrors(res.responseJSON)));
 };
 
+export const fetchUser = userId => dispatch => {
+  return UsersApi.getUser(userId)
+    .then(res => dispatch(receiveUser(res)))
+    .fail(res => dispatch(recieveUserErrors(res.responseJSON)));
+}
+
 export const updateUser = userData => dispatch => {
-  return UsersApi.updateUser(userData)
+  return UsersApi.updateUser(userData)    // userData MUST include id!!!!!!
     .then(res => dispatch(receiveUser(res)))
     .fail(res => dispatch(recieveUserErrors(res.responseJSON)));
 };

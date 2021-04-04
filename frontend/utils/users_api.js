@@ -9,7 +9,7 @@ export const createUser = userData => {
 export const getUser = userId => {
   return $.ajax({
     method: 'GET',
-    url: `/api/users${userId}`
+    url: `/api/users/${userId}`
   })
 };
 
