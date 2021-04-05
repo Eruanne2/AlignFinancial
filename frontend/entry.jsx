@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { HashRouter } from 'react-router-dom';
 import configureStore from './store/store';
-import App from './components/app.jsx';
+import App from './components/app';
 
 //testing
 import * as sessionActions from './actions/session_actions';
@@ -13,7 +13,7 @@ import * as usersApi from './utils/users_api';
 const Root = ({ store }) => (
   <Provider store={store}>
     <HashRouter>
-      <App/>
+      <App />
     </HashRouter>
   </Provider>
 );
@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   ReactDOM.render(<Root store={store}/>, root);
 
-
+  // testing
   window.sessionActions = sessionActions;
   window.usersActions = usersActions;
   window.usersApi = usersApi;
