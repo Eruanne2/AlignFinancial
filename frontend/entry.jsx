@@ -6,6 +6,7 @@ import configureStore from './store/store';
 import App from './components/app';
 
 //testing
+import * as uiActions from './actions/ui_actions';
 import * as sessionActions from './actions/session_actions';
 import * as usersActions from './actions/users_actions';
 import * as usersApi from './utils/users_api';
@@ -35,6 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
   ReactDOM.render(<Root store={store}/>, root);
 
   // testing
+  window.uiActions = uiActions;
   window.sessionActions = sessionActions;
   window.usersActions = usersActions;
   window.usersApi = usersApi;

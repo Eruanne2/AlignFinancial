@@ -5,6 +5,9 @@ import NavbarContainer from './home_user/navbar_container';
 import SplashNavbar from './home_guest/splash_navbar';
 import LoginForm from './home_guest/login_form';
 
+const mapStateToProps = state => {
+  return { currentUser: state.session.id }
+};
 
 class App extends React.Component{
   whichNav(){
@@ -20,10 +23,6 @@ class App extends React.Component{
       </div>
     );
   }
-};
-
-const mapStateToProps = state => {
-  return { currentUser: state.session.id }
 };
 
 export default connect(mapStateToProps)(App);

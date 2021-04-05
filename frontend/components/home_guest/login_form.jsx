@@ -2,6 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { login } from '../../actions/session_actions';
 
+const mapDispatchToProps = dispatch => {
+  return { login: userCreds => dispatch(login(userCreds)) }
+};
+
+
 class LoginForm extends React.Component{
   constructor(props){
     super(props);
@@ -29,16 +34,14 @@ class LoginForm extends React.Component{
             <input type='password' value={this.state.password} onChange={this.handleChange('password')}/>
           </label>
           <input type='submit' value='Log In'/>
-          <input type='checkbox' value='Save Username'/>
+          <label>Save Username(dead)
+            <input type='checkbox'/>
+          </label>
         </form>
         <p>Forgot username or password? We'll have a hover popup that says 'well, too bad. remember better'.</p>
       </div>
     )
   };
-};
-
-const mapDispatchToProps = dispatch => {
-  return { login: userCreds => dispatch(login(userCreds)) }
 };
 
 export default connect(null, mapDispatchToProps)(LoginForm);
