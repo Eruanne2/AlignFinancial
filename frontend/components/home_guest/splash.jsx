@@ -7,7 +7,7 @@ class Splash extends React.Component{
       <div>
         <SplashNavbar />
         <section className='better-banking-panel'>
-          <p>This is the splash</p>
+          <p>better banking starts <span>here.</span></p>
         </section>
       </div>
     )

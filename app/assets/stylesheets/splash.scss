@@ -6,7 +6,9 @@
   justify-content: space-between;
   align-items: center;
   background-color: white;
-  font-weight: 300;
+  color: black;
+  font-size: 14px;
+  box-sizing: border-box;
   
   > :first-child {
     margin-left: 12.5%;
@@ -15,16 +17,28 @@
 
   ul {
     display: flex;
-    margin-right: 15%;
+    align-items: center;
+    margin-right: 14%;
     padding: 7px;
 
     * {
       margin-left: 30px;
     }
   }
+
 }
+
 .better-banking-panel {
   background-color: #371447;
   color: #FFF;
   height: 320px;
+  text-align: center;
+  font-size: 50px;
+  font-weight: 900;
+  padding: 65px;
+  box-sizing: border-box;
+
+  span {
+    color: #cb3974;
+  }
 }

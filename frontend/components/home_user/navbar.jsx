@@ -34,9 +34,9 @@ class Navbar extends React.Component{
       <nav className='userNav'>
         <Link to='/'><img src='assets/logo.png' alt="the word 'align' in white lettering on a purple background" width='80'/></Link>
         <ul>
-          <p>github</p>
-          <p>linkedin</p>
-          <p>etc</p>
+          <a href='https://github.com/Eruanne2'>Github</a>
+          <a href='www.linkedin.com/in/charis-ginn-9abb93173'>LinkedIn</a>
+          <p>CV</p>
         </ul>
       </nav>
     ); 
