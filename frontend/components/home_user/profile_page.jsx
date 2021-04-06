@@ -1,6 +1,6 @@
 import React from 'react';
 import Navbar from '../home_user/navbar';
-import UpdateUserFormContainer from './update_user_form_container';
+import UpdateUserFormContainer from '../user/update_user_form_container';
 
 function ProfilePage(props){
   return(

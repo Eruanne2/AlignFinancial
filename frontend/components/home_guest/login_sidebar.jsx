@@ -1,6 +1,6 @@
 import React from 'react';
 import { toggleSidebar } from '../../actions/ui_actions';
-import LoginForm from './login_form';
+import LoginForm from './_login_form';
 import { connect } from 'react-redux';
 
 const mapStateToProps = state => {

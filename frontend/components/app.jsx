@@ -5,7 +5,7 @@ import Splash from './home_guest/splash';
 import LoginPage from './home_guest/login_page';
 import SignupPage from './user/signup_page';
 import Dashboard from './home_user/dashboard';
-import ProfilePage from './user/profile_page';
+import ProfilePage from './home_user/profile_page';
 import PageNotFound from './page_not_found';
 
 

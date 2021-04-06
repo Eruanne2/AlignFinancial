@@ -13,3 +13,41 @@
  *= require_tree .
  *= require_self
  */
+
+body {
+  background-color: #F2F2F2;
+  color: #2A2A2A;
+  font-family: 'Lato', sans-serif;
+  font-weight: 400;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 300;
+  
+  > :first-child {
+    margin-left: 12%;
+    padding: 7px;
+  }
+
+  ul {
+    display: flex;
+    margin-right: 12%;
+    padding: 7px;
+
+    * {
+      margin-left: 30px;
+    }
+  }
+}
+
+.splashNav {
+  background-color: white;
+}
+
+.userNav {
+  background-color: #650360;
+  color: #FFF;
+}

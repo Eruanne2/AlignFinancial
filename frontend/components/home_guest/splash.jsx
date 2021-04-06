@@ -6,7 +6,9 @@ class Splash extends React.Component{
     return(
       <div>
         <SplashNavbar />
-        <p>This is the splash</p>
+        <section className='better-banking-panel'>
+          <p>This is the splash</p>
+        </section>
       </div>
     )
   }

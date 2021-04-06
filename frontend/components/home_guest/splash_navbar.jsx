@@ -1,5 +1,6 @@
 import React from 'react';
 import { toggleSidebar } from '../../actions/ui_actions';
+import { Link } from 'react-router-dom';
 import LoginSidebar from './login_sidebar';
 import { connect } from 'react-redux';
 
@@ -17,11 +18,15 @@ class SplashNavbar extends React.Component {
   render(){
     return(
       <div>
-        <p>Logo</p>
-        <p>github</p>
-        <p>linkedin</p>
-        <p>etc</p>
-        <button onClick={this.openSidebar.bind(this)}>Log In</button>
+        <nav className='splashNav'>
+          <Link to='/'><img src='assets/logo-on-white.png' alt="the word 'align' in white lettering on a purple background" width='80'/></Link>
+          <ul>
+          <a href='https://github.com/Eruanne2'>Github</a>
+          <a href='www.linkedin.com/in/charis-ginn-9abb93173'>LinkedIn</a>
+          <p>CV</p>
+          <button onClick={this.openSidebar.bind(this)}>Log In</button>
+          </ul>
+        </nav>
         <LoginSidebar />
       </div>
     );
