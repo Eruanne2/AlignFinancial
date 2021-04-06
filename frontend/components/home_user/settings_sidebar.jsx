@@ -31,7 +31,7 @@ class SettingsSidebar extends React.Component{
   render(){
     if (!this.props.sidebar) return null;
     return(
-      <div>
+      <div className='sidebar'>
         <button onClick={this.closeSidebar.bind(this)}>x</button>
         <h2>Site settings</h2>
         <ul> {/* this will be a dropdown*/}
