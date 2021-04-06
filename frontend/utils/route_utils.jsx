@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 const Auth = ({component: Component, path, loggedIn, exact }) => {
   return <Route path={path} exact={exact}
     render={ props => (
-      loggedIn ? <Redirect to='/'/> : <Component {...props}/>
+      loggedIn ? <Redirect to='/dashboard'/> : <Component {...props}/>
     )}
   />
 };

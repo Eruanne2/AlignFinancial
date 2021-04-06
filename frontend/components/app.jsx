@@ -1,28 +1,23 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { ProtectedRoute, AuthRoute } from '../utils/route_utils';
-import NavbarContainer from './home_user/navbar_container';
-import SplashNavbar from './home_guest/splash_navbar';
-import LoginForm from './home_guest/login_form';
+import DummyDash from './home_user/dummy_dash';
+import Splash from './home_guest/splash';
+import LoginPage from './home_guest/login_page';
 
-const mapStateToProps = state => {
-  return { currentUser: state.session.id }
-};
 
 class App extends React.Component{
-  whichNav(){
-    return (this.props.currentUser) ? <NavbarContainer /> : <SplashNavbar />
-  };
 
   render(){
     return(
       <div>
-        {this.whichNav()}
         <h1>Hello from inside the app</h1>
-        <AuthRoute path='/login' component={LoginForm}/>
+        <AuthRoute path='/' exact={true} component={Splash}/>
+        <AuthRoute path='/login' component={LoginPage}/>
+        {/* <AuthRoute path='/signup' component={SignupPage}/> */}
+        <ProtectedRoute path='/dashboard' component={DummyDash}/>
       </div>
     );
   }
 };
 
-export default connect(mapStateToProps)(App);
+export default App;
