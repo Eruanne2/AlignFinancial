@@ -7,6 +7,7 @@ class DummyDash extends React.Component{
       <div>
         <Navbar />
         <p>dummy dash</p>
+        <p>Hello, Fname</p>
       </div>
     )
   }

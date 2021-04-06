@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 import Navbar from '../home_user/navbar';
-import NewUserForm from './new_user_form';
+import NewUserForm from './new_user_form_container';
 
 class SignupPage extends React.Component{
   render(){

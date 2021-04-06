@@ -1,20 +1,14 @@
 import React from 'react';
-import { createUser } from '../../actions/users_actions';
-import { connect } from 'react-redux';
 
-const mapDispatchToProps = dispatch => {
-  return { createUser: userData => dispatch(createUser(userData)) }
-};
-
-class NewUserForm extends React.Component{
+class UserForm extends React.Component{
   constructor(props){
     super(props);
-    this.state = {username: '', password: '', fname: '', lname: '', email: '', address: '', phone: ''}
+    this.state = this.props.userData;
   };
 
   handleSubmit(e){
     e.preventDefault();
-    this.props.createUser(this.state);
+    this.props.processUser(this.state);
   };
 
   handleChange(field){
@@ -57,4 +51,4 @@ class NewUserForm extends React.Component{
   }
 };
 
-export default connect(null, mapDispatchToProps)(NewUserForm);
+export default UserForm;
