@@ -6,7 +6,8 @@ import { connect } from 'react-redux';
 const mapStateToProps = state => {
   return { 
     userData: state.entities.users[state.session.id],
-    submitText: 'Update'
+    submitText: 'Update',
+    errors: state.errors.userErrors
   }
 };
 

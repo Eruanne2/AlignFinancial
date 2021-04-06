@@ -5,7 +5,8 @@ import { connect } from 'react-redux';
 const mapStateToProps = state => {
   return { 
     userData: {username: '', password: '', fname: '', lname: '', email: '', address: '', phone: ''},
-    submitText: 'Next'
+    submitText: 'Next',
+    errors: state.errors.userErrors
   }
 };
 

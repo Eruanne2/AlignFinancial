@@ -2,6 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { login } from '../../actions/session_actions';
 
+const mapStateToProps = state => {
+  return { errors: state.errors.sessionErrors }
+};
+
 const mapDispatchToProps = dispatch => {
   return { login: userCreds => dispatch(login(userCreds)) }
 };
@@ -31,6 +35,7 @@ class LoginForm extends React.Component{
     return(
       <div>
         <h1>Login</h1>
+        <span>{this.props.errors}</span>
         <form onSubmit={this.handleSubmit.bind(this)}>
           <label>Username
             <input type='text' value={this.state.username} onChange={this.handleChange('username')}/>
@@ -54,4 +59,4 @@ class LoginForm extends React.Component{
   };
 };
 
-export default connect(null, mapDispatchToProps)(LoginForm);
+export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);
