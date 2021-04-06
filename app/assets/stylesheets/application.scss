@@ -20,7 +20,7 @@ body {
   color: #2A2A2A;
   font-family: 'Lato', sans-serif;
   font-weight: 400;
-}
+};
 
 button, input[type='submit'] {
   background-color: #008486;
@@ -31,4 +31,15 @@ button, input[type='submit'] {
   border: none;
   padding: 8px 20px;
   border-radius: 4px;
+};
+
+textarea, input[type='text'], input[type='password'] {
+  border: 1px solid #959595;
+  padding: 8px;
+  width: 310px;
+  height: 16.5px;
+}
+
+textarea:hover, input[type='text']:hover, input[type='password']:hover {
+  border-color:  #b5b5b5;
 }

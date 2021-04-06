@@ -3,14 +3,13 @@
 node_modules
 bundle.js
 bundle.js.map
+/node_modules
+/yarn-error.log
 
 //for rails projects
 /log/*
 /tmp/*
 !/log/.keep
 !/tmp/.keep
-
-/node_modules
-/yarn-error.log
-
+/public/assets
 .byebug_history

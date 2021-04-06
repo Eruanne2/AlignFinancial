@@ -1,0 +1,52 @@
+@import 'variables';
+
+.login-form-container {
+  margin: 83px 13.3%;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+
+  h1 {
+    font-size: 24px;
+  }
+
+  .login-inputs {
+    display: flex;
+    margin: 12px 0;
+
+    div {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+    }
+
+    .labels {
+      width: 115px;
+      font-size: 14px;
+    }
+
+    input {
+      margin: 11px 0;
+    }
+  }
+
+  .submit-btns > *{
+    margin: 11px 115px;
+  }
+
+  .demo-login {
+    display: flex;
+    align-items: center;
+    
+    button {
+      margin-left: 10px;
+    }
+  }
+
+  span {
+    font-weight: 700;
+    color: #0071C4;
+  }
+}

@@ -33,27 +33,35 @@ class LoginForm extends React.Component{
 
   render(){
     return(
-      <div>
-        <h1>Login</h1>
-        <span>{this.props.errors}</span>
+      <div className='login-form-container'>
         <form onSubmit={this.handleSubmit.bind(this)}>
-          <label>Username
-            <input type='text' value={this.state.username} onChange={this.handleChange('username')}/>
-          </label>
-          <label>Password
-            <input type='password' value={this.state.password} onChange={this.handleChange('password')}/>
-          </label>
-          <input type='submit' value='Log In'/>
-          <label>Save Username(dead)
-            <input type='checkbox'/>
-          </label>
+          <h1>Login</h1>
+          <span>{this.props.errors}</span>
+          <section className='login-inputs'>
+            <div className='labels'>
+              <label htmlFor='login-username'>Username</label>
+              <label htmlFor='login-password'>Password</label>
+            </div>
+            <div className='inputs'>
+              <input id='login-username' type='text' value={this.state.username} onChange={this.handleChange('username')}/>
+              <input id='login-password' type='password' value={this.state.password} onChange={this.handleChange('password')}/>
+            </div>
+          </section>
+          <section className='submit-btns'>
+            <div className='user-login'>
+              <input type='submit' value='Log In'/>
+              <label>
+                <input type='checkbox'/>Save Username {/* Doesn't work */}
+              </label>
+            </div>
+            <p>Forgot <span>username</span> or <span>password</span>?</p> {/* have a popup that says 'too bad, remember better'*/}
+            <div className='demo-login'>
+              <p>Or,</p>
+              <button onClick={this.demoLogin.bind(this)}>Demo Log In</button>
+            </div>
+          </section>
         </form>
-        <p>Forgot username or password? We'll have a hover popup that says 'well, too bad. remember better'.</p>
 
-        <section>
-          <h1>Or, </h1>
-          <button onClick={this.demoLogin.bind(this)}>Demo Log In</button>
-        </section>
       </div>
     )
   };

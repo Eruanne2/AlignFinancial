@@ -7,6 +7,7 @@ import SignupPage from './user/signup_page';
 import Dashboard from './home_user/dashboard';
 import ProfilePage from './home_user/profile_page';
 import PageNotFound from './page_not_found';
+import Footer from './footer';
 
 
 class App extends React.Component{
@@ -22,6 +23,7 @@ class App extends React.Component{
           <ProtectedRoute path='/profile' component={ProfilePage}/>
           <Route path='*' component={PageNotFound}/>
         </Switch>
+        <Footer />
       </div>
     );
   }
