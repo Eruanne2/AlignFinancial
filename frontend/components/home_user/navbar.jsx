@@ -1,5 +1,7 @@
 import React from 'react';
 import { logout } from '../../actions/session_actions';
+import { toggleSidebar } from '../../actions/ui_actions';
+import SettingsSidebar from './settings_sidebar';
 import { connect } from 'react-redux';
 
 const mapStateToProps = state => {
@@ -8,12 +10,18 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return { 
-    logout: () => dispatch(logout())
+    logout: () => dispatch(logout()),
+    toggleSidebar: () => dispatch(toggleSidebar())
   };
 };
 
 
 class Navbar extends React.Component{
+
+  openSidebar(e){
+    e.preventDefault();
+    this.props.toggleSidebar();
+  };
 
   handleLogout(e){
     e.preventDefault();
@@ -34,7 +42,8 @@ class Navbar extends React.Component{
         <p>Logo</p>
         <p>Accounts dropdown</p>
         <p>Open an Account</p>
-        <p>Profile and Settings dropdown</p>
+        <button onClick={this.openSidebar.bind(this)}>Profile and Settings</button>
+        <SettingsSidebar/>
         <button onClick={this.handleLogout.bind(this)}>Log Out</button>
       </div>
     );

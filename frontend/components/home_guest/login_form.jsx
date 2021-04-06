@@ -22,6 +22,11 @@ class LoginForm extends React.Component{
     return e => this.setState({ [field]: e.currentTarget.value })
   };
 
+  demoLogin(e){
+    e.preventDefault();
+    this.props.login({ username: 'DemoUser', password: 'password'});
+  };
+
   render(){
     return(
       <div>
@@ -39,6 +44,11 @@ class LoginForm extends React.Component{
           </label>
         </form>
         <p>Forgot username or password? We'll have a hover popup that says 'well, too bad. remember better'.</p>
+
+        <section>
+          <h1>Or, </h1>
+          <button onClick={this.demoLogin.bind(this)}>Demo Log In</button>
+        </section>
       </div>
     )
   };

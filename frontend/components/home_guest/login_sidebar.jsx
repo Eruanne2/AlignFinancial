@@ -12,6 +12,7 @@ const mapDispatchToProps = dispatch => {
 };
 
 class LoginSidebar extends React.Component{
+  
   closeSidebar(e){
     e.preventDefault();
     this.props.toggleSidebar();

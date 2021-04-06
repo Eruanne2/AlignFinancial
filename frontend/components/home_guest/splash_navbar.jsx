@@ -8,10 +8,7 @@ const mapDispatchToProps = dispatch => {
 };
 
 class SplashNavbar extends React.Component {
-  constructor(props){
-    super(props);
-  };
-
+  
   openSidebar(e){
     e.preventDefault();
     this.props.toggleSidebar();
