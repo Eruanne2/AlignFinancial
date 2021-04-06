@@ -3,7 +3,10 @@ import UserForm from './_user_form';
 import { connect } from 'react-redux';
 
 const mapStateToProps = state => {
-  return { userData: {username: '', password: '', fname: '', lname: '', email: '', address: '', phone: ''} }
+  return { 
+    userData: {username: '', password: '', fname: '', lname: '', email: '', address: '', phone: ''},
+    submitText: 'Next'
+  }
 };
 
 const mapDispatchToProps = dispatch => {

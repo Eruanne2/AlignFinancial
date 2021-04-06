@@ -18,7 +18,7 @@ class LoginSidebar extends React.Component{
   };
 
   render(){
-    if (!this.props.sidebar) return '';
+    if (!this.props.sidebar) return null;
     return(
     <div>
       <button onClick={this.closeSidebar.bind(this)}>x</button>

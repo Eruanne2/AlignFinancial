@@ -21,7 +21,7 @@ class Navbar extends React.Component{
   }
 
   render(){
-    if (!this.props.currentUser) return( // you may run into problems with the currentUser here. if so, add a container to force the re-render.
+    if (!this.props.currentUser) return(
       <div>
         <p>Logo</p>
         <p>github</p>

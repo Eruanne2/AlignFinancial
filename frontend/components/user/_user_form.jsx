@@ -45,7 +45,7 @@ class UserForm extends React.Component{
             <input type='password' value={this.state.password} onChange={this.handleChange('password')} />
           </label>
         </form>
-        <button onClick={this.handleSubmit.bind(this)}>Next</button>
+        <button onClick={this.handleSubmit.bind(this)}>{this.props.submitText}</button>
       </div>
     )
   }
