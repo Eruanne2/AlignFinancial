@@ -10,6 +10,17 @@
     <script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
+
+    <script type="text/javascript">
+      window.logoWhiteURL = "<%= image_url('logo-on-white.png') %>";
+      window.logoURL = "<%= image_url('logo.png') %>";
+    </script>
+
+    <% if logged_in? %>
+      <script type='text/javascript'>
+        window.currentUser = <%= render('/api/users/user.json.jbuilder', user: current_user).html_safe %>
+      </script>
+    <% end %>
   </head>
 
   <body>

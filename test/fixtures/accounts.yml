@@ -1,0 +1,36 @@
+# == Schema Information
+#
+# Table name: accounts
+#
+#  id             :bigint           not null, primary key
+#  acct_num       :integer          not null
+#  routing_num    :integer          not null
+#  acct_type      :string           not null
+#  user_id        :integer          not null
+#  external       :boolean          not null
+#  balance        :float
+#  interest_rate  :float
+#  transfer_limit :integer
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#
+
+one:
+  acct_num: 1
+  routing_num: 1
+  acct_type: MyString
+  user_id: 1
+  external: false
+  balance: 1.5
+  interest_rate: 1.5
+  transfer_limit: 1
+
+two:
+  acct_num: 1
+  routing_num: 1
+  acct_type: MyString
+  user_id: 1
+  external: false
+  balance: 1.5
+  interest_rate: 1.5
+  transfer_limit: 1

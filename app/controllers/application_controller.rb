@@ -5,9 +5,11 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find_by(session_token: session[:session_token])
   end
 
-  # def require_logged_in
-  #   redirect_to api_session_url if !logged_in?
-  # end
+  def require_logged_in
+    unless logged_in?
+      render json: { message: "You must be logged in to complete this action." }, status: 401
+    end
+  end
 
   def logged_in?
     !!current_user
