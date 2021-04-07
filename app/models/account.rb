@@ -15,6 +15,7 @@
 #  updated_at     :datetime         not null
 #
 class Account < ApplicationRecord
+  after_initialize :ensure_acct_num
   after_initialize :ensure_routing_num
   validates :acct_num, :routing_num, :acct_type, :user_id, presence: true
   validates :external, inclusion: { in: [true, false]}
@@ -24,6 +25,10 @@ class Account < ApplicationRecord
   belongs_to :owner,
     foreign_key: :user_id,
     class_name: 'User'
+
+  def ensure_acct_num
+    self.acct_num ||= rand(10000000..99999999)
+  end
 
   def ensure_routing_num
     self.routing_num ||= 14952223

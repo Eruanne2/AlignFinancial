@@ -17,8 +17,9 @@ class LoginForm extends React.Component{
     this.state = { username: '', password: ''};
   };
 
-  handleSubmit(e){
+  userLogin(e){
     e.preventDefault();
+    console.log(this.state);
     this.props.login(this.state);
   };
 
@@ -34,12 +35,12 @@ class LoginForm extends React.Component{
   render(){
     return(
       <div className='login-form-container'>
-        <form onSubmit={this.handleSubmit.bind(this)}>
           <div className='demo-login'>
-              <h1>Login</h1>
-              <p>or</p>
-              <button onClick={this.demoLogin.bind(this)}>Demo Log In</button>
-            </div>
+            <h1>Login</h1>
+            <p>or</p>
+            <button onClick={this.demoLogin.bind(this)}>Demo Log In</button>
+          </div>
+        <form onSubmit={this.userLogin.bind(this)}>
           <span className='error'>
             {this.props.errors.length > 0 ? <i className='fas fa-exclamation-circle'></i> : null }
             {this.props.errors}

@@ -3,14 +3,15 @@
 .login-form-container {
   margin: 83px 13.3%;
 
+  h1 {
+    font-size: 24px;
+    margin-bottom: 12px;
+    display: inline-block;
+  }
+
   form {
     display: flex;
     flex-direction: column;
-
-    h1 {
-      font-size: 24px;
-      margin-bottom: 12px;
-    }
 
     .login-inputs {
       display: flex;
@@ -40,15 +41,15 @@
       margin-right: 30px;
     }
 
-    .demo-login {
-      display: flex;
-      align-items: center;
-      
-      * {
-        margin-left: 15px;
-      }
-    }
-
   }
 
+  .demo-login {
+    display: flex;
+    align-items: center;
+    
+    * {
+      margin-right: 21px;
+    }
+  }
+  
 }

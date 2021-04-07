@@ -17,13 +17,18 @@ class Api::AccountsController < ApplicationController
 
   def show
     @account = Account.find_by(id: params[:id])
-    render :show
+    if @account
+      render :show
+    else
+      render json: { message: "No account exists with that id."}
+    end
+
   end
 
   def destroy
     @account = Account.find_by(id: params[:id])
     @account.destroy
-    redirect_to api_accounts_url
+    render :show
   end
 
   def accounts_params
