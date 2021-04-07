@@ -1,6 +1,11 @@
 <div id='root'>
   <h1 style="font-size: 50px; text-align: center; margin-top: 100px;">😬</h1>
 
+  <script type="text/javascript">
+    window.logoWhiteURL = "<%= image_url('logo-on-white.png') %>";
+    window.logoURL = "<%= image_url('logo.png') %>";
+  </script>
+
   <% if logged_in? %>
     <script type='text/javascript'>
       window.currentUser = <%= render('/api/users/user.json.jbuilder', user: current_user).html_safe %>
