@@ -16,6 +16,7 @@ class UserForm extends React.Component{
       if (error.includes('Lname')) return error.replace('Lname', 'Last name');
       if (error.includes('Address')) return error.replace('Address', 'Mailing address');
       if (error.includes('Phone')) return error.replace('Phone', 'Phone number');
+      return error;
     });
   };
 

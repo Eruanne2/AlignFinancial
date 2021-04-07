@@ -22,6 +22,22 @@ body {
   font-weight: 400;
 };
 
+.modal {
+  z-index: 2;
+  content: ' ';
+  display: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  opacity: .8;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  transition: ease-in-out .1s;
+}
+
 .sidebar {
   z-index: 3;
   background-color: #F2F2F2;
@@ -30,21 +46,7 @@ body {
   top: 60px;
   right: 0;
   bottom: 0;
-}
-
-.modal {
-  z-index: 2;
-  content: ' ';
-  display: fixed;
-  width: 100vw;
-  height: 100vh;
-  background-color: black;
-  opacity: .9;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  width: 680px;
 }
 
 nav {
