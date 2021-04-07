@@ -19,7 +19,7 @@ class SplashNavbar extends React.Component {
     return(
       <div>
         <nav className='splashNav'>
-          <Link to='/'><img src={window.logoWhiteURL} alt="the word 'align' in purple lettering on a white background" width='63'/></Link>
+          <Link to='/'><img src={window.logoWhiteURL}alt="the word 'align' in purple lettering on a white background" width='63'/></Link>
           <ul>
             <a href='https://github.com/Eruanne2'>Github</a>
             <a href='www.linkedin.com/in/charis-ginn-9abb93173'>LinkedIn</a>
@@ -27,7 +27,7 @@ class SplashNavbar extends React.Component {
             <button onClick={this.openSidebar.bind(this)}>Log In</button>
           </ul>
         </nav>
-        <LoginSidebar />
+        {/* <LoginSidebar /> */}
       </div>
     );
   };

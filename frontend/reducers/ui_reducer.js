@@ -8,6 +8,10 @@ const UIReducer = (state=defaultState, action) => {
   switch(action.type){
     case TOGGLE_SIDEBAR:
       newState.sidebar = !state.sidebar;
+      (state.sidebar) ? 
+        document.querySelector('#wrap-for-modal').classList.remove('modal') 
+        :
+        document.querySelector('#wrap-for-modal').classList.add('modal')  
       return newState;
     case TOGGLE_NIGHTMODE:
       newState.nightMode = !state.nightMode;

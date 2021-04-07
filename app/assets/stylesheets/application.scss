@@ -22,6 +22,36 @@ body {
   font-weight: 400;
 };
 
+.sidebar {
+  z-index: 3;
+  background-color: #F2F2F2;
+  opacity: 1;
+  position: absolute;
+  top: 60px;
+  right: 0;
+  bottom: 0;
+}
+
+.modal {
+  z-index: 2;
+  content: ' ';
+  display: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: black;
+  opacity: .9;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+nav {
+  position: relative;
+  z-index: 3;
+}
+
 button, input[type='submit'] {
   background-color: #008486;
   color: #FFF;
@@ -44,16 +74,28 @@ textarea:hover, input[type='text']:hover, input[type='password']:hover {
   border-color:  #b5b5b5;
 }
 
-.sidebar {
-  background-color: #F2F2F2;
-  position: absolute;
-  top: 100;
-  right: 0;
-}
 
 footer {
-  margin: 10% 0;
-  font-color: #666;
+  margin: 150px 10%;
   font-size: 13px;
+  text-align: center;
+  color: #666;
   border-top: 1px solid rgb(221, 221, 221);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  * {
+    padding: 10px;
+  }
+
+  ul {
+    display: flex;
+    font-weight: 700;
+    color: #0071C4;
+
+    * {
+      padding: 10px 45px;
+    }
+  }
 }

@@ -8,12 +8,11 @@ function Footer(props){
         <a href='www.linkedin.com/in/charis-ginn-9abb93173'>LinkedIn</a>
         <p>CV</p>
       </ul>
-      A FEW THINGS YOU SHOULD KNOW
+      <p>A FEW THINGS YOU SHOULD KNOW</p>
 
-      Securities products and services are offered through Ally Invest Securities LLC, member FINRA and SIPC .
-      Bank accounts and mortgage products are provided by Ally Bank, a Member FDIC and Equal Housing Lender NMLS ID 181005.
+      <p>Bank accounts and are provided by Align Bank, a Member FDIC and Equal Housing Lender NMLS ID 181005.</p>
       - dropdown to display more boring stuff -
-      ©2009 – 2021 Ally Financial Inc. 
+      <p>©2021 Charis Ginn</p>
 
     </footer>
   )

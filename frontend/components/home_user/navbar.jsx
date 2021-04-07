@@ -49,7 +49,7 @@ class Navbar extends React.Component{
           <button onClick={this.openSidebar.bind(this)}>Profile and Settings</button>
           <button onClick={this.handleLogout.bind(this)}>Log Out</button>
         </nav>
-        <SettingsSidebar/>
+        {/* <SettingsSidebar/> */}
       </div>
     );
   };

@@ -29,7 +29,7 @@ class SettingsSidebar extends React.Component{
   };
 
   render(){
-    if (!this.props.sidebar) return null;
+    if (!this.props.sidebar || !window.currentUser) return null;
     return(
       <div className='sidebar'>
         <button onClick={this.closeSidebar.bind(this)}>x</button>
