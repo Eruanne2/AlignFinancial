@@ -36,7 +36,10 @@ class LoginForm extends React.Component{
       <div className='login-form-container'>
         <form onSubmit={this.handleSubmit.bind(this)}>
           <h1>Login</h1>
-          <span>{this.props.errors}</span>
+          <span className='error'>
+            {this.props.errors.length > 0 ? <i className='fas fa-exclamation-circle'></i> : null }
+            {this.props.errors}
+          </span>
           <section className='login-inputs'>
             <div className='labels'>
               <label htmlFor='login-username'>Username</label>

@@ -16,7 +16,7 @@ class UserForm extends React.Component{
       if (error.includes('Lname')) return error.replace('Lname', 'Last name');
       if (error.includes('Address')) return error.replace('Address', 'Mailing address');
       if (error.includes('Phone')) return error.replace('Phone', 'Phone number');
-      return error;
+      return fieldErrors;
     });
   };
 
@@ -34,34 +34,55 @@ class UserForm extends React.Component{
       <div>
         <form>
         <h1>Your Information</h1>
-          <span>{this.showErrors('fname')}</span>
+          <span className='error'>
+            {this.showErrors('fname').length > 0 ? <i className='fas fa-exclamation-circle'></i> : null }
+            {this.showErrors('fname')}
+          </span>
           <label>First Name
             <input type='text' value={this.state.fname} onChange={this.handleChange('fname')} />
           </label>
-          <span>{this.showErrors('lname')}</span>
+          <span className='error'>
+            {this.showErrors('lname').length > 0 ? <i className='fas fa-exclamation-circle'></i> : null }
+            {this.showErrors('lname')}
+          </span>
           <label>Last Name
             <input type='text' value={this.state.lname} onChange={this.handleChange('lname')} />
           </label>
-          <span>{this.showErrors('email')}</span>
+          <span className='error'>
+            {this.showErrors('email').length > 0 ? <i className='fas fa-exclamation-circle'></i> : null }
+            {this.showErrors('email')}
+          </span>
           <label>Email
             <input type='text' value={this.state.email} onChange={this.handleChange('email')} />
           </label>
-          <span>{this.showErrors('address')}</span>
+          <span className='error'>
+            {this.showErrors('address').length > 0 ? <i className='fas fa-exclamation-circle'></i> : null }
+            {this.showErrors('address')}
+          </span>
           <label>Mailing Address
             <textarea value={this.state.address} onChange={this.handleChange('address')} />
           </label>
-          <span>{this.showErrors('phone')}</span>
+          <span className='error'>
+            {this.showErrors('phone').length > 0 ? <i className='fas fa-exclamation-circle'></i> : null }
+            {this.showErrors('phone')}
+          </span>
           <label>Phone
             <input type='text' value={this.state.phone} onChange={this.handleChange('phone')} />
           </label>
         </form>
         <form>
           <h1>Your Account</h1>
-          <span>{this.showErrors('username')}</span>
+          <span className='error'>
+            {this.showErrors('username').length > 0 ? <i className='fas fa-exclamation-circle'></i> : null }
+            {this.showErrors('username')}
+          </span>
           <label>Username
             <input type='text' value={this.state.username} onChange={this.handleChange('username')} />
           </label>
-          <span>{this.showErrors('password')}</span>
+          <span className='error'>
+            {this.showErrors('password').length > 0 ? <i className='fas fa-exclamation-circle'></i> : null }
+            {this.showErrors('password')}
+          </span>
           <label>Password
             <input type='password' value={this.state.password} onChange={this.handleChange('password')} />
           </label>

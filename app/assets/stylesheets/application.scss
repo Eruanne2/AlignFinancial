@@ -54,6 +54,17 @@ nav {
   z-index: 3;
 }
 
+.error {
+  font-weight: 700;
+  color: #D42825;
+  display: flex;
+}
+
+.fa-exclamation-circle {
+  font-size: 18px;
+  color:#D42825;
+}
+
 button, input[type='submit'] {
   background-color: #008486;
   color: #FFF;
@@ -75,7 +86,6 @@ textarea, input[type='text'], input[type='password'] {
 textarea:hover, input[type='text']:hover, input[type='password']:hover {
   border-color:  #b5b5b5;
 }
-
 
 footer {
   margin: 150px 10%;
