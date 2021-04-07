@@ -2,51 +2,53 @@
 
 .login-form-container {
   margin: 83px 13.3%;
-}
 
-form {
-  display: flex;
-  flex-direction: column;
-
-  h1 {
-    font-size: 24px;
-  }
-
-  .login-inputs {
+  form {
     display: flex;
-    margin: 12px 0;
+    flex-direction: column;
 
-    div {
+    h1 {
+      font-size: 24px;
+      margin-bottom: 12px;
+    }
+
+    .login-inputs {
       display: flex;
-      flex-direction: column;
-      justify-content: space-around;
+      margin-bottom: 12px;
+
+      div {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+      }
+
+      .labels {
+        width: 115px;
+        font-size: 14px;
+      }
+
+      input {
+        margin: 11px 0;
+      }
     }
 
-    .labels {
-      width: 115px;
-      font-size: 14px;
+    .submit-btns > *{
+      margin: 21px 115px;
     }
-
-    input {
-      margin: 11px 0;
-    }
-  }
-
-  .submit-btns > *{
-    margin: 11px 115px;
-  }
-
-  .demo-login {
-    display: flex;
-    align-items: center;
     
-    button {
-      margin-left: 10px;
+    .user-login > * {
+      margin-right: 30px;
     }
+
+    .demo-login {
+      display: flex;
+      align-items: center;
+      
+      * {
+        margin-left: 15px;
+      }
+    }
+
   }
 
-  span {
-    font-weight: 700;
-    color: #0071C4;
-  }
 }

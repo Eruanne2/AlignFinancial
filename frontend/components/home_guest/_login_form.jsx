@@ -35,7 +35,11 @@ class LoginForm extends React.Component{
     return(
       <div className='login-form-container'>
         <form onSubmit={this.handleSubmit.bind(this)}>
-          <h1>Login</h1>
+          <div className='demo-login'>
+              <h1>Login</h1>
+              <p>or</p>
+              <button onClick={this.demoLogin.bind(this)}>Demo Log In</button>
+            </div>
           <span className='error'>
             {this.props.errors.length > 0 ? <i className='fas fa-exclamation-circle'></i> : null }
             {this.props.errors}
@@ -57,11 +61,7 @@ class LoginForm extends React.Component{
                 <input type='checkbox'/>Save Username {/* Doesn't work */}
               </label>
             </div>
-            <p>Forgot <span>username</span> or <span>password</span>?</p> {/* have a popup that says 'too bad, remember better'*/}
-            <div className='demo-login'>
-              <p>Or,</p>
-              <button onClick={this.demoLogin.bind(this)}>Demo Log In</button>
-            </div>
+            <p>Forgot <span className='blue'>username</span> or <span className='blue'>password</span>?</p> {/* have a popup that says 'too bad, remember better'*/}
           </section>
         </form>
 

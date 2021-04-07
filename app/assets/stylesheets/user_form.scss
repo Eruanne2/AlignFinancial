@@ -1,0 +1,24 @@
+@import 'variables';
+
+.user-form-container {
+  margin: 83px 13.3%;
+
+  form {
+    display: flex;
+    flex-direction: column;
+
+    h1 {
+      font-size: 24px;
+      margin: 12px 0;
+    }
+
+    label {
+      margin-bottom: 20px;
+    }
+
+    input, textarea {
+      margin-left: 15px;
+    }
+  }
+
+}

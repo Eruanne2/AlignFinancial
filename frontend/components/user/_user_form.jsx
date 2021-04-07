@@ -31,9 +31,9 @@ class UserForm extends React.Component{
 
   render(){
     return(
-      <div>
+      <div className='user-form-container'>
         <form>
-        <h1>Your Information</h1>
+          <h1>Your Information</h1>
           <span className='error'>
             {this.showErrors('fname').length > 0 ? <i className='fas fa-exclamation-circle'></i> : null }
             {this.showErrors('fname')}

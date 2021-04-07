@@ -2,7 +2,6 @@ import React from 'react';
 import { logout } from '../../actions/session_actions';
 import { toggleSidebar } from '../../actions/ui_actions';
 import { Link } from 'react-router-dom';
-import SettingsSidebar from './settings_sidebar';
 import { connect } from 'react-redux';
 
 const mapStateToProps = state => {
@@ -35,7 +34,7 @@ class Navbar extends React.Component{
         <Link to='/'><img src={window.logoURL} alt="the word 'align' in white lettering on a purple background" width='74'/></Link>
         <ul>
           <a href='https://github.com/Eruanne2'>Github</a>
-          <a href='www.linkedin.com/in/charis-ginn-9abb93173'>LinkedIn</a>
+          <a href='https://www.linkedin.com/in/charis-ginn-9abb93173'>LinkedIn</a>
           <p>CV</p>
         </ul>
       </nav>
@@ -43,13 +42,14 @@ class Navbar extends React.Component{
     return(
       <div>
         <nav className='userNav'>
-          <p>Logo</p>
-          <p>Accounts dropdown</p>
-          <p>Open an Account</p>
-          <button onClick={this.openSidebar.bind(this)}>Profile and Settings</button>
-          <button onClick={this.handleLogout.bind(this)}>Log Out</button>
+          <Link to='/'><img src={window.logoURL} alt="the word 'align' in white lettering on a purple background" width='74'/></Link>
+          <ul>
+            <p>Accounts dropdown</p>
+            <p>Open an Account</p>
+            <button onClick={this.openSidebar.bind(this)}>Profile and Settings</button>
+            <button onClick={this.handleLogout.bind(this)}>Log Out</button>
+          </ul>
         </nav>
-        {/* <SettingsSidebar/> */}
       </div>
     );
   };

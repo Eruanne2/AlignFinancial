@@ -32,7 +32,7 @@ class SettingsSidebar extends React.Component{
     if (!this.props.sidebar || !window.currentUser) return null;
     return(
       <div className='sidebar'>
-        <button onClick={this.closeSidebar.bind(this)}>x</button>
+        <button className='close-sidebar' onClick={this.closeSidebar.bind(this)}>{`\u00D7`}</button>
         <h2>Site settings</h2>
         <ul> {/* this will be a dropdown*/}
           <li>Dark Mode</li>

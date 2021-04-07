@@ -22,7 +22,7 @@ class LoginSidebar extends React.Component{
     if (!this.props.sidebar || window.currentUser) return null;
     return(
     <div className='sidebar'>
-      <button onClick={this.closeSidebar.bind(this)}>x</button>
+      <button className='close-sidebar' onClick={this.closeSidebar.bind(this)}>{`\u00D7`}</button>
       <LoginForm/>
     </div>
     )

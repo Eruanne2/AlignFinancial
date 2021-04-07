@@ -5,7 +5,7 @@ function Footer(props){
     <footer>
       <ul>
         <a href='https://github.com/Eruanne2'>Github</a>
-        <a href='www.linkedin.com/in/charis-ginn-9abb93173'>LinkedIn</a>
+        <a href='https://www.linkedin.com/in/charis-ginn-9abb93173'>LinkedIn</a>
         <p>CV</p>
       </ul>
       <p>A FEW THINGS YOU SHOULD KNOW</p>

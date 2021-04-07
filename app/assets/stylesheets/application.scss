@@ -76,6 +76,13 @@ button, input[type='submit'] {
   border-radius: 4px;
 };
 
+.close-sidebar {
+  background-color: inherit;
+  border: none;
+  color: #0079b3;
+  font-size: 30px;
+}
+
 textarea, input[type='text'], input[type='password'] {
   border: 1px solid #959595;
   padding: 8px;
@@ -85,6 +92,11 @@ textarea, input[type='text'], input[type='password'] {
 
 textarea:hover, input[type='text']:hover, input[type='password']:hover {
   border-color:  #b5b5b5;
+}
+
+.blue {
+  font-weight: 700;
+  color: #0071C4;
 }
 
 footer {
