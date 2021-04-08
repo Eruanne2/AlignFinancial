@@ -14,9 +14,15 @@
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #
+
+ACCT_BENEFITS = { 
+  'checkings'=> { interest_rate: 0.5, transfer_limit: 10000}, 
+  'savings'=> { interest_rate: 1.5, transfer_limit: 6},
+  'money market'=> { interest_rate: 1.2, transfer_limit: 6}
+};
+
 class Account < ApplicationRecord
-  after_initialize :ensure_acct_num
-  after_initialize :ensure_routing_num
+  after_initialize :acct_setup
   validates :acct_num, :routing_num, :acct_type, :user_id, presence: true
   validates :external, inclusion: { in: [true, false]}
   validates :acct_type, inclusion: { in: ['checkings', 'savings', 'money market']}
@@ -26,12 +32,12 @@ class Account < ApplicationRecord
     foreign_key: :user_id,
     class_name: 'User'
 
-  def ensure_acct_num
+  def acct_setup
     self.acct_num ||= rand(10000000..99999999)
-  end
-
-  def ensure_routing_num
     self.routing_num ||= 14952223
+    self.balance = 0.0
+    self.interest_rate = ACCT_BENEFITS[acct_type][:interest_rate]
+    self.transfer_limit = ACCT_BENEFITS[acct_type][:transfer_limit]
   end
 
   def internal_account_info

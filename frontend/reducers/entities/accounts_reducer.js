@@ -6,7 +6,6 @@ const AccountsReducer = (state = {}, action) => {
   switch(action.type){
     case RECEIVE_ACCOUNT:
       nextState[action.acct.id] = action.acct;
-      debugger
       return nextState;
     case RECEIVE_ALL_ACCOUNTS:
       nextState = action.accts;

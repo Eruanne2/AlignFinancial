@@ -30,9 +30,9 @@ class Navbar extends React.Component{
 
   render(){
     if (!this.props.currentUser) return(
-      <nav className='userNav'>
+      <nav className='user-nav'>
         <Link to='/'><img src={window.logoURL} alt="the word 'align' in white lettering on a purple background" width='74'/></Link>
-        <ul>
+        <ul className='right-nav'>
           <a href='https://github.com/Eruanne2'>Github</a>
           <a href='https://www.linkedin.com/in/charis-ginn-9abb93173'>LinkedIn</a>
           <p>CV</p>
@@ -41,11 +41,13 @@ class Navbar extends React.Component{
     ); 
     return(
       <div>
-        <nav className='userNav'>
-          <Link to='/'><img src={window.logoURL} alt="the word 'align' in white lettering on a purple background" width='74'/></Link>
-          <ul>
+        <nav className='user-nav'>
+          <ul className='left-nav'>
+            <Link to='/'><img src={window.logoURL} alt="the word 'align' in white lettering on a purple background" width='74'/></Link>
             <p>Accounts dropdown</p>
-            <p>Open an Account</p>
+            <Link to='/open-account'>Open an Account</Link>
+          </ul>
+          <ul className='right-nav'>
             <button onClick={this.openSidebar.bind(this)}>Profile and Settings</button>
             <button onClick={this.handleLogout.bind(this)}>Log Out</button>
           </ul>

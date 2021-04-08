@@ -1,7 +1,7 @@
 @import 'variables';
 
 
-.splashNav {
+.splash-nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -15,7 +15,7 @@
     padding: 7px;
   }
 
-  ul {
+  .right-nav {
     display: flex;
     align-items: center;
     margin-right: 14%;

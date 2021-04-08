@@ -1,6 +1,6 @@
 @import 'variables';
 
-.userNav {
+.user-nav {
   display: flex;
   justify-content: space-between;
   align-items: center;  
@@ -16,6 +16,9 @@
 
   ul {
     display: flex;
+  }
+
+  .right-nav {
     margin-right: 14%;
     padding: 7px;
 

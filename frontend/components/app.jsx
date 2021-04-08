@@ -6,6 +6,7 @@ import LoginPage from './home_guest/login_page';
 import SignupPage from './user/signup_page';
 import Dashboard from './home_user/dashboard';
 import ProfilePage from './home_user/profile_page';
+import NewAccountTabs from './accounts/_new_account_tabs';
 import PageNotFound from './page_not_found';
 import Footer from './footer';
 import LoginSidebar from './home_guest/login_sidebar';
@@ -16,7 +17,7 @@ class App extends React.Component{
 
   render(){
     return(
-      <div>
+      <div className='app-container'>
         <LoginSidebar/>
         <SettingsSidebar/>
         <div id='wrap-for-modal'></div>
@@ -27,6 +28,7 @@ class App extends React.Component{
             <AuthRoute path='/signup' component={SignupPage}/>
             <ProtectedRoute path='/dashboard' component={Dashboard}/>
             <ProtectedRoute path='/profile' component={ProfilePage}/>
+            <ProtectedRoute path='/open-account' component={NewAccountTabs}/>
             <Route path='*' component={PageNotFound}/>
           </Switch>
           <Footer />

@@ -17,9 +17,9 @@ class SplashNavbar extends React.Component {
   render(){
     return(
       <div>
-        <nav className='splashNav'>
+        <nav className='splash-nav'>
           <Link to='/'><img src={window.logoWhiteURL}alt="the word 'align' in purple lettering on a white background" width='63'/></Link>
-          <ul>
+          <ul className='right-nav'>
             <a href='https://github.com/Eruanne2'>Github</a>
             <a href='https://www.linkedin.com/in/charis-ginn-9abb93173'>LinkedIn</a>
             <p>CV</p>
