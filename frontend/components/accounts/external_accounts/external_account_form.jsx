@@ -1,8 +1,9 @@
 import React from 'react';
+import { createAccount } from '../../../actions/account_actions';
 import { connect } from 'react-redux';
 
 const mapStateToProps = state => {
-  return { account: { acctType: '', userId: 0, external: true, acctNum: 0, routingNum: 0 } }
+  return { account: { acctType: 'checkings', userId: 0, external: true, acctNum: '', routingNum: '' } }
 };
 
 const mapDispatchToProps = dispatch => {
@@ -35,10 +36,12 @@ class ExternalAccountForm extends React.Component {
       <div>
         <form>
           <label>Accout Type
-
+            <select onChange={this.updateField('acctType')}>
+              <option value='checkings' >Checking Account</option>
+              <option value='savings'>Savings Account</option>
+            </select>
           </label>
           <label>Account Number
-          <input type='text' value={this.state.routingNum} onChange={this.updateField('routingNum')}/>
             <input type='text' value={this.state.acctNum} onChange={this.updateField('acctNum')}/>
           </label>
           <label>Re-enter Account Number (dead rn)

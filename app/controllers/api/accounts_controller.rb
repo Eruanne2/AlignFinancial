@@ -7,7 +7,7 @@ class Api::AccountsController < ApplicationController
   end
 
   def create
-    @account = Account.new(accounts_params)
+    @account = Account.new(account_params)
     if @account.save
       render :show
     else
@@ -31,7 +31,7 @@ class Api::AccountsController < ApplicationController
     render :show
   end
 
-  def accounts_params
-    params.require(:acctData).permit(:act_num, :routing_num, :acct_type, :user_id, :external, :balance, :interest_rate, :transfer_limit)
+  def account_params
+    params.require(:acct_data).permit(:acct_num, :routing_num, :acct_type, :user_id, :external, :balance, :interest_rate, :transfer_limit)
   end
 end
