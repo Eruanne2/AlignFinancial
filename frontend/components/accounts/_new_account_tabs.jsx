@@ -9,8 +9,13 @@ class NewAccountTabs extends React.Component {
     return(
       <div className='tabs-container'>
         <Navbar />
+        <ul className='steps'>
+          <h3>1. Your Information</h3>
+          <h3>2. Open Account</h3>
+          <h3>3. Fund Account</h3>
+        </ul>
         <ul className='tabs'>
-          {window.CurrentUser ? <LoginForm/> : <NewUserFormContainer/>}
+          {window.currentUser ? <LoginForm/> : <NewUserFormContainer/>}
           <SelectAccount/>
           <p>NEW TRANSFER FORM GOES HERE</p>
         </ul>

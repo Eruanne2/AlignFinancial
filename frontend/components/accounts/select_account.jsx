@@ -3,8 +3,7 @@ import { createAccount } from '../../actions/account_actions';
 import { connect } from 'react-redux';
 
 const mapStateToProps = state => {
-  return { account: { acct_type: '', user_id: window.currentUser.id, external: false } }
-  // add acct_num and routing_num only if it's an external account
+  return { account: { acctType: '', userId: 0, external: false } }
 };
 
 const mapDispatchToProps = dispatch => {
@@ -20,12 +19,13 @@ class SelectAccount extends React.Component{
   handleSelection(type){
     return e => {
       e.preventDefault();
-      this.setState( { acct_type: type });
+      this.setState( { acctType: type });
     }
   };
   
   handleSubmit(e){
     e.preventDefault();
+    this.setState({ userId: window.currentUser.id})
     this.props.createAccount(this.state);
   };
   
@@ -53,7 +53,7 @@ class SelectAccount extends React.Component{
             <button onClick={this.handleSelection('money market')}>Money Market</button>
           </div>
           <div className='account-info'>
-            {this.displayInfo(this.state.acct_type)}
+            {this.displayInfo(this.state.acctType)}
           </div>
           <input type='submit' onClick={this.handleSubmit.bind(this)} value='Next' />
         </form>

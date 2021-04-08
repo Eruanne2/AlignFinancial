@@ -28,7 +28,7 @@ class App extends React.Component{
             <AuthRoute path='/signup' component={SignupPage}/>
             <ProtectedRoute path='/dashboard' component={Dashboard}/>
             <ProtectedRoute path='/profile' component={ProfilePage}/>
-            <ProtectedRoute path='/open-account' component={NewAccountTabs}/>
+            <Route path='/open-account' component={NewAccountTabs}/>
             <Route path='*' component={PageNotFound}/>
           </Switch>
           <Footer />
