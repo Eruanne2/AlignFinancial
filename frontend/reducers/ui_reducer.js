@@ -10,14 +10,14 @@ const UIReducer = (state=defaultState, action) => {
     case TOGGLE_SIDEBAR:
       newState.sidebar = !state.sidebar;
       (state.sidebar) ? 
-        document.querySelector('#wrap-for-modal').classList.remove('modal') 
+        document.querySelector('#background-modal').classList.remove('modal') 
         :
-        document.querySelector('#wrap-for-modal').classList.add('modal')  
+        document.querySelector('#background-modal').classList.add('modal')  
       return newState;
     case RECEIVE_CURRENT_USER:
       if (state.sidebar) {
         newState.sidebar = false;
-        document.querySelector('#wrap-for-modal').classList.remove('modal') 
+        document.querySelector('#background-modal').classList.remove('modal') 
       }
       return newState;
     case TOGGLE_NIGHTMODE:

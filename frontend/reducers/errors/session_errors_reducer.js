@@ -1,4 +1,5 @@
 import { RECEIVE_SESSION_ERRORS, RECEIVE_CURRENT_USER } from '../../actions/session_actions';
+import { TOGGLE_SIDEBAR } from '../../actions/ui_actions';
 
 const SessionErrorsReducer = (state = [], action) => {
   Object.freeze(state);
@@ -6,6 +7,8 @@ const SessionErrorsReducer = (state = [], action) => {
     case RECEIVE_SESSION_ERRORS:
       return action.errors;
     case RECEIVE_CURRENT_USER:
+      return [];
+    case TOGGLE_SIDEBAR:
       return [];
     default:
       return state;

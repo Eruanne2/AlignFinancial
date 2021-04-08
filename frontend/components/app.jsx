@@ -20,7 +20,7 @@ class App extends React.Component{
       <div className='app-container'>
         <LoginSidebar/>
         <SettingsSidebar/>
-        <div id='wrap-for-modal'></div>
+        <div id='background-modal'></div>
         <div>
           <Switch>
             <AuthRoute path='/' exact={true} component={Splash}/>

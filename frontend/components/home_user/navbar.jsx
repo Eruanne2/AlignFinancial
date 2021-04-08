@@ -5,7 +5,7 @@ import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 const mapStateToProps = state => {
-  return { currentUser: state.session.id }
+  return { currentUser: state.session.id, sidebarOpen: state.ui.sidebar }
 };
 
 const mapDispatchToProps = dispatch => {
@@ -20,7 +20,10 @@ class Navbar extends React.Component{
 
   openSidebar(e){
     e.preventDefault();
-    this.props.toggleSidebar();
+    if (this.props.sidebarOpen) {
+      document.querySelector('.sidebar').classList.add('close-sidebar-animate');
+      setTimeout(this.props.toggleSidebar, 300);
+    } else this.props.toggleSidebar();
   };
 
   handleLogout(e){

@@ -20,7 +20,8 @@ class SettingsSidebar extends React.Component{
 
   closeSidebar(e){
     e.preventDefault();
-    this.props.toggleSidebar();
+    document.querySelector('.sidebar').classList.add('close-sidebar-animate');
+    setTimeout(this.props.toggleSidebar, 300);
   };
 
   handleChange(type){

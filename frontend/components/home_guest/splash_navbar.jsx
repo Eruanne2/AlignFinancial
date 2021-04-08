@@ -3,6 +3,10 @@ import { toggleSidebar } from '../../actions/ui_actions';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
+const mapStateToProps = state => {
+  return { sidebarOpen: state.ui.sidebar }
+}
+
 const mapDispatchToProps = dispatch => {
   return { toggleSidebar: () => dispatch(toggleSidebar())}
 };
@@ -11,7 +15,10 @@ class SplashNavbar extends React.Component {
   
   openSidebar(e){
     e.preventDefault();
-    this.props.toggleSidebar();
+    if (this.props.sidebarOpen) {
+      document.querySelector('.sidebar').classList.add('close-sidebar-animate');
+      setTimeout(this.props.toggleSidebar, 300);
+    } else this.props.toggleSidebar();
   };
 
   render(){
@@ -31,4 +38,4 @@ class SplashNavbar extends React.Component {
   };
 };
 
-export default connect(null, mapDispatchToProps)(SplashNavbar);
+export default connect(mapStateToProps, mapDispatchToProps)(SplashNavbar);
