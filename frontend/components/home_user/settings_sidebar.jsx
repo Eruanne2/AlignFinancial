@@ -41,7 +41,8 @@ class SettingsSidebar extends React.Component{
           <input type='checkbox' onChange={this.handleChange('accessibleView')}/>
         </ul>
         <h2>User settings</h2>
-        <Link to ='/profile'>Update Your Information</Link> {/* this will be a dropdown*/}
+        <span onClick={this.closeSidebar.bind(this)}><Link to ='/profile'>Update Your Information</Link></span> {/* this will be a dropdown*/}
+        
       </div>
     )
   };

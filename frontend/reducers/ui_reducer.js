@@ -1,4 +1,5 @@
 import { TOGGLE_SIDEBAR, TOGGLE_NIGHTMODE, TOGGLE_ACCESSIBILE_VIEW } from '../actions/ui_actions';
+import { RECEIVE_CURRENT_USER } from '../actions/session_actions';
 
 const defaultState = { sidebar: false, nightMode: false, accessibleView: false }
 
@@ -12,6 +13,12 @@ const UIReducer = (state=defaultState, action) => {
         document.querySelector('#wrap-for-modal').classList.remove('modal') 
         :
         document.querySelector('#wrap-for-modal').classList.add('modal')  
+      return newState;
+    case RECEIVE_CURRENT_USER:
+      if (state.sidebar) {
+        newState.sidebar = false;
+        document.querySelector('#wrap-for-modal').classList.remove('modal') 
+      }
       return newState;
     case TOGGLE_NIGHTMODE:
       newState.nightMode = !state.nightMode;
