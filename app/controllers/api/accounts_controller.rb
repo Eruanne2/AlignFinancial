@@ -27,7 +27,11 @@ class Api::AccountsController < ApplicationController
 
   def destroy
     @account = Account.find_by(id: params[:id])
-    @account.destroy
+    if @account.balance === 0
+      @account.destroy
+    else
+      render json: ["An account must be at a zero balance to be closed."], status: 422
+    end
     render :show
   end
 
