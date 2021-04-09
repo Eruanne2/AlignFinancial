@@ -8,6 +8,7 @@ import Dashboard from './home_user/dashboard';
 import AccountDetail from './accounts/account_detail';
 import ProfilePage from './home_user/profile_page';
 import ManageExternalAccounts from './accounts/external_accounts/manage_external_accounts';
+import TransferPage from './transfers/transfer_page';
 import NewAccountTabs from './accounts/_new_account_tabs';
 import PageNotFound from './page_not_found';
 import Footer from './footer';
@@ -32,6 +33,7 @@ class App extends React.Component{
             <ProtectedRoute path='/account-detail/:accountId' component={AccountDetail}/>
             <ProtectedRoute path='/profile' component={ProfilePage}/>
             <ProtectedRoute path='/external-accounts' component={ManageExternalAccounts}/>
+            <ProtectedRoute path='/transfer' component={TransferPage}/>
             <Route path='/open-account' component={NewAccountTabs}/>
             <Route path='*' component={PageNotFound}/>
           </Switch>

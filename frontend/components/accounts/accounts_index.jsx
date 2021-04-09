@@ -42,7 +42,7 @@ class AccountsIndex extends React.Component{
         <ul className='acct-views'>
           {filteredAccts.map((account,idx) => {
             return (
-              <ul className='acct-view-info'>
+              <ul key={idx} className='acct-view-info'>
                 <Link to={`/account-detail/${account.id}`}>Account {account.acctNum}</Link>
                 <p>{account.balance}</p>
                 <p>{account.balance}</p>
