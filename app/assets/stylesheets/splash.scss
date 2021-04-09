@@ -33,12 +33,22 @@
   color: #FFF;
   height: 320px;
   text-align: center;
-  font-size: 50px;
-  font-weight: 900;
   padding: 65px;
   box-sizing: border-box;
 
-  span {
-    color: #cb3974;
+  h1 {
+    font-size: 50px;
+    font-weight: 900;
+    padding-bottom: 15px;
+
+    span {
+      color: #cb3974;
+    }
+  }
+
+
+  p {
+    font-size: 20px;
+    padding: 5px;
   }
 }
