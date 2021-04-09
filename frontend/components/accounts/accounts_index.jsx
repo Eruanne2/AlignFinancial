@@ -1,6 +1,5 @@
 import React from 'react';
-import AccountView from '../accounts/_account_view';
-import { withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 // takes in a 'filter' object prop to filter accounts.
 // e.g. {external: false, acctType: 'savings'}
 
@@ -33,11 +32,30 @@ class AccountsIndex extends React.Component{
     const filteredAccts = this.props.accounts.filter(acct => this.matchesFilterProp(acct)) 
     return(
       <div className='acct-index-container'>
-        <h1>{this.generateHeader()}</h1>
-        <ul>
+        <ul className='acct-index-headers'>
+          <p>{this.generateHeader()}</p>
+          <p>AVAILABLE</p>
+          <p>CURRENT</p>
+          <p>INTEREST YTD</p>
+          <p>ANNUAL PERCENTAGE YIELD</p>
+        </ul>
+        <ul className='acct-views'>
           {filteredAccts.map((account,idx) => {
-            return <AccountView key={idx} account={account}/>
+            return (
+              <ul className='acct-view-info'>
+                <Link to={`/account-detail/${account.id}`}>Account {account.acctNum}</Link>
+                <p>{account.balance}</p>
+                <p>{account.balance}</p>
+                <p>1234</p>
+                <p>account.interestRate</p>
+              </ul>
+            )
           })}
+        </ul>
+        <ul className='acct-index-total'>
+          <p>Total1</p>
+          <p>Total2</p>
+          <p>Total3</p>
         </ul>
       </div>
     )
