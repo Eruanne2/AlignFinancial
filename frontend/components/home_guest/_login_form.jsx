@@ -4,11 +4,6 @@ import { login } from '../../actions/session_actions';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExclamationCircle } from "@fortawesome/free-solid-svg-icons";
 
-/*
-
-The FontAwesomeIcon component in the return
-*/
-
 const mapStateToProps = state => {
   return { errors: state.errors.sessionErrors }
 };

@@ -4,6 +4,8 @@ import Navbar from '../home_user/navbar';
 import SelectAccount from './select_account';
 import LoginForm from '../home_guest/_login_form';
 import NewUserForm from '../user/new_user_form_container';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircle } from "@fortawesome/free-solid-svg-icons";
 
 class NewAccountTabs extends React.Component {
   constructor(props){
@@ -20,11 +22,15 @@ class NewAccountTabs extends React.Component {
         // submit new user form
         document.getElementById('your-info-section').classList.add('hidden');
         document.getElementById('create-account-section').classList.remove('hidden');
+        document.getElementById('step-1').classList.remove('selected');
+        document.getElementById('step-2').classList.add('selected');
         return
       case 'to-step-3':
         // create new account
         document.getElementById('create-account-section').classList.add('hidden');
         document.getElementById('fund-account-section').classList.remove('hidden');
+        document.getElementById('step-2').classList.remove('selected');
+        document.getElementById('step-3').classList.add('selected');
         return
       case 'to-dashboard':
         this.props.history.push('/');
@@ -39,9 +45,18 @@ class NewAccountTabs extends React.Component {
       <div className='tabs-container'>
         <Navbar />
         <ul className='step-nav'>
-          <h3>1. Your Information</h3>
-          <h3>2. Open Account</h3>
-          <h3>3. Fund Account</h3>
+          <li id='step-1' className='selected'>
+            <span className='circle-icon'>1</span>
+            <h3>Your Information</h3>
+          </li>
+          <li id='step-2'>
+            <span className='circle-icon'>2</span>
+            <h3>Open Account</h3>
+          </li>
+          <li id='step-3'>
+            <span className='circle-icon'>3</span>
+            <h3>Fund Account</h3>
+          </li>
         </ul>
         <ul className='tabs'>
           <section id='your-info-section'>
