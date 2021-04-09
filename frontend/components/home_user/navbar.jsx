@@ -1,7 +1,7 @@
 import React from 'react';
 import { logout } from '../../actions/session_actions';
 import { toggleSidebar } from '../../actions/ui_actions';
-import { Link, withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 const mapStateToProps = state => {
@@ -29,7 +29,6 @@ class Navbar extends React.Component{
   handleLogout(e){
     e.preventDefault();
     this.props.logout();
-    this.props.history.push('/')
   }
 
   render(){
@@ -62,4 +61,4 @@ class Navbar extends React.Component{
   };
 };
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Navbar));
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar);
