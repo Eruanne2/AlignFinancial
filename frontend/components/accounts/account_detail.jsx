@@ -5,7 +5,6 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 const mapStateToProps = state => {
-  // return { account: state.entities.accounts[this.props.match.params.accountId]}
   return { accounts: state.entities.accounts }
 }
 
@@ -34,16 +33,14 @@ class AccountDetail extends React.Component{
   };
 
   render(){
-    // if (Object.keys(this.state.account).length === 0) return null;
     if (!this.state.account) return null;
-    const account = this.state.account;
     return(
       <div>
         <Navbar/>
         <h1>Account info</h1>
         <ul>
-          {Object.keys(account).map((key, idx) => {
-            return <p key={idx}>{key}: {account[key]}</p>
+          {Object.keys(this.state.account).map((key, idx) => {
+            return <p key={idx}>{key}: {this.state.account[key]}</p>
           })}
         </ul>
         <button onClick={this.closeAccount.bind(this)}>Close Account</button>
