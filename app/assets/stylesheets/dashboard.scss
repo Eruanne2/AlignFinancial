@@ -39,16 +39,52 @@
   > h1 {
     margin-top: 76px;
     margin-left: 13.5%;
+    margin-bottom: 15px;
     font-size: 18.5px;
     font-weight: 700;
     color: #515050;
   }
 
   .acct-index-container {
+    position: relative;
     background-color: #f8f8f8;
     border: 1px solid #959595;
     color: #2A2A2A;
     padding: 10px;
     margin: 10px 13.5%;
   }
+
+  .acct-index-container:first-child::before {
+    background-color: #03A9F4;
+    transition: all .3s ease;
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 7px;
+    height: 100%;
+  }
+
+  .acct-index-container:nth-child(2)::before {
+    background-color: #3F51B5;
+    transition: all .3s ease;
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 7px;
+    height: 100%;
+  }
+
+  .acct-index-container:nth-child(3)::before {
+    background-color: #008486;
+    transition: all .3s ease;
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 7px;
+    height: 100%;
+  }
+
 }

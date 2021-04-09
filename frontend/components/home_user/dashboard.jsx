@@ -38,18 +38,20 @@ class Dashboard extends React.Component{
         <Snapshot currentUser={this.props.currentUser} accounts={this.props.accounts}/>
 
         <h1>BANK ACCOUNTS</h1>
-        <AccountsIndex 
-          accounts={this.props.accounts}
-          filter={{external: false, acctType: 'checkings'}}
-        />
-        <AccountsIndex 
-          accounts={this.props.accounts}
-          filter={{external: false, acctType: 'savings'}}
-        />
-        <AccountsIndex 
-          accounts={this.props.accounts}
-          filter={{external: false, acctType: 'money market'}}
-        />
+        <ul className='acct-view'>
+          <AccountsIndex 
+            accounts={this.props.accounts}
+            filter={{external: false, acctType: 'checkings'}}
+            />
+          <AccountsIndex 
+            accounts={this.props.accounts}
+            filter={{external: false, acctType: 'savings'}}
+            />
+          <AccountsIndex 
+            accounts={this.props.accounts}
+            filter={{external: false, acctType: 'money market'}}
+          />
+        </ul>
       </div>
     )
   }
