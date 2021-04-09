@@ -10,6 +10,8 @@ import * as uiActions from './actions/ui_actions';
 import * as sessionActions from './actions/session_actions';
 import * as usersActions from './actions/users_actions';
 import * as usersApi from './utils/users_api';
+import * as accountsApi from './utils/accounts_api';
+import * as accountsActions from './actions/account_actions';
 
 const Root = ({ store }) => (
   <Provider store={store}>
@@ -40,5 +42,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.sessionActions = sessionActions;
   window.usersActions = usersActions;
   window.usersApi = usersApi;
+  window.accountsApi = accountsApi;
+  window.accountsActions = accountsActions;
   window.store = store;
 });

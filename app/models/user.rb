@@ -2,7 +2,7 @@
 #
 # Table name: users
 #
-#  id              :integer          not null, primary key
+#  id              :bigint           not null, primary key
 #  username        :string           not null
 #  password_digest :string           not null
 #  session_token   :string           not null
@@ -15,12 +15,14 @@
 #  updated_at      :datetime         not null
 #
 class User < ApplicationRecord
+  after_initialize :ensure_session_token
   validates :username, :password_digest, :session_token, :fname, :lname, :email, presence: true
   validates :username, :session_token, :email, uniqueness: true
   validates :password, length: { minimum: 6 }, allow_nil: true
-  after_initialize :ensure_session_token
 
-  # associations go here
+  has_many :accounts,
+    foreign_key: :user_id,
+    class_name: 'Account'
 
   attr_reader :password
 
