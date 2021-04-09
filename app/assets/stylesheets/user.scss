@@ -10,12 +10,17 @@
   box-shadow: 10px 0 6px gray;
   
   > :first-child {
-    margin-left: 13%;
-    padding: 7px;
+    margin-left: 13.5%;
+    padding: 7px 0;
   }
 
   ul {
     display: flex;
+    align-items: center;
+  }
+
+  .left-nav > * {
+    margin-right: 20px;
   }
 
   .right-nav {

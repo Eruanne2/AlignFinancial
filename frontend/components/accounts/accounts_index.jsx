@@ -20,12 +20,20 @@ class AccountsIndex extends React.Component{
     return res;
   };
 
+  generateHeader(){
+    if (!this.props.filter.external) {
+      const typeHeadings = { 'checkings': 'INTEREST CHECKING', 'savings': 'SAVING', 'money market': 'MONEY MARKETS'}
+      return typeHeadings[this.props.filter.acctType];
+    }
+    return 'External Accounts';
+  }
+
   render(){
     if (this.props.accounts.length < 1) return null;
     const filteredAccts = this.props.accounts.filter(acct => this.matchesFilterProp(acct)) 
     return(
       <div className='acct-index-container'>
-        <h1>{this.props.filter[this.props.header]}</h1>
+        <h1>{this.generateHeader()}</h1>
         <ul>
           {filteredAccts.map((account,idx) => {
             return <AccountView key={idx} account={account}/>
