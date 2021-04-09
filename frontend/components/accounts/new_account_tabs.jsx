@@ -9,8 +9,7 @@ import NewUserForm from '../user/new_user_form_container';
 class OpenAccountPage extends React.Component {
   constructor(props){
     super(props);
-    this.state = {};
-
+    this.state = { };
     this.handleNext = this.handleNext.bind(this);
   }
 
@@ -77,19 +76,24 @@ class OpenAccountPage extends React.Component {
               <span className='circle-icon'>i</span>
               <p><em>Protect your money. </em> Fraudsters sometimes offer you money to open an account, then use your information to access your assets. Don’t open an account because someone you’ve never met in person asked you to, and don’t share your bank login information with anyone.</p>
             </div>
-            {window.currentUser && <LoginForm/>}
+            {window.currentUser && 
+            <div>
+              <p>For your security, we ask that you confirm your credentials before moving to the next step.</p>
+              <LoginForm/>
+            </div>
+            }
             {!window.currentUser &&
               <div className='existing-customer'>
                 <label>I’m not an existing Ally Bank customer 
-                  <input type='radio' name='existing-customer' value={false} onChange={this.selectExistingCustomer.bind(this)}/>
+                  <input type='radio' name='existing-customer' value='no' onChange={this.selectExistingCustomer.bind(this)}/>
                 </label>
                 <label>I already have an account with Align Bank
-                  <input type='radio' name='existing-customer' value={true} onChange={this.selectExistingCustomer.bind(this)}/>
+                  <input type='radio' name='existing-customer' value='yes' onChange={this.selectExistingCustomer.bind(this)}/>
                 </label>
-                {this.state.existingCustomer === true && <LoginForm/>}
+                {this.state.existingCustomer === 'yes' && <LoginForm/>}
               </div>
             }
-            {this.state.existingCustomer === false && <NewUserForm/>}
+            {this.state.existingCustomer === 'no' && <NewUserForm/>}
             <button id='to-step-2' onClick={this.handleNext}>Next</button>
           </section>
 
