@@ -1,6 +1,6 @@
 @import 'variables';
 
-.tabs-container {
+.open-account-container {
   .user-nav {
     box-shadow: none;
   }
@@ -65,6 +65,43 @@
         font-weight: 900;
       }
     }
+  }
+
+  .existing-customer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #f8f8f8;
+    border: 1px solid #959595;
+    border-radius: 2px;
+    font-size: 14px;
+    width: 500px;
+    margin: 50px 13.5%;
+    padding: 10px;
+
+    h2 {
+      font-weight: 700;
+      padding: 10px;
+
+    }
+
+    div {
+      padding: 10px;
+      display: flex;
+      align-items: center;
+
+      label {
+        padding-top: 3px;
+        padding-left: 5px;
+        box-sizing: border-box;
+      }
+    }
+
+
+  }
+
+  #to-step-2, #to-step-3, #to-dashboard {
+    margin-left: 13.5%;
   }
 
 }

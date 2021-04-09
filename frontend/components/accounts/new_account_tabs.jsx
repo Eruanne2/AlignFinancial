@@ -49,7 +49,7 @@ class OpenAccountPage extends React.Component {
 
   render(){
     return(
-      <div className='tabs-container'>
+      <div className='open-account-container'>
 
         <Navbar />
 
@@ -68,7 +68,7 @@ class OpenAccountPage extends React.Component {
           </li>
         </ul>
 
-        <ul className='tabs'>
+        <ul className='steps'>
 
           {/* Step 1: 'Your Information' -> creates a new user */}
           <section id='your-info-section'>
@@ -84,12 +84,15 @@ class OpenAccountPage extends React.Component {
             }
             {!window.currentUser &&
               <div className='existing-customer'>
-                <label>I’m not an existing Ally Bank customer 
-                  <input type='radio' name='existing-customer' value='no' onChange={this.selectExistingCustomer.bind(this)}/>
-                </label>
-                <label>I already have an account with Align Bank
-                  <input type='radio' name='existing-customer' value='yes' onChange={this.selectExistingCustomer.bind(this)}/>
-                </label>
+                <h2>Choose the option that describes you best.</h2>
+                <div>
+                  <input type='radio' id='no' name='existing-customer' value='no' onChange={this.selectExistingCustomer.bind(this)}/>
+                  <label for='no'>I’m not an existing Ally Bank customer </label> 
+                </div>
+                <div>
+                  <input type='radio' id='yes' name='existing-customer' value='yes' onChange={this.selectExistingCustomer.bind(this)}/>
+                  <label for='yes'>I already have an account with Align Bank</label>
+                </div>
                 {this.state.existingCustomer === 'yes' && <LoginForm/>}
               </div>
             }
