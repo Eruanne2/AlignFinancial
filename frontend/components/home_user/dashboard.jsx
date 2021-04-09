@@ -1,7 +1,7 @@
 import React from 'react';
 import { fetchAllAccounts } from '../../actions/account_actions';
 import Navbar from './navbar';
-import AccountsIndex from './accounts_index';
+import AccountsIndex from '../accounts/accounts_index';
 import { connect } from 'react-redux';
 
 const mapStateToProps = state => {

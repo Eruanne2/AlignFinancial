@@ -1,5 +1,6 @@
 import React from 'react';
 import AccountView from '../accounts/_account_view';
+import { withRouter } from 'react-router-dom';
 // takes in a 'filter' object prop to filter accounts.
 // e.g. {external: false, acctType: 'savings'}
 
@@ -35,4 +36,4 @@ class AccountsIndex extends React.Component{
   }
 };
 
-export default AccountsIndex;
+export default withRouter(AccountsIndex);

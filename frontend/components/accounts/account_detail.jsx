@@ -30,7 +30,7 @@ class AccountDetail extends React.Component{
   closeAccount(e){
     e.preventDefault();
     this.props.deleteAccount(this.state.account.id)
-    this.props.history.push('/dashboard')
+    this.props.history.goBack();
   };
 
   render(){
