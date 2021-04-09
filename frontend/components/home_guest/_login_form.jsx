@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { login } from '../../actions/session_actions';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faExclamationCircle } from "@fortawesome/free-solid-svg-icons";
 
 const mapStateToProps = state => {
   return { errors: state.errors.sessionErrors }
@@ -41,7 +43,7 @@ class LoginForm extends React.Component{
           </div>
         <form onSubmit={this.userLogin.bind(this)}>
           <span className='error'>
-            {this.props.errors.length > 0 ? <i className='fas fa-exclamation-circle'></i> : null }
+            {this.props.errors.length > 0 ? <i><FontAwesomeIcon icon={faExclamationCircle}/></i> : null }
             {this.props.errors}
           </span>
           <section className='login-inputs'>
