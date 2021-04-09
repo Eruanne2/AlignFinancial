@@ -8,7 +8,7 @@ import AccountDetail from './accounts/account_detail';
 import ProfilePage from './home_user/profile_page';
 import ManageExternalAccounts from './accounts/external_accounts/manage_external_accounts';
 import TransferPage from './transfers/transfer_page';
-import NewAccountTabs from './accounts/new_account_tabs';
+import OpenAccountPage from './accounts/new_account_tabs';
 import PageNotFound from './page_not_found';
 import Footer from './footer';
 import LoginSidebar from './home_guest/login_sidebar';
@@ -32,7 +32,7 @@ class App extends React.Component{
             <ProtectedRoute path='/profile' component={ProfilePage}/>
             <ProtectedRoute path='/external-accounts' component={ManageExternalAccounts}/>
             <ProtectedRoute path='/transfer' component={TransferPage}/>
-            <Route path='/open-account' component={NewAccountTabs}/>
+            <Route path='/open-account' component={OpenAccountPage}/>
             <Route path='*' component={PageNotFound}/>
           </Switch>
           <Footer />

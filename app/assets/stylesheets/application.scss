@@ -37,6 +37,20 @@ body {
   }
 }
 
+.circle-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #2A2A2A;
+  border-radius: 50%;
+  width: 14px;
+  height: 14px;
+  font-size: 12px;
+  padding-bottom: 1px;
+  margin: 1px;
+  margin-right: 10px;
+}
+
 
 button, input[type='submit'] {
   background-color: #008486;

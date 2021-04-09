@@ -4,14 +4,22 @@ import Navbar from '../home_user/navbar';
 import SelectAccount from './select_account';
 import LoginForm from '../home_guest/_login_form';
 import NewUserForm from '../user/new_user_form_container';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCircle } from "@fortawesome/free-solid-svg-icons";
 
-class NewAccountTabs extends React.Component {
+
+class OpenAccountPage extends React.Component {
   constructor(props){
     super(props);
+    this.state = {};
 
     this.handleNext = this.handleNext.bind(this);
+  }
+
+  selectExistingCustomer(e){
+    this.setState({ existingCustomer: e.currentTarget.value })
+  };
+
+  handleSubmit(e){
+
   }
 
   handleNext(e){
@@ -43,7 +51,9 @@ class NewAccountTabs extends React.Component {
   render(){
     return(
       <div className='tabs-container'>
+
         <Navbar />
+
         <ul className='step-nav'>
           <li id='step-1' className='selected'>
             <span className='circle-icon'>1</span>
@@ -58,23 +68,47 @@ class NewAccountTabs extends React.Component {
             <h3>Fund Account</h3>
           </li>
         </ul>
+
         <ul className='tabs'>
+
+          {/* Step 1: 'Your Information' -> creates a new user */}
           <section id='your-info-section'>
-            {window.currentUser ? <LoginForm/> : <NewUserForm/>}
+            <div className='informational'>
+              <span className='circle-icon'>i</span>
+              <p><em>Protect your money. </em> Fraudsters sometimes offer you money to open an account, then use your information to access your assets. Don’t open an account because someone you’ve never met in person asked you to, and don’t share your bank login information with anyone.</p>
+            </div>
+            {window.currentUser && <LoginForm/>}
+            {!window.currentUser &&
+              <div className='existing-customer'>
+                <label>I’m not an existing Ally Bank customer 
+                  <input type='radio' name='existing-customer' value={false} onChange={this.selectExistingCustomer.bind(this)}/>
+                </label>
+                <label>I already have an account with Align Bank
+                  <input type='radio' name='existing-customer' value={true} onChange={this.selectExistingCustomer.bind(this)}/>
+                </label>
+                {this.state.existingCustomer === true && <LoginForm/>}
+              </div>
+            }
+            {this.state.existingCustomer === false && <NewUserForm/>}
             <button id='to-step-2' onClick={this.handleNext}>Next</button>
           </section>
+
+          {/* Step 2: 'Create Account' -> creates a new account */}
           <section id='create-account-section' className='hidden' >
             <SelectAccount/>
             <button id='to-step-3' onClick={this.handleNext}>Next</button>
           </section>
+
+          {/* Step 3: 'Fund Account' -> creates a new transfer */}
           <section id='fund-account-section' className='hidden'>
             <p>NEW TRANSFER FORM GOES HERE</p>
             <button id='to-dashboard' onClick={this.handleNext}>Next</button>
           </section>
+
         </ul>
       </div>
     )
   }
 };
 
-export default withRouter(NewAccountTabs);
+export default withRouter(OpenAccountPage);
