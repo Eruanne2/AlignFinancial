@@ -26,12 +26,13 @@ body {
   font-weight: 700;
   color: #D42825;
   display: flex;
+  
+  i {
+    font-size: 18px;
+    color:#D42825;
+  }
 }
 
-.fa-exclamation-circle {
-  font-size: 18px;
-  color:#D42825;
-}
 
 button, input[type='submit'] {
   background-color: #008486;
