@@ -19,7 +19,6 @@ class LoginForm extends React.Component{
 
   userLogin(e){
     e.preventDefault();
-    console.log(this.state);
     this.props.login(this.state);
   };
 

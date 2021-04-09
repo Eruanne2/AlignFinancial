@@ -3,12 +3,14 @@ import { createAccount } from '../../../actions/account_actions';
 import { connect } from 'react-redux';
 
 const mapStateToProps = state => {
-  return { account: { acctType: 'checkings', userId: 0, external: true, acctNum: '', routingNum: '' } }
+  return { account: { acctType: 'checkings', userId: state.session.id, external: true, acctNum: '', routingNum: '' } }
 };
 
 const mapDispatchToProps = dispatch => {
   return { createAccount: acctData => dispatch(createAccount(acctData)) }
 };
+
+
 
 class ExternalAccountForm extends React.Component {
   constructor(props){
@@ -23,7 +25,7 @@ class ExternalAccountForm extends React.Component {
 
   handleSubmit(e){
     e.preventDefault();
-    this.state.userId = window.currentUser.id;
+    this.setState({ userId: window.currentUser.id})
     this.props.createAccount(this.state);
   }
   

@@ -12,7 +12,7 @@ const UIReducer = (state=defaultState, action) => {
       (state.sidebar) ? 
         document.querySelector('#background-modal').classList.remove('modal') 
         :
-        document.querySelector('#background-modal').classList.add('modal')  
+        document.querySelector('#background-modal').classList.add('modal')
       return newState;
     case RECEIVE_CURRENT_USER:
       if (state.sidebar) {

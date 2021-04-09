@@ -3,7 +3,7 @@ import { createAccount } from '../../actions/account_actions';
 import { connect } from 'react-redux';
 
 const mapStateToProps = state => {
-  return { account: { acctType: '', userId: 0, external: false } }
+  return { account: { acctType: '', userId: state.session.id, external: false } }
 };
 
 const mapDispatchToProps = dispatch => {

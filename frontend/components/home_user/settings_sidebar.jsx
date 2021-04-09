@@ -43,7 +43,8 @@ class SettingsSidebar extends React.Component{
         </ul>
         <h2>User settings</h2>
         <span onClick={this.closeSidebar.bind(this)}><Link to ='/profile'>Update Your Information</Link></span> {/* this will be a dropdown*/}
-        
+        <h2>Quick Links</h2>
+        <span onClick={this.closeSidebar.bind(this)}><Link to ='/external-accounts'>Manage External Accounts</Link></span> {/* this will be a dropdown*/}
       </div>
     )
   };

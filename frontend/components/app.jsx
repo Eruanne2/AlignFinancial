@@ -5,6 +5,7 @@ import Splash from './home_guest/splash';
 import LoginPage from './home_guest/login_page';
 import SignupPage from './user/signup_page';
 import Dashboard from './home_user/dashboard';
+import AccountDetail from './accounts/account_detail';
 import ProfilePage from './home_user/profile_page';
 import ManageExternalAccounts from './accounts/external_accounts/manage_external_accounts';
 import NewAccountTabs from './accounts/_new_account_tabs';
@@ -28,6 +29,7 @@ class App extends React.Component{
             <AuthRoute path='/login' component={LoginPage}/>
             <AuthRoute path='/signup' component={SignupPage}/>
             <ProtectedRoute path='/dashboard' component={Dashboard}/>
+            <ProtectedRoute path='/account-detail/:accountId' component={AccountDetail}/>
             <ProtectedRoute path='/profile' component={ProfilePage}/>
             <ProtectedRoute path='/external-accounts' component={ManageExternalAccounts}/>
             <Route path='/open-account' component={NewAccountTabs}/>
