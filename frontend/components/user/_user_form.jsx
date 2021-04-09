@@ -1,4 +1,6 @@
 import React from 'react';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faExclamationCircle } from "@fortawesome/free-solid-svg-icons";
 
 class UserForm extends React.Component{
   constructor(props){
@@ -35,35 +37,35 @@ class UserForm extends React.Component{
         <form>
           <h1>Your Information</h1>
           <span className='error'>
-            {this.showErrors('fname').length > 0 ? <i className='fas fa-exclamation-circle'></i> : null }
+            {this.showErrors('fname').length > 0 ? <i><FontAwesomeIcon icon={faExclamationCircle}/></i> : null }
             {this.showErrors('fname')}
           </span>
           <label>First Name
             <input type='text' value={this.state.fname} onChange={this.handleChange('fname')} />
           </label>
           <span className='error'>
-            {this.showErrors('lname').length > 0 ? <i className='fas fa-exclamation-circle'></i> : null }
+            {this.showErrors('lname').length > 0 ? <i><FontAwesomeIcon icon={faExclamationCircle}/></i> : null }
             {this.showErrors('lname')}
           </span>
           <label>Last Name
             <input type='text' value={this.state.lname} onChange={this.handleChange('lname')} />
           </label>
           <span className='error'>
-            {this.showErrors('email').length > 0 ? <i className='fas fa-exclamation-circle'></i> : null }
+            {this.showErrors('email').length > 0 ? <i><FontAwesomeIcon icon={faExclamationCircle}/></i> : null }
             {this.showErrors('email')}
           </span>
           <label>Email
             <input type='text' value={this.state.email} onChange={this.handleChange('email')} />
           </label>
           <span className='error'>
-            {this.showErrors('address').length > 0 ? <i className='fas fa-exclamation-circle'></i> : null }
+            {this.showErrors('address').length > 0 ? <i><FontAwesomeIcon icon={faExclamationCircle}/></i> : null }
             {this.showErrors('address')}
           </span>
           <label>Mailing Address
             <textarea value={this.state.address} onChange={this.handleChange('address')} />
           </label>
           <span className='error'>
-            {this.showErrors('phone').length > 0 ? <i className='fas fa-exclamation-circle'></i> : null }
+            {this.showErrors('phone').length > 0 ? <i><FontAwesomeIcon icon={faExclamationCircle}/></i> : null }
             {this.showErrors('phone')}
           </span>
           <label>Phone
@@ -73,14 +75,14 @@ class UserForm extends React.Component{
         <form>
           <h1>Your Account</h1>
           <span className='error'>
-            {this.showErrors('username').length > 0 ? <i className='fas fa-exclamation-circle'></i> : null }
+            {this.showErrors('username').length > 0 ? <i><FontAwesomeIcon icon={faExclamationCircle}/></i> : null }
             {this.showErrors('username')}
           </span>
           <label>Username
             <input type='text' value={this.state.username} onChange={this.handleChange('username')} />
           </label>
           <span className='error'>
-            {this.showErrors('password').length > 0 ? <i className='fas fa-exclamation-circle'></i> : null }
+            {this.showErrors('password').length > 0 ? <i><FontAwesomeIcon icon={faExclamationCircle}/></i> : null }
             {this.showErrors('password')}
           </span>
           <label>Password

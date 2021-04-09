@@ -8,10 +8,10 @@ class Splash extends React.Component{
       <div>
         <SplashNavbar />
         <section className='better-banking-panel'>
-          <p>better banking starts <span>here.</span></p>
+          <h1>better banking starts <span>here.</span></h1>
           <p>It’s not about finding a place for your money, it’s about finding</p>
           <p>the right place for your money.</p>
-          <Link to='/open-account'>Open Account</Link>
+          <Link to='/open-account'><button>Open Account</button></Link>
         </section>
       </div>
     )
