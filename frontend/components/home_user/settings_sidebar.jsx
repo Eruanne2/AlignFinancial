@@ -32,14 +32,18 @@ class SettingsSidebar extends React.Component{
   render(){
     if (!this.props.sidebar || !window.currentUser) return null;
     return(
-      <div className='sidebar'>
+      <div className='sidebar settings-sidebar'>
         <button className='close-sidebar' onClick={this.closeSidebar.bind(this)}>{`\u00D7`}</button>
         <h2>Site settings</h2>
         <ul> {/* this will be a dropdown*/}
-          <li>Dark Mode</li>
-          <input type='checkbox' onChange={this.handleChange('nightMode')}/> {/* these will become toggle switches*/}
-          <li>Accessible View</li>
-          <input type='checkbox' onChange={this.handleChange('accessibleView')}/>
+          <li>
+            <h3>Dark Mode</h3>
+            <input type='checkbox' onChange={this.handleChange('nightMode')}/> {/* these will become toggle switches*/}
+          </li>
+          <li>
+            <h3>Accessible View</h3>
+            <input type='checkbox' onChange={this.handleChange('accessibleView')}/>
+          </li>
         </ul>
         <h2>User settings</h2>
         <span onClick={this.closeSidebar.bind(this)}><Link to ='/profile'>Update Your Information</Link></span> {/* this will be a dropdown*/}
