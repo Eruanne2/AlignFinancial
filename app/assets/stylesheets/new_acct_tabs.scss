@@ -68,14 +68,11 @@
   }
 
   .existing-customer {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
     background-color: #f8f8f8;
     border: 1px solid #959595;
     border-radius: 2px;
     font-size: 14px;
-    width: 500px;
+    width: 600px;
     margin: 50px 13.5%;
     padding: 10px;
 
@@ -97,11 +94,29 @@
       }
     }
 
+    .login-form-container {
+      margin: 0;
+      display: block;
 
-  }
+      .demo-login {
+        margin-left: 17px;
+      }
 
-  #to-step-2, #to-step-3, #to-dashboard {
-    margin-left: 13.5%;
+      .submit-btns {
+        margin-left: 17px;
+        margin-right: 0;
+
+        p {
+          margin-left: 122px;
+        }
+
+        input[type='checkbox'], label {
+          display: none;
+        }
+      }
+
+    }
+
   }
 
 }

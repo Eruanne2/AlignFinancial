@@ -22,6 +22,9 @@ class LoginForm extends React.Component{
   userLogin(e){
     e.preventDefault();
     this.props.login(this.state);
+    if (!!this.props.updateParent) {
+      this.props.updateParent(2);
+    }
   };
 
   handleChange(field){
@@ -31,16 +34,21 @@ class LoginForm extends React.Component{
   demoLogin(e){
     e.preventDefault();
     this.props.login({ username: 'DemoUser', password: 'password'});
+    if (!!this.props.updateParent) {
+      this.props.updateParent(2);
+    }
   };
 
   render(){
     return(
       <div className='login-form-container'>
-          <div className='demo-login'>
-            <h1>Login</h1>
-            <p>or</p>
-            <button onClick={this.demoLogin.bind(this)}>Demo Log In</button>
-          </div>
+
+        <div className='demo-login'>
+          <h1>Login</h1>
+          <p>or</p>
+          <button onClick={this.demoLogin.bind(this)}>Demo Log In</button>
+        </div>
+
         <form onSubmit={this.userLogin.bind(this)}>
           <span className='error'>
             {this.props.errors.length > 0 ? <i><FontAwesomeIcon icon={faExclamationCircle}/></i> : null }

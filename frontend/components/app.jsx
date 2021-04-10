@@ -8,7 +8,7 @@ import AccountDetail from './accounts/account_detail';
 import ProfilePage from './home_user/profile_page';
 import ManageExternalAccounts from './accounts/external_accounts/manage_external_accounts';
 import TransferPage from './transfers/transfer_page';
-import OpenAccountPage from './accounts/new_account_tabs';
+import OpenAccountPage from './accounts/open_account_page';
 import PageNotFound from './page_not_found';
 import Footer from './footer';
 import LoginSidebar from './home_guest/login_sidebar';

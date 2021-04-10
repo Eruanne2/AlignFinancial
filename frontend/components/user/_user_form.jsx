@@ -25,6 +25,9 @@ class UserForm extends React.Component{
   handleSubmit(e){
     e.preventDefault();
     this.props.processUser(this.state);
+    if (!!this.props.updateParent) {
+      this.props.updateParent(2);
+    }
   };
 
   handleChange(field){
