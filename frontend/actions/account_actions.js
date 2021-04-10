@@ -53,6 +53,11 @@ export const createAccount = acctData => dispatch => {
     .fail(res => dispatch(receiveAccountErrors(res.responseJSON)));
 };
 
+export const updateAccount = acctData => dispatch => {
+  return AccountsApi.patchAccount(acctData)
+    .then(res => dispatch(receiveAccount(res)))
+    .fail(res => dispatch(receiveAccountErrors(res.responseJSON)));
+};
 
 export const deleteAccount = acctId => dispatch => {
   return AccountsApi.destroyAccount(acctId)

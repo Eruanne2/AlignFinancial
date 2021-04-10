@@ -18,9 +18,24 @@ const mapDispatchToProps = dispatch => {
 }
 
 class Dashboard extends React.Component{
+  constructor(props){
+    super(props);
+
+    this.state = { 
+      checkingsBalance: 0,
+      savingsBalance: 0,
+      mmBalance: 0,
+      totalBalance: this.state.checkingsBalance + this.state.savingsBalance + this.state.mmBalance
+    };
+    this.updateBalance = this.updateBalance.bind(this);
+  }
   
   componentDidMount(){
     this.props.fetchAllAccounts();
+  };
+
+  updateBalance(category){
+
   };
 
   render(){
