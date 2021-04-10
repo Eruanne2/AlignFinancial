@@ -49,6 +49,7 @@
     background-color: #f8f8f8;
     border: 1px solid #959595;
     color: #2A2A2A;
+    font-size: 14px;
     padding: 10px;
     margin: 14px 13.5%;
     margin-bottom: 30px;
@@ -56,17 +57,29 @@
     ul {
       display: flex;
       justify-content: space-between;
-      font-weight: 900;
+      padding: 7px 15px;
+
+      a span{
+        color: #0071C4;
+        font-weight: 900;
+      }
+      
+      li {
+        padding: 3px;
+      }
+    }
+
+    ul:first-child {
       font-size: 12px;
-      padding-top: 7px;
-      padding-bottom: 7px;
     }
-    > ul {
-      padding-left: 20px;
-      padding-right: 20px;
+
+    ul:first-child, ul:last-child {
+      font-weight: 900;
     }
-    .acct-views {
-      display: block;
+
+
+    .acct-index-total {
+      border-top: 1px solid #ddd;
     }
   }
 

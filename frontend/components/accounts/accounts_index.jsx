@@ -33,29 +33,29 @@ class AccountsIndex extends React.Component{
     return(
       <div className='acct-index-container'>
         <ul className='acct-index-headers'>
-          <p>{this.generateHeader()}</p>
-          <p>AVAILABLE</p>
-          <p>CURRENT</p>
-          <p>INTEREST YTD</p>
-          <p>ANNUAL PERCENTAGE YIELD</p>
+          <li>{this.generateHeader()}</li>
+          <li>AVAILABLE</li>
+          <li>CURRENT</li>
+          <li>INTEREST YTD</li>
+          <li>ANNUAL PERCENTAGE YIELD</li>
         </ul>
-        <ul className='acct-views'>
-          {filteredAccts.map((account,idx) => {
-            return (
-              <ul key={idx} className='acct-view-info'>
-                <Link to={`/account-detail/${account.id}`}>Account {account.acctNum}</Link>
-                <p>{account.balance}</p>
-                <p>{account.balance}</p>
-                <p>1234</p>
-                <p>account.interestRate</p>
-              </ul>
-            )
-          })}
-        </ul>
+        {filteredAccts.map((account,idx) => {
+          return (
+            <ul key={idx} className='acct-views'>
+              <Link to={`/account-detail/${account.id}`}><span>Account</span> ••••{account.acctNum % 10000}</Link>
+              <li>{account.balance}</li>
+              <li>{account.balance}</li>
+              <li>1234</li>
+              <li>{account.interestRate}</li>
+            </ul>
+          )
+        })}
         <ul className='acct-index-total'>
-          <p>Total1</p>
-          <p>Total2</p>
-          <p>Total3</p>
+          <li>TOTAL</li>
+          <li>Total1</li>
+          <li>Total2</li>
+          <li>Total3</li>
+          <li></li>
         </ul>
       </div>
     )
