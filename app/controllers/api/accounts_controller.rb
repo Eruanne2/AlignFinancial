@@ -28,7 +28,6 @@ class Api::AccountsController < ApplicationController
     @account = Account.find_by(id: params[:id])
     if @account
       if @account.update_attributes(account_params)
-        debugger
         render :show
       else
         render json: @account.errors.full_messages, status: 422
