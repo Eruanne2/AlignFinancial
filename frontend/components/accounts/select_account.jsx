@@ -27,6 +27,9 @@ class SelectAccount extends React.Component{
     e.preventDefault();
     this.setState({ userId: window.currentUser.id})
     this.props.createAccount(this.state);
+    if (!!this.props.updateParent) {
+      this.props.updateParent(3);
+    }
   };
   
   displayInfo(field){

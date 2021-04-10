@@ -1,5 +1,7 @@
 import React from 'react';
 import { toggleSidebar, toggleNightMode, toggleAccessibleView } from '../../actions/ui_actions';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCaretRight, faCaretDown } from "@fortawesome/free-solid-svg-icons";
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
@@ -17,6 +19,10 @@ const mapDispatchToProps = dispatch => {
 
 
 class SettingsSidebar extends React.Component{
+  constructor(props){
+    super(props);
+    this.state = { dropdown: '' }
+  }
 
   closeSidebar(e){
     e.preventDefault();
@@ -24,27 +30,67 @@ class SettingsSidebar extends React.Component{
     setTimeout(this.props.toggleSidebar, 300);
   };
 
+  showDropdown(dropdown){
+    return e => {
+      (this.state.dropdown === dropdown) ? this.setState({ dropdown: '' }) : this.setState({ dropdown })
+    }
+  };
+
   handleChange(type){
     if (type === 'nightMode') return e => this.props.toggleNightMode();
     if (type === 'accessibleView') return e => this.props.toggleaccessibleView();
   };
 
+  handleLogout(e){
+    e.preventDefault();
+    this.props.logout();
+    this.props.history.push('/');
+  }
+
   render(){
     if (!this.props.sidebar || !window.currentUser) return null;
     return(
-      <div className='sidebar'>
+      <div className='sidebar settings-sidebar'>
         <button className='close-sidebar' onClick={this.closeSidebar.bind(this)}>{`\u00D7`}</button>
-        <h2>Site settings</h2>
-        <ul> {/* this will be a dropdown*/}
-          <li>Dark Mode</li>
-          <input type='checkbox' onChange={this.handleChange('nightMode')}/> {/* these will become toggle switches*/}
-          <li>Accessible View</li>
-          <input type='checkbox' onChange={this.handleChange('accessibleView')}/>
-        </ul>
-        <h2>User settings</h2>
-        <span onClick={this.closeSidebar.bind(this)}><Link to ='/profile'>Update Your Information</Link></span> {/* this will be a dropdown*/}
-        <h2>Quick Links</h2>
-        <span onClick={this.closeSidebar.bind(this)}><Link to ='/external-accounts'>Manage External Accounts</Link></span> {/* this will be a dropdown*/}
+        <button className='logout' onClick={this.handleLogout.bind(this)}>Log Out</button>
+        <h2 onClick={this.showDropdown('site')}>
+          { this.state.dropdown === 'site' ? <i><FontAwesomeIcon icon={faCaretDown}/></i> : <i><FontAwesomeIcon icon={faCaretRight}/></i>}
+          Site settings
+        </h2>
+        { this.state.dropdown === 'site' && 
+          <ul>
+            <li>
+              <h3>Dark Mode</h3>
+              <input type='checkbox' onChange={this.handleChange('nightMode')}/> {/* these will become toggle switches*/}
+            </li>
+            <li>
+              <h3>Accessible View</h3>
+              <input type='checkbox' onChange={this.handleChange('accessibleView')}/>
+            </li>
+          </ul>
+        }
+        <h2 onClick={this.showDropdown('user')}>
+          { this.state.dropdown === 'user' ? <i><FontAwesomeIcon icon={faCaretDown}/></i> : <i><FontAwesomeIcon icon={faCaretRight}/></i>}
+          User settings
+        </h2>
+        { this.state.dropdown === 'user' &&
+          <ul>
+            <li onClick={this.closeSidebar.bind(this)}>
+              <Link to ='/profile'>Update Your Information</Link>
+            </li>
+          </ul>
+        }
+        <h2 onClick={this.showDropdown('quick-links')}>
+          { this.state.dropdown === 'quick-links' ? <i><FontAwesomeIcon icon={faCaretDown}/></i> : <i><FontAwesomeIcon icon={faCaretRight}/></i>}
+          Quick Links
+        </h2>
+        { this.state.dropdown === 'quick-links' &&
+          <ul>
+            <li onClick={this.closeSidebar.bind(this)}>
+              <Link to ='/external-accounts'>Manage External Accounts</Link>
+            </li>
+          </ul>
+        }
       </div>
     )
   };

@@ -1,6 +1,9 @@
 import React from 'react';
 import { logout } from '../../actions/session_actions';
 import { toggleSidebar } from '../../actions/ui_actions';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
+import { faUserCircle } from "@fortawesome/free-solid-svg-icons";
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
@@ -29,7 +32,7 @@ class Navbar extends React.Component{
   handleLogout(e){
     e.preventDefault();
     this.props.logout();
-    this.props.history.push('/')
+    this.props.history.push('/');
   }
 
   render(){
@@ -48,12 +51,16 @@ class Navbar extends React.Component{
       <div>
         <nav className='user-nav'>
           <ul className='left-nav'>
-            <Link to='/'><img src={window.logoURL} alt="the word 'align' in white lettering on a purple background" width='74'/></Link>
-            <p>Accounts dropdown</p>
-            <Link to='/open-account'>Open an Account</Link>
+            <li><Link to='/'><img src={window.logoURL} alt="the word 'align' in white lettering on a purple background" width='74'/></Link></li>
+            <li>Accounts <i><FontAwesomeIcon icon={faChevronDown}/></i></li>
+            <li><Link to='/open-account'>Open an Account</Link></li>
           </ul>
           <ul className='right-nav'>
-            <button onClick={this.openSidebar.bind(this)}>Profile and Settings</button>
+            <button onClick={this.openSidebar.bind(this)}>
+            <i><FontAwesomeIcon icon={faUserCircle}/></i>
+              Profile and Settings
+              <i><FontAwesomeIcon icon={faChevronDown}/></i>
+            </button>
             <button onClick={this.handleLogout.bind(this)}>Log Out</button>
           </ul>
         </nav>
