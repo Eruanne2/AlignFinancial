@@ -21,22 +21,25 @@ class Dashboard extends React.Component{
   constructor(props){
     super(props);
 
-    this.state = { 
-      checkingsBalance: 0,
-      savingsBalance: 0,
-      mmBalance: 0,
-      totalBalance: this.state.checkingsBalance + this.state.savingsBalance + this.state.mmBalance
-    };
-    this.updateBalance = this.updateBalance.bind(this);
+    // store index totals in state, updating them through the updateBalance function which will
+    // be passed as props to the indices?
+
+    // this.state = { 
+    //   checkingsBalance: 0,
+    //   savingsBalance: 0,
+    //   mmBalance: 0,
+    //   totalBalance: this.state.checkingsBalance + this.state.savingsBalance + this.state.mmBalance
+    // };
+    // this.updateBalance = this.updateBalance.bind(this);
   }
   
   componentDidMount(){
     this.props.fetchAllAccounts();
   };
 
-  updateBalance(category){
+  // updateBalance(category){
 
-  };
+  // };
 
   render(){
     if (!this.props.accounts) return null;
