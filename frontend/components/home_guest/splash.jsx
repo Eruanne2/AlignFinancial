@@ -12,6 +12,7 @@ class Splash extends React.Component{
           <p>It’s not about finding a place for your money, it’s about finding</p>
           <p>the right place for your money.</p>
           <Link to='/open-account'><button>Open Account</button></Link>
+
         </section>
       </div>
     )
