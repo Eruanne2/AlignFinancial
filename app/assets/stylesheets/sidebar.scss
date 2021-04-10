@@ -1,6 +1,6 @@
 @import 'variables';
 
-nav {
+.user-nav, .splash-nav {
   position: relative;
   z-index: 3;
 }
@@ -47,11 +47,49 @@ nav {
 }
 
 
+.close-sidebar {
+  background-color: inherit;
+  border: none;
+  color: rgb(0, 104, 153);
+  font-size: 30px;
+  float: right;
+}
+
 
 .settings-sidebar {
   width: 480px;
-
+  
   li {
+    padding: 10px 40px;
     display: flex;
+  }
+
+  h2 {
+    margin-left: 15px;
+    padding: 10px;
+    color:rgb(0, 113, 196);
+    font-weight: 700;
+    border-top: 1px solid rgb(221, 221, 221); 
+    cursor: pointer;
+
+    i {
+      padding-right: 5px;
+    }
+
+  }
+  
+  h2:last-child {
+    // border-bottom: 1px solid rgb(221, 221, 221);
+  }
+  
+  > *:last-child {
+    border-bottom: 1px solid rgb(221, 221, 221);
+  }
+
+  .logout {
+    margin: 50px;
+    background-color: transparent;
+    border: 2px solid rgb(0, 113, 196);
+    color: rgb(0, 113, 196);
   }
 }

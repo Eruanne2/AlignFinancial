@@ -24,13 +24,15 @@ class ManageExternalAccounts extends React.Component{
     return(
       <div>
         <Navbar/>
-        <AccountsIndex
-          accounts={this.props.accounts}
-          filter={{external: true}}
-          header={''}
-        />
-        <h1>'Link a new external account' button which toggles form</h1>
-        <ExternalAccountForm/>
+        <div className='external-accts-content'>
+          <AccountsIndex
+            accounts={this.props.accounts}
+            filter={{external: true}}
+            header={''}
+            />
+          <h1>'Link a new external account' button which toggles form</h1>
+          <ExternalAccountForm/>
+        </div>
       </div>
     )
   }
