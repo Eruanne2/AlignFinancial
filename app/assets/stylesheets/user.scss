@@ -17,6 +17,12 @@
   ul {
     display: flex;
     align-items: center;
+
+    li:last-child {
+      border: 1px solid #fff;
+      padding: 10px;
+      font-size: 18px;
+    }
   }
 
   .left-nav > * {
@@ -24,12 +30,22 @@
   }
 
   .right-nav {
-    margin-right: 14%;
+    margin-right: 11.5%;
     padding: 7px;
+  }
 
-    * {
-      margin-left: 30px;
-    }
+  button {
+    background-color: transparent;
+    font-size: 17px;
+    font-weight: 400;
+    padding: 7px;
+  }
+
+  i {
+    padding-top: 5px;
+    padding-left: 5px;
+    padding-right: 8px;
+    box-sizing: border-box;
   }
 
 }
