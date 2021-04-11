@@ -6,6 +6,8 @@ class Snapshot extends React.Component{
       <div className='snapshot-container'>
         <h1>Snapshot</h1>
         <p>Hello, {this.props.currentUser.fname}</p>
+
+        
       </div>
     )
   }

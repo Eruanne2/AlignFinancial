@@ -27,6 +27,7 @@ class AccountsIndex extends React.Component{
         interestYTD: totals.interestYTD + 12.34
       };
     });
+    this.props.updateBalance(totals.current);
     this.setState({ totals })
   }
 

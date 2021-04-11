@@ -24,22 +24,22 @@ class Dashboard extends React.Component{
     // store index totals in state, updating them through the updateBalance function which will
     // be passed as props to the indices?
 
-    // this.state = { 
-    //   checkingsBalance: 0,
-    //   savingsBalance: 0,
-    //   mmBalance: 0,
-    //   totalBalance: this.state.checkingsBalance + this.state.savingsBalance + this.state.mmBalance
-    // };
-    // this.updateBalance = this.updateBalance.bind(this);
+    this.state = { 
+      checkings: 0,
+      savings: 0,
+      mm: 0,
+      totalBalance: 0
+    };
+    this.updateBalance = this.updateBalance.bind(this);
   }
   
   componentDidMount(){
     this.props.fetchAllAccounts();
   };
 
-  // updateBalance(category){
-
-  // };
+  updateBalance(category){
+    return (balance) => this.setState({[category]: balance, totalBalance: this.state.totalBalance + balance});
+  };
 
   render(){
     if (this.props.accounts.length === 0) return null;
@@ -54,21 +54,28 @@ class Dashboard extends React.Component{
             <p>CV</p>
           </ul>
         </nav>
-        <Snapshot currentUser={this.props.currentUser} accounts={this.props.accounts}/>
+        <Snapshot 
+          currentUser={this.props.currentUser} 
+          accounts={this.props.accounts}
+          categoryBalances={this.state}
+        />
 
         <h1>BANK ACCOUNTS</h1>
         <ul className='acct-indices'>
           <AccountsIndex 
             accounts={this.props.accounts}
             filter={{external: false, acctType: 'checkings'}}
+            updateBalance={this.updateBalance('checkings')}
             />
           <AccountsIndex 
             accounts={this.props.accounts}
             filter={{external: false, acctType: 'savings'}}
+            updateBalance={this.updateBalance('savings')}
             />
           <AccountsIndex 
             accounts={this.props.accounts}
             filter={{external: false, acctType: 'money market'}}
+            updateBalance={this.updateBalance('mm')}
           />
         </ul>
       </div>
