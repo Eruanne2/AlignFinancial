@@ -25,10 +25,10 @@ class Dashboard extends React.Component{
     // be passed as props to the indices?
 
     this.state = { 
-      checkings: 0,
-      savings: 0,
-      mm: 0,
-      totalBalance: 0
+      'Interest Checking': 0,
+      'Savings': 0,
+      'Money Markets': 0,
+      total: 0
     };
     this.updateBalance = this.updateBalance.bind(this);
   }
@@ -38,7 +38,7 @@ class Dashboard extends React.Component{
   };
 
   updateBalance(category){
-    return (balance) => this.setState({[category]: balance, totalBalance: this.state.totalBalance + balance});
+    return (balance) => this.setState({[category]: balance, total: this.state.total + balance});
   };
 
   render(){
@@ -65,17 +65,17 @@ class Dashboard extends React.Component{
           <AccountsIndex 
             accounts={this.props.accounts}
             filter={{external: false, acctType: 'checkings'}}
-            updateBalance={this.updateBalance('checkings')}
-            />
+            updateBalance={this.updateBalance('Interest Checking')}
+          />
           <AccountsIndex 
             accounts={this.props.accounts}
             filter={{external: false, acctType: 'savings'}}
-            updateBalance={this.updateBalance('savings')}
-            />
+            updateBalance={this.updateBalance('Savings')}
+          />
           <AccountsIndex 
             accounts={this.props.accounts}
             filter={{external: false, acctType: 'money market'}}
-            updateBalance={this.updateBalance('mm')}
+            updateBalance={this.updateBalance('Money Markets')}
           />
         </ul>
       </div>
