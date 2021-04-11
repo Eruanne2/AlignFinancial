@@ -42,7 +42,7 @@ class Dashboard extends React.Component{
   // };
 
   render(){
-    if (!this.props.accounts) return null;
+    if (this.props.accounts.length === 0) return null;
     return(
       <div className='dashboard-container'>
         <Navbar />

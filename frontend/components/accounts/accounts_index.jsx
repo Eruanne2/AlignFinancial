@@ -8,17 +8,27 @@ class AccountsIndex extends React.Component{
   constructor(props){
     super(props);
     this.state = { 
-      filteredAccts: []
-    };
-
-    this.filteredAccts = [];
-    this.totals = {
-      available: 0,
-      current: 0,
-      interestYTD: 0
+      filteredAccts: this.props.accounts.filter(acct => this.matchesFilterProp(acct)),
+      totals: {
+        available: 0,
+        current: 0,
+        interestYTD: 0
+      }
     };
     this.matchesFilterProp = this.matchesFilterProp.bind(this);
   };
+
+  componentDidMount(){
+    let totals = this.state.totals;
+    this.state.filteredAccts.forEach(account => {
+      totals = {
+        available: totals.available + account.balance,
+        current: totals.current + account.balance,
+        interestYTD: totals.interestYTD + 12.34
+      };
+    });
+    this.setState({ totals })
+  }
 
   matchesFilterProp(account){
     const filter = this.props.filter;
@@ -37,10 +47,8 @@ class AccountsIndex extends React.Component{
     return 'External Accounts';
   };
 
-
   render(){
     if (this.props.accounts.length < 1) return null;
-    this.filteredAccts = this.props.accounts.filter(acct => this.matchesFilterProp(acct)) 
     return(
       <div className='acct-index-container'>
         <ul className='acct-index-headers'>
@@ -50,28 +58,23 @@ class AccountsIndex extends React.Component{
           <li>INTEREST YTD</li>
           <li>ANNUAL PERCENTAGE YIELD</li>
         </ul>
-        {this.filteredAccts.map((account,idx) => {
-          this.totals = {
-            available: this.totals.available + account.balance,
-            current: this.totals.current + account.balance,
-            interestYTD: this.totals.interestYTD + 12.34
-          };
+        {this.state.filteredAccts.map((account,idx) => {
           return (
             <ul key={idx} className='acct-views'>
               <Link to={`/account-detail/${account.id}`}><span>Account</span> ••••{account.acctNum % 10000}</Link>
-              <li>{account.balance}</li>
-              <li>{account.balance}</li>
-              <li>12.34</li>
-              <li>{account.interestRate}</li>
+              <li>${account.balance}</li>
+              <li>${account.balance}</li>
+              <li>$12.34</li>
+              <li>${account.interestRate}</li>
             </ul>
           )
         })}
         <ul className='acct-index-total'>
-          <li>TOTAL</li>
-          <li>{this.totals.available}</li>
-          <li>{this.totals.current}</li>
-          <li>{this.totals.interestYTD}</li>
-          <li>empty?</li>
+          <li>$TOTAL</li>
+          <li>${this.state.totals.available}</li>
+          <li>${this.state.totals.current}</li>
+          <li>${this.state.totals.interestYTD}</li>
+          <li></li>
         </ul>
       </div>
     )
