@@ -20,10 +20,7 @@ const mapDispatchToProps = dispatch => {
 class Dashboard extends React.Component{
   constructor(props){
     super(props);
-
-    // store index totals in state, updating them through the updateBalance function which will
-    // be passed as props to the indices?
-
+    this.accounts = [];
     this.state = { 
       'Interest Checking': 0,
       'Savings': 0,
@@ -34,7 +31,7 @@ class Dashboard extends React.Component{
   }
   
   componentDidMount(){
-    this.props.fetchAllAccounts();
+    this.accounts = this.props.fetchAllAccounts();
   };
 
   updateBalance(category){
@@ -42,7 +39,7 @@ class Dashboard extends React.Component{
   };
 
   render(){
-    if (this.props.accounts.length === 0) return null;
+    if (this.accounts.length === 0) return null;
     return(
       <div className='dashboard-container'>
         <Navbar />

@@ -35,7 +35,7 @@ class AccountsIndex extends React.Component{
     const filter = this.props.filter;
     let res = true;
     Object.keys(filter).forEach(key => {
-      if (account[key] !== filter[key]) res = false;
+      if (account[key] !== filter[key] || window.currentUser.id !== account.userId) res = false;
     });
     return res;
   };
@@ -49,7 +49,7 @@ class AccountsIndex extends React.Component{
   };
 
   render(){
-    if (this.props.accounts.length < 1) return null;
+    if (this.state.filteredAccts.length < 1) return null;
     return(
       <div className='acct-index-container'>
         <ul className='acct-index-headers'>
