@@ -36,8 +36,8 @@ class Snapshot extends React.Component{
             <ul>
               {Object.keys(this.props.categoryBalances).map(category => {
                 if (category === 'total') return null;
-                return <li>
-                  <div className='account-div' key={Math.floor(Math.random() * 1000)}>
+                return <li key={Math.floor(Math.random() * 1000)}>
+                  <div className='account-div'>
                     <h1>{category}</h1>
                     <h1>${this.props.categoryBalances[category]}</h1>
                   </div>

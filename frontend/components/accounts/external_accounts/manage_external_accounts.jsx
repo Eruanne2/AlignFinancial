@@ -29,6 +29,7 @@ class ManageExternalAccounts extends React.Component{
             accounts={this.props.accounts}
             filter={{external: true}}
             header={''}
+            
             />
           <h1>'Link a new external account' button which toggles form</h1>
           <ExternalAccountForm/>
