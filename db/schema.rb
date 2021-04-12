@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_12_162853) do
+ActiveRecord::Schema.define(version: 2021_04_12_172149) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,8 +39,8 @@ ActiveRecord::Schema.define(version: 2021_04_12_162853) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id", null: false
-    t.index ["from_acct_id"], name: "index_transfers_on_from_acct_id", unique: true
-    t.index ["to_acct_id"], name: "index_transfers_on_to_acct_id", unique: true
+    t.index ["from_acct_id"], name: "index_transfers_on_from_acct_id"
+    t.index ["to_acct_id"], name: "index_transfers_on_to_acct_id"
   end
 
   create_table "users", force: :cascade do |t|

@@ -1,1 +1,1 @@
-json.extract! transfer, :from_acct_id, :to_acct_id, :user_id, :amount, :balance, :created_at
+json.extract! transfer, :from_acct_id, :to_acct_id, :user_id, :amount, :memo, :created_at
