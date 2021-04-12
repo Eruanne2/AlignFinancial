@@ -58,6 +58,19 @@
 
 .settings-sidebar {
   width: 480px;
+
+  div {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+
+    p {
+      display: flex;
+      align-items: center;
+      font-size: 14px;
+      margin-left: 30px;
+    }
+  }
   
   li {
     padding: 10px 40px;
@@ -65,7 +78,7 @@
   }
 
   h2 {
-    margin-left: 15px;
+    margin-left: 30px;
     padding: 10px;
     color:rgb(0, 113, 196);
     font-weight: 700;
@@ -83,7 +96,7 @@
   }
 
   .logout {
-    margin: 50px;
+    margin: 30px;
     background-color: transparent;
     border: 2px solid rgb(0, 113, 196);
     color: rgb(0, 113, 196);

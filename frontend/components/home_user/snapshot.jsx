@@ -21,7 +21,7 @@ class Snapshot extends React.Component{
         <section className='left-view'>
           <h1>Snapshot</h1>
           <p>Hello, {this.props.currentUser.fname}</p>
-          <p>Last Login: {this.formatDate(this.props.lastLogin)}</p>  {/* Apr 11, 2021 • 7:52 PM ET */}
+          <p>Last Login: {this.formatDate(new Date(window.lastLogin))}</p>
 
           <h2 id='balance-header'>TOTAL BALANCE<span className='question-icon'>?</span></h2>
           <h2 id='balance'>${this.props.categoryBalances.total}</h2>

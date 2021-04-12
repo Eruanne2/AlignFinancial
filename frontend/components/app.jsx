@@ -15,7 +15,11 @@ import PageNotFound from './page_not_found';
 import Footer from './footer';
 import LoginSidebar from './home_guest/login_sidebar';
 import SettingsSidebar from './home_user/settings_sidebar';
+import { connect } from 'react-redux';
 
+const mapDispatchToProps = dispatch => {
+  return { logout: () => dispatch(logout()) }
+}
 
 class App extends React.Component{
   constructor(props) {
@@ -26,7 +30,7 @@ class App extends React.Component{
 
   handleOnIdle (event) {
     console.log('user is idle');
-    logout();
+    this.props.logout();
   }
 
   render(){
@@ -34,7 +38,7 @@ class App extends React.Component{
       <div>
         <IdleTimer
           ref={ref => { this.idleTimer = ref }}
-          timeout={1000 * 10}
+          timeout={1000 * 60 }
           onActive={this.handleOnActive}
           onIdle={this.handleOnIdle}
           onAction={this.handleOnAction}
@@ -64,4 +68,4 @@ class App extends React.Component{
   }
 };
 
-export default App;
+export default connect(null, mapDispatchToProps)(App);

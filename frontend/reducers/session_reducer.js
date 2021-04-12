@@ -11,7 +11,8 @@ const SessionReducer = (state = { id: null}, action) => {
       return newState;
     case LOGOUT:
       window.currentUser = null;
-      newState.lastLogin = newState.currentLogin;
+      if (newState.currentLogin) newState.lastLogin = newState.currentLogin;
+      newState.currentLogin = null;
       newState.id = null;
       return newState;
     default:
