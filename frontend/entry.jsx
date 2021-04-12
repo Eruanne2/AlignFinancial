@@ -12,6 +12,7 @@ import * as usersActions from './actions/users_actions';
 import * as usersApi from './utils/users_api';
 import * as accountsApi from './utils/accounts_api';
 import * as accountsActions from './actions/account_actions';
+import * as transfersApi from './utils/transfers_api';
 
 const Root = ({ store }) => (
   <Provider store={store}>
@@ -44,5 +45,6 @@ document.addEventListener('DOMContentLoaded', () => {
   window.usersApi = usersApi;
   window.accountsApi = accountsApi;
   window.accountsActions = accountsActions;
+  window.transfersApi = transfersApi;
   window.store = store;
 });
