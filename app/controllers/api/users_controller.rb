@@ -23,7 +23,7 @@ class Api::UsersController < ApplicationController
         render json: @user.errors.full_messages, status: 422
       end
     else
-      render json: ["Uh-oh! Something went wrong..."], status: 422
+      render json:  { message: "No user exists with that id."}, status: 422
     end
   end
 

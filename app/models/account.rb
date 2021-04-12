@@ -36,9 +36,9 @@ class Account < ApplicationRecord
     self.acct_num ||= rand(10000000..99999999)
     self.routing_num ||= 14952223
     unless self.external
-      self.balance = 0.0
-      self.interest_rate = ACCT_BENEFITS[acct_type][:interest_rate]
-      self.transfer_limit = ACCT_BENEFITS[acct_type][:transfer_limit]
+      self.balance ||= 0.0
+      self.interest_rate ||= ACCT_BENEFITS[acct_type][:interest_rate]
+      self.transfer_limit ||= ACCT_BENEFITS[acct_type][:transfer_limit]
     end
   end
 

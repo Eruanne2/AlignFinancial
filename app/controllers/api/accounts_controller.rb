@@ -20,9 +20,21 @@ class Api::AccountsController < ApplicationController
     if @account
       render :show
     else
-      render json: { message: "No account exists with that id."}
+      render json: { message: "No account exists with that id."}, status: 422
     end
+  end
 
+  def update
+    @account = Account.find_by(id: params[:id])
+    if @account
+      if @account.update_attributes(account_params)
+        render :show
+      else
+        render json: @account.errors.full_messages, status: 422
+      end
+    else
+      render json:  { message: "No account exists with that id."}, status: 422
+    end
   end
 
   def destroy

@@ -1,8 +1,9 @@
 import React from 'react';
+import { logout } from '../../actions/session_actions';
 import { toggleSidebar, toggleNightMode, toggleAccessibleView } from '../../actions/ui_actions';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretRight, faCaretDown } from "@fortawesome/free-solid-svg-icons";
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 const mapStateToProps = state => {
@@ -11,6 +12,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
+    logout: () => dispatch(logout()),
     toggleSidebar: () => dispatch(toggleSidebar()),
     toggleNightMode: () => dispatch(toggleNightMode()),
     toggleAccessibleView: () => dispatch(toggleAccessibleView())
@@ -43,6 +45,7 @@ class SettingsSidebar extends React.Component{
 
   handleLogout(e){
     e.preventDefault();
+    this.closeSidebar(e);
     this.props.logout();
     this.props.history.push('/');
   }
@@ -96,4 +99,4 @@ class SettingsSidebar extends React.Component{
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(SettingsSidebar);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SettingsSidebar));

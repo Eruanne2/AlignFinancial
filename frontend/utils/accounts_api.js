@@ -20,6 +20,14 @@ export const getAccount = acctId => {
   })
 };
 
+export const patchAccount = acctData => {
+  return $.ajax({
+    method: 'patch',
+    url: `/api/accounts/${acctData.id}`,
+    data: { acctData }
+  })
+};
+
 export const destroyAccount = acctId => {
   return $.ajax({
     method: 'delete',

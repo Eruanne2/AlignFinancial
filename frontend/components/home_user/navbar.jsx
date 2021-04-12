@@ -42,7 +42,7 @@ class Navbar extends React.Component{
         <ul className='right-nav'>
           <a href='https://github.com/Eruanne2'>Github</a>
           <a href='https://www.linkedin.com/in/charis-ginn-9abb93173'>LinkedIn</a>
-          <p>CV</p>
+          <a href='#'>CV</a>
         </ul>
       </nav>
     ); 
@@ -57,7 +57,7 @@ class Navbar extends React.Component{
           </ul>
           <ul className='right-nav'>
             <button onClick={this.openSidebar.bind(this)}>
-            <i><FontAwesomeIcon icon={faUserCircle}/></i>
+              <i><FontAwesomeIcon icon={faUserCircle}/></i>
               Profile and Settings
               <i><FontAwesomeIcon icon={faChevronDown}/></i>
             </button>
