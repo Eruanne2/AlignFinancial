@@ -1,7 +1,19 @@
 import React from 'react';
 import { PieChart } from 'react-minimal-pie-chart';
+import { connect } from 'react-redux';
+
+const mapStateToProps = state => {
+  return { lastLogin: state.session.lastLogin }
+}
 
 class Snapshot extends React.Component{
+  formatDate(date){
+    let dateString = date.toDateString();
+    dateString = dateString.slice(4,10) + ',' + dateString.slice(10);
+    let timeString = date.toLocaleTimeString();
+    timeString = timeString.slice(0, 4) + timeString.slice(7)
+    return (dateString + ' • ' + timeString)
+  };
 
   render(){
     return(
@@ -9,7 +21,7 @@ class Snapshot extends React.Component{
         <section className='left-view'>
           <h1>Snapshot</h1>
           <p>Hello, {this.props.currentUser.fname}</p>
-          <p>Last Login: sometime</p>
+          <p>Last Login: {this.formatDate(this.props.lastLogin)}</p>  {/* Apr 11, 2021 • 7:52 PM ET */}
 
           <h2 id='balance-header'>TOTAL BALANCE<span className='question-icon'>?</span></h2>
           <h2 id='balance'>${this.props.categoryBalances.total}</h2>
@@ -50,4 +62,4 @@ class Snapshot extends React.Component{
   }
 };
 
-export default Snapshot;
+export default connect(mapStateToProps)(Snapshot);

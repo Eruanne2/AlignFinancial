@@ -5,6 +5,7 @@ import { HashRouter } from 'react-router-dom';
 import configureStore from './store/store';
 import App from './components/app';
 
+
 //testing
 import * as uiActions from './actions/ui_actions';
 import * as sessionActions from './actions/session_actions';
@@ -31,7 +32,11 @@ document.addEventListener('DOMContentLoaded', () => {
       entities: {
         users: { [window.currentUser.id]: window.currentUser }
       },
-      session: { id: window.currentUser.id }
+      session: { 
+        id: window.currentUser.id, 
+        lastLogin: new Date(window.lastLogin.replace(/-/g, '/').replace(' /', ' -')),
+        currentLogin: new Date()
+      }
     };
     store = configureStore(preloadedState);
   }
