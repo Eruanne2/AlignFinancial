@@ -19,7 +19,7 @@ class Snapshot extends React.Component{
           <PieChart
             data={[
               { title: 'sldj', value: this.props.categoryBalances['Interest Checking'], color: '#03A9F4' },
-              { title: 'sld', value: this.props.categoryBalances['Savings'], color: '#3F51B5' },
+              { title: 'sld', value: this.props.categoryBalances['High-Yield Savings'], color: '#3F51B5' },
               { title: 'sldfkj', value: this.props.categoryBalances['Money Markets'], color: '#009688' },
             ]}
             radius={44}

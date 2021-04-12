@@ -3,8 +3,9 @@
 # Table name: accounts
 #
 #  id             :bigint           not null, primary key
-#  acct_num       :integer          not null
-#  routing_num    :integer          not null
+#  nickname       :string           default("Nickname"), not null
+#  acct_num       :bigint           not null
+#  routing_num    :bigint           not null
 #  acct_type      :string           not null
 #  user_id        :integer          not null
 #  external       :boolean          not null
@@ -16,14 +17,14 @@
 #
 
 ACCT_BENEFITS = { 
-  'checkings'=> { interest_rate: 0.5, transfer_limit: 10000}, 
-  'savings'=> { interest_rate: 1.5, transfer_limit: 6},
-  'money market'=> { interest_rate: 1.2, transfer_limit: 6}
+  'checkings'=> { interest_rate: 0.5, transfer_limit: 10000, nickname: 'Interest Checking'}, 
+  'savings'=> { interest_rate: 1.5, transfer_limit: 6, nickname: 'High-Yield Savings'},
+  'money market'=> { interest_rate: 1.2, transfer_limit: 6, nickname: 'Money Market'}
 };
 
 class Account < ApplicationRecord
   after_initialize :acct_setup
-  validates :acct_num, :routing_num, :acct_type, :user_id, presence: true
+  validates :acct_num, :routing_num, :acct_type, :user_id, :nickname, presence: true
   validates :external, inclusion: { in: [true, false]}
   validates :acct_type, inclusion: { in: ['checkings', 'savings', 'money market']}
   validate :internal_account_info
@@ -32,6 +33,14 @@ class Account < ApplicationRecord
     foreign_key: :user_id,
     class_name: 'User'
 
+  has_many :transfers_from,
+    foreign_key: :from_acct_id,
+    class_name: 'Transfer'
+
+  has_many :transfers_to,
+    foreign_key: :to_acct_id,
+    class_name: 'Transfer'
+
   def acct_setup
     self.acct_num ||= rand(10000000..99999999)
     self.routing_num ||= 14952223
@@ -39,6 +48,7 @@ class Account < ApplicationRecord
       self.balance ||= 0.0
       self.interest_rate ||= ACCT_BENEFITS[acct_type][:interest_rate]
       self.transfer_limit ||= ACCT_BENEFITS[acct_type][:transfer_limit]
+      self.nickname ||= ACCT_BENEFITS[acct_type][:nickname]
     end
   end
 

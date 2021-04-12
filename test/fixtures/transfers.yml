@@ -1,0 +1,25 @@
+# == Schema Information
+#
+# Table name: transfers
+#
+#  id           :bigint           not null, primary key
+#  from_acct_id :integer          not null
+#  to_acct_id   :integer          not null
+#  amount       :float            not null
+#  memo         :string           not null
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  user_id      :integer          not null
+#
+
+one:
+  from_acct_id: 1
+  to_acct_id: 1
+  amount: 1.5
+  memo: MyString
+
+two:
+  from_acct_id: 1
+  to_acct_id: 1
+  amount: 1.5
+  memo: MyString

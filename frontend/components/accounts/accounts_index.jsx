@@ -42,7 +42,7 @@ class AccountsIndex extends React.Component{
 
   generateHeader(){
     if (!this.props.filter.external) {
-      const typeHeadings = { 'checkings': 'INTEREST CHECKING', 'savings': 'SAVING', 'money market': 'MONEY MARKETS'}
+      const typeHeadings = { 'checkings': 'INTEREST CHECKING', 'savings': 'HIGH-YEILD SAVINGS', 'money market': 'MONEY MARKETS'}
       return typeHeadings[this.props.filter.acctType];
     }
     return 'External Accounts';

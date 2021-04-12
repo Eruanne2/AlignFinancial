@@ -23,7 +23,7 @@ class Dashboard extends React.Component{
     this.accounts = [];
     this.state = { 
       'Interest Checking': 0,
-      'Savings': 0,
+      'High-Yield Savings': 0,
       'Money Markets': 0,
       total: 0
     };
@@ -67,7 +67,7 @@ class Dashboard extends React.Component{
           <AccountsIndex 
             accounts={this.props.accounts}
             filter={{external: false, acctType: 'savings'}}
-            updateBalance={this.updateBalance('Savings')}
+            updateBalance={this.updateBalance('High-Yield Savings')}
           />
           <AccountsIndex 
             accounts={this.props.accounts}
