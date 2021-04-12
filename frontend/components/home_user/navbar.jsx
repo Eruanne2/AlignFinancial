@@ -31,7 +31,11 @@ class Navbar extends React.Component{
 
   handleLogout(e){
     e.preventDefault();
+    setTimeout(this.redirectToSplash.bind(this), 100)
     this.props.logout();
+  }
+  
+  redirectToSplash(){
     this.props.history.push('/');
   }
 
