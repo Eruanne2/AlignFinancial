@@ -6,10 +6,10 @@
 #  from_acct_id :integer          not null
 #  to_acct_id   :integer          not null
 #  amount       :float            not null
-#  memo         :string           not null
-#  user_id      :integer          not null
+#  memo         :string
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
+#  user_id      :integer          not null
 #
 class Transfer < ApplicationRecord
   validates :from_acct_id, :to_acct_id, :amount, :user_id, presence: true

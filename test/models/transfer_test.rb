@@ -6,7 +6,7 @@
 #  from_acct_id :integer          not null
 #  to_acct_id   :integer          not null
 #  amount       :float            not null
-#  memo         :string           not null
+#  memo         :string
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
 #  user_id      :integer          not null

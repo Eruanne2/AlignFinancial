@@ -29,17 +29,17 @@ export const receiveTransferErrors = errors => {
 export const fetchTransfer = transferId => dispatch => {
   return TransfersApi.getTransfer(transferId)
     .then(res => dispatch(receiveTransfer(res)))
-    .fail(res => dispatch(receiveTransferErrors(res)))
+    .fail(res => dispatch(receiveTransferErrors(res.responseJSON)))
 };
 
 export const fetchAllTransfers = () => dispatch => {
   return TransfersApi.getAllTransfers()
     .then(res => dispatch(receiveAllTransfers(res)))
-    .fail(res => dispatch(receiveTransferErrors(res)))
+    .fail(res => dispatch(receiveTransferErrors(res.responseJSON)))
 };
 
 export const createTransfer = transferData => dispatch => {
   return TransfersApi.createTransfer(transferData)
     .then(res => dispatch(receiveTransfer(res)))
-    .fail(res => dispatch(receiveTransferErrors(res)))
+    .fail(res => dispatch(receiveTransferErrors(res.responseJSON)))
 };

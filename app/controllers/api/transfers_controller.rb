@@ -11,7 +11,7 @@ class Api::TransfersController < ApplicationController
     if @transfer
       render :show
     else
-      render json: { message: "No transfer exists with that id."}, status: 422
+      render json: ["No transfer exists with that id."], status: 422
     end
   end
 
