@@ -13,7 +13,7 @@
   
   .left-view {
     margin-left: 13.5%;
-    width: 400px;
+    width: 430px;
 
     h1 {
       font-size: 30px;
@@ -49,19 +49,66 @@
   }
 
   svg {
+    margin-top: 5px;
     height: 220px;
     width: 220px;
-    background-color: blue;
+    background-color: transparent;
   }
 
   .right-view {
     margin-right: 11.5%;
-    width: 400px;
+    width: 430px;
     font-size: 14px;
     
     div {
       display: flex;
       justify-content: space-between;
+    }
+
+    > div:first-child {
+      font-size: 11px;
+      font-weight: 900;
+      margin-top: 20px;
+
+      h1 {
+        margin: 0 12px 6px 12px;
+      }
+    }
+
+    ul li {
+      position: relative;
+
+      div {
+        padding: 7px;
+        box-sizing: border-box;
+        margin: 0;
+
+        h1 {
+          padding: 0 8px;
+        }
+      }
+
+      .account-div::before {
+        transition: all .3s ease;
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 5px;
+        height: 100%;
+      }
+    }
+
+    li:first-child > .account-div::before {
+      background-color: #03A9F4;
+    }
+      
+    li:nth-child(2) > .account-div::before {
+      background-color: #3F51B5;
+    }
+
+    li:nth-child(3) > .account-div::before {
+      background-color: #009688;
     }
 
   }

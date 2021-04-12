@@ -1,4 +1,5 @@
 import React from 'react';
+import { PieChart } from 'react-minimal-pie-chart';
 
 class Snapshot extends React.Component{
 
@@ -14,22 +15,35 @@ class Snapshot extends React.Component{
           <h2 id='balance'>${this.props.categoryBalances.total}</h2>
         </section>
 
-        <svg>graph goes here</svg>
+        <svg>
+          <PieChart
+            data={[
+              { title: 'sldj', value: this.props.categoryBalances['Interest Checking'], color: '#03A9F4' },
+              { title: 'sld', value: this.props.categoryBalances['Savings'], color: '#3F51B5' },
+              { title: 'sldfkj', value: this.props.categoryBalances['Money Markets'], color: '#009688' },
+            ]}
+            radius={44}
+            startAngle={-90}
+            lineWidth={20}
+          />;
+        </svg>
 
         <section className='right-view'>
-          <ul>
             <div>
               <h1>BANK ACCOUNTS</h1>
               <h1>AVAILABLE BALANCE</h1>
             </div>
-            {Object.keys(this.props.categoryBalances).map(category => {
-              if (category === 'total') return null;
-              return <div key={Math.floor(Math.random() * 1000)}>
-                <h1>{category}</h1>
-                <h1>{this.props.categoryBalances[category]}</h1>
-              </div>
-            })}
-          </ul>
+            <ul>
+              {Object.keys(this.props.categoryBalances).map(category => {
+                if (category === 'total') return null;
+                return <li>
+                  <div className='account-div' key={Math.floor(Math.random() * 1000)}>
+                    <h1>{category}</h1>
+                    <h1>${this.props.categoryBalances[category]}</h1>
+                  </div>
+                </li>
+              })}
+            </ul>
         </section>
       </div>
     )
