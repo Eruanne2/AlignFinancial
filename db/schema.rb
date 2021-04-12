@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_07_163512) do
+ActiveRecord::Schema.define(version: 2021_04_12_041604) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "accounts", force: :cascade do |t|
-    t.integer "acct_num", null: false
-    t.integer "routing_num", null: false
+    t.bigint "acct_num", null: false
+    t.bigint "routing_num", null: false
     t.string "acct_type", null: false
     t.integer "user_id", null: false
     t.boolean "external", null: false
