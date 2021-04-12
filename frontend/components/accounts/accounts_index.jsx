@@ -62,7 +62,7 @@ class AccountsIndex extends React.Component{
         {this.state.filteredAccts.map((account,idx) => {
           return (
             <ul key={idx} className='acct-views'>
-              <Link to={`/account-detail/${account.id}`}><span>Account</span> ••••{account.acctNum % 10000}</Link>
+              <Link to={`/account-detail/${account.id}`}><span>{account.nickname}</span> ••••{account.acctNum % 10000}</Link>
               <li>${account.balance}</li>
               <li>${account.balance}</li>
               <li>$12.34</li>
