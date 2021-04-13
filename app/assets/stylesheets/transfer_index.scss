@@ -1,0 +1,45 @@
+.transfers-index-container {
+  margin: 0 13.5%;
+
+  h1 {
+    font-size: 24px;
+    margin: 30px 0;
+  }
+
+  ul {
+    box-sizing: border-box;
+    width: 100%;
+    
+    li {
+      display: flex;
+      justify-content: space-between;
+      heigh: 25px;
+      border: 1px solid rgb(204, 204, 204);
+      border-top: none;
+      padding: 10px;
+    }
+
+    li {
+      font-size: 13px;
+      
+      h3:first-child {
+        text-transform: capitalize;
+      }
+    }
+    
+    li:nth-child(2n){
+      background-color: rgb(255, 255, 255);
+    }
+    
+    li:nth-child(2n+1) {
+      background-color: rgb(248, 248, 248);
+    }
+
+    li:first-child {
+      background-color: rgb(227, 236, 241);
+      font-size: 12px;
+      font-weight: 700;
+      border-top: 1px solid rgb(204, 204, 204)
+    }
+  }
+}

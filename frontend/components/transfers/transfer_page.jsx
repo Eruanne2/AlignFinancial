@@ -21,18 +21,24 @@ const mapDispatchToProps = dispatch => {
 };
 
 class TransferPage extends React.Component{
+  constructor(props){
+    super(props);
+    this.accounts = [];
+    this.transfers = [];
+  };
+
   componentDidMount(){
-    this.props.fetchAllAccounts();
-    this.props.fetchAllTransfers();
+    this.accounts = this.props.fetchAllAccounts();
+    this.transfers = this.props.fetchAllTransfers();
   };
 
   render(){
-    if (!this.props.accounts || !this.props.transfers) return null;
+    if (!this.accounts || !this.transfers) return null;
     return(
       <div>
         <Navbar/>
-        <NewTransferForm accounts={this.props.accounts}/>
-        <TransfersIndex transfers={this.props.transfers}/>
+        <NewTransferForm accounts={this.props.accounts} />
+        <TransfersIndex transfers={this.props.transfers} filter={{ userId: window.currentUser.id}}/>
       </div>
     )
   };

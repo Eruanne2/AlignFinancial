@@ -32,10 +32,10 @@ class AccountsIndex extends React.Component{
   }
 
   matchesFilterProp(account){
-    const filter = this.props.filter;
+    const filterProp = this.props.filter;
     let res = true;
-    Object.keys(filter).forEach(key => {
-      if (account[key] !== filter[key] || window.currentUser.id !== account.userId) res = false;
+    Object.keys(filterProp).forEach(key => {
+      if (account[key] !== filterProp[key] ) res = false;
     });
     return res;
   };

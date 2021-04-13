@@ -61,17 +61,17 @@ class Dashboard extends React.Component{
         <ul className='acct-indices'>
           <AccountsIndex 
             accounts={this.props.accounts}
-            filter={{external: false, acctType: 'checkings'}}
+            filter={{external: false, acctType: 'checkings', userId: window.currentUser.id}}
             updateBalance={this.updateBalance('Interest Checking')}
           />
           <AccountsIndex 
             accounts={this.props.accounts}
-            filter={{external: false, acctType: 'savings'}}
+            filter={{external: false, acctType: 'savings', userId: window.currentUser.id}}
             updateBalance={this.updateBalance('High-Yield Savings')}
           />
           <AccountsIndex 
             accounts={this.props.accounts}
-            filter={{external: false, acctType: 'money market'}}
+            filter={{external: false, acctType: 'money market', userId: window.currentUser.id}}
             updateBalance={this.updateBalance('Money Markets')}
           />
         </ul>
