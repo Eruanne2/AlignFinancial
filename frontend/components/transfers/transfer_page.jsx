@@ -1,5 +1,6 @@
 import React from 'react';
 import Navbar from '../home_user/navbar';
+import { Link } from 'react-router-dom';
 import NewTransferForm from './new_transfer_form';
 import TransfersIndex from './transfers_index';
 import { connect } from 'react-redux';
@@ -35,8 +36,18 @@ class TransferPage extends React.Component{
   render(){
     if (!this.accounts || !this.transfers) return null;
     return(
-      <div>
+      <div className='transfer-page-container'>
         <Navbar/>
+        <nav className='dash-nav'>
+          <ul>
+            <Link to='/transfer'>Make a Transfer</Link>
+            <a href='https://github.com/Eruanne2' target="_blank">Github</a>
+            <a href='https://www.linkedin.com/in/charis-ginn-9abb93173' target="_blank">LinkedIn</a>
+            {/* <a href='' target="_blank">CV</a> */}
+            <p>CV </p>
+          </ul>
+        </nav>
+
         <NewTransferForm accounts={this.props.accounts} />
         <TransfersIndex transfers={this.props.transfers} filter={{ userId: window.currentUser.id}}/>
       </div>

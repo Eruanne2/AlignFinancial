@@ -1,7 +1,8 @@
 import React from 'react';
 import { createTransfer } from '../../actions/transfer_actions';
-import ExternalAccountForm from '../accounts/external_accounts/external_account_form';
-import { withRouter } from 'react-router-dom';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faLink } from "@fortawesome/free-solid-svg-icons";
+import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 const mapDispatchToProps = dispatch => {
@@ -17,21 +18,23 @@ class NewTransferForm extends React.Component {
       amount: 0,
       memo: '',
       ready: false,
-      externalForm: false
+      externalAcctPopup: false
     }
-    this.showExternalForm = this.showExternalForm.bind(this);
     this.toggleReady = this.toggleReady.bind(this);
     this.redirect = this.redirect.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   };
 
   updateField(field){
-    // debugger
     return e => this.setState({ [field]: e.currentTarget.value })
   }
 
-  showExternalForm(e){
-    this.setState({ externalForm: !this.state.externalForm })
+  formatMoney(amount){
+    var formatter = new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+    });
+    return formatter.format(amount);
   }
 
   toggleReady(e){
@@ -49,23 +52,39 @@ class NewTransferForm extends React.Component {
     this.props.createTransfer(this.state);
   }
 
+  checkAccountsFilled(){
+    if (this.state.fromAcctId && this.state.toAcctId) return true;
+    else return false;
+  }
+
   render(){
     if (!this.props.accounts) return null;
     if (!this.state.ready) return(
       <div className='transfer-form-container'>
+        {this.state.externalAcctPopup &&
+        <div className='external-acct-popup'>
+          <i><FontAwesomeIcon icon={faLink}/></i>
+          <p><em>Want to link an account at another institution?</em> Go to <Link to='/external-accounts'>Manage External Accounts</Link>, add the account, and return to make your transfer.</p>
+        </div>
+        }
+
         <h1>Transfers</h1>
-        <label>FROM ACCOUNT
-          <select onChange={this.updateField('fromAcctId')}>
+        
+        <ul>
+          <label htmlFor='select-from-acct'>FROM ACCOUNT</label>
+          <select id='select-from-acct' onChange={this.updateField('fromAcctId')}>
             <option key={2000} value={0} >Select an Account</option>
             {this.props.accounts.map((acct, idx) => {
               if (acct.userId === window.currentUser.id) {
-                return <option key={idx} value={acct.id} >{acct.nickname}••••{acct.acctNum % 10000}</option>
+                return <option key={idx} value={acct.id} >{acct.nickname}••••{acct.acctNum % 10000}{acct.external ? '' : '  ' + this.formatMoney(acct.balance)}</option>
               }
             })}
           </select>
-        </label>
-        <label>TO ACCOUNT
-          <select onChange={this.updateField('toAcctId')}>
+        </ul>
+        
+        <ul>
+          <label htmlFor='select-to-acct'>TO ACCOUNT</label>
+          <select id='select-to-acct' onChange={this.updateField('toAcctId')}>
             <option key={2000} value={0} >Select an Account</option>
             {this.props.accounts.map((acct, idx) => {
               if (acct.userId === window.currentUser.id && acct.id != this.state.fromAcctId) {
@@ -73,17 +92,22 @@ class NewTransferForm extends React.Component {
               }
             })}
           </select>
-        </label>
-        {!this.state.ready && <button onClick={this.showExternalForm}>Link Other Accounts</button>}
-        {this.state.externalForm && <ExternalAccountForm/>}
-        {this.state.fromAcctId && this.state.toAcctId &&
-          <div>
+        </ul>
+        <br/>
+        
+        {!this.state.ready && 
+          <button id='link-accts-btn' onClick={e=>this.setState({externalAcctPopup: true})}>+Link Other Accounts</button>
+        }
+        {this.checkAccountsFilled() &&
+          <div className='transfer-form-inputs'>
             <label htmlFor='amount-input'>Amount</label>
-            <input id='amount-input' type='text' value={this.state.amount} onChange={this.updateField('amount')}/>
-            <label htmlFor='memo-input'>memo</label>
+            <input id='amount-input' type='text' value={this.formatMoney(this.state.amount)} onChange={this.updateField('amount')}/>
+            <label htmlFor='memo-input'>Memo (optional)</label>
             <input id='memo-input' type='text' value={this.state.memo} onChange={this.updateField('memo')}/>
-            <p>Optional</p>
-            <input type='submit' value='Review Transfer' onClick={this.toggleReady}/>
+            <div className='transfer-submits'>
+              <input type='submit' value='Review Transfer' onClick={this.toggleReady}/>
+              <button onClick={e => this.props.history.push('/dashboard')}>Cancel</button>
+            </div>
           </div>
         }
       </div>

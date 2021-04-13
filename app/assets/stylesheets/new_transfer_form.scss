@@ -1,0 +1,100 @@
+.transfer-page-container {
+  .user-nav {
+    box-shadow: 0 0 0 0;
+  }
+  .dash-nav {
+    box-shadow: 0 0 6px gray;
+  }
+}
+
+.transfer-form-container {
+  margin: 0 11.5% 0 13.5%;
+
+  button, input[type='submit'] {
+    background-color: #0071C4;
+  }
+
+  h1 {
+    color: #650360;
+    font-size: 28px;
+    margin: 25px 0;
+  }
+
+  .external-acct-popup {
+    border: 1px solid #959595;
+    box-shadow: 0 4px 0 rgba(0,0,0,.15);
+    background-color: #fff;
+    width: 100%;
+    margin: 40px auto;
+
+    
+    i {
+      color: #650360;
+      float: left;
+      margin: 25px;
+    }
+
+    p {
+      margin: 20px;
+      line-height: 28px;
+
+      em {
+        font-weight: 900;
+      }
+
+      a {
+        color: #0071C4;
+      }
+    }
+  }
+
+  ul {
+    display: inline-block;
+  }
+
+  label {
+    display: block;
+    margin: 10px;
+    font-size: 13px;
+    font-weight: 700;
+  }
+
+  select {
+    padding: 15px;
+    margin: 0 20px 0 10px;
+    font-weight: 700;
+    width: 350px;
+  }
+  
+  select:focus {
+    border: 1px solid #0071C4;
+  }
+
+  #link-accts-btn {
+    background: transparent;
+    color: #0071C4;
+    border: 1px dashed #0071C4;
+    font-weight: 700;
+    border-radius: 0;
+    margin: 10px;
+    padding: 15px 195px 15px 15px;
+  }
+
+  .transfer-form-inputs {
+    margin: 10px;
+
+    .transfer-submits {
+      display: flex;
+      align-items: flex-end;
+
+      input[type='submit'] {
+        margin: 20px 10px 0 0;
+      }
+      
+      button {
+        background: transparent;
+        color: #0071C4;
+      }
+    }
+  }
+}
