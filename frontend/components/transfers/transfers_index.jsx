@@ -41,7 +41,7 @@ class TransfersIndex extends React.Component {
     if (filteredTransfers.length < 1) return null;
     return(
       <div className='transfers-index-container'>
-        {this.props.filter.accId ? <h1>Transaction History</h1> : <h1>Activity</h1>}
+        {this.props.filter.acctId ? <h1>Transaction History</h1> : <h1>Activity</h1>}
         <ul>
           <li>
             <p>DATE REQUESTED</p>

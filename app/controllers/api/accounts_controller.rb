@@ -49,6 +49,6 @@ class Api::AccountsController < ApplicationController
   end
 
   def account_params
-    params.require(:acct_data).permit(:acct_num, :routing_num, :acct_type, :external, :balance, :interest_rate, :transfer_limit)
+    params.require(:acct_data).permit(:nickname, :acct_num, :routing_num, :acct_type, :external, :balance, :interest_rate, :transfer_limit)
   end
 end
