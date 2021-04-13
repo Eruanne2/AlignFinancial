@@ -25,7 +25,6 @@ class Dashboard extends React.Component{
       'Interest Checking': 0,
       'High-Yield Savings': 0,
       'Money Markets': 0,
-      total: 0
     };
     this.updateBalance = this.updateBalance.bind(this);
   }
@@ -35,7 +34,7 @@ class Dashboard extends React.Component{
   };
 
   updateBalance(category){
-    return (balance) => this.setState({[category]: balance, total: this.state.total + balance});
+    return balance => this.setState({[category]: balance })
   };
 
   render(){

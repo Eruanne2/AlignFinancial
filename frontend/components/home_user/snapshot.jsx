@@ -24,6 +24,7 @@ class Snapshot extends React.Component{
   }
 
   render(){
+    const totalBalance = Object.values(this.props.categoryBalances).reduce((sum, balance) => sum + balance)
     return(
       <div className='snapshot-container'>
         <section className='left-view'>
@@ -32,7 +33,7 @@ class Snapshot extends React.Component{
           <p>Last Login: {this.formatDate(new Date(window.lastLogin))}</p>
 
           <h2 id='balance-header'>TOTAL BALANCE<span className='question-icon'>?</span></h2>
-          <h2 id='balance'>{this.formatMoney(this.props.categoryBalances.total)}</h2>
+          <h2 id='balance'>{this.formatMoney(totalBalance)}</h2>
         </section>
 
         <svg>
