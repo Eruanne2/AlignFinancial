@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import Snapshot from './snapshot';
 import AccountsIndex from '../accounts/accounts_index';
 import { connect } from 'react-redux';
+import AccountsDropdown from './accounts_dropdown';
 
 const mapStateToProps = state => {
   return { 
@@ -42,6 +43,8 @@ class Dashboard extends React.Component{
     return(
       <div className='dashboard-container'>
         <Navbar />
+        <AccountsDropdown accounts={this.props.accounts}/>
+
         <nav className='dash-nav'>
           <ul>
             <Link to='/transfer'>Make a Transfer</Link>
@@ -50,6 +53,7 @@ class Dashboard extends React.Component{
             <p>CV</p>
           </ul>
         </nav>
+
         <Snapshot 
           currentUser={this.props.currentUser} 
           accounts={this.props.accounts}
