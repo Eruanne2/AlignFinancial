@@ -38,7 +38,7 @@ class App extends React.Component{
       <div>
         <IdleTimer
           ref={ref => { this.idleTimer = ref }}
-          timeout={1000 * 60 }
+          timeout={1000 * 90 }
           onActive={this.handleOnActive}
           onIdle={this.handleOnIdle}
           onAction={this.handleOnAction}
