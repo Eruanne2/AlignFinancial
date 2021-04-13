@@ -1,15 +1,26 @@
 import React from 'react';
+import { connect } from 'react-redux';
+
+const mapStateToProps = state => {
+  return { accounts: state.entities.accounts }
+}
 
 class TransfersIndex extends React.Component {
   constructor(props){
     super(props);
-    this.state = { filteredTransfers: this.props.transfers.filter(transfer => this.matchesFilterProp(transfer)) };
-
+    this.state = { 
+      filteredTransfers: this.props.transfers.filter(transfer => this.matchesFilterProp(transfer)),
+      accounts: this.props.accounts
+    };
     this.matchesFilterProp = this.matchesFilterProp.bind(this);
   };
   
   matchesFilterProp(transfer){
-    const filterProp = this.props.filter;
+    const filterProp = Object.assign({}, this.props.filter);
+    if (filterProp.acctId) {
+      if (!(transfer.toAcctId === filterProp.acctId || transfer.fromAcctId === filterProp.acctId)) return false;
+      delete filterProp.acctId;
+    }
     let res = true;
     Object.keys(filterProp).forEach(key => {
       if (transfer[key] !== filterProp[key]) {
@@ -26,10 +37,11 @@ class TransfersIndex extends React.Component {
   };
 
   render(){
-    if (this.state.filteredTransfers.length < 1) return null;
+    const { accounts, filteredTransfers } = this.state;
+    if (filteredTransfers.length < 1) return null;
     return(
       <div className='transfers-index-container'>
-        <h1>Activity</h1>
+        {this.props.filter.accId ? <h1>Transaction History</h1> : <h1>Activity</h1>}
         <ul>
           <li>
             <p>DATE REQUESTED</p>
@@ -38,11 +50,11 @@ class TransfersIndex extends React.Component {
             <p>AMOUNT</p>
             <p></p>
           </li>
-          {this.state.filteredTransfers.map((transfer, idx) => {
+          {filteredTransfers.map((transfer, idx) => {
             return <li key={idx}>
               <p>{this.formatDate(transfer.createdAt)}</p>
-              <p>{transfer.fromAcctId}</p>
-              <p>{transfer.toAcctId}</p>
+              <p>{accounts[transfer.fromAcctId].nickname}••••{accounts[transfer.fromAcctId].acctNum % 10000}</p>
+              <p>{accounts[transfer.toAcctId].nickname}••••{accounts[transfer.toAcctId].acctNum % 10000}</p>
               <p>{transfer.amount}</p>
               <p>View</p> {/* dropdown to view exact time and memo*/}
             </li>
@@ -53,4 +65,4 @@ class TransfersIndex extends React.Component {
   }
 };
 
-export default TransfersIndex;
+export default connect(mapStateToProps)(TransfersIndex);

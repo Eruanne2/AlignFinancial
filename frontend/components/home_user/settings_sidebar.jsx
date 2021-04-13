@@ -78,11 +78,11 @@ class SettingsSidebar extends React.Component{
           <ul>
             <li>
               <h3>Dark Mode</h3>
-              <input type='checkbox' onChange={this.handleChange('nightMode')}/> {/* these will become toggle switches*/}
+              <input className='toggle' type='checkbox' checked={this.props.nightMode} onChange={this.handleChange('nightMode')}/>
             </li>
             <li>
               <h3>Accessible View</h3>
-              <input type='checkbox' onChange={this.handleChange('accessibleView')}/>
+              <input type='checkbox' className='toggle' onChange={this.handleChange('accessibleView')}/>
             </li>
           </ul>
         }

@@ -40,6 +40,14 @@ class AccountsIndex extends React.Component{
     return res;
   };
 
+  formatMoney(amount){
+    var formatter = new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+    });
+    return formatter.format(amount);
+  }
+
   generateHeader(){
     if (!this.props.filter.external) {
       const typeHeadings = { 'checkings': 'INTEREST CHECKING', 'savings': 'HIGH-YEILD SAVINGS', 'money market': 'MONEY MARKETS'}
@@ -63,18 +71,18 @@ class AccountsIndex extends React.Component{
           return (
             <ul key={idx} className='acct-views'>
               <Link to={`/account-detail/${account.id}`}><span>{account.nickname}</span> ••••{account.acctNum % 10000}</Link>
-              <li>${account.balance}</li>
-              <li>${account.balance}</li>
-              <li>$12.34</li>
-              <li>${account.interestRate}</li>
+              <li>{this.formatMoney(account.balance)}</li>
+              <li>{this.formatMoney(account.balance)}</li>
+              <li>12.34</li>
+              <li>{this.formatMoney(account.interestRate)}</li>
             </ul>
           )
         })}
         <ul className='acct-index-total'>
-          <li>$TOTAL</li>
-          <li>${this.state.totals.available}</li>
-          <li>${this.state.totals.current}</li>
-          <li>${this.state.totals.interestYTD}</li>
+          <li>TOTAL</li>
+          <li>{this.formatMoney(this.state.totals.available)}</li>
+          <li>{this.formatMoney(this.state.totals.current)}</li>
+          <li>{this.formatMoney(this.state.totals.interestYTD)}</li>
           <li></li>
         </ul>
       </div>

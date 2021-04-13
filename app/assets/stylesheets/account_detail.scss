@@ -1,0 +1,72 @@
+.account-detail-container {
+  button, input[type='submit'] {
+    background-color: transparent;
+    border: none;
+    color: inherit;
+  }
+  .user-nav {
+    box-shadow: 0 0 0 0;
+  }
+
+  .dash-nav {
+    box-shadow: 0 0 6px gray;
+  }
+
+  .main-info-box {
+    margin: 50px 11.5% 30px 13.5%;
+    width: 73%;
+    border: 1px solid #959595;
+    background-color: #fff;
+    padding: 10px 20px;
+
+    .acct-info {
+      display: flex;
+      justify-content: space-between;
+      margin: 15px;
+      border-bottom: 1px solid #DDD; 
+      
+      div:first-child {
+        width: 500px;
+
+        div {
+          display: flex;
+          
+          h1 {
+            color: #650360;
+            font-size: 28px;
+          }
+    
+          button {
+            color: #0071C4;
+            font-size: 16px;
+          }
+        }
+  
+        span {
+          font-weight: 700;
+          padding-right: 5px;
+        }
+      }
+
+      h2 {
+        font-size: 11px;
+        font-weight: 900;
+        text-align: right;
+      }
+
+      h3 {
+        font-size: 20px;
+        text-align: right;
+      }
+
+    }
+
+    .acct-details {
+      
+    }
+  }
+
+  .transfers-index-container {
+
+  }
+}

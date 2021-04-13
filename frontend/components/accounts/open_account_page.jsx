@@ -4,6 +4,7 @@ import Navbar from '../home_user/navbar';
 import SelectAccount from './select_account';
 import LoginForm from '../home_guest/_login_form';
 import NewUserForm from '../user/new_user_form_container';
+import TransferPage from '../transfers/transfer_page'
 
 
 class OpenAccountPage extends React.Component {
@@ -86,7 +87,7 @@ class OpenAccountPage extends React.Component {
                   {this.state.existingCustomer === 'yes' && <LoginForm updateParent={this.moveToNextStep.bind(this)}/>}
                 </div>
               }
-              {this.state.existingCustomer === 'no' && <NewUserForm/>}
+              {this.state.existingCustomer === 'no' && <NewUserForm updateParent={this.moveToNextStep.bind(this)}/>}
             </section>
           }
 
@@ -97,7 +98,7 @@ class OpenAccountPage extends React.Component {
 
           {/* Step 3: 'Fund Account' -> creates a new transfer */}
           <section id='fund-account-section'>
-            { this.state.step === 3 && <p>NEW TRANSFER FORM GOES HERE</p>}
+            { this.state.step === 3 && <TransferPage/>}
           </section>
 
         </ul>
