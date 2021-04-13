@@ -28,9 +28,8 @@ class App extends React.Component{
     this.handleOnIdle = this.handleOnIdle.bind(this);
   }
 
-  handleOnIdle (event) {
-    console.log('user is idle');
-    this.props.logout();
+  handleOnIdle(e){
+    if (window.currentUser) this.props.logout();
   }
 
   render(){
