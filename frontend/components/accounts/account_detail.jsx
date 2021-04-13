@@ -92,9 +92,10 @@ class AccountDetail extends React.Component{
         <nav className='dash-nav'>
           <ul>
             <Link to='/transfer'>Make a Transfer</Link>
-            <a href='https://github.com/Eruanne2'>Github</a>
-            <a href='https://www.linkedin.com/in/charis-ginn-9abb93173'>LinkedIn</a>
-            <p>CV</p>
+            <a href='https://github.com/Eruanne2' target="_blank">Github</a>
+            <a href='https://www.linkedin.com/in/charis-ginn-9abb93173' target="_blank">LinkedIn</a>
+            {/* <a href='' target="_blank">CV</a> */}
+            <p>CV (coming soon)</p>
           </ul>
         </nav>
         <section className='main-info-box'>

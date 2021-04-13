@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 import Snapshot from './snapshot';
 import AccountsIndex from '../accounts/accounts_index';
 import { connect } from 'react-redux';
-import AccountsDropdown from './accounts_dropdown';
 
 const mapStateToProps = state => {
   return { 
@@ -22,11 +21,12 @@ class Dashboard extends React.Component{
   constructor(props){
     super(props);
     this.accounts = [];
-    this.state = { 
+    this.state = {
       'Interest Checking': 0,
       'High-Yield Savings': 0,
       'Money Markets': 0,
     };
+    this.dropdown = false;
     this.updateBalance = this.updateBalance.bind(this);
   }
   
@@ -43,14 +43,13 @@ class Dashboard extends React.Component{
     return(
       <div className='dashboard-container'>
         <Navbar />
-        <AccountsDropdown accounts={this.props.accounts}/>
-
         <nav className='dash-nav'>
           <ul>
             <Link to='/transfer'>Make a Transfer</Link>
-            <a href='https://github.com/Eruanne2'>Github</a>
-            <a href='https://www.linkedin.com/in/charis-ginn-9abb93173'>LinkedIn</a>
-            <p>CV</p>
+            <a href='https://github.com/Eruanne2' target="_blank">Github</a>
+            <a href='https://www.linkedin.com/in/charis-ginn-9abb93173' target="_blank">LinkedIn</a>
+            {/* <a href='' target="_blank">CV</a> */}
+            <p>CV (coming soon)</p>
           </ul>
         </nav>
 
