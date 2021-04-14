@@ -1,6 +1,5 @@
 import React from 'react';
 import { fetchAccount, deleteAccount, updateAccount } from '../../actions/account_actions';
-import { fetchAllTransfers } from '../../actions/transfer_actions';
 import Navbar from '../home_user/navbar';
 import { Link, withRouter } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -12,7 +11,6 @@ import TransfersIndex from '../transfers/transfers_index';
 const mapStateToProps = state => {
   return { 
     accounts: state.entities.accounts,
-    transfers: Object.values(state.entities.transfers),
     accountErrors: state.errors.accountErrors
   }
 }
@@ -21,7 +19,6 @@ const mapDispatchToProps = dispatch => {
   return { 
     deleteAccount: acctId => dispatch(deleteAccount(acctId)),
     fetchAccount: acctId => dispatch(fetchAccount(acctId)),
-    fetchAllTransfers: () => dispatch(fetchAllTransfers()),
     updateAccount: acctData => dispatch(updateAccount(acctData))
   }
 };
@@ -34,14 +31,12 @@ class AccountDetail extends React.Component{
       editNickname: false,
       infoPopup: false
     }
-    this.transfers = [];
     this.toggleOption = this.toggleOption.bind(this);
   };
 
   componentDidMount(){
-    this.props.fetchAccount(this.props.match.params.accountId);
-    this.setState({account: this.props.accounts[this.props.match.params.accountId]}, this.render());
-    this.transfers = this.props.fetchAllTransfers();
+    this.props.fetchAccount(this.props.match.params.accountId)
+      .then(this.setState({account: this.props.accounts[this.props.match.params.accountId]}, this.render()))
   }
 
   closeAccount(e){
@@ -171,9 +166,7 @@ class AccountDetail extends React.Component{
             <p><em>{this.props.accountErrors}</em> Please transfer assets to another account, then try again.</p>
           </div>
         }
-        {this.transfers && 
-          <TransfersIndex transfers={this.props.transfers} filter={{ userId: window.currentUser.id, acctId: this.state.account.id}}/> 
-        }
+        <TransfersIndex filter={{ userId: window.currentUser.id, acctId: this.state.account.id}}/> 
       </div>
     )
   }

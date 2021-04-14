@@ -1,21 +1,40 @@
 import React from 'react';
+import { fetchAllTransfers } from '../../actions/transfer_actions';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
+
 const mapStateToProps = state => {
-  return { accounts: state.entities.accounts }
-}
+  return {
+    accounts: state.entities.accounts, // do NOT change to array! used to lookup accounts by index
+    // transfers: Object.values(state.entities.transfers)
+  }
+};
+
+
+const mapDispatchToProps = dispatch => {
+  return {fetchAllTransfers: () => dispatch(fetchAllTransfers())}
+};
+
 
 class TransfersIndex extends React.Component {
   constructor(props){
     super(props);
     this.state = { 
-      filteredTransfers: this.props.transfers.filter(transfer => this.matchesFilterProp(transfer)).sort((a,b) => a.createdAt < b.createdAt ? 1 : -1),
+      filteredTransfers: [],
       accounts: this.props.accounts
     };
     this.matchesFilterProp = this.matchesFilterProp.bind(this);
   };
+
+
+  componentDidMount(){
+    this.props.fetchAllTransfers()
+      .then(res => this.setState({filteredTransfers: Object.values(res.transfers).filter(transfer => this.matchesFilterProp(transfer)).sort((a,b) => a.createdAt < b.createdAt ? 1 : -1)}))
+    console.log('transfers have been fetched')
+  }
   
+
   matchesFilterProp(transfer){
     const filterProp = Object.assign({}, this.props.filter);
     if (filterProp.acctId) {
@@ -38,8 +57,10 @@ class TransfersIndex extends React.Component {
   };
 
   render(){
+    console.log('component is trying to render')
+    
     const { accounts, filteredTransfers } = this.state;
-    if (filteredTransfers.length < 1) return null;
+    if (filteredTransfers.length < 1) return <h1 className='no-activity-message'>There is no account activity to display.</h1>
     return(
       <div className='transfers-index-container'>
         {this.props.filter.acctId ? <h1>Transaction History</h1> : <h1>Activity</h1>}
@@ -68,4 +89,4 @@ class TransfersIndex extends React.Component {
   }
 };
 
-export default connect(mapStateToProps)(TransfersIndex);
+export default connect(mapStateToProps, mapDispatchToProps)(TransfersIndex);
