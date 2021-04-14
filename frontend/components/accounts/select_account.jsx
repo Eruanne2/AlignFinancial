@@ -25,7 +25,7 @@ class SelectAccount extends React.Component{
   
   handleSubmit(e){
     e.preventDefault();
-    this.props.createAccount(this.state);
+    this.props.createAccount(this.state)
     if (!!this.props.updateParent) {
       this.props.updateParent(3);
     }

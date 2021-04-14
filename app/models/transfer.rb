@@ -13,6 +13,7 @@
 #
 class Transfer < ApplicationRecord
   validates :from_acct_id, :to_acct_id, :amount, :user_id, presence: true
+  validates :amount, :numericality => { greater_than: 0 }
 
   belongs_to :user,
     foreign_key: :user_id,

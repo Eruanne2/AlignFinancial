@@ -4,13 +4,30 @@ import Navbar from '../home_user/navbar';
 import SelectAccount from './select_account';
 import LoginForm from '../home_guest/_login_form';
 import NewUserForm from '../user/new_user_form_container';
-import TransferPage from '../transfers/transfer_page'
+import NewTransferForm from '../transfers/new_transfer_form';
+import { connect } from 'react-redux';
+import { fetchAllAccounts } from '../../actions/account_actions';
 
+const mapStateToProps = state => {
+  return {
+    accounts: Object.values(state.entities.accounts)
+  }
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchAllAccounts: () => dispatch(fetchAllAccounts)
+  }
+}
 
 class OpenAccountPage extends React.Component {
   constructor(props){
     super(props);
     this.state = { step: 1 };
+  }
+
+  componentDidMount(){
+    this.props.fetchAllAccounts;
   }
 
   selectExistingCustomer(e){
@@ -98,7 +115,7 @@ class OpenAccountPage extends React.Component {
 
           {/* Step 3: 'Fund Account' -> creates a new transfer */}
           <section id='fund-account-section'>
-            { this.state.step === 3 && <TransferPage/>}
+            { this.state.step === 3 && <NewTransferForm accounts={this.props.accounts}/>}
           </section>
 
         </ul>
@@ -107,4 +124,4 @@ class OpenAccountPage extends React.Component {
   }
 };
 
-export default withRouter(OpenAccountPage);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(OpenAccountPage));

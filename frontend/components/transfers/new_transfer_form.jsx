@@ -5,6 +5,10 @@ import { faLink } from "@fortawesome/free-solid-svg-icons";
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
+const mapStateToProps = state => {
+  return { transferErrors: state.errors.transferErrors }
+}
+
 const mapDispatchToProps = dispatch => {
   return { createTransfer: acctData => dispatch(createTransfer(acctData)) }
 };
@@ -20,6 +24,7 @@ class NewTransferForm extends React.Component {
       ready: false,
       externalAcctPopup: false
     }
+    
     this.toggleReady = this.toggleReady.bind(this);
     this.redirect = this.redirect.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -41,8 +46,8 @@ class NewTransferForm extends React.Component {
   
   handleSubmit(e){
     e.preventDefault();
-    this.props.createTransfer(this.state);
-    this.props.history.push('/dashboard');
+    this.props.createTransfer(this.state)
+      .then(this.props.history.push('/dashboard'))
   }
   
   checkAccountsFilled(){
@@ -90,11 +95,11 @@ class NewTransferForm extends React.Component {
         
         <ul>
           <label htmlFor='select-to-acct'>TO ACCOUNT</label>
-          <select id='select-to-acct' onChange={this.updateField('toAcctId')}>
+          <select id='select-to-acct' onChange={this.updateField('toAcctId')} >
             <option key={2000} value={0} >Select an Account</option>
             {this.props.accounts.map((acct, idx) => {
               if (acct.userId === window.currentUser.id && acct.id != this.state.fromAcctId) {
-                return <option key={idx} value={acct.id} >{acct.nickname}••••{acct.acctNum % 10000}</option>
+                return <option key={idx} value={acct.id}>{acct.nickname}••••{acct.acctNum % 10000}{acct.external ? '' : '  ' + this.formatMoney(acct.balance)}</option>
               }
             })}
           </select>
@@ -158,6 +163,8 @@ class NewTransferForm extends React.Component {
             <button onClick={this.handleSubmit}>Submit This Transfer</button>
             <button onClick={this.toggleReady}>Edit</button>
             <button onClick={this.redirect}>Cancel</button>
+            {this.props.transferErrors && <p className='error'>{this.props.transferErrors}</p>}
+
           </section>
         </div>
       )
@@ -165,4 +172,4 @@ class NewTransferForm extends React.Component {
   }
 };
 
-export default withRouter(connect(null, mapDispatchToProps)(NewTransferForm));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(NewTransferForm));
