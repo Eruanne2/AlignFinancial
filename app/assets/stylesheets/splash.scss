@@ -5,7 +5,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #f2f2f2;
+  background-color: #fff;
   color: #2a2a2a;
   font-size: 14px;
   box-sizing: border-box;
@@ -63,36 +63,38 @@
 }
 
 .compare-accts-panel {
+  background-color: #f2f2f2;
   text-align: center;
   align-items: center;
   padding: 65px;
   box-sizing: border-box;
-
+  
   > h1 {
-    font-size: 40px;
+    font-size: 30px;
+    font-weight: 700;
     padding-bottom: 15px;
   }
-
+  
   p {
     font-size: 20px;
     padding: 5px;
     
-      span {
-        font-weight: 700;
-        padding: 3px;
-      }
+    span {
+      font-weight: 700;
+      padding: 3px;
+    }
   }
-
+  
   p:nth-last-child(-n+2) {
     font-size: 16px;
   }
-
+  
   .mini-nav {
     display: flex;
     justify-content: center;
     text-align: center;
     margin: 50px 0 0 20px;
-
+    
     h2 {
       background-color: #fff;
       color: #0079b3;
@@ -101,8 +103,14 @@
       padding: 10px 20px;
       font-size: 14px;
       font-weight: 700;
+      cursor: pointer;
     }
 
+    h2:hover {
+      background-color: #666;
+      color: #fff;
+    }
+    
     h2:first-of-type {
       border-top-left-radius: 20px;
       border-bottom-left-radius: 20px;
@@ -114,19 +122,20 @@
       border-bottom-right-radius: 20px;
     }
   }
-
+  
   > ul {
     width: 100%;
     display: flex;
     justify-content: center;
     
     .acct-display {
+      position: relative;
       background-color: #fff;
       border: 1px solid #959595;
       width: 337px;
       height: 709px;
       text-align: center;
-      margin: 50px;
+      margin: 50px 10px;
       border-bottom: 4px solid #3f51b5;
 
       h1 {
@@ -150,6 +159,7 @@
         }
 
         p {
+          padding: 15px 5px;
           font-size: 16px;
           span {
             font-weight: 700;
@@ -161,11 +171,15 @@
         h1 {
           text-align: center;
           color: #650360;
-          font-size: 60px;
+          font-size: 50px;
           font-weight: 700;
-          margin: 10px 0 20px 0;
+          margin: 10px 0 5px 0;
         }
 
+        p {
+          font-size: 14px;
+        }
+        
         p:first-child {
           font-weight: 700;
         }
@@ -183,6 +197,9 @@
       }
 
       button {
+        position: absolute;
+        bottom: 30px;
+        left: 100px;
         background-color: #e7f6fd;
         color: #0071c4;
         margin-top: 10px;
