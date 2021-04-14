@@ -86,7 +86,6 @@ class Splash extends React.Component{
                   <p>on all balance tiers</p>
                 </section>
                 <ul className='benefits'>
-
                   <li>Use any Allpoint® ATM in the U.S. for free, plus reimbursements of up to $10 per statement cycle for fees charged at other ATMs nationwide</li>
                   <li>Rate is variable and may change after the account is opened</li>
                   <li>Fees may reduce earnings</li>

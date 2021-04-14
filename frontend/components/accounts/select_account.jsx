@@ -30,15 +30,44 @@ class SelectAccount extends React.Component{
       this.props.updateParent(3);
     }
   };
+
+  formatDate(date){
+    date = date.toDateString().slice(4);
+    return date.slice(0,6) + ',' + date.slice(6)
+  };
   
   displayInfo(field){
     switch(field){
       case 'checkings':
-        return 'You have chosen a checkings account!'
+        return <div className='display-acct-benefits'>
+          <p>'Interest Checking benefits:</p>
+          <ul>
+            <li>Use any Allpoint® ATM in the U.S. for free, plus reimbursements of up to $10 per statement cycle for fees charged at other ATMs nationwide</li>
+            <li>Rate is variable and may change after the account is opened</li>
+            <li>Fees may reduce earnings</li>
+          </ul>
+        </div>
       case 'savings':
-        return 'You have chosen a savings account!'
+        return <div className='display-acct-benefits'>
+          <p>'Online Savings benefits:</p>
+          <ul>
+            <li>Six withdrawals limit per statement cycle</li>
+            <li>Rate is variable and may change after the account is opened</li>
+            <li>Fees may reduce earnings</li>
+            <li>Coming Soon: Use buckets to organize your money and visualize what you’re saving for</li>
+            <li>Coming Soon: Set up boosters to optimize and maximize your saving</li>
+          </ul>
+        </div>
       case 'money market':
-        return 'You have chosen a money market account!'
+        return <div className='display-acct-benefits'>
+          <p>'Money Market benefits:</p>
+          <ul>
+            <li>Debit card and check access</li>
+            <li>Unlimited deposits and ATM withdrawals + 6 additional withdrawals per statement cycle</li>
+            <li>Rate is variable and may change after the account is opened</li>
+            <li>Fees may reduce earnings</li>
+          </ul>
+        </div>
       default:
         return '';
     }
@@ -60,6 +89,8 @@ class SelectAccount extends React.Component{
             </button>
           </div>
           <div className='account-info'>
+            <p>Keep in mind, if you choose an account with a variable rate, your rate may change after the account is opened. 
+              Rates and Annual Percentage Yields (APY) are accurate as of {this.formatDate(new Date())}.</p>
             {this.displayInfo(this.state.acctType)}
           </div>
           <input type='submit' onClick={this.handleSubmit.bind(this)} value='Next' />

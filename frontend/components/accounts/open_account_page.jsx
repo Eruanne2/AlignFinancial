@@ -95,7 +95,7 @@ class OpenAccountPage extends React.Component {
                   <h2>Choose the option that describes you best.</h2>
                   <div>
                     <input type='radio' id='no' name='existing-customer' value='no' onChange={this.selectExistingCustomer.bind(this)}/>
-                    <label htmlFor='no'>I’m not an existing Ally Bank customer </label> 
+                    <label htmlFor='no'>I’m not an existing Align Bank customer </label> 
                   </div>
                   <div>
                     <input type='radio' id='yes' name='existing-customer' value='yes' onChange={this.selectExistingCustomer.bind(this)}/>

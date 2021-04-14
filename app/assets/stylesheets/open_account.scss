@@ -124,6 +124,11 @@
 
   }
 
+}
+
+.select-accts-container {
+  margin: 0 11.5% 0 13.5%;
+
   .account-selections {
     button {
       padding: 3px;
@@ -137,5 +142,13 @@
       border: 2px solid rgb(0, 113, 196);
     }
   }
-    
+
+  .display-acct-benefits {
+    width: 350px;
+
+    ul {
+      list-style: disc;
+    }
+  }
+  
 }
