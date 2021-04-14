@@ -1,15 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { formatMoney } from '../../utils/formatting_util';
 
 class AccountsDropdown extends React.Component{
-  formatMoney(amount){
-    var formatter = new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: 'USD',
-    });
-    return formatter.format(amount);
-  }
-
   render(){
     return(
       <div className='accts-dropdown-container'>
@@ -26,7 +19,7 @@ class AccountsDropdown extends React.Component{
                 </div>
                 <div>
                   <h3><span>{account.nickname}</span>••{account.acctNum % 10000}</h3>
-                  <h3>{this.formatMoney(account.balance)}</h3>
+                  <h3>{formatMoney(account.balance)}</h3>
                 </div>
               </Link>
             </li>

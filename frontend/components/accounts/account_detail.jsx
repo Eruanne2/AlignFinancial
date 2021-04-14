@@ -7,6 +7,7 @@ import { faCaretRight, faCaretDown } from "@fortawesome/free-solid-svg-icons";
 import { faExclamationCircle } from "@fortawesome/free-solid-svg-icons";
 import { connect } from 'react-redux';
 import TransfersIndex from '../transfers/transfers_index';
+import { formatMoney} from '../../utils/formatting_util';
 
 const mapStateToProps = state => {
   return { 
@@ -36,7 +37,8 @@ class AccountDetail extends React.Component{
 
   componentDidMount(){
     this.props.fetchAccount(this.props.match.params.accountId)
-      .then(this.setState({account: this.props.accounts[this.props.match.params.accountId]}, this.render()))
+      // .then(this.setState({account: this.props.accounts[this.props.match.params.accountId]}))
+      .then(res => this.setState({ account: res.acct}))
   }
 
   closeAccount(e){
@@ -69,14 +71,6 @@ class AccountDetail extends React.Component{
     this.toggleOption('editNickname')(new Event('click'));
     this.props.updateAccount(this.state.account);
   };
-
-  formatMoney(amount){
-    var formatter = new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: 'USD',
-    });
-    return formatter.format(amount);
-  }
 
   render(){
     const { account } = this.state;
@@ -114,15 +108,15 @@ class AccountDetail extends React.Component{
             </div>
             <div>
               <h2>AVAILABLE BALANCE</h2>
-              <h3>{this.formatMoney(account.balance)}</h3>
+              <h3>{formatMoney(account.balance)}</h3>
             </div>
             <div>
               <h2>CURRENT BALANCE</h2>
-              <h3>{this.formatMoney(account.balance)}</h3>
+              <h3>{formatMoney(account.balance)}</h3>
             </div>
             <div>
               <h2>INTEREST YTD</h2>
-              <h3>{this.formatMoney(12.34)}</h3>
+              <h3>{formatMoney(12.34)}</h3>
             </div>
             <div>
               <h2>ANNUAL PERCENTAGE YIELD</h2>

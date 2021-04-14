@@ -2,6 +2,8 @@ import React from 'react';
 import { fetchAllTransfers } from '../../actions/transfer_actions';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { fetchAllAccounts } from '../../actions/account_actions';
+import { formatMoney } from '../../utils/formatting_util';
 
 
 const mapStateToProps = state => {
@@ -13,7 +15,10 @@ const mapStateToProps = state => {
 
 
 const mapDispatchToProps = dispatch => {
-  return {fetchAllTransfers: () => dispatch(fetchAllTransfers())}
+  return {
+    fetchAllTransfers: () => dispatch(fetchAllTransfers()),
+    fetchAllAccounts: () => dispatch(fetchAllAccounts())
+  }
 };
 
 
@@ -22,16 +27,19 @@ class TransfersIndex extends React.Component {
     super(props);
     this.state = { 
       filteredTransfers: [],
-      accounts: this.props.accounts
+      // accounts: this.props.accounts
+      accounts: []
     };
     this.matchesFilterProp = this.matchesFilterProp.bind(this);
   };
 
 
   componentDidMount(){
+    this.props.fetchAllAccounts()
+      .then(res => this.setState({accounts: Object.values(res.accts)}))
+
     this.props.fetchAllTransfers()
       .then(res => this.setState({filteredTransfers: Object.values(res.transfers).filter(transfer => this.matchesFilterProp(transfer)).sort((a,b) => a.createdAt < b.createdAt ? 1 : -1)}))
-    console.log('transfers have been fetched')
   }
   
 
@@ -57,10 +65,8 @@ class TransfersIndex extends React.Component {
   };
 
   render(){
-    console.log('component is trying to render')
-    
     const { accounts, filteredTransfers } = this.state;
-    if (filteredTransfers.length < 1) return <h1 className='no-activity-message'>There is no account activity to display.</h1>
+    if (filteredTransfers.length < 1 || accounts.length < 1) return <h1 className='no-activity-message'>There is no account activity to display.</h1>
     return(
       <div className='transfers-index-container'>
         {this.props.filter.acctId ? <h1>Transaction History</h1> : <h1>Activity</h1>}
@@ -72,15 +78,15 @@ class TransfersIndex extends React.Component {
             <p>FROM</p>
             <p>TO</p>
             <p>AMOUNT</p>
-            <p></p>
+            <p>MEMO</p>
           </li>
           {filteredTransfers.map((transfer, idx) => {
             return <li key={idx}>
               <p>{this.formatDate(transfer.createdAt)}</p>
               <p>{accounts[transfer.fromAcctId].nickname}••••{accounts[transfer.fromAcctId].acctNum % 10000}</p>
               <p>{accounts[transfer.toAcctId].nickname}••••{accounts[transfer.toAcctId].acctNum % 10000}</p>
-              <p>{transfer.amount}</p>
-              <p>View</p> {/* dropdown to view exact time and memo*/}
+              <p>{formatMoney(transfer.amount)}</p>
+              <p>{transfer.memo}</p>
             </li>
           })}
         </ul>

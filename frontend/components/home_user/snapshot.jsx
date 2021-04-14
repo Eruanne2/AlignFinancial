@@ -1,6 +1,7 @@
 import React from 'react';
 import { PieChart } from 'react-minimal-pie-chart';
 import { connect } from 'react-redux';
+import { formatMoney } from '../../utils/formatting_util';
 
 const mapStateToProps = state => {
   return { lastLogin: state.session.lastLogin }
@@ -15,14 +16,6 @@ class Snapshot extends React.Component{
     return (dateString + ' • ' + timeString)
   };
 
-  formatMoney(amount){
-    var formatter = new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: 'USD',
-    });
-    return formatter.format(amount);
-  }
-
   render(){
     const totalBalance = Object.values(this.props.categoryBalances).reduce((sum, balance) => sum + balance)
     return(
@@ -33,7 +26,7 @@ class Snapshot extends React.Component{
           <p>Last Login: {this.formatDate(new Date(window.lastLogin))}</p>
 
           <h2 id='balance-header'>TOTAL BALANCE<span className='question-icon'>?</span></h2>
-          <h2 id='balance'>{this.formatMoney(totalBalance)}</h2>
+          <h2 id='balance'>{formatMoney(totalBalance)}</h2>
         </section>
 
         <svg>
@@ -60,7 +53,7 @@ class Snapshot extends React.Component{
                 return <li key={Math.floor(Math.random() * 1000)}>
                   <div className='account-div'>
                     <h1>{category}</h1>
-                    <h1>{this.formatMoney(this.props.categoryBalances[category])}</h1>
+                    <h1>{formatMoney(this.props.categoryBalances[category])}</h1>
                   </div>
                 </li>
               })}

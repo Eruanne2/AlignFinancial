@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLink } from "@fortawesome/free-solid-svg-icons";
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { formatMoney } from '../../utils/formatting_util';
 
 const mapStateToProps = state => {
   return { transferErrors: state.errors.transferErrors }
@@ -54,14 +55,6 @@ class NewTransferForm extends React.Component {
     if (this.state.fromAcctId && this.state.toAcctId) return true;
     else return false;
   }
-  
-  formatMoney(amount){
-    var formatter = new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: 'USD',
-    });
-    return formatter.format(amount);
-  }
 
   formatDate(date){
     date = date.toDateString();
@@ -87,7 +80,7 @@ class NewTransferForm extends React.Component {
             <option key={2000} value={0} >Select an Account</option>
             {this.props.accounts.map((acct, idx) => {
               if (acct.userId === window.currentUser.id) {
-                return <option key={idx} value={acct.id} >{acct.nickname}••••{acct.acctNum % 10000}{acct.external ? '' : '  ' + this.formatMoney(acct.balance)}</option>
+                return <option key={idx} value={acct.id} >{acct.nickname}••••{acct.acctNum % 10000}{acct.external ? '' : '  ' + formatMoney(acct.balance)}</option>
               }
             })}
           </select>
@@ -99,7 +92,7 @@ class NewTransferForm extends React.Component {
             <option key={2000} value={0} >Select an Account</option>
             {this.props.accounts.map((acct, idx) => {
               if (acct.userId === window.currentUser.id && acct.id != this.state.fromAcctId) {
-                return <option key={idx} value={acct.id}>{acct.nickname}••••{acct.acctNum % 10000}{acct.external ? '' : '  ' + this.formatMoney(acct.balance)}</option>
+                return <option key={idx} value={acct.id}>{acct.nickname}••••{acct.acctNum % 10000}{acct.external ? '' : '  ' + formatMoney(acct.balance)}</option>
               }
             })}
           </select>
@@ -134,15 +127,15 @@ class NewTransferForm extends React.Component {
             <section>
               <h3>FROM ACCOUNT</h3>
               <div>
-                <p>{fromAcct.nickname}••••{fromAcct.acctNum % 10000}{fromAcct.external ? '' : '  ' + this.formatMoney(fromAcct.balance)}</p>
-                <p>{fromAcct.external ? 'External Account' : '  ' + this.formatMoney(fromAcct.balance)}</p>
+                <p>{fromAcct.nickname}••••{fromAcct.acctNum % 10000}{fromAcct.external ? '' : '  ' + formatMoney(fromAcct.balance)}</p>
+                <p>{fromAcct.external ? 'External Account' : '  ' + formatMoney(fromAcct.balance)}</p>
               </div>
             </section>
             <section>
               <h3>TO ACCOUNT</h3>
               <div>
-                <p>{toAcct.nickname}••••{toAcct.acctNum % 10000}{toAcct.external ? '' : '  ' + this.formatMoney(toAcct.balance)}</p>
-                <p>{toAcct.external ? 'External Account' : '  ' + this.formatMoney(toAcct.balance)}</p>
+                <p>{toAcct.nickname}••••{toAcct.acctNum % 10000}{toAcct.external ? '' : '  ' + formatMoney(toAcct.balance)}</p>
+                <p>{toAcct.external ? 'External Account' : '  ' + formatMoney(toAcct.balance)}</p>
               </div>
             </section>
           </section>

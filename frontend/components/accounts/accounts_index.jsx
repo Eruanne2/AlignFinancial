@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
+import { formatMoney } from '../../utils/formatting_util';
 // takes in a 'filter' object prop to filter accounts.
 // e.g. {external: false, acctType: 'savings'}
 
@@ -40,14 +41,6 @@ class AccountsIndex extends React.Component{
     return res;
   };
 
-  formatMoney(amount){
-    var formatter = new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: 'USD',
-    });
-    return formatter.format(amount);
-  }
-
   generateHeader(){
     if (!this.props.filter.external) {
       const typeHeadings = { 'checkings': 'INTEREST CHECKING', 'savings': 'HIGH-YEILD SAVINGS', 'money market': 'MONEY MARKETS'}
@@ -71,18 +64,18 @@ class AccountsIndex extends React.Component{
           return (
             <ul key={idx} className='acct-views'>
               <Link to={`/account-detail/${account.id}`}><span>{account.nickname}</span> ••••{account.acctNum % 10000}</Link>
-              <li>{this.formatMoney(account.balance)}</li>
-              <li>{this.formatMoney(account.balance)}</li>
+              <li>{formatMoney(account.balance)}</li>
+              <li>{formatMoney(account.balance)}</li>
               <li>12.34</li>
-              <li>{this.formatMoney(account.interestRate)}</li>
+              <li>{formatMoney(account.interestRate)}</li>
             </ul>
           )
         })}
         <ul className='acct-index-total'>
           <li>TOTAL</li>
-          <li>{this.formatMoney(this.state.totals.available)}</li>
-          <li>{this.formatMoney(this.state.totals.current)}</li>
-          <li>{this.formatMoney(this.state.totals.interestYTD)}</li>
+          <li>{formatMoney(this.state.totals.available)}</li>
+          <li>{formatMoney(this.state.totals.current)}</li>
+          <li>{formatMoney(this.state.totals.interestYTD)}</li>
           <li></li>
         </ul>
       </div>
