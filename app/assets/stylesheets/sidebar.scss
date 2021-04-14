@@ -55,15 +55,19 @@
   background-color: inherit;
   border: none;
   color: rgb(0, 104, 153);
-  font-size: 50px;
+  font-size: 40px;
   font-weight: light;
   float: right;
-  margin-right: 200px;
+  margin-right: 210px;
 }
 
 
 .settings-sidebar {
   width: 480px;
+
+  .close-sidebar {
+    margin-right: 50px;
+  }
 
   div {
     margin-top: 20px;

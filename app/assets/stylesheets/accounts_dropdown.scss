@@ -1,15 +1,16 @@
 .accts-dropdown-container {
   position: absolute;
-  z-index: 3;
-  top: 68px;
+  z-index: 4;
+  top: 48px;
   left: 19%;
   width: 440px;
-  background-color: #fff;
+  background-color: transparent;
   box-shadow: 0 2px 0 rgba(0,0,0,.15);
   // animation: menu-slide-down .25s ease;
 
   h1 {
     border: 1px solid #959595;
+    background-color: #fff;
     color: #0071C4;
     font-size: 16px;
     padding: 12.6px;
@@ -21,6 +22,7 @@
   }
 
   li {
+    background-color: #fff;
     border: 1px solid #959595;
     border-top: none;
     position: relative;
@@ -72,4 +74,20 @@
     background-color: #009688;
   }
 
+}
+
+.arrow-holder {
+  position: relative;
+  background: transparent;
+  height: 10px;
+
+  #dropdown-arrow {
+    position: absolute;
+    margin-left: 16.5%;
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 15px solid #fff;
+  }
 }

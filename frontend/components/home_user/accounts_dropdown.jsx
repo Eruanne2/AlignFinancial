@@ -13,6 +13,7 @@ class AccountsDropdown extends React.Component{
   render(){
     return(
       <div className='accts-dropdown-container'>
+        <div className='arrow-holder'><span id='dropdown-arrow'></span></div>
         <h1><Link to='/dashboard'>View Snapshot</Link></h1>
         <ul className='acct-dropdown-list'>        
           {this.props.accounts.map((account, idx) => {
