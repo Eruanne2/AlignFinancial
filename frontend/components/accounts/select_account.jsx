@@ -25,7 +25,6 @@ class SelectAccount extends React.Component{
   
   handleSubmit(e){
     e.preventDefault();
-    this.setState({ userId: window.currentUser.id})
     this.props.createAccount(this.state);
     if (!!this.props.updateParent) {
       this.props.updateParent(3);
@@ -47,13 +46,18 @@ class SelectAccount extends React.Component{
 
   render(){
     return(
-      <div>
+      <div className='select-accts-container'>
         <form>
-          this is the new account form.
           <div className='account-selections'>
-            <button onClick={this.handleSelection('checkings')}>Checkings</button>
-            <button onClick={this.handleSelection('savings')}>Savings</button>
-            <button onClick={this.handleSelection('money market')}>Money Market</button>
+            <button onClick={this.handleSelection('checkings')}>
+              <img src={window.selectChecking} height={115} alt="the word 'align' in purple lettering on a white background"/>
+            </button>
+            <button onClick={this.handleSelection('savings')}>
+              <img src={window.selectSavings} height={115} alt="the word 'align' in purple lettering on a white background"/>
+            </button>
+            <button onClick={this.handleSelection('money market')}>
+              <img src={window.selectMM} height={115} alt="the word 'align' in purple lettering on a white background"/>
+            </button>
           </div>
           <div className='account-info'>
             {this.displayInfo(this.state.acctType)}

@@ -1,0 +1,164 @@
+.account-detail-container {
+
+  .user-nav {
+    box-shadow: 0 0 0 0;
+  }
+
+  .dash-nav {
+    box-shadow: 0 0 6px gray;
+  }
+
+  .main-info-box {
+    position: relative;
+    margin: 50px 11.5% 30px 13.5%;
+    width: 73%;
+    border: 1px solid #959595;
+    padding: 10px 20px;
+    background-color: #fff;
+
+    > h2 {
+      margin-left: 12px;
+      color:rgb(0, 113, 196);
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+  
+      i {
+        padding-right: 5px;
+      }
+  
+    }
+
+    #save-nickname-btn {
+      background-color: rgb(0, 113, 196);
+      margin: 5px;
+    }
+    
+    #cancel-nickname-btn {
+      background-color: rgb(231, 246, 253);
+      color: #0071C4;
+      margin: 15px;
+    }
+    
+    .acct-info {
+      display: flex;
+      justify-content: space-between;
+      margin: 15px;
+      border-bottom: 1px solid #DDD; 
+      
+      div:first-child {
+        width: 400px;
+
+        div {
+          display: flex;
+          
+          h1 {
+            color: #650360;
+            font-size: 28px;
+          }
+    
+          button {
+            background-color: transparent;
+            border: none;
+            color: inherit;
+            color: #0071C4;
+            font-size: 16px;
+          }
+        }
+        p {
+          padding: 5px 0 15px 0;
+          font-size: 14px;
+        }
+  
+        span {
+          font-weight: 700;
+          padding-right: 5px;
+        }
+      }
+
+      h2 {
+        font-size: 11px;
+        font-weight: 900;
+        text-align: right;
+      }
+
+      h3 {
+        font-size: 20px;
+        text-align: right;
+      }
+    }
+
+    .acct-info::before {
+      transition: all .3s ease;
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 7px;
+      height: 92px;;
+    }
+    
+    .checkings-acct::before {
+      background-color: #03A9F4;
+    }
+    .savings-acct::before {
+      background-color: #3F51B5;
+    }
+    .money-market-acct::before {
+      background-color: #009688;
+    }
+
+    .acct-details {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      height: 65px;
+      margin: 15px 15px 15px 20px;
+
+      li {
+        display: flex;
+        justify-content: space-between;
+        margin: 6px 0;
+        width: 300px;
+        font-size: 14px;
+        h3 {
+          font-weight: 700;
+        }
+        p {
+          margin-right: 100px;
+        }
+      }
+
+      button {
+        background-color: transparent;
+        border: none;
+        color: inherit;
+        color: #D42825;
+        padding: 0;
+      }
+    }
+  }
+
+  .error-popup {
+    border: 1px solid #959595;
+    box-shadow: 0 4px 0 rgba(0,0,0,.15);
+    background-color: #fff;
+    width: 73%;
+    margin: 40px auto;
+
+    
+    .error {
+      float: left;
+      margin: 25px;
+    }
+
+    p {
+      margin: 20px;
+      line-height: 28px;
+
+      em {
+        font-weight: 900;
+      }
+    }
+  }
+}

@@ -1,6 +1,11 @@
 @import 'variables';
 
 .open-account-container {
+
+  button, input[type='submit'] {
+    background-color: #0071C4;
+  }
+
   .user-nav {
     box-shadow: none;
   }
@@ -119,4 +124,18 @@
 
   }
 
+  .account-selections {
+    button {
+      padding: 3px;
+      background: #F8F8F8;
+      border: 2px solid #DDD;
+      border-radius: 5px;
+      margin: 10px 5px;
+    }
+    
+    button:focus {
+      border: 2px solid rgb(0, 113, 196);
+    }
+  }
+    
 }

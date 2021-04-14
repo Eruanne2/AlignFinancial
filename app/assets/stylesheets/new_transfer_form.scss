@@ -1,0 +1,194 @@
+.transfer-page-container {
+  .user-nav {
+    box-shadow: 0 0 0 0;
+  }
+  .dash-nav {
+    box-shadow: 0 0 6px gray;
+  }
+}
+
+.transfer-form-container {
+  margin: 0 11.5% 0 13.5%;
+
+  button, input[type='submit'] {
+    background-color: #0071C4;
+  }
+
+  h1 {
+    color: #650360;
+    font-size: 28px;
+    margin: 25px 0;
+  }
+
+  .external-acct-popup {
+    border: 1px solid #959595;
+    box-shadow: 0 4px 0 rgba(0,0,0,.15);
+    background-color: #fff;
+    width: 100%;
+    margin: 40px auto;
+
+    
+    i {
+      color: #650360;
+      float: left;
+      margin: 25px;
+    }
+
+    p {
+      margin: 20px;
+      line-height: 28px;
+
+      em {
+        font-weight: 900;
+      }
+
+      a {
+        color: #0071C4;
+      }
+    }
+  }
+
+  ul {
+    display: inline-block;
+  }
+
+  label {
+    display: block;
+    margin: 10px;
+    font-size: 13px;
+    font-weight: 700;
+  }
+
+  select {
+    padding: 15px;
+    margin: 0 20px 0 10px;
+    font-weight: 700;
+    width: 350px;
+  }
+  
+  select:focus {
+    border: 1px solid #0071C4;
+  }
+
+  #link-accts-btn {
+    background: transparent;
+    color: #0071C4;
+    border: 1px dashed #0071C4;
+    font-weight: 700;
+    border-radius: 0;
+    margin: 10px;
+    padding: 15px 195px 15px 15px;
+  }
+
+  .transfer-form-inputs {
+    margin: 10px;
+
+    .transfer-submits {
+      display: flex;
+      align-items: flex-end;
+
+      input[type='submit'] {
+        margin: 20px 10px 0 0;
+      }
+      
+      button {
+        background: transparent;
+        color: #0071C4;
+      }
+    }
+  }
+}
+
+.transfer-review-container {
+  margin: 0 11.5% 0 13.5%;
+
+  h1 {
+    color: #650360;
+    font-size: 28px;
+    margin: 25px 0;
+    font-weight: 700;
+  }
+
+  h2 {
+    font-size: 20px;
+    margin: 15px 0;
+  }
+
+  .acct-review {
+    display: flex;
+    
+    h3 {
+      font-size: 14px;
+      font-weight: 700;
+      padding: 3px;
+    }
+    
+    div {
+      width: 350px;
+      position: relative;
+      border: 1px solid #0071C4;
+      background-color: #fff;
+      padding: 5px 10px;
+      margin-right: 15px;
+
+      p:first-of-type {
+        font-weight: 700;
+      }
+    }
+  }
+
+  .review-transfer-details {
+    display: flex;
+    
+    ul:first-of-type {
+      margin: 20px 30px 20px 0;
+      width: 150px;
+      text-align: right;
+      font-weight: 700;
+      font-size: 14px;
+      * {
+        width: 100%;
+        margin: 25px
+      }
+    }
+
+    ul:last-of-type {
+      margin: 20px 30px 20px 0;
+      width: 500px;
+      * {
+        width: 100%;
+        margin: 23px
+      }
+    }
+  }
+
+  .review-submit {
+    p {
+      margin: 10px 0;
+
+      span {
+        font-weight: 700;
+      }
+    }
+
+    button {
+      margin-right: 20px;
+    }
+    
+    button:first-of-type {
+      background-color: #0071C4;
+    }
+    
+    button:nth-of-type(2) {
+      background-color: #E7F6FD;
+      color: #0071C4;
+      margin: 10px;
+    }
+    
+    button:last-of-type {
+      background-color: transparent;
+      color: #0071C4;
+    }
+  }
+  
+}

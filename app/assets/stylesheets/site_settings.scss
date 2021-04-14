@@ -1,0 +1,41 @@
+.night-mode {
+  background-color: #000;
+  color: #fff;
+
+  textarea, input[type='text'], input[type='password'] {
+    background-color: #221b24;
+    color: #fff;
+  }
+
+  .acct-index-container, .sidebar, .splash-nav, .step-nav, .informational {
+    background-color: #221b24;
+    color: #fff;
+  }
+
+  .dash-nav {
+    background-color: #281e2b;
+  }
+
+  .transfers-index-container {
+    ul {
+      li:nth-child(2n){
+        background-color: rgb(58, 55, 59);
+      }
+      
+      li:nth-child(2n+1) {
+        background-color: rgb(64, 58, 66);
+      }
+  
+      li:first-child {
+        background-color: rgb(94, 68, 100);
+        font-size: 12px;
+        font-weight: 700;
+        border-top: 1px solid rgb(204, 204, 204)
+      }
+    }
+  }
+}
+
+.accessible-view {
+
+}

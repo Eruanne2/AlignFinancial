@@ -10,14 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_07_163512) do
+ActiveRecord::Schema.define(version: 2021_04_12_180634) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "accounts", force: :cascade do |t|
-    t.integer "acct_num", null: false
-    t.integer "routing_num", null: false
+    t.bigint "acct_num", null: false
+    t.bigint "routing_num", null: false
     t.string "acct_type", null: false
     t.integer "user_id", null: false
     t.boolean "external", null: false
@@ -26,8 +26,21 @@ ActiveRecord::Schema.define(version: 2021_04_07_163512) do
     t.integer "transfer_limit"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "nickname", default: "Nickname", null: false
     t.index ["acct_num"], name: "index_accounts_on_acct_num", unique: true
     t.index ["user_id"], name: "index_accounts_on_user_id"
+  end
+
+  create_table "transfers", force: :cascade do |t|
+    t.integer "from_acct_id", null: false
+    t.integer "to_acct_id", null: false
+    t.float "amount", null: false
+    t.string "memo"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
+    t.index ["from_acct_id"], name: "index_transfers_on_from_acct_id"
+    t.index ["to_acct_id"], name: "index_transfers_on_to_acct_id"
   end
 
   create_table "users", force: :cascade do |t|

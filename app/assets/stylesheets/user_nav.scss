@@ -7,7 +7,7 @@
   background-color: #650360;
   color: #FFF;
   font-size: 14;
-  box-shadow: 10px 0 6px gray;
+  box-shadow: 0 0 6px gray;
   
   > :first-child {
     margin-left: 13.5%;
@@ -17,6 +17,10 @@
   ul {
     display: flex;
     align-items: center;
+
+    li:nth-child(2) {
+      cursor: pointer;
+    }
 
     li:last-child {
       border: 1px solid #fff;

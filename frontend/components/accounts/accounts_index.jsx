@@ -32,17 +32,25 @@ class AccountsIndex extends React.Component{
   }
 
   matchesFilterProp(account){
-    const filter = this.props.filter;
+    const filterProp = this.props.filter;
     let res = true;
-    Object.keys(filter).forEach(key => {
-      if (account[key] !== filter[key] || window.currentUser.id !== account.userId) res = false;
+    Object.keys(filterProp).forEach(key => {
+      if (account[key] !== filterProp[key] ) res = false;
     });
     return res;
   };
 
+  formatMoney(amount){
+    var formatter = new Intl.NumberFormat('en-US', {
+      style: 'currency',
+      currency: 'USD',
+    });
+    return formatter.format(amount);
+  }
+
   generateHeader(){
     if (!this.props.filter.external) {
-      const typeHeadings = { 'checkings': 'INTEREST CHECKING', 'savings': 'SAVING', 'money market': 'MONEY MARKETS'}
+      const typeHeadings = { 'checkings': 'INTEREST CHECKING', 'savings': 'HIGH-YEILD SAVINGS', 'money market': 'MONEY MARKETS'}
       return typeHeadings[this.props.filter.acctType];
     }
     return 'External Accounts';
@@ -62,19 +70,19 @@ class AccountsIndex extends React.Component{
         {this.state.filteredAccts.map((account,idx) => {
           return (
             <ul key={idx} className='acct-views'>
-              <Link to={`/account-detail/${account.id}`}><span>Account</span> ••••{account.acctNum % 10000}</Link>
-              <li>${account.balance}</li>
-              <li>${account.balance}</li>
-              <li>$12.34</li>
-              <li>${account.interestRate}</li>
+              <Link to={`/account-detail/${account.id}`}><span>{account.nickname}</span> ••••{account.acctNum % 10000}</Link>
+              <li>{this.formatMoney(account.balance)}</li>
+              <li>{this.formatMoney(account.balance)}</li>
+              <li>12.34</li>
+              <li>{this.formatMoney(account.interestRate)}</li>
             </ul>
           )
         })}
         <ul className='acct-index-total'>
-          <li>$TOTAL</li>
-          <li>${this.state.totals.available}</li>
-          <li>${this.state.totals.current}</li>
-          <li>${this.state.totals.interestYTD}</li>
+          <li>TOTAL</li>
+          <li>{this.formatMoney(this.state.totals.available)}</li>
+          <li>{this.formatMoney(this.state.totals.current)}</li>
+          <li>{this.formatMoney(this.state.totals.interestYTD)}</li>
           <li></li>
         </ul>
       </div>

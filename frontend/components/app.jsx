@@ -1,4 +1,6 @@
 import React from 'react';
+import IdleTimer from 'react-idle-timer'
+import { logout } from '../actions/session_actions';
 import { Switch, Route } from 'react-router-dom';
 import { ProtectedRoute, AuthRoute } from '../utils/route_utils';
 import Splash from './home_guest/splash';
@@ -13,33 +15,56 @@ import PageNotFound from './page_not_found';
 import Footer from './footer';
 import LoginSidebar from './home_guest/login_sidebar';
 import SettingsSidebar from './home_user/settings_sidebar';
+import { connect } from 'react-redux';
 
+const mapDispatchToProps = dispatch => {
+  return { logout: () => dispatch(logout()) }
+}
 
 class App extends React.Component{
+  constructor(props) {
+    super(props);
+    this.idleTimer = null;
+    this.handleOnIdle = this.handleOnIdle.bind(this);
+  }
+
+  handleOnIdle(e){
+    if (window.currentUser) this.props.logout();
+  }
 
   render(){
     return(
-      <div className='app-container'>
-        <LoginSidebar/>
-        <SettingsSidebar/>
-        <div id='background-modal'></div>
-        <div>
-          <Switch>
-            <AuthRoute path='/' exact={true} component={Splash}/>
-            <AuthRoute path='/login' component={LoginPage}/>
-            <ProtectedRoute path='/dashboard' component={Dashboard}/>
-            <ProtectedRoute path='/account-detail/:accountId' component={AccountDetail}/>
-            <ProtectedRoute path='/profile' component={ProfilePage}/>
-            <ProtectedRoute path='/external-accounts' component={ManageExternalAccounts}/>
-            <ProtectedRoute path='/transfer' component={TransferPage}/>
-            <Route path='/open-account' component={OpenAccountPage}/>
-            <Route path='*' component={PageNotFound}/>
-          </Switch>
-          <Footer />
+      <div>
+        <IdleTimer
+          ref={ref => { this.idleTimer = ref }}
+          timeout={1000 * 90 }
+          onActive={this.handleOnActive}
+          onIdle={this.handleOnIdle}
+          onAction={this.handleOnAction}
+          debounce={250}
+        />
+        <div className='app-container'>
+          <LoginSidebar/>
+          <SettingsSidebar/>
+          <div id='background-modal'></div>
+          <div>
+            <Switch>
+              <AuthRoute path='/' exact={true} component={Splash}/>
+              <AuthRoute path='/login' component={LoginPage}/>
+              <ProtectedRoute path='/dashboard' component={Dashboard}/>
+              <ProtectedRoute path='/account-detail/:accountId' component={AccountDetail}/>
+              <ProtectedRoute path='/profile' component={ProfilePage}/>
+              <ProtectedRoute path='/external-accounts' component={ManageExternalAccounts}/>
+              <ProtectedRoute path='/transfer' component={TransferPage}/>
+              <Route path='/open-account' component={OpenAccountPage}/>
+              <Route path='*' component={PageNotFound}/>
+            </Switch>
+            <Footer />
+          </div>
         </div>
       </div>
     );
   }
 };
 
-export default App;
+export default connect(null, mapDispatchToProps)(App);

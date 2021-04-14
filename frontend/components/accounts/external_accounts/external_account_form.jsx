@@ -25,7 +25,6 @@ class ExternalAccountForm extends React.Component {
 
   handleSubmit(e){
     e.preventDefault();
-    this.setState({ userId: window.currentUser.id})
     this.props.createAccount(this.state);
   }
   

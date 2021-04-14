@@ -3,8 +3,8 @@
 # Table name: accounts
 #
 #  id             :bigint           not null, primary key
-#  acct_num       :integer          not null
-#  routing_num    :integer          not null
+#  acct_num       :bigint           not null
+#  routing_num    :bigint           not null
 #  acct_type      :string           not null
 #  user_id        :integer          not null
 #  external       :boolean          not null
@@ -13,6 +13,7 @@
 #  transfer_limit :integer
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
+#  nickname       :string           default("Nickname"), not null
 #
 require 'test_helper'
 

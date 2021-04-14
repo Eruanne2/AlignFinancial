@@ -14,13 +14,18 @@
     <script type="text/javascript">
       window.logoWhiteURL = "<%= image_url('logo-on-white.png') %>";
       window.logoURL = "<%= image_url('logo.png') %>";
+      window.selectChecking = "<%= image_url('interest-checking.png') %>";
+      window.selectSavings = "<%= image_url('online-savings.png') %>";
+      window.selectMM = "<%= image_url('money-market.png') %>";
     </script>
 
     <% if logged_in? %>
       <script type='text/javascript'>
         window.currentUser = <%= render('/api/users/user.json.jbuilder', user: current_user).html_safe %>
+        window.lastLogin = '<%= last_login_time %>'
       </script>
     <% end %>
+
   </head>
 
   <body>

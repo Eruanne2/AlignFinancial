@@ -6,19 +6,23 @@
 }
 
 .modal {
-  z-index: 2;
-  content: ' ';
-  display: fixed;
-  width: 100vw;
-  height: 100vh;
-  background-color: black;
-  opacity: .8;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  transition: ease-in-out .1s;
+  overflow: hidden;
+  #background-modal {
+
+    z-index: 2;
+    content: ' ';
+    display: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    opacity: .8;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    transition: ease-in-out .1s;
+  }
 }
 
 @keyframes slideInFromRight {
@@ -58,14 +62,28 @@
 
 .settings-sidebar {
   width: 480px;
+
+  div {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+
+    p {
+      display: flex;
+      align-items: center;
+      font-size: 14px;
+      margin-left: 30px;
+    }
+  }
   
   li {
     padding: 10px 40px;
     display: flex;
+    align-items: center;
   }
 
   h2 {
-    margin-left: 15px;
+    margin-left: 30px;
     padding: 10px;
     color:rgb(0, 113, 196);
     font-weight: 700;
@@ -83,7 +101,7 @@
   }
 
   .logout {
-    margin: 50px;
+    margin: 30px;
     background-color: transparent;
     border: 2px solid rgb(0, 113, 196);
     color: rgb(0, 113, 196);

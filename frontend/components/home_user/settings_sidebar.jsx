@@ -7,7 +7,10 @@ import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 const mapStateToProps = state => {
-  return { sidebar: state.ui.sidebar, nightMode: state.ui.nightMode, accessibleView: state.ui.accessibleView }
+  return { 
+    sidebar: state.ui.sidebar, 
+    nightMode: state.ui.nightMode, 
+    accessibleView: state.ui.accessibleView }
 };
 
 const mapDispatchToProps = dispatch => {
@@ -50,11 +53,22 @@ class SettingsSidebar extends React.Component{
     this.props.history.push('/');
   }
 
+  formatDate(date){
+    let dateString = date.toDateString();
+    dateString = dateString.slice(4,10) + ',' + dateString.slice(10);
+    let timeString = date.toLocaleTimeString();
+    timeString = timeString.slice(0, 4) + timeString.slice(7)
+    return (dateString + ' • ' + timeString)
+  };
+
   render(){
     if (!this.props.sidebar || !window.currentUser) return null;
     return(
       <div className='sidebar settings-sidebar'>
-        <button className='close-sidebar' onClick={this.closeSidebar.bind(this)}>{`\u00D7`}</button>
+        <div>
+          <p>Last Login: {this.formatDate(new Date(window.lastLogin))}</p>
+          <button className='close-sidebar' onClick={this.closeSidebar.bind(this)}>{`\u00D7`}</button>
+        </div>
         <button className='logout' onClick={this.handleLogout.bind(this)}>Log Out</button>
         <h2 onClick={this.showDropdown('site')}>
           { this.state.dropdown === 'site' ? <i><FontAwesomeIcon icon={faCaretDown}/></i> : <i><FontAwesomeIcon icon={faCaretRight}/></i>}
@@ -64,11 +78,11 @@ class SettingsSidebar extends React.Component{
           <ul>
             <li>
               <h3>Dark Mode</h3>
-              <input type='checkbox' onChange={this.handleChange('nightMode')}/> {/* these will become toggle switches*/}
+              <input className='toggle' type='checkbox' checked={this.props.nightMode} onChange={this.handleChange('nightMode')}/>
             </li>
             <li>
               <h3>Accessible View</h3>
-              <input type='checkbox' onChange={this.handleChange('accessibleView')}/>
+              <input type='checkbox' className='toggle' onChange={this.handleChange('accessibleView')}/>
             </li>
           </ul>
         }

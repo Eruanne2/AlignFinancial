@@ -24,6 +24,10 @@ class User < ApplicationRecord
     foreign_key: :user_id,
     class_name: 'Account'
 
+  has_many :transfers,
+    foreign_key: :user_id,
+    class_name: 'Transfer'
+
   attr_reader :password
 
   def self.find_by_credentials(username, pw)

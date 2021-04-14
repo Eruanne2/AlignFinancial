@@ -1,9 +1,13 @@
 class ApplicationController < ActionController::Base
-  helper_method :logged_in?, :current_user
+  helper_method :logged_in?, :current_user, :last_login_time
   before_action :underscore_params!
   
   def current_user
     @current_user ||= User.find_by(session_token: session[:session_token])
+  end
+
+  def last_login_time
+    session[:last_login] || DateTime.now.to_s
   end
   
   def require_logged_in
@@ -18,11 +22,13 @@ class ApplicationController < ActionController::Base
   
   def login!(user)
     session[:session_token] = user.reset_session_token!
+    session[:current_login] = DateTime.now.to_s
   end
   
   def logout
     current_user.reset_session_token!
     session[:session_token] = nil
+    session[:last_login] = session[:current_login]
     @current_user = nil
   end
   

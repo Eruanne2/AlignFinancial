@@ -21,12 +21,12 @@ class Dashboard extends React.Component{
   constructor(props){
     super(props);
     this.accounts = [];
-    this.state = { 
+    this.state = {
       'Interest Checking': 0,
-      'Savings': 0,
+      'High-Yield Savings': 0,
       'Money Markets': 0,
-      total: 0
     };
+    this.dropdown = false;
     this.updateBalance = this.updateBalance.bind(this);
   }
   
@@ -35,7 +35,7 @@ class Dashboard extends React.Component{
   };
 
   updateBalance(category){
-    return (balance) => this.setState({[category]: balance, total: this.state.total + balance});
+    return balance => this.setState({[category]: balance })
   };
 
   render(){
@@ -46,11 +46,13 @@ class Dashboard extends React.Component{
         <nav className='dash-nav'>
           <ul>
             <Link to='/transfer'>Make a Transfer</Link>
-            <a href='https://github.com/Eruanne2'>Github</a>
-            <a href='https://www.linkedin.com/in/charis-ginn-9abb93173'>LinkedIn</a>
-            <p>CV</p>
+            <a href='https://github.com/Eruanne2' target="_blank">Github</a>
+            <a href='https://www.linkedin.com/in/charis-ginn-9abb93173' target="_blank">LinkedIn</a>
+            {/* <a href='' target="_blank">CV</a> */}
+            <p>CV </p>
           </ul>
         </nav>
+
         <Snapshot 
           currentUser={this.props.currentUser} 
           accounts={this.props.accounts}
@@ -61,17 +63,17 @@ class Dashboard extends React.Component{
         <ul className='acct-indices'>
           <AccountsIndex 
             accounts={this.props.accounts}
-            filter={{external: false, acctType: 'checkings'}}
+            filter={{external: false, acctType: 'checkings', userId: window.currentUser.id}}
             updateBalance={this.updateBalance('Interest Checking')}
           />
           <AccountsIndex 
             accounts={this.props.accounts}
-            filter={{external: false, acctType: 'savings'}}
-            updateBalance={this.updateBalance('Savings')}
+            filter={{external: false, acctType: 'savings', userId: window.currentUser.id}}
+            updateBalance={this.updateBalance('High-Yield Savings')}
           />
           <AccountsIndex 
             accounts={this.props.accounts}
-            filter={{external: false, acctType: 'money market'}}
+            filter={{external: false, acctType: 'money market', userId: window.currentUser.id}}
             updateBalance={this.updateBalance('Money Markets')}
           />
         </ul>
