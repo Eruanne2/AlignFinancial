@@ -18,8 +18,8 @@
 
 ACCT_BENEFITS = { 
   'checkings'=> { interest_rate: 0.5, transfer_limit: 10000, nickname: 'Interest Checking'}, 
-  'savings'=> { interest_rate: 1.5, transfer_limit: 6, nickname: 'High-Yield Savings'},
-  'money market'=> { interest_rate: 1.2, transfer_limit: 6, nickname: 'Money Market'}
+  'savings'=> { interest_rate: 1.2, transfer_limit: 6, nickname: 'High-Yield Savings'},
+  'money market'=> { interest_rate: 1.5, transfer_limit: 6, nickname: 'Money Market'}
 };
 
 class Account < ApplicationRecord
