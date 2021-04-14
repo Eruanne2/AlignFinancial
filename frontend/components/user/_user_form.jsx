@@ -1,6 +1,7 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faExclamationCircle } from "@fortawesome/free-solid-svg-icons";
+import { faCheckCircle, faExclamationCircle } from "@fortawesome/free-solid-svg-icons";
 
 class UserForm extends React.Component{
   constructor(props){
@@ -24,9 +25,13 @@ class UserForm extends React.Component{
 
   handleSubmit(e){
     e.preventDefault();
-    this.props.processUser(this.state);
-    if (!!this.props.updateParent) {
-      this.props.updateParent(2);
+    this.props.processUser(this.state).then(this.successfulSubmit.bind(this));
+  };
+
+  successfulSubmit(){
+    if (!!this.props.updateParent) this.props.updateParent(2);
+    if (this.props.submitText === 'Update' && this.showErrors('fname').length < 1) {
+      this.setState({ updatePopup: true})
     }
   };
 
@@ -37,6 +42,12 @@ class UserForm extends React.Component{
   render(){
     return(
       <div className='user-form-container'>
+        {!!this.state.updatePopup && 
+          <div className='update-complete-popup'>
+            <i><FontAwesomeIcon icon={faCheckCircle}/></i>
+            <p>Your account has been updated successfully.</p>
+          </div>
+        }
         <form>
           <h1>Your Information</h1>
           <span className='error'>
@@ -98,4 +109,4 @@ class UserForm extends React.Component{
   }
 };
 
-export default UserForm;
+export default withRouter(UserForm);

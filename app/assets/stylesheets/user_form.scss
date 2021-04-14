@@ -21,4 +21,23 @@
     }
   }
 
+  .update-complete-popup {
+    border: 1px solid #959595;
+    box-shadow: 0 4px 0 rgba(0,0,0,.15);
+    background-color: #fff;
+    width: 100%;
+    margin: 40px auto;
+    
+    i {
+      color: #650360;
+      float: left;
+      margin: 25px;
+    }
+
+    p {
+      margin: 20px;
+      line-height: 28px;
+    }
+  }
+
 }
