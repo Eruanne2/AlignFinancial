@@ -8,8 +8,8 @@ import { formatMoney } from '../../utils/formatting_util';
 
 const mapStateToProps = state => {
   return {
-    accounts: state.entities.accounts, // do NOT change to array! used to lookup accounts by index
-    // transfers: Object.values(state.entities.transfers)
+    accounts: state.entities.accounts, // do NOT change to array! used to lookup accounts by id
+    transfers: Object.values(state.entities.transfers)
   }
 };
 
@@ -25,21 +25,13 @@ const mapDispatchToProps = dispatch => {
 class TransfersIndex extends React.Component {
   constructor(props){
     super(props);
-    this.state = { 
-      filteredTransfers: [],
-      // accounts: this.props.accounts
-      accounts: []
-    };
     this.matchesFilterProp = this.matchesFilterProp.bind(this);
   };
 
 
   componentDidMount(){
     this.props.fetchAllAccounts()
-      .then(res => this.setState({accounts: Object.values(res.accts)}))
-
     this.props.fetchAllTransfers()
-      .then(res => this.setState({filteredTransfers: Object.values(res.transfers).filter(transfer => this.matchesFilterProp(transfer)).sort((a,b) => a.createdAt < b.createdAt ? 1 : -1)}))
   }
   
 
@@ -65,12 +57,14 @@ class TransfersIndex extends React.Component {
   };
 
   render(){
-    const { accounts, filteredTransfers } = this.state;
+    const { accounts, transfers } = this.props;
+    const filteredTransfers = transfers.filter(transfer => this.matchesFilterProp(transfer)).sort((a,b) => a.createdAt < b.createdAt ? 1 : -1)
+
     if (filteredTransfers.length < 1 || accounts.length < 1) return <h1 className='no-activity-message'>There is no account activity to display.</h1>
     return(
       <div className='transfers-index-container'>
         {this.props.filter.acctId ? <h1>Transaction History</h1> : <h1>Activity</h1>}
-        {this.props.filter.acctId && <p id='transfer-note'>To view or create new transfers, go to <Link to='/transfers'>Transfers</Link>.</p>}
+        {this.props.filter.acctId && <p id='transfer-note'>To view all acitivity or create new transfers, go to <Link to='/transfers'>Transfers</Link>.</p>}
         <br/>
         <ul>
           <li>

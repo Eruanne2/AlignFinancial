@@ -9,9 +9,9 @@ import { connect } from 'react-redux';
 import TransfersIndex from '../transfers/transfers_index';
 import { formatMoney} from '../../utils/formatting_util';
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
   return { 
-    accounts: state.entities.accounts,
+    account: state.entities.accounts[ownProps.match.params.accountId],
     accountErrors: state.errors.accountErrors
   }
 }
@@ -28,6 +28,7 @@ class AccountDetail extends React.Component{
   constructor(props){
     super(props);
     this.state = { 
+      nickname: '',
       dropdown: false, 
       editNickname: false,
       infoPopup: false
@@ -37,14 +38,13 @@ class AccountDetail extends React.Component{
 
   componentDidMount(){
     this.props.fetchAccount(this.props.match.params.accountId)
-      // .then(this.setState({account: this.props.accounts[this.props.match.params.accountId]}))
-      .then(res => this.setState({ account: res.acct}))
+      .then(res => this.setState({ nickname: this.props.account.nickname }))
   }
 
   closeAccount(e){
     e.preventDefault();
     if (this.props.accountErrors.length > 1) return null;
-    this.props.deleteAccount(this.state.account.id)
+    this.props.deleteAccount(this.props.account.id)
       .then(res => this.props.history.goBack())
       .fail(res => this.openPopup())
   };
@@ -61,20 +61,22 @@ class AccountDetail extends React.Component{
   }
 
   updateNickname(e){
-    let account = this.state.account;
-    account.nickname = e.currentTarget.value;
-    this.setState({ account });
+    this.setState({ nickname: e.currentTarget.value });
   };
 
   submitNickname(e){
     e.preventDefault();
     this.toggleOption('editNickname')(new Event('click'));
-    this.props.updateAccount(this.state.account);
+    let nickname = this.state.nickname;
+    console.log(nickname);
+    this.props.updateAccount({ id: this.props.account.id, nickname });
   };
 
   render(){
-    const { account } = this.state;
-    if (!account) return null;
+    console.log(this.props.account);
+    if (!this.props.account) return null;
+    const { account } = this.props;
+    
     return(
       <div className='account-detail-container'>
         <Navbar/>
@@ -98,7 +100,7 @@ class AccountDetail extends React.Component{
               }
               {this.state.editNickname &&
                 <form className='edit-nickname'>
-                  <input type='text' value={account.nickname} onChange={this.updateNickname.bind(this)}/>
+                  <input type='text' value={this.state.nickname} onChange={this.updateNickname.bind(this)}/>
                   <br/>
                   <button id='save-nickname-btn' onClick={this.submitNickname.bind(this)}>Save</button>
                   <button id='cancel-nickname-btn'onClick={this.toggleOption('editNickname')}>Cancel</button>
@@ -160,7 +162,7 @@ class AccountDetail extends React.Component{
             <p><em>{this.props.accountErrors}</em> Please transfer assets to another account, then try again.</p>
           </div>
         }
-        <TransfersIndex filter={{ userId: window.currentUser.id, acctId: this.state.account.id}}/> 
+        <TransfersIndex filter={{ userId: window.currentUser.id, acctId: account.id}}/> 
       </div>
     )
   }
