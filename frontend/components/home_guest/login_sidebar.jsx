@@ -24,7 +24,7 @@ class LoginSidebar extends React.Component{
     return(
     <div className='sidebar'>
       <button className='close-sidebar' onClick={this.closeSidebar.bind(this)}>{`\u00D7`}</button>
-      <LoginForm/>
+      <LoginForm sidebar={true}/>
     </div>
     )
   };

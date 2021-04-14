@@ -53,3 +53,55 @@
   }
   
 }
+
+.sidebar-login-form-container {
+  margin: 25px 0 0 52px;
+  font-size: 15px;
+
+  h1 {
+    margin-bottom: 19px;
+    color: #650360;
+    
+    i {
+      padding-right: 3px;
+    }
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+
+    .login-inputs {
+      div {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+
+        label {
+          padding: 0 0 5px 0;
+          font-weight: 13px;
+        }
+
+        input {
+          width: 275px;
+        }
+      }
+
+      div:first-child input {
+        margin-bottom: 15px;
+      }
+
+    }
+    
+    .login-btns {
+      display: flex;
+      align-items: center;
+      margin: 10px 0 20px 0;
+      * {
+        padding: 8.5px 21px;
+      }
+    }
+
+  }
+  
+}

@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { login } from '../../actions/session_actions';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faExclamationCircle } from "@fortawesome/free-solid-svg-icons";
+import { faExclamationCircle, faLock } from "@fortawesome/free-solid-svg-icons";
 
 const mapStateToProps = state => {
   return { errors: state.errors.sessionErrors }
@@ -40,7 +40,44 @@ class LoginForm extends React.Component{
   };
 
   render(){
-    return(
+    if (this.props.sidebar) return (
+      <div className='sidebar-login-form-container'>
+
+      <div className='demo-login'>
+        <h1><i><FontAwesomeIcon icon={faLock}/></i>Login</h1>
+      </div>
+
+      <form onSubmit={this.userLogin.bind(this)}>
+        <span className='error'>
+          {this.props.errors.length > 0 ? <i><FontAwesomeIcon icon={faExclamationCircle}/></i> : null }
+          {this.props.errors}
+        </span>
+        <section className='login-inputs'>
+          <div>
+            <label htmlFor='login-username'>Username</label>
+            <input id='login-username' type='text' value={this.state.username} onChange={this.handleChange('username')}/>
+          </div>
+          <div>
+            <label htmlFor='login-password'>Password</label>
+            <input id='login-password' type='password' value={this.state.password} onChange={this.handleChange('password')}/>
+          </div>
+        </section>
+        <section>
+          <div className='login-btns'>
+            <input type='submit' value='Log In'/>
+            <p>or</p>
+            <button onClick={this.demoLogin.bind(this)}>Demo Log In</button>
+            {/* <label>
+              <input type='checkbox'/>Save Username
+            </label> */}
+          </div>
+          <p>Forgot <span className='blue'>username</span> or <span className='blue'>password</span>?</p> {/* have a popup that says 'too bad, remember better'*/}
+        </section>
+      </form>
+
+    </div>
+    )
+    else return(
       <div className='login-form-container'>
 
         <div className='demo-login'>
@@ -67,9 +104,9 @@ class LoginForm extends React.Component{
           <section className='submit-btns'>
             <div className='user-login'>
               <input type='submit' value='Log In'/>
-              <label>
-                <input type='checkbox'/>Save Username {/* Doesn't work */}
-              </label>
+              {/* <label>
+                <input type='checkbox'/>Save Username
+              </label> */}
             </div>
             <p>Forgot <span className='blue'>username</span> or <span className='blue'>password</span>?</p> {/* have a popup that says 'too bad, remember better'*/}
           </section>
