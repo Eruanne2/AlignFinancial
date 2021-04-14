@@ -9,7 +9,7 @@ import { fetchAllTransfers } from '../../actions/transfer_actions';
 
 const mapStateToProps = state => {
   return {
-    accounts: Object.values(state.entities.accounts),
+    accounts: state.entities.accounts, // do NOT change this to an array. it will be used for lookup by id
     transfers: Object.values(state.entities.transfers)
   }
 };

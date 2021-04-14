@@ -25,7 +25,7 @@ class Api::TransfersController < ApplicationController
     if !@from_acct
       render json: ["Invalid 'from' account."], status: 422
       return
-    elsif @from_acct.balance < @transfer.amount
+    elsif @from_acct.balance && @from_acct.balance < @transfer.amount
       render json: ["'From' account does not have the available funds to make this transfer."], status: 401
       return
     end
@@ -36,8 +36,8 @@ class Api::TransfersController < ApplicationController
     end
     
     if @transfer.save
-      if @from_acct.update_attributes({ balance: @from_acct.balance - @transfer.amount})
-        if @to_acct.update_attributes({ balance: @to_acct.balance + @transfer.amount})
+      if @from_acct.external || @from_acct.update_attributes({ balance: @from_acct.balance - @transfer.amount})
+        if @from_acct.external || @to_acct.update_attributes({ balance: @to_acct.balance + @transfer.amount})
           render json: { message: 'Successful transfer'}
         else
           raise ActiveRecord::Rollback  # roll back @from_acct balance update

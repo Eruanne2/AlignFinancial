@@ -78,7 +78,7 @@ class NewTransferForm extends React.Component {
           <label htmlFor='select-from-acct'>FROM ACCOUNT</label>
           <select id='select-from-acct' onChange={this.updateField('fromAcctId')}>
             <option key={2000} value={0} >Select an Account</option>
-            {this.props.accounts.map((acct, idx) => {
+            {Object.values(this.props.accounts).map((acct, idx) => {
               if (acct.userId === window.currentUser.id) {
                 return <option key={idx} value={acct.id} >{acct.nickname}••••{acct.acctNum % 10000}{acct.external ? '' : '  ' + formatMoney(acct.balance)}</option>
               }
@@ -90,7 +90,7 @@ class NewTransferForm extends React.Component {
           <label htmlFor='select-to-acct'>TO ACCOUNT</label>
           <select id='select-to-acct' onChange={this.updateField('toAcctId')} >
             <option key={2000} value={0} >Select an Account</option>
-            {this.props.accounts.map((acct, idx) => {
+            {Object.values(this.props.accounts).map((acct, idx) => {
               if (acct.userId === window.currentUser.id && acct.id != this.state.fromAcctId) {
                 return <option key={idx} value={acct.id}>{acct.nickname}••••{acct.acctNum % 10000}{acct.external ? '' : '  ' + formatMoney(acct.balance)}</option>
               }
@@ -119,6 +119,7 @@ class NewTransferForm extends React.Component {
     else {
       let fromAcct = this.props.accounts[this.state.fromAcctId]
       let toAcct = this.props.accounts[this.state.toAcctId]
+      // debugger
       return (
         <div className='transfer-review-container'>
           <h1>Transfers</h1>
