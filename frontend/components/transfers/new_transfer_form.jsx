@@ -15,7 +15,7 @@ class NewTransferForm extends React.Component {
     this.state = {
       fromAcctId: 0,
       toAcctId: 0,
-      amount: 0,
+      amount: '',
       memo: '',
       ready: false,
       externalAcctPopup: false
@@ -29,6 +29,27 @@ class NewTransferForm extends React.Component {
     return e => this.setState({ [field]: e.currentTarget.value })
   }
 
+  toggleReady(e){
+    e.preventDefault();
+    this.setState({ ready: !this.state.ready})
+  }
+  
+  redirect(e){
+    e.preventDefault();
+    this.props.history.push('/dashboard')
+  }
+  
+  handleSubmit(e){
+    e.preventDefault();
+    this.props.createTransfer(this.state);
+    this.props.history.push('/dashboard');
+  }
+  
+  checkAccountsFilled(){
+    if (this.state.fromAcctId && this.state.toAcctId) return true;
+    else return false;
+  }
+  
   formatMoney(amount){
     var formatter = new Intl.NumberFormat('en-US', {
       style: 'currency',
@@ -37,25 +58,10 @@ class NewTransferForm extends React.Component {
     return formatter.format(amount);
   }
 
-  toggleReady(e){
-    e.preventDefault();
-    this.setState({ ready: !this.state.ready})
-  }
-
-  redirect(e){
-    e.preventDefault();
-    this.props.history.push('/dashboard')
-  }
-
-  handleSubmit(e){
-    e.preventDefault();
-    this.props.createTransfer(this.state);
-  }
-
-  checkAccountsFilled(){
-    if (this.state.fromAcctId && this.state.toAcctId) return true;
-    else return false;
-  }
+  formatDate(date){
+    date = date.toDateString();
+    return (date.slice(4,10) + ',' + date.slice(10)).toUpperCase();
+  };
 
   render(){
     if (!this.props.accounts) return null;
@@ -69,7 +75,7 @@ class NewTransferForm extends React.Component {
         }
 
         <h1>Transfers</h1>
-        
+
         <ul>
           <label htmlFor='select-from-acct'>FROM ACCOUNT</label>
           <select id='select-from-acct' onChange={this.updateField('fromAcctId')}>
@@ -101,7 +107,7 @@ class NewTransferForm extends React.Component {
         {this.checkAccountsFilled() &&
           <div className='transfer-form-inputs'>
             <label htmlFor='amount-input'>Amount</label>
-            <input id='amount-input' type='text' value={this.formatMoney(this.state.amount)} onChange={this.updateField('amount')}/>
+            <input id='amount-input' type='text' value={this.state.amount} onChange={this.updateField('amount')}/>
             <label htmlFor='memo-input'>Memo (optional)</label>
             <input id='memo-input' type='text' value={this.state.memo} onChange={this.updateField('memo')}/>
             <div className='transfer-submits'>
@@ -112,36 +118,50 @@ class NewTransferForm extends React.Component {
         }
       </div>
     )
-    else return (
-      <div>
-        <h1>Transfers</h1>
-        <h2>Review and Submit</h2>
-        <section>
-          <h3>FROM ACCOUNT</h3>
-          <div>
-            <p>{this.state.fromAcctId}</p>
-            <p>account balance</p>
-          </div>
-          <h3>TO ACCOUNT</h3>
-          <div>
-            <p>{this.state.toAcctId}</p>
-            <p>account balance</p>
-          </div>
-        </section>
-        <section>
-          <h4>Amount</h4>
-          <p>{this.state.amount}</p>
-          <h4>Memo</h4>
-          <p>{this.state.memo}</p>
-        </section>
-        <section>
-          <p>By choosing <span>Submit This Transfer</span>, you authorize this transfer. Once we start the transfer, you can't cancel it.</p>
-          <button onClick={this.handleSubmit}>Submit This Transfer</button>
-          <button onClick={this.toggleReady}>Edit</button>
-          <button onClick={this.redirect}>Cancel</button>
-        </section>
-      </div>
-    )
+    else {
+      let fromAcct = this.props.accounts[this.state.fromAcctId]
+      let toAcct = this.props.accounts[this.state.toAcctId]
+      return (
+        <div className='transfer-review-container'>
+          <h1>Transfers</h1>
+          <h2>Review and Submit</h2>
+          <section className='acct-review'>
+            <section>
+              <h3>FROM ACCOUNT</h3>
+              <div>
+                <p>{fromAcct.nickname}••••{fromAcct.acctNum % 10000}{fromAcct.external ? '' : '  ' + this.formatMoney(fromAcct.balance)}</p>
+                <p>{fromAcct.external ? 'External Account' : '  ' + this.formatMoney(fromAcct.balance)}</p>
+              </div>
+            </section>
+            <section>
+              <h3>TO ACCOUNT</h3>
+              <div>
+                <p>{toAcct.nickname}••••{toAcct.acctNum % 10000}{toAcct.external ? '' : '  ' + this.formatMoney(toAcct.balance)}</p>
+                <p>{toAcct.external ? 'External Account' : '  ' + this.formatMoney(toAcct.balance)}</p>
+              </div>
+            </section>
+          </section>
+          <section className='review-transfer-details'>
+            <ul>
+              <h4>Amount:</h4>
+              <h4>Memo:</h4>
+              <h4>Date Requested:</h4>
+            </ul>
+            <ul>
+              <p>{this.state.amount}</p>
+              <p id='memo-text'>"{this.state.memo}"</p>
+              <p>{this.formatDate(new Date())}</p>
+            </ul>
+          </section>
+          <section className='review-submit'>
+            <p>By choosing <span>Submit This Transfer</span>, you authorize this transfer. Once we start the transfer, you can't cancel it.</p>
+            <button onClick={this.handleSubmit}>Submit This Transfer</button>
+            <button onClick={this.toggleReady}>Edit</button>
+            <button onClick={this.redirect}>Cancel</button>
+          </section>
+        </div>
+      )
+    }
   }
 };
 
