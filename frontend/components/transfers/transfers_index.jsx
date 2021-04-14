@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 const mapStateToProps = state => {
@@ -9,7 +10,7 @@ class TransfersIndex extends React.Component {
   constructor(props){
     super(props);
     this.state = { 
-      filteredTransfers: this.props.transfers.filter(transfer => this.matchesFilterProp(transfer)),
+      filteredTransfers: this.props.transfers.filter(transfer => this.matchesFilterProp(transfer)).sort((a,b) => a.createdAt < b.createdAt ? 1 : -1),
       accounts: this.props.accounts
     };
     this.matchesFilterProp = this.matchesFilterProp.bind(this);
@@ -42,6 +43,8 @@ class TransfersIndex extends React.Component {
     return(
       <div className='transfers-index-container'>
         {this.props.filter.acctId ? <h1>Transaction History</h1> : <h1>Activity</h1>}
+        {this.props.filter.acctId && <p id='transfer-note'>To view or create new transfers, go to <Link to='/transfers'>Transfers</Link>.</p>}
+        <br/>
         <ul>
           <li>
             <p>DATE REQUESTED</p>

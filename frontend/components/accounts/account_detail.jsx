@@ -91,7 +91,7 @@ class AccountDetail extends React.Component{
         <Navbar/>
         <nav className='dash-nav'>
           <ul>
-            <Link to='/transfer'>Make a Transfer</Link>
+            <Link to='/transfer'>Transfers</Link>
             <a href='https://github.com/Eruanne2' target="_blank">Github</a>
             <a href='https://www.linkedin.com/in/charis-ginn-9abb93173' target="_blank">LinkedIn</a>
             {/* <a href='' target="_blank">CV</a> */}
