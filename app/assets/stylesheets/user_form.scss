@@ -14,15 +14,24 @@
     ul {
       display: flex;
       flex-direction: column;
+
+      li {
+        height: 50px;
+      }
     }
 
-    .labels {
-      flex: 1;
-      text-align: right;
+    .labels-list {
+      width: 200px;
+      justify-content: flex-end;
+      li {
+        width: 300px;
+      }
     }
 
-    .inputs {
-      flex: 2;
+    .inputs-list {
+      li {
+        width: 700px;
+      }
     }
   }
 
