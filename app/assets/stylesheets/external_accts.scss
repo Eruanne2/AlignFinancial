@@ -1,4 +1,29 @@
-.external-accts-content {
-  margin-left: 13.5%;
-  margin-right: 11.5%;
+.external-acct-form {
+  margin: 20px 7%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  h1 {
+    color: #2A2A2A;
+    font-weight: 400;
+    margin: 0;
+  }
+
+  p {
+    margin: 10px 0;
+  }
+
+  * {
+    margin: 10px 0;
+  }
+
+  label {
+    font-size: 12px;
+    font-weight: 900;
+  }
+
+  div > * {
+    display: block;
+  }
 }

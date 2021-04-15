@@ -1,4 +1,6 @@
 .external-accts-container {
+  
+
   .user-nav {
     box-shadow: 0 0 0 0;
   }
@@ -7,17 +9,17 @@
   }
 
   .external-accts-content {
-    margin: 0 13.5% 0 11.5%;
+    margin: 0 11.5% 0 13.5%;
 
     h1 {
       font-size: 26px;
       font-weight: 700;
       color: #650360;
-      margin-top: 50px;
+      margin-top: 25px;
     }
 
     .external-accts-header, .table {
-      margin-left: 50px;
+      margin-left: 7%;
       width: 700px;
     }
 
@@ -102,7 +104,7 @@
 
         li {
           display: flex;
-          padding: 7px 20px;
+          margin: 10px 20px;
         }
 
         h3 {
