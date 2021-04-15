@@ -33,7 +33,7 @@ class SelectAccount extends React.Component{
     }
     this.props.createAccount(this.state)
     if (!!this.props.updateParent) {
-      this.props.updateParent(3);
+      this.props.updateParent(3, this.state.id);
     }
   };
 

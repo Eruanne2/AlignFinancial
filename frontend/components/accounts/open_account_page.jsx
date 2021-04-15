@@ -25,18 +25,19 @@ const mapDispatchToProps = dispatch => {
 class OpenAccountPage extends React.Component {
   constructor(props){
     super(props);
-    this.state = { step: 1 };
+    this.state = { step: 1, newAcctId: 0 };
   }
 
   componentDidMount(){
-    this.props.fetchAllAccounts;
+    this.props.fetchAllAccounts();
   }
 
   selectExistingCustomer(e){
     this.setState({ existingCustomer: e.currentTarget.value })
   };
 
-  moveToNextStep(step){
+  moveToNextStep(step, newAcctId){
+    if (!!newAcctId) this.setState({ newAcctId});
     switch(step){
       case 2:
         document.getElementById('step-1').classList.remove('selected');
@@ -117,7 +118,7 @@ class OpenAccountPage extends React.Component {
 
           {/* Step 3: 'Fund Account' -> creates a new transfer */}
           <section id='fund-account-section'>
-            { this.state.step === 3 && <NewTransferForm accounts={this.props.accounts}/>}
+            { this.state.step === 3 && <NewTransferForm accounts={this.props.accounts} defaultToAcct={this.state.newAcctId}/>}
           </section>
 
         </ul>

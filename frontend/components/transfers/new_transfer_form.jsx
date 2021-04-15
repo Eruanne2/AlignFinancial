@@ -19,6 +19,7 @@ class NewTransferForm extends React.Component {
     super(props);
     this.state = {
       fromAcctId: 0,
+      // toAcctId: this.props.defaultToAcct || 0,
       toAcctId: 0,
       amount: '',
       memo: '',
@@ -76,7 +77,7 @@ class NewTransferForm extends React.Component {
 
         <ul>
           <label htmlFor='select-from-acct'>FROM ACCOUNT</label>
-          <select id='select-from-acct' defaultValue={this.state.fromAcctId} onChange={this.updateField('fromAcctId')}>
+          <select id='select-from-acct' value={this.state.fromAcctId} onChange={this.updateField('fromAcctId')}>
             <option key={2000} value={0} >Select an Account</option>
             {Object.values(this.props.accounts).map((acct, idx) => {
               if (acct.userId === window.currentUser.id) {
@@ -88,7 +89,7 @@ class NewTransferForm extends React.Component {
         
         <ul>
           <label htmlFor='select-to-acct'>TO ACCOUNT</label>
-          <select id='select-to-acct' defaultValue={this.state.toAcctId} onChange={this.updateField('toAcctId')} >
+          <select id='select-to-acct' value={this.state.toAcctId} onChange={this.updateField('toAcctId')} >
             <option key={2000} value={0} >Select an Account</option>
             {Object.values(this.props.accounts).map((acct, idx) => {
               if (acct.userId === window.currentUser.id && acct.id != this.state.fromAcctId) {
