@@ -51,7 +51,7 @@ class ManageExternalAccounts extends React.Component{
           {this.state.showForm && <ExternalAccountForm/>}
 
           <div className='table'>
-            <ul>
+            <ul className='row'>
               <li>ACCOUNT</li>
               <li>TYPE</li>
               <li></li>
@@ -64,10 +64,14 @@ class ManageExternalAccounts extends React.Component{
                   <li>{acct.acctType}</li>
                   <li><button>+</button></li>
                 </ul>
-                {this.state.dropdown === acct.id && 
-                  <div className='row-dropdown'>
-
-                  </div>
+                {/* {this.state.dropdown === acct.id &&  */}
+                { true && 
+                  <ul className='row-dropdown'>
+                    <li><h3>More Info</h3></li>
+                    <li><h3>Account Number: </h3> <p>{acct.acctNum}</p></li>
+                    <li><h3>Routing Number: </h3> <p>{acct.routingNum}</p></li>
+                    <li><button>Delete Account</button></li>
+                  </ul>
                 }
               </section>
             })}
