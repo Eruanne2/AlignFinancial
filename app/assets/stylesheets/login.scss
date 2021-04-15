@@ -9,23 +9,31 @@
     display: inline-block;
   }
 
+  .error {
+    margin-top: 5px;
+  }
+
   form {
     display: flex;
     flex-direction: column;
 
     .login-inputs {
       display: flex;
-      margin-bottom: 12px;
 
       div {
         display: flex;
         flex-direction: column;
-        justify-content: space-around;
+        justify-content: flex-end;
+        height: 105px;
       }
 
       .labels {
         width: 115px;
         font-size: 14px;
+
+        label {
+          padding: 22px 0;
+        }
       }
 
       input {
@@ -33,22 +41,24 @@
       }
     }
 
-    .submit-btns > *{
-      margin: 21px 115px;
-    }
-    
-    .user-login > * {
-      margin-right: 30px;
-    }
+    .submit-btns {
+      margin: 0 115px;
+      
+      div {
+        display: flex;
+        align-items: center;
+        margin: 10px 0;
 
-  }
-
-  .demo-login {
-    display: flex;
-    align-items: center;
-    
-    * {
-      margin-right: 21px;
+        * {
+          padding: 9px 24px;
+          margin-right: 5px;
+        }
+      }
+      
+       p {
+         font-size: 14px;
+         padding-top: 5px;
+       }
     }
   }
   

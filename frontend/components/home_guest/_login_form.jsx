@@ -41,9 +41,7 @@ class LoginForm extends React.Component{
     if (this.props.sidebar) return (
       <div className='sidebar-login-form-container'>
 
-      <div className='demo-login'>
-        <h1><i><FontAwesomeIcon icon={faLock}/></i>Login</h1>
-      </div>
+      <h1><i><FontAwesomeIcon icon={faLock}/></i>Login</h1>
 
       <form onSubmit={this.userLogin.bind(this)}>
         <span className='error'>
@@ -78,17 +76,13 @@ class LoginForm extends React.Component{
     else return(
       <div className='login-form-container'>
 
-        <div className='demo-login'>
           <h1>Login</h1>
-          <p>or</p>
-          <button onClick={this.demoLogin.bind(this)}>Demo Log In</button>
-        </div>
-
-        <form onSubmit={this.userLogin.bind(this)}>
           <span className='error'>
             {this.props.errors.length > 0 ? <i><FontAwesomeIcon icon={faExclamationCircle}/></i> : null }
             {this.props.errors}
           </span>
+
+        <form onSubmit={this.userLogin.bind(this)}>
           <section className='login-inputs'>
             <div className='labels'>
               <label htmlFor='login-username'>Username</label>
@@ -100,8 +94,10 @@ class LoginForm extends React.Component{
             </div>
           </section>
           <section className='submit-btns'>
-            <div className='user-login'>
+            <div>
               <input type='submit' value='Log In'/>
+              <p>or</p>
+              <button onClick={this.demoLogin.bind(this)}>Demo Log In</button>
               {/* <label>
                 <input type='checkbox'/>Save Username
               </label> */}

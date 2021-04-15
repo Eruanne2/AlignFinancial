@@ -91,7 +91,7 @@ class UserForm extends React.Component{
             <li><label htmlFor='user-username-input'>Username</label></li>
             <li><label htmlFor='user-password-input'>Password</label></li>
           </ul>
-          <ul className='labels-list'>
+          <ul className='inputs-list'>
             <li>
               {this.showErrors('username')}
               <input id='user-username-input' type='text' value={this.state.username} onChange={this.handleChange('username')} />
