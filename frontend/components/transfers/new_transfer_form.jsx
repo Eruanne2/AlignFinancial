@@ -19,8 +19,7 @@ class NewTransferForm extends React.Component {
     super(props);
     this.state = {
       fromAcctId: 0,
-      // toAcctId: this.props.defaultToAcct || 0,
-      toAcctId: 0,
+      toAcctId: this.props.defaultToAcct || 0,
       amount: '',
       memo: '',
       ready: false,
@@ -64,6 +63,8 @@ class NewTransferForm extends React.Component {
 
   render(){
     if (!this.props.accounts) return null;
+    console.log('this.props.defaultToAcct', this.props.defaultToAcct);
+    console.log('this.state.toAcctId', this.state.toAcctId);
     if (!this.state.ready) return(
       <div className='transfer-form-container'>
         {this.state.externalAcctPopup &&

@@ -32,9 +32,11 @@ class SelectAccount extends React.Component{
       return;
     }
     this.props.createAccount(this.state)
-    if (!!this.props.updateParent) {
-      this.props.updateParent(3, this.state.id);
-    }
+      .then(res => {
+        if (!!this.props.updateParent) {
+          this.props.updateParent(3, res.acct.id);
+        }
+      })
   };
 
   formatDate(date){

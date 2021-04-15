@@ -32,7 +32,6 @@ class Dashboard extends React.Component{
   }
   
   componentDidMount(){
-    setTimeout(()=>console.log('done'), 3000)
     this.accounts = this.props.fetchAllAccounts();
   };
 
