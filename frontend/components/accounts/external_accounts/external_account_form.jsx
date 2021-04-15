@@ -2,10 +2,6 @@ import React from 'react';
 import { createAccount } from '../../../actions/account_actions';
 import { connect } from 'react-redux';
 
-const mapStateToProps = state => {
-  return { account: { acctType: 'checkings', userId: state.session.id, external: true, acctNum: '', routingNum: '' } }
-};
-
 const mapDispatchToProps = dispatch => {
   return { createAccount: acctData => dispatch(createAccount(acctData)) }
 };
@@ -15,8 +11,16 @@ const mapDispatchToProps = dispatch => {
 class ExternalAccountForm extends React.Component {
   constructor(props){
     super(props);
-    this.state = this.props.account;
-    this.numsMatch = true;
+    // this.state = this.props.account;
+    this.state = {
+      acctType: 'checkings', 
+      nickname: '',
+      userId: window.currentUser, 
+      external: true, 
+      routingNum: '',
+      acctNum: '', 
+      checkAcctNum: ''
+    }
   }
 
   updateField(field){
@@ -26,10 +30,6 @@ class ExternalAccountForm extends React.Component {
   handleSubmit(e){
     e.preventDefault();
     this.props.createAccount(this.state);
-  }
-  
-  checkNumsMatch(e){
-    this.numsMatch = (e.currentTarget.value === this.state.acctNum);
   }
 
   render(){
@@ -54,9 +54,8 @@ class ExternalAccountForm extends React.Component {
         <img src={window.exampleAccount} alt="an illustration of the bottom of a check with the account number on the left and the routing number on the right" width='600'/>
           
         <div>
-          <label htmlFor='ruoting-again'>ROUTING NUMBER</label>
-          <input id='ruoting-again' type='text' value={this.state.routingNum} onChange={this.updateField('routingNum')}/>
-          {this.numsMatch ? '' : <p className='error'>'Account numbers must match.'</p>}
+          <label htmlFor='routing-num'>ROUTING NUMBER</label>
+          <input id='routing-num' type='text' value={this.state.routingNum} onChange={this.updateField('routingNum')}/>
         </div>
 
         <div>
@@ -66,7 +65,8 @@ class ExternalAccountForm extends React.Component {
           
         <div>
           <label htmlFor='acct-num-again'>RE-ENTER ACCOUNT NUMBER (dead rn)</label>
-          <input id='acct-num-again' type='text' id='verify-acct-num' onChange={this.checkNumsMatch.bind(this)}/>
+          <input id='acct-num-again' type='text' id='verify-acct-num' onChange={this.updateField('checkAcctNum')}/>
+          {this.state.acctNum !== this.state.checkAcctNum && <p className='error'>Account numbers must match.</p>}
         </div>
           
         <button onClick={this.handleSubmit.bind(this)}>Next</button>
@@ -75,4 +75,4 @@ class ExternalAccountForm extends React.Component {
   }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ExternalAccountForm);
+export default connect(null, mapDispatchToProps)(ExternalAccountForm);

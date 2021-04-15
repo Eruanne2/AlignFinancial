@@ -1,5 +1,5 @@
 import React from 'react';
-import { fetchAllAccounts } from '../../../actions/account_actions';
+import { fetchAllAccounts, removeAccount } from '../../../actions/account_actions';
 import Navbar from '../../home_user/navbar';
 import { Link } from 'react-router-dom';
 import ExternalAccountForm from './external_account_form';
@@ -9,7 +9,10 @@ const mapStateToProps = state => {
   return { accounts: Object.values(state.entities.accounts) }
 }
 const mapDispatchToProps = dispatch => {
-  return { fetchAllAccounts: () => dispatch(fetchAllAccounts()) }
+  return { 
+    fetchAllAccounts: () => dispatch(fetchAllAccounts()),
+    removeAccount: acctId => dispatch(removeAccount(acctId)) 
+  }
 };
 
 class ManageExternalAccounts extends React.Component{
@@ -33,6 +36,10 @@ class ManageExternalAccounts extends React.Component{
     }
   };
 
+  handleRemoveAcct(acctId){
+    return e => this.props.removeAccount(acctId);
+  }
+
   render(){
     if (!this.props.accounts) return null;
     return(
@@ -45,7 +52,6 @@ class ManageExternalAccounts extends React.Component{
             <a href='https://www.linkedin.com/in/charis-ginn-9abb93173' target="_blank">LinkedIn</a>
             <p>CV</p>
             {/* <a href='' target="_blank">CV</a> */}
-            <p>CV </p>
           </ul>
         </nav>
 
@@ -77,7 +83,7 @@ class ManageExternalAccounts extends React.Component{
                     <li><h3>More Info</h3></li>
                     <li><h3>Account Number: </h3> <p>{acct.acctNum}</p></li>
                     <li><h3>Routing Number: </h3> <p>{acct.routingNum}</p></li>
-                    <li><button>Delete Account</button></li>
+                    <li><button onClick={this.handleRemoveAcct(acct.id)}>Delete Account</button></li>
                   </ul>
                 }
               </section>
