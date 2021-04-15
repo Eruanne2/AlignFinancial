@@ -1,5 +1,6 @@
 import React from 'react';
 import { fetchAllAccounts } from '../../actions/account_actions';
+import Loading from '../loading';
 import Navbar from './navbar';
 import { Link } from 'react-router-dom';
 import Snapshot from './snapshot';
@@ -31,6 +32,7 @@ class Dashboard extends React.Component{
   }
   
   componentDidMount(){
+    setTimeout(()=>console.log('done'), 3000)
     this.accounts = this.props.fetchAllAccounts();
   };
 

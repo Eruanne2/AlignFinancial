@@ -37,7 +37,6 @@ body {
   }
 }
 
-
 .circle-icon {
   display: flex;
   justify-content: center;
@@ -51,6 +50,30 @@ body {
   margin: 1px;
   margin-right: 10px;
 }
+
+
+// save for potential use
+
+// .loading {
+//   div {
+//     height: 250px;
+//     background-color: #f6f6f6;
+//     * {
+//       background-color: #eaeaea;
+//       width: 800px;
+//       margin: 10px;
+//     }
+//     h1 {
+//       background-color: #fbfbfb;
+//       height: 7px;
+//       width: 100%;
+//       margin: 0;
+//     }
+//     p {
+//       width: 650px;
+//     }
+//   }
+// }
 
 
 button, input[type='submit'] {
@@ -69,6 +92,8 @@ button:hover, input[type='submit']:hover {
 };
 
 textarea, input[type='text'], input[type='password'] {
+  font-size: inherit;
+  font-family: inherit;
   border: 1px solid #959595;
   padding: 8px;
   width: 310px;

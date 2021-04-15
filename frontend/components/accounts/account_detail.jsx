@@ -142,7 +142,7 @@ class AccountDetail extends React.Component{
               </li>
               <li>
                 <h3>Transfer Limit:</h3>
-                <p>{account.transferLimit}</p>
+                <p>{(account.transferLimit === 10000) ? 'unlimited' : account.transferLimit}</p>
               </li>
               <li>
                 <h3>APY:</h3>

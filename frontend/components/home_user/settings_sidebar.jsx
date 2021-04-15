@@ -81,7 +81,7 @@ class SettingsSidebar extends React.Component{
               <input className='toggle' type='checkbox' checked={this.props.nightMode} onChange={this.handleChange('nightMode')}/>
             </li>
             <li>
-              <h3>Accessible View</h3>
+              <h3>Accessible View</h3> {/* not yet implemented */}
               <input type='checkbox' className='toggle' onChange={this.handleChange('accessibleView')}/>
             </li>
           </ul>
@@ -105,6 +105,12 @@ class SettingsSidebar extends React.Component{
           <ul>
             <li onClick={this.closeSidebar.bind(this)}>
               <Link to ='/external-accounts'>Manage External Accounts</Link>
+            </li>
+            <li onClick={this.closeSidebar.bind(this)}>
+              <Link to='/transfer'>Transfers</Link>
+            </li>
+            <li onClick={this.closeSidebar.bind(this)}>
+              <Link to='/open-account'>Open an Account</Link>
             </li>
           </ul>
         }
