@@ -86,7 +86,7 @@ class OpenAccountPage extends React.Component {
               </div>
               {window.currentUser && 
               <div>
-                <p>For your security, we ask that you confirm your credentials before moving to the next step.</p>
+                <p className='credentials-note'>For your security, we ask that you confirm your credentials before moving to the next step.</p>
                 <LoginForm updateParent={this.moveToNextStep.bind(this)}/>
               </div>
               }

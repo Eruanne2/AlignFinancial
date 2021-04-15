@@ -27,7 +27,12 @@
       align-items: center;
       margin: 0 8%;
       padding-bottom: 5px;
-      
+      font-weight: 700;
+      color: #959595
+    }
+
+    .circle-icon {
+      border-color: #959595;
     }
 
     .selected {
@@ -70,6 +75,10 @@
         font-weight: 900;
       }
     }
+  }
+
+  .credentials-note {
+    margin-left: 13.5%;
   }
 
   .existing-customer {
@@ -128,14 +137,38 @@
 
 .select-accts-container {
   margin: 0 11.5% 0 13.5%;
+   
+  > * {
+    margin: 30px 0;
+  }
+  
+  h1 {
+    font-size: 30px;
+    font-weight: bold;
+  }
+
+  > div {
+    display: flex;
+    align-items: flex-start;
+    
+    h2 {
+      width: 200px;
+      text-align: right;
+      font-weight: 700;
+      padding-right: 10px;
+    }
+  }
 
   .account-selections {
+    display: inline-block;
+    width: 510px;
+
     button {
       padding: 3px;
       background: #F8F8F8;
       border: 2px solid #DDD;
       border-radius: 5px;
-      margin: 10px 5px;
+      margin: 10px 5px 30px 5px;
     }
     
     button:focus {
@@ -144,10 +177,35 @@
   }
 
   .display-acct-benefits {
-    width: 350px;
+    width: 100%;
+    font-size: 14px;
+    line-height: 1.8;
 
     ul {
       list-style: disc;
+      margin: 15px;
+    }
+  }
+
+  .acct-options {
+    
+    div {
+      display: flex;
+      flex-direction: column;
+      
+      section {
+        display: flex;
+        align-items: center;
+      }
+    }
+
+    input[type='checkbox'] {
+      height: 23px;
+      width: 23px;
+    }
+
+    label {
+      padding: 10px;
     }
   }
   
