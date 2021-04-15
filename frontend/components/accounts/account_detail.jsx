@@ -68,12 +68,10 @@ class AccountDetail extends React.Component{
     e.preventDefault();
     this.toggleOption('editNickname')(new Event('click'));
     let nickname = this.state.nickname;
-    console.log(nickname);
     this.props.updateAccount({ id: this.props.account.id, nickname });
   };
 
   render(){
-    console.log(this.props.account);
     if (!this.props.account) return null;
     const { account } = this.props;
     

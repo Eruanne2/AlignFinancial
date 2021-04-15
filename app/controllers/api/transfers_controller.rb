@@ -37,8 +37,8 @@ class Api::TransfersController < ApplicationController
     
     if @transfer.save
       if @from_acct.external || @from_acct.update_attributes({ balance: @from_acct.balance - @transfer.amount})
-        if @from_acct.external || @to_acct.update_attributes({ balance: @to_acct.balance + @transfer.amount})
-          render json: { message: 'Successful transfer'}
+        if @to_acct.external || @to_acct.update_attributes({ balance: @to_acct.balance + @transfer.amount})
+          render :show
         else
           raise ActiveRecord::Rollback  # roll back @from_acct balance update
           raise ActiveRecord::Rollback  # roll back transfer creation

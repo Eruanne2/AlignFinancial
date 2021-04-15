@@ -48,7 +48,7 @@ class NewTransferForm extends React.Component {
   handleSubmit(e){
     e.preventDefault();
     this.props.createTransfer(this.state)
-      .then(this.props.history.push('/dashboard'))
+      .then(res => {this.props.history.push('/dashboard')})
   }
   
   checkAccountsFilled(){
@@ -63,8 +63,6 @@ class NewTransferForm extends React.Component {
 
   render(){
     if (!this.props.accounts) return null;
-    console.log('this.props.defaultToAcct', this.props.defaultToAcct);
-    console.log('this.state.toAcctId', this.state.toAcctId);
     if (!this.state.ready) return(
       <div className='transfer-form-container'>
         {this.state.externalAcctPopup &&

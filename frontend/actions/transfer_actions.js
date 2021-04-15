@@ -1,4 +1,5 @@
 import * as TransfersApi from '../utils/transfers_api';
+import { fetchAllAccounts } from './account_actions';
 
 export const RECEIVE_TRANSFER = 'RECEIVE_TRANSFER';
 export const RECEIVE_ALL_TRANSFERS = 'RECEIVE_TRANSFERS';
