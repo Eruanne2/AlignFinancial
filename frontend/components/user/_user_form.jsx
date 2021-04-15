@@ -14,17 +14,16 @@ class UserForm extends React.Component{
     this.props.errors.forEach(error => {
       if (error.toLowerCase().includes(field)) fieldErrors.push(error);
     });
-    return fieldErrors.map(error => {
+    fieldErrors = fieldErrors.map(error => {
       if (error.includes('Fname')) return error.replace('Fname', 'First name');
       if (error.includes('Lname')) return error.replace('Lname', 'Last name');
-      if (error.includes('Address')) return error.replace('Address', 'Mailing address');
-      if (error.includes('Phone')) return error.replace('Phone', 'Phone number');
-      if (fieldErrors.length < 1) return '';
-      else return <span className='error' key={Math.floor(Math.random() * 1000)}>
-        <i><FontAwesomeIcon icon={faExclamationCircle}/></i>
-        {fieldErrors}
-      </span>
+      else return error;
     });
+    if (fieldErrors.length < 1) return '';
+    else return <span className='error' key={Math.floor(Math.random() * 1000)}>
+      <i><FontAwesomeIcon icon={faExclamationCircle}/></i>
+      {fieldErrors}
+    </span>
   };
 
   handleSubmit(e){
