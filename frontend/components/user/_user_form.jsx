@@ -19,7 +19,11 @@ class UserForm extends React.Component{
       if (error.includes('Lname')) return error.replace('Lname', 'Last name');
       if (error.includes('Address')) return error.replace('Address', 'Mailing address');
       if (error.includes('Phone')) return error.replace('Phone', 'Phone number');
-      return fieldErrors;
+      if (fieldErrors.length < 1) return '';
+      else return <span className='error' key={Math.floor(Math.random() * 1000)}>
+        <i><FontAwesomeIcon icon={faExclamationCircle}/></i>
+        {fieldErrors}
+      </span>
     });
   };
 
@@ -48,60 +52,55 @@ class UserForm extends React.Component{
             <p>Your account has been updated successfully.</p>
           </div>
         }
+        <h1>Your Information</h1>
         <form>
-          <h1>Your Information</h1>
-          <span className='error'>
-            {this.showErrors('fname').length > 0 ? <i><FontAwesomeIcon icon={faExclamationCircle}/></i> : null }
-            {this.showErrors('fname')}
-          </span>
-          <label>First Name
-            <input type='text' value={this.state.fname} onChange={this.handleChange('fname')} />
-          </label>
-          <span className='error'>
-            {this.showErrors('lname').length > 0 ? <i><FontAwesomeIcon icon={faExclamationCircle}/></i> : null }
-            {this.showErrors('lname')}
-          </span>
-          <label>Last Name
-            <input type='text' value={this.state.lname} onChange={this.handleChange('lname')} />
-          </label>
-          <span className='error'>
-            {this.showErrors('email').length > 0 ? <i><FontAwesomeIcon icon={faExclamationCircle}/></i> : null }
-            {this.showErrors('email')}
-          </span>
-          <label>Email
-            <input type='text' value={this.state.email} onChange={this.handleChange('email')} />
-          </label>
-          <span className='error'>
-            {this.showErrors('address').length > 0 ? <i><FontAwesomeIcon icon={faExclamationCircle}/></i> : null }
-            {this.showErrors('address')}
-          </span>
-          <label>Mailing Address
-            <textarea value={this.state.address} onChange={this.handleChange('address')} />
-          </label>
-          <span className='error'>
-            {this.showErrors('phone').length > 0 ? <i><FontAwesomeIcon icon={faExclamationCircle}/></i> : null }
-            {this.showErrors('phone')}
-          </span>
-          <label>Phone
-            <input type='text' value={this.state.phone} onChange={this.handleChange('phone')} />
-          </label>
+          <ul className='labels-list'>
+            <li><label htmlFor='fname-input' >First Name</label></li>
+            <li><label htmlFor='lname-input'>Last Name</label></li>
+            <li><label htmlFor='email'>Email</label></li>
+            <li><label htmlFor='address-input'>Mailing Address</label></li>
+            <li><label htmlFor='phone-input'>Phone</label></li>
+          </ul>
+          <ul className='inputs-list'>
+            <li>
+              {this.showErrors('fname')}
+              <input id='fname-input' type='text' value={this.state.fname} onChange={this.handleChange('fname')} />
+            </li>
+            <li>
+              {this.showErrors('lname')}
+              <input id='lname-input' type='text' value={this.state.lname} onChange={this.handleChange('lname')} />
+            </li>
+            <li>
+              {this.showErrors('email')}
+              <input id='email-input' type='text' value={this.state.email} onChange={this.handleChange('email')} />
+            </li>
+            <li>
+              {this.showErrors('address')}
+              <textarea id='address-input' value={this.state.address} onChange={this.handleChange('address')} />
+            </li>
+            <li>
+              {this.showErrors('phone')}
+              <input id='phone-input' type='text' value={this.state.phone} onChange={this.handleChange('phone')} />
+            </li>
+          </ul>
         </form>
+
+        <h1>Your Account</h1>
         <form>
-          <h1>Your Account</h1>
-          <span className='error'>
-            {this.showErrors('username').length > 0 ? <i><FontAwesomeIcon icon={faExclamationCircle}/></i> : null }
-            {this.showErrors('username')}
-          </span>
-          <label>Username
-            <input type='text' value={this.state.username} onChange={this.handleChange('username')} />
-          </label>
-          <span className='error'>
-            {this.showErrors('password').length > 0 ? <i><FontAwesomeIcon icon={faExclamationCircle}/></i> : null }
-            {this.showErrors('password')}
-          </span>
-          <label>Password
-            <input type='password' value={this.state.password} onChange={this.handleChange('password')} />
-          </label>
+          <ul className='labels-list'>
+            <li><label htmlFor='user-username-input'>Username</label></li>
+            <li><label htmlFor='user-password-input'>Password</label></li>
+          </ul>
+          <ul className='labels-list'>
+            <li>
+              {this.showErrors('username')}
+              <input id='user-username-input' type='text' value={this.state.username} onChange={this.handleChange('username')} />
+            </li>
+            <li>
+              {this.showErrors('password')}
+              <input id='user-password-input' type='password' value={this.state.password} onChange={this.handleChange('password')} />
+            </li>
+          </ul>
         </form>
         <button onClick={this.handleSubmit.bind(this)}>{this.props.submitText}</button>
       </div>

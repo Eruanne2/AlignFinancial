@@ -21,10 +21,8 @@ class LoginForm extends React.Component{
 
   userLogin(e){
     e.preventDefault();
-    this.props.login(this.state);
-    if (!!this.props.updateParent) {
-      this.props.updateParent(2);
-    }
+    this.props.login(this.state)
+    .then(res => {if (!!this.props.updateParent) this.props.updateParent(2) })
   };
 
   handleChange(field){

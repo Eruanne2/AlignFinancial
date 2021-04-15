@@ -7,6 +7,8 @@ import NewUserForm from '../user/new_user_form_container';
 import NewTransferForm from '../transfers/new_transfer_form';
 import { connect } from 'react-redux';
 import { fetchAllAccounts } from '../../actions/account_actions';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 
 const mapStateToProps = state => {
   return {
@@ -62,11 +64,11 @@ class OpenAccountPage extends React.Component {
 
         <ul className='step-nav'>
           <li id='step-1' className='selected'>
-            <span className='circle-icon'>1</span>
+            {(this.state.step > 1) ? <i><FontAwesomeIcon icon={faCheckCircle}/></i> : <span className='circle-icon'>1</span>}
             <h3>Your Information</h3>
           </li>
           <li id='step-2'>
-            <span className='circle-icon'>2</span>
+            {(this.state.step > 2) ? <i><FontAwesomeIcon icon={faCheckCircle}/></i> : <span className='circle-icon'>2</span>}
             <h3>Open Account</h3>
           </li>
           <li id='step-3'>
