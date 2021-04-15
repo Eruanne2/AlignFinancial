@@ -68,7 +68,7 @@ class NewTransferForm extends React.Component {
         {this.state.externalAcctPopup &&
         <div className='external-acct-popup'>
           <i><FontAwesomeIcon icon={faLink}/></i>
-          <p><em>Want to link an account at another institution?</em> Go to <Link to='/external-accounts'>Manage External Accounts</Link>, add the account, and return to make your transfer.</p>
+          <p><em>Want to link an account at another institution?</em> Go to <Link to='/external-accounts'>Manage Linked Accounts</Link>, add the account, and return to make your transfer.</p>
         </div>
         }
 
@@ -76,7 +76,7 @@ class NewTransferForm extends React.Component {
 
         <ul>
           <label htmlFor='select-from-acct'>FROM ACCOUNT</label>
-          <select id='select-from-acct' onChange={this.updateField('fromAcctId')}>
+          <select id='select-from-acct' defaultValue={this.state.fromAcctId} onChange={this.updateField('fromAcctId')}>
             <option key={2000} value={0} >Select an Account</option>
             {Object.values(this.props.accounts).map((acct, idx) => {
               if (acct.userId === window.currentUser.id) {
@@ -88,7 +88,7 @@ class NewTransferForm extends React.Component {
         
         <ul>
           <label htmlFor='select-to-acct'>TO ACCOUNT</label>
-          <select id='select-to-acct' onChange={this.updateField('toAcctId')} >
+          <select id='select-to-acct' defaultValue={this.state.toAcctId} onChange={this.updateField('toAcctId')} >
             <option key={2000} value={0} >Select an Account</option>
             {Object.values(this.props.accounts).map((acct, idx) => {
               if (acct.userId === window.currentUser.id && acct.id != this.state.fromAcctId) {
@@ -119,7 +119,6 @@ class NewTransferForm extends React.Component {
     else {
       let fromAcct = this.props.accounts[this.state.fromAcctId]
       let toAcct = this.props.accounts[this.state.toAcctId]
-      // debugger
       return (
         <div className='transfer-review-container'>
           <h1>Transfers</h1>
