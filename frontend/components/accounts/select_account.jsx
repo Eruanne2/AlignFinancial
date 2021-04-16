@@ -94,7 +94,6 @@ class SelectAccount extends React.Component{
 
         <div>
           <h2>Account Type</h2>
-          {this.state.selectionError && <p className='error'><i><FontAwesomeIcon icon={faExclamationCircle}/></i>You must make an account selection.</p>}
           <div className='account-selections'>
             <button onClick={this.handleSelection('checkings')}>
               <img src={window.selectChecking} height={115} alt="the word 'align' in purple lettering on a white background"/>
@@ -127,8 +126,9 @@ class SelectAccount extends React.Component{
         }
 
         <div>
-          <h2></h2>
+          <h2></h2> {/* this is important, don't delete it*/}
           <input type='submit' onClick={this.handleSubmit.bind(this)} value='Next' />
+          {this.state.selectionError && <p className='error'><i><FontAwesomeIcon icon={faExclamationCircle}/></i>You must make an account selection.</p>}
         </div>
 
       </div>

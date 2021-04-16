@@ -15,11 +15,18 @@
 #  updated_at      :datetime         not null
 #
 class User < ApplicationRecord
+  attr_reader :password
+  
   after_initialize :ensure_session_token
   validates :username, :password_digest, :session_token, :fname, :lname, :email, presence: true
   validates :username, :session_token, :email, uniqueness: true
   validates :password, length: { minimum: 6 }, allow_nil: true
-
+  
+  def password=(pw)
+    @password = pw
+    self.password_digest = BCrypt::Password.create(pw)
+  end
+  
   has_many :accounts,
     foreign_key: :user_id,
     class_name: 'Account'
@@ -28,17 +35,12 @@ class User < ApplicationRecord
     foreign_key: :user_id,
     class_name: 'Transfer'
 
-  attr_reader :password
 
   def self.find_by_credentials(username, pw)
     user = User.find_by(username: username)
     (user && user.is_password?(pw)) ? user : nil
   end
 
-  def password=(pw)
-    @password = password
-    self.password_digest = BCrypt::Password.create(pw)
-  end
 
   def is_password?(pw)
     BCrypt::Password.new(self.password_digest).is_password?(pw)
