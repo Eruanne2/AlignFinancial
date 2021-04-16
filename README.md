@@ -1,5 +1,8 @@
+<img src="https://github.com/Eruanne2/AlignFinancial/blob/main/app/assets/images/logo-on-white.png" width="200" alt="The 'Align' logo in purple letters">
+# Overview
+[Align Financial](https://align-financial.herokuapp.com/#/), an [Ally Bank](https://www.ally.com/bank/) clone, is an online-only bank that offers interest checking, high-yield savings, and money market accounts. Because Align has no offices and all business is conducted online, their website is a clean interface designed around functionality and easy navigation.
+
 # Table of Contents
-* [Overview](#overview)
 * [Technologies-Used](#technologies-used)
 * [Features](#features)
   * [User Auth](#user-auth)
@@ -12,10 +15,7 @@
 * [Lessons Learned](#lessons-learned)
   * [Database Design](#database-design)
   * [Component Design](#component-design)
-  * [Methodology](#methodology)
-
-# Overview
-[Align Financial](https://align-financial.herokuapp.com/#/), an [Ally Bank](https://www.ally.com/bank/) clone, is an online-only bank that offers interest checking, high-yield savings, and money market accounts. Because Align has no offices and all business is conducted online, their website is a clean interface designed around functionality and easy navigation. 
+  * [Methodology](#methodology) 
 
 # Stack
 * PostgreSQL
