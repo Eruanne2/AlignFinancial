@@ -1,5 +1,3 @@
-# README
-
 # Table of Contents
 * [Overview](#overview)
 * [Technologies-Used](#technologies-used)
