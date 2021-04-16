@@ -5,8 +5,8 @@ application up and running.
 
 # Table of Contents
 * [Overview](#overview)
-* [Technologies Used] (#technologies-used)
-* [Features] (#features)
+* [Technologies-Used] (#technologies-used)
+* [Features](#features)
   * [User Auth] (##user-auth)
   * [Accounts] (##accounts)
   * Transfers
