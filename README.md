@@ -7,10 +7,10 @@ application up and running.
 * [Overview](#overview)
 * [Technologies-Used](#technologies-used)
 * [Features](#features)
-  * [User Auth](##user-auth)
-  * [Accounts](##accounts)
-  * [Transfers](##transfers)
-  * [Dashboard](##dashboard)
+  * [User Auth](#user-auth)
+  * [Accounts](#accounts)
+  * [Transfers](#transfers)
+  * [Dashboard](#dashboard)
 * Features In Progress
   * Interactive Graph
   * Transaction Search
