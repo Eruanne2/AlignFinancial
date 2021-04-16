@@ -5,13 +5,17 @@ import { faLink } from "@fortawesome/free-solid-svg-icons";
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { formatMoney } from '../../utils/formatting_util';
+import { clearErrors } from '../../actions/ui_actions';
 
 const mapStateToProps = state => {
   return { transferErrors: state.errors.transferErrors }
 }
 
 const mapDispatchToProps = dispatch => {
-  return { createTransfer: acctData => dispatch(createTransfer(acctData)) }
+  return { 
+    createTransfer: acctData => dispatch(createTransfer(acctData)),
+    clearErrors: () => dispatch(clearErrors())
+   }
 };
 
 class NewTransferForm extends React.Component {
@@ -32,16 +36,12 @@ class NewTransferForm extends React.Component {
   };
 
   updateField(field){  
-    return e => { 
-      if (field === 'amount') {
-        let val = e.currentTarget.value.replace('$', '').replace(',', '');
-        this.setState({ amount:  val })
-      } else this.setState({ [field]: e.currentTarget.value }) 
-    }
+    return e =>  this.setState({ [field]: e.currentTarget.value }) 
   }
 
   toggleReady(e){
     e.preventDefault();
+    this.props.clearErrors();
     this.setState({ ready: !this.state.ready})
   }
   
@@ -68,6 +68,7 @@ class NewTransferForm extends React.Component {
 
   render(){
     if (!this.props.accounts) return null;
+    // debugger
     if (!this.state.ready) return(
       <div className='transfer-form-container'>
         {this.state.externalAcctPopup &&

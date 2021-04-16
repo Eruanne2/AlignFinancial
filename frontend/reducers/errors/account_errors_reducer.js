@@ -1,4 +1,5 @@
 import { RECEIVE_ACCOUNT_ERRORS, RECEIVE_ACCOUNT, RECEIVE_ALL_ACCOUNTS } from '../../actions/account_actions';
+import { CLEAR_ERRORS } from '../../actions/ui_actions';
 
 const AccountErrorsReducer = (state = [], action) => {
   Object.freeze(state);
@@ -8,7 +9,9 @@ const AccountErrorsReducer = (state = [], action) => {
     case RECEIVE_ACCOUNT:
       return [];
     case RECEIVE_ALL_ACCOUNTS:
-        return [];
+      return [];
+    case CLEAR_ERRORS:
+      return [];
     default:
       return state;
   };

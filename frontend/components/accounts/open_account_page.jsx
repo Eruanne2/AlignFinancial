@@ -12,7 +12,7 @@ import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 
 const mapStateToProps = state => {
   return {
-    accounts: Object.values(state.entities.accounts)
+    accounts: state.entities.accounts // do not convert to array!! need to use for id lookup
   }
 };
 
