@@ -3,22 +3,42 @@
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
-Things you may want to cover:
+# Table of Contents
+* Overview
+* Technologies Used
+* Features
+  * User Auth
+  * Accounts
+  * Transfers
+  * Dashboard
+* Features In Progress
+  * Interactive Graph
+  * Transaction Search
+* Lessons Learned
+  * Database Design
+  * Front-end Design
+  * Methodology
 
-* Ruby version
+# Overview
+Align Financial, an [Ally Bank](https://www.ally.com/bank/) clone, is an online-only bank that offers high-yield checkings and savings accounts. Because Align has no offices and all business is conducted online, their website is a clean interface designed around functionality and easy navigation. 
 
-* System dependencies
+# Stack
+* PostgreSQL
+* Ruby on Rails
+* Node.js
+* React-Redux
 
-* Configuration
+# Current Features
+* User Auth
+* Accounts
+* Transfers
+* Dashboard
 
-* Database creation
+# Features In Progress
+* Interactive Graph
+* Transaction Search
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+# Lessons Learned
+* Database Design
+* Front-end Design
+* Methodology
