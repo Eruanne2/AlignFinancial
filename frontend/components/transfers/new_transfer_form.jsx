@@ -31,8 +31,13 @@ class NewTransferForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   };
 
-  updateField(field){
-    return e => this.setState({ [field]: e.currentTarget.value })
+  updateField(field){  
+    return e => { 
+      if (field === 'amount') {
+        let val = e.currentTarget.value.replace('$', '').replace(',', '');
+        this.setState({ amount:  val })
+      } else this.setState({ [field]: e.currentTarget.value }) 
+    }
   }
 
   toggleReady(e){
@@ -106,6 +111,7 @@ class NewTransferForm extends React.Component {
           <div className='transfer-form-inputs'>
             <label htmlFor='amount-input'>Amount</label>
             <input id='amount-input' type='text' value={this.state.amount} onChange={this.updateField('amount')}/>
+            <p>{formatMoney(this.state.amount)}</p>
             <label htmlFor='memo-input'>Memo (optional)</label>
             <input id='memo-input' type='text' value={this.state.memo} onChange={this.updateField('memo')}/>
             <div className='transfer-submits'>
