@@ -4,11 +4,11 @@ This README would normally document whatever steps are necessary to get the
 application up and running.
 
 # Table of Contents
-* Overview [Overview](#overview)
-* Technologies Used
-* Features
-  * User Auth
-  * Accounts
+* [Overview](#overview)
+* [Technologies Used] (#technologies-used)
+* [Features] (#features)
+  * [User Auth] (##user-auth)
+  * [Accounts] (##accounts)
   * Transfers
   * Dashboard
 * Features In Progress
@@ -28,7 +28,7 @@ Align Financial, an [Ally Bank](https://www.ally.com/bank/) clone, is an online-
 * Node.js
 * React-Redux
 
-# Current Features
+# Features
 ## User Auth
 ## Accounts
 ## Transfers
