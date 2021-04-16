@@ -11,16 +11,16 @@ application up and running.
   * [Accounts](#accounts)
   * [Transfers](#transfers)
   * [Dashboard](#dashboard)
-* Features In Progress
-  * Interactive Graph
-  * Transaction Search
-* Lessons Learned
-  * Database Design
-  * Front-end Design
-  * Methodology
+* [Features In Progress](#features-in-progress)
+  * [Interactive Graph](#interactive-graph)
+  * [Transaction Search](#transaction-search)
+* [Lessons Learned](#lessons-learned)
+  * [Database Design](#database-design)
+  * [Component Design](#component-design)
+  * [Methodology](#methodology)
 
 # Overview
-Align Financial, an [Ally Bank](https://www.ally.com/bank/) clone, is an online-only bank that offers high-yield checkings and savings accounts. Because Align has no offices and all business is conducted online, their website is a clean interface designed around functionality and easy navigation. 
+Align Financial, an [Ally Bank](https://www.ally.com/bank/) clone, is an online-only bank that offers interest checking, heigh-yield savings, and money market accounts. Because Align has no offices and all business is conducted online, their website is a clean interface designed around functionality and easy navigation. 
 
 # Stack
 * PostgreSQL
@@ -30,6 +30,7 @@ Align Financial, an [Ally Bank](https://www.ally.com/bank/) clone, is an online-
 
 # Features
 ## User Auth
+
 ## Accounts
 ## Transfers
 ## Dashboard
