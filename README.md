@@ -1,5 +1,6 @@
 <div align='center'>
  <img src="https://github.com/Eruanne2/AlignFinancial/blob/main/app/assets/images/logo-on-white.png" width="200" alt="The 'Align' logo in purple letters">
+ <br/>
  <img src="https://github.com/Eruanne2/AlignFinancial/blob/main/recording.gif" width="600" height="300" />
 </div>
 
