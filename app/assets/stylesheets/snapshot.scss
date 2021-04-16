@@ -2,6 +2,7 @@
 
 
 .snapshot-container {
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: stretch;
@@ -112,4 +113,39 @@
     }
 
   }
+
+}
+
+.info-tooltip-container {
+  position: absolute;
+  top: 47%;
+  left: 22.5%;
+  
+  .arrow-holder {
+    position: relative;
+    background: transparent;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    
+    #dropdown-arrow {
+      position: absolute;
+      margin-top: 40%;
+      width: 0;
+      height: 0;
+      border-top: 15px solid transparent;
+      border-bottom: 15px solid transparent;
+      border-right: 15px solid #fff;
+    }
+  }
+  
+  p {
+    background-color: #fff;
+    color: #2A2A2A;
+    border: 1px solid #2A2A2A;
+    width: 230px;
+    padding: 10px;
+    margin-left: 14px;
+  }
+
 }

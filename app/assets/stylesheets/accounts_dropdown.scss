@@ -6,7 +6,6 @@
   width: 440px;
   background-color: transparent;
   box-shadow: 0 2px 0 rgba(0,0,0,.15);
-  // animation: menu-slide-down .25s ease;
 
   h1 {
     border: 1px solid #959595;
@@ -74,20 +73,20 @@
     background-color: #009688;
   }
 
-}
-
-.arrow-holder {
-  position: relative;
-  background: transparent;
-  height: 10px;
-
-  #dropdown-arrow {
-    position: absolute;
-    margin-left: 16.5%;
-    width: 0;
-    height: 0;
-    border-left: 15px solid transparent;
-    border-right: 15px solid transparent;
-    border-bottom: 15px solid #fff;
+  .arrow-holder {
+    position: relative;
+    background: transparent;
+    height: 10px;
+  
+    #dropdown-arrow {
+      position: absolute;
+      margin-left: 16.5%;
+      width: 0;
+      height: 0;
+      border-left: 15px solid transparent;
+      border-right: 15px solid transparent;
+      border-bottom: 15px solid #fff;
+    }
   }
 }
+

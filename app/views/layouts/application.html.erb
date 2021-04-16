@@ -18,18 +18,16 @@
       window.selectSavings = "<%= image_url('online-savings.png') %>";
       window.selectMM = "<%= image_url('money-market.png') %>";
       window.exampleAccount = "<%= image_url('example-account.png') %>";
+
+      window.lastLogin = '<%= last_login_time %>'
     </script>
 
     <% if logged_in? %>
       <script type='text/javascript'>
         window.currentUser = <%= render('/api/users/user.json.jbuilder', user: current_user).html_safe %>
-        
+
       </script>
     <% end %>
-
-    <script type='text/javascript'>
-      window.lastLogin = '<%= last_login_time %>'
-    </script>
 
   </head>
 
