@@ -5,12 +5,12 @@ application up and running.
 
 # Table of Contents
 * [Overview](#overview)
-* [Technologies-Used] (#technologies-used)
+* [Technologies-Used](#technologies-used)
 * [Features](#features)
-  * [User Auth] (##user-auth)
-  * [Accounts] (##accounts)
-  * Transfers
-  * Dashboard
+  * [User Auth](##user-auth)
+  * [Accounts](##accounts)
+  * [Transfers](##transfers)
+  * [Dashboard](##dashboard)
 * Features In Progress
   * Interactive Graph
   * Transaction Search
