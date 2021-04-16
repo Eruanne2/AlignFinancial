@@ -24,7 +24,7 @@ class NewTransferForm extends React.Component {
     this.state = {
       fromAcctId: 0,
       toAcctId: this.props.defaultToAcct || 0,
-      amount: '',
+      amount: '0',
       memo: '',
       ready: false,
       externalAcctPopup: false

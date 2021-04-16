@@ -9,6 +9,7 @@ import { connect } from 'react-redux';
 import { fetchAllAccounts } from '../../actions/account_actions';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
+import { clearErrors } from '../../actions/ui_actions';
 
 const mapStateToProps = state => {
   return {
@@ -18,7 +19,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchAllAccounts: () => dispatch(fetchAllAccounts)
+    fetchAllAccounts: () => dispatch(fetchAllAccounts()),
+    clearErrors: () => dispatch(clearErrors())
   }
 }
 
@@ -33,6 +35,7 @@ class OpenAccountPage extends React.Component {
   }
 
   selectExistingCustomer(e){
+    this.props.clearErrors();
     this.setState({ existingCustomer: e.currentTarget.value })
   };
 
