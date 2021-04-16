@@ -27,7 +27,17 @@
       align-items: center;
       margin: 0 8%;
       padding-bottom: 5px;
-      
+      font-weight: 700;
+      color: #959595
+    }
+
+    .circle-icon {
+      border-color: #959595;
+      margin-right: 5px;
+    }
+
+    i {
+      color: #0B8100;
     }
 
     .selected {
@@ -72,6 +82,10 @@
     }
   }
 
+  .credentials-note {
+    margin-left: 13.5%;
+  }
+
   .existing-customer {
     background-color: #f8f8f8;
     border: 1px solid #959595;
@@ -103,15 +117,24 @@
       margin: 0;
       display: block;
 
-      .demo-login {
-        margin-left: 17px;
+      h1 {
+        margin-left: 35px;
+      }
+
+      .error {
+        margin-left: 30px;
       }
 
       .submit-btns {
         margin-left: 17px;
         margin-right: 0;
 
-        p {
+        div {
+          margin-top: 0;
+        }
+
+        > * {
+          padding: 10px;
           margin-left: 122px;
         }
 
@@ -124,18 +147,85 @@
 
   }
 
+}
+
+.select-accts-container {
+  margin: 0 11.5% 0 13.5%;
+   
+  > * {
+    margin: 30px 0;
+  }
+  
+  h1 {
+    font-size: 30px;
+    font-weight: bold;
+  }
+
+  > div {
+    display: flex;
+    align-items: flex-start;
+    
+    h2 {
+      width: 200px;
+      text-align: right;
+      font-weight: 700;
+      padding-right: 10px;
+    }
+  }
+
   .account-selections {
+    display: inline-block;
+    width: 510px;
+
     button {
       padding: 3px;
       background: #F8F8F8;
       border: 2px solid #DDD;
       border-radius: 5px;
-      margin: 10px 5px;
+      margin: 10px 5px 30px 5px;
     }
     
     button:focus {
       border: 2px solid rgb(0, 113, 196);
     }
+
   }
+
+  .display-acct-benefits {
+    width: 100%;
+    font-size: 14px;
+    line-height: 1.8;
+
+    ul {
+      list-style: disc;
+      margin: 15px;
+    }
+  }
+
+  .acct-options {
     
+    div {
+      display: flex;
+      flex-direction: column;
+      
+      section {
+        display: flex;
+        align-items: center;
+      }
+    }
+
+    input[type='checkbox'] {
+      height: 23px;
+      width: 23px;
+    }
+
+    label {
+      padding: 10px;
+    }
+  }
+
+  .error {
+    padding: 6px 0 0 10px;
+  }
+  
 }

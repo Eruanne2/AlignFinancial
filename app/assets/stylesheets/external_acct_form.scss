@@ -1,0 +1,46 @@
+.external-acct-form {
+  margin: 20px 7%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  #external-acct-header {
+    color: #2A2A2A;
+    font-weight: 400;
+    margin: 0;
+  }
+
+  p {
+    margin: 30px 0 10px 0;
+  }
+
+  * {
+    margin: 10px 0;
+  }
+
+  div > * {
+    display: block;
+  }
+
+  label {
+    font-size: 12px;
+    font-weight: 900;
+  }
+
+  select {
+    width: 310px;
+    height: 16.5px;
+    padding: 8px;
+    box-sizing: content-box;
+  }
+
+  .error {
+    display: inline-block;
+    font-size: 14px;
+    i {
+      * {
+        margin: 0;
+      }
+    }
+  }
+}

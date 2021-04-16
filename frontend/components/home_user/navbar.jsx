@@ -64,7 +64,6 @@ class Navbar extends React.Component{
         </ul>
       </nav>
     ); 
-    // debugger
     return(
       <div>
         {this.state.dropdown && <AccountsDropdown accounts={this.props.accounts}/>}

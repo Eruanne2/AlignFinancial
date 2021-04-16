@@ -1,6 +1,5 @@
 import React from 'react';
 import { fetchAccount, deleteAccount, updateAccount } from '../../actions/account_actions';
-import { fetchAllTransfers } from '../../actions/transfer_actions';
 import Navbar from '../home_user/navbar';
 import { Link, withRouter } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -8,11 +7,11 @@ import { faCaretRight, faCaretDown } from "@fortawesome/free-solid-svg-icons";
 import { faExclamationCircle } from "@fortawesome/free-solid-svg-icons";
 import { connect } from 'react-redux';
 import TransfersIndex from '../transfers/transfers_index';
+import { formatMoney} from '../../utils/formatting_util';
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
   return { 
-    accounts: state.entities.accounts,
-    transfers: Object.values(state.entities.transfers),
+    account: state.entities.accounts[ownProps.match.params.accountId],
     accountErrors: state.errors.accountErrors
   }
 }
@@ -21,7 +20,6 @@ const mapDispatchToProps = dispatch => {
   return { 
     deleteAccount: acctId => dispatch(deleteAccount(acctId)),
     fetchAccount: acctId => dispatch(fetchAccount(acctId)),
-    fetchAllTransfers: () => dispatch(fetchAllTransfers()),
     updateAccount: acctData => dispatch(updateAccount(acctData))
   }
 };
@@ -30,24 +28,23 @@ class AccountDetail extends React.Component{
   constructor(props){
     super(props);
     this.state = { 
+      nickname: '',
       dropdown: false, 
       editNickname: false,
       infoPopup: false
     }
-    this.transfers = [];
     this.toggleOption = this.toggleOption.bind(this);
   };
 
   componentDidMount(){
-    this.props.fetchAccount(this.props.match.params.accountId);
-    this.setState({account: this.props.accounts[this.props.match.params.accountId]}, this.render());
-    this.transfers = this.props.fetchAllTransfers();
+    this.props.fetchAccount(this.props.match.params.accountId)
+      .then(res => this.setState({ nickname: this.props.account.nickname }))
   }
 
   closeAccount(e){
     e.preventDefault();
     if (this.props.accountErrors.length > 1) return null;
-    this.props.deleteAccount(this.state.account.id)
+    this.props.deleteAccount(this.props.account.id)
       .then(res => this.props.history.goBack())
       .fail(res => this.openPopup())
   };
@@ -64,34 +61,26 @@ class AccountDetail extends React.Component{
   }
 
   updateNickname(e){
-    let account = this.state.account;
-    account.nickname = e.currentTarget.value;
-    this.setState({ account });
+    this.setState({ nickname: e.currentTarget.value });
   };
 
   submitNickname(e){
     e.preventDefault();
     this.toggleOption('editNickname')(new Event('click'));
-    this.props.updateAccount(this.state.account);
+    let nickname = this.state.nickname;
+    this.props.updateAccount({ id: this.props.account.id, nickname });
   };
 
-  formatMoney(amount){
-    var formatter = new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: 'USD',
-    });
-    return formatter.format(amount);
-  }
-
   render(){
-    const { account } = this.state;
-    if (!account) return null;
+    if (!this.props.account) return null;
+    const { account } = this.props;
+    
     return(
       <div className='account-detail-container'>
         <Navbar/>
         <nav className='dash-nav'>
           <ul>
-            <Link to='/transfer'>Make a Transfer</Link>
+            <Link to='/transfer'>Transfers</Link>
             <a href='https://github.com/Eruanne2' target="_blank">Github</a>
             <a href='https://www.linkedin.com/in/charis-ginn-9abb93173' target="_blank">LinkedIn</a>
             {/* <a href='' target="_blank">CV</a> */}
@@ -109,7 +98,7 @@ class AccountDetail extends React.Component{
               }
               {this.state.editNickname &&
                 <form className='edit-nickname'>
-                  <input type='text' value={account.nickname} onChange={this.updateNickname.bind(this)}/>
+                  <input type='text' value={this.state.nickname} onChange={this.updateNickname.bind(this)}/>
                   <br/>
                   <button id='save-nickname-btn' onClick={this.submitNickname.bind(this)}>Save</button>
                   <button id='cancel-nickname-btn'onClick={this.toggleOption('editNickname')}>Cancel</button>
@@ -119,15 +108,15 @@ class AccountDetail extends React.Component{
             </div>
             <div>
               <h2>AVAILABLE BALANCE</h2>
-              <h3>{this.formatMoney(account.balance)}</h3>
+              <h3>{formatMoney(account.balance)}</h3>
             </div>
             <div>
               <h2>CURRENT BALANCE</h2>
-              <h3>{this.formatMoney(account.balance)}</h3>
+              <h3>{formatMoney(account.balance)}</h3>
             </div>
             <div>
               <h2>INTEREST YTD</h2>
-              <h3>{this.formatMoney(12.34)}</h3>
+              <h3>{formatMoney(12.34)}</h3>
             </div>
             <div>
               <h2>ANNUAL PERCENTAGE YIELD</h2>
@@ -151,7 +140,7 @@ class AccountDetail extends React.Component{
               </li>
               <li>
                 <h3>Transfer Limit:</h3>
-                <p>{account.transferLimit}</p>
+                <p>{(account.transferLimit === 10000) ? 'unlimited' : account.transferLimit}</p>
               </li>
               <li>
                 <h3>APY:</h3>
@@ -171,9 +160,7 @@ class AccountDetail extends React.Component{
             <p><em>{this.props.accountErrors}</em> Please transfer assets to another account, then try again.</p>
           </div>
         }
-        {this.transfers && 
-          <TransfersIndex transfers={this.props.transfers} filter={{ userId: window.currentUser.id, acctId: this.state.account.id}}/> 
-        }
+        <TransfersIndex filter={{ userId: window.currentUser.id, acctId: account.id}}/> 
       </div>
     )
   }

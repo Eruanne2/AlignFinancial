@@ -18,8 +18,8 @@
 
 ACCT_BENEFITS = { 
   'checkings'=> { interest_rate: 0.5, transfer_limit: 10000, nickname: 'Interest Checking'}, 
-  'savings'=> { interest_rate: 1.5, transfer_limit: 6, nickname: 'High-Yield Savings'},
-  'money market'=> { interest_rate: 1.2, transfer_limit: 6, nickname: 'Money Market'}
+  'savings'=> { interest_rate: 1.2, transfer_limit: 6, nickname: 'High-Yield Savings'},
+  'money market'=> { interest_rate: 1.5, transfer_limit: 6, nickname: 'Money Market'}
 };
 
 class Account < ApplicationRecord
@@ -42,9 +42,9 @@ class Account < ApplicationRecord
     class_name: 'Transfer'
 
   def acct_setup
-    self.acct_num ||= rand(10000000..99999999)
-    self.routing_num ||= 14952223
     unless self.external
+      self.acct_num ||= rand(10000000..99999999)
+      self.routing_num ||= 14952223
       self.balance ||= 0.0
       self.interest_rate ||= ACCT_BENEFITS[acct_type][:interest_rate]
       self.transfer_limit ||= ACCT_BENEFITS[acct_type][:transfer_limit]

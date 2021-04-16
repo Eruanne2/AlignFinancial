@@ -70,6 +70,8 @@ class SettingsSidebar extends React.Component{
           <button className='close-sidebar' onClick={this.closeSidebar.bind(this)}>{`\u00D7`}</button>
         </div>
         <button className='logout' onClick={this.handleLogout.bind(this)}>Log Out</button>
+        
+        <section>
         <h2 onClick={this.showDropdown('site')}>
           { this.state.dropdown === 'site' ? <i><FontAwesomeIcon icon={faCaretDown}/></i> : <i><FontAwesomeIcon icon={faCaretRight}/></i>}
           Site settings
@@ -81,11 +83,14 @@ class SettingsSidebar extends React.Component{
               <input className='toggle' type='checkbox' checked={this.props.nightMode} onChange={this.handleChange('nightMode')}/>
             </li>
             <li>
-              <h3>Accessible View</h3>
+              <h3>Accessible View</h3> {/* not yet implemented */}
               <input type='checkbox' className='toggle' onChange={this.handleChange('accessibleView')}/>
             </li>
           </ul>
         }
+        </section>
+
+        <section>
         <h2 onClick={this.showDropdown('user')}>
           { this.state.dropdown === 'user' ? <i><FontAwesomeIcon icon={faCaretDown}/></i> : <i><FontAwesomeIcon icon={faCaretRight}/></i>}
           User settings
@@ -97,6 +102,9 @@ class SettingsSidebar extends React.Component{
             </li>
           </ul>
         }
+        </section>
+
+        <section>
         <h2 onClick={this.showDropdown('quick-links')}>
           { this.state.dropdown === 'quick-links' ? <i><FontAwesomeIcon icon={faCaretDown}/></i> : <i><FontAwesomeIcon icon={faCaretRight}/></i>}
           Quick Links
@@ -104,10 +112,18 @@ class SettingsSidebar extends React.Component{
         { this.state.dropdown === 'quick-links' &&
           <ul>
             <li onClick={this.closeSidebar.bind(this)}>
-              <Link to ='/external-accounts'>Manage External Accounts</Link>
+              <Link to ='/external-accounts'>Manage Linked Accounts</Link>
+            </li>
+            <li onClick={this.closeSidebar.bind(this)}>
+              <Link to='/transfer'>Transfers</Link>
+            </li>
+            <li onClick={this.closeSidebar.bind(this)}>
+              <Link to='/open-account'>Open an Account</Link>
             </li>
           </ul>
         }
+        </section>
+        
       </div>
     )
   };

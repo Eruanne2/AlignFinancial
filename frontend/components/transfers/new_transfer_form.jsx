@@ -4,6 +4,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLink } from "@fortawesome/free-solid-svg-icons";
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { formatMoney } from '../../utils/formatting_util';
+
+const mapStateToProps = state => {
+  return { transferErrors: state.errors.transferErrors }
+}
 
 const mapDispatchToProps = dispatch => {
   return { createTransfer: acctData => dispatch(createTransfer(acctData)) }
@@ -14,12 +19,13 @@ class NewTransferForm extends React.Component {
     super(props);
     this.state = {
       fromAcctId: 0,
-      toAcctId: 0,
+      toAcctId: this.props.defaultToAcct || 0,
       amount: '',
       memo: '',
       ready: false,
       externalAcctPopup: false
     }
+    
     this.toggleReady = this.toggleReady.bind(this);
     this.redirect = this.redirect.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -41,21 +47,13 @@ class NewTransferForm extends React.Component {
   
   handleSubmit(e){
     e.preventDefault();
-    this.props.createTransfer(this.state);
-    this.props.history.push('/dashboard');
+    this.props.createTransfer(this.state)
+      .then(res => {this.props.history.push('/dashboard')})
   }
   
   checkAccountsFilled(){
     if (this.state.fromAcctId && this.state.toAcctId) return true;
     else return false;
-  }
-  
-  formatMoney(amount){
-    var formatter = new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: 'USD',
-    });
-    return formatter.format(amount);
   }
 
   formatDate(date){
@@ -70,7 +68,7 @@ class NewTransferForm extends React.Component {
         {this.state.externalAcctPopup &&
         <div className='external-acct-popup'>
           <i><FontAwesomeIcon icon={faLink}/></i>
-          <p><em>Want to link an account at another institution?</em> Go to <Link to='/external-accounts'>Manage External Accounts</Link>, add the account, and return to make your transfer.</p>
+          <p><em>Want to link an account at another institution?</em> Go to <Link to='/external-accounts'>Manage Linked Accounts</Link>, add the account, and return to make your transfer.</p>
         </div>
         }
 
@@ -78,11 +76,11 @@ class NewTransferForm extends React.Component {
 
         <ul>
           <label htmlFor='select-from-acct'>FROM ACCOUNT</label>
-          <select id='select-from-acct' onChange={this.updateField('fromAcctId')}>
+          <select id='select-from-acct' value={this.state.fromAcctId} onChange={this.updateField('fromAcctId')}>
             <option key={2000} value={0} >Select an Account</option>
-            {this.props.accounts.map((acct, idx) => {
+            {Object.values(this.props.accounts).map((acct, idx) => {
               if (acct.userId === window.currentUser.id) {
-                return <option key={idx} value={acct.id} >{acct.nickname}••••{acct.acctNum % 10000}{acct.external ? '' : '  ' + this.formatMoney(acct.balance)}</option>
+                return <option key={idx} value={acct.id} >{acct.nickname}••••{acct.acctNum % 10000}{acct.external ? '' : '  ' + formatMoney(acct.balance)}</option>
               }
             })}
           </select>
@@ -90,11 +88,11 @@ class NewTransferForm extends React.Component {
         
         <ul>
           <label htmlFor='select-to-acct'>TO ACCOUNT</label>
-          <select id='select-to-acct' onChange={this.updateField('toAcctId')}>
+          <select id='select-to-acct' value={this.state.toAcctId} onChange={this.updateField('toAcctId')} >
             <option key={2000} value={0} >Select an Account</option>
-            {this.props.accounts.map((acct, idx) => {
+            {Object.values(this.props.accounts).map((acct, idx) => {
               if (acct.userId === window.currentUser.id && acct.id != this.state.fromAcctId) {
-                return <option key={idx} value={acct.id} >{acct.nickname}••••{acct.acctNum % 10000}</option>
+                return <option key={idx} value={acct.id}>{acct.nickname}••••{acct.acctNum % 10000}{acct.external ? '' : '  ' + formatMoney(acct.balance)}</option>
               }
             })}
           </select>
@@ -129,15 +127,15 @@ class NewTransferForm extends React.Component {
             <section>
               <h3>FROM ACCOUNT</h3>
               <div>
-                <p>{fromAcct.nickname}••••{fromAcct.acctNum % 10000}{fromAcct.external ? '' : '  ' + this.formatMoney(fromAcct.balance)}</p>
-                <p>{fromAcct.external ? 'External Account' : '  ' + this.formatMoney(fromAcct.balance)}</p>
+                <p>{fromAcct.nickname}••••{fromAcct.acctNum % 10000}{fromAcct.external ? '' : '  ' + formatMoney(fromAcct.balance)}</p>
+                <p>{fromAcct.external ? 'External Account' : '  ' + formatMoney(fromAcct.balance)}</p>
               </div>
             </section>
             <section>
               <h3>TO ACCOUNT</h3>
               <div>
-                <p>{toAcct.nickname}••••{toAcct.acctNum % 10000}{toAcct.external ? '' : '  ' + this.formatMoney(toAcct.balance)}</p>
-                <p>{toAcct.external ? 'External Account' : '  ' + this.formatMoney(toAcct.balance)}</p>
+                <p>{toAcct.nickname}••••{toAcct.acctNum % 10000}{toAcct.external ? '' : '  ' + formatMoney(toAcct.balance)}</p>
+                <p>{toAcct.external ? 'External Account' : '  ' + formatMoney(toAcct.balance)}</p>
               </div>
             </section>
           </section>
@@ -158,6 +156,8 @@ class NewTransferForm extends React.Component {
             <button onClick={this.handleSubmit}>Submit This Transfer</button>
             <button onClick={this.toggleReady}>Edit</button>
             <button onClick={this.redirect}>Cancel</button>
+            {this.props.transferErrors && <p className='error'>{this.props.transferErrors}</p>}
+
           </section>
         </div>
       )
@@ -165,4 +165,4 @@ class NewTransferForm extends React.Component {
   }
 };
 
-export default withRouter(connect(null, mapDispatchToProps)(NewTransferForm));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(NewTransferForm));

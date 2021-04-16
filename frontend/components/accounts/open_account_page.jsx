@@ -4,20 +4,40 @@ import Navbar from '../home_user/navbar';
 import SelectAccount from './select_account';
 import LoginForm from '../home_guest/_login_form';
 import NewUserForm from '../user/new_user_form_container';
-import TransferPage from '../transfers/transfer_page'
+import NewTransferForm from '../transfers/new_transfer_form';
+import { connect } from 'react-redux';
+import { fetchAllAccounts } from '../../actions/account_actions';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 
+const mapStateToProps = state => {
+  return {
+    accounts: Object.values(state.entities.accounts)
+  }
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchAllAccounts: () => dispatch(fetchAllAccounts)
+  }
+}
 
 class OpenAccountPage extends React.Component {
   constructor(props){
     super(props);
-    this.state = { step: 1 };
+    this.state = { step: 1, newAcctId: 0 };
+  }
+
+  componentDidMount(){
+    this.props.fetchAllAccounts();
   }
 
   selectExistingCustomer(e){
     this.setState({ existingCustomer: e.currentTarget.value })
   };
 
-  moveToNextStep(step){
+  moveToNextStep(step, newAcctId){
+    if (!!newAcctId) this.setState({ newAcctId});
     switch(step){
       case 2:
         document.getElementById('step-1').classList.remove('selected');
@@ -45,11 +65,11 @@ class OpenAccountPage extends React.Component {
 
         <ul className='step-nav'>
           <li id='step-1' className='selected'>
-            <span className='circle-icon'>1</span>
+            {(this.state.step > 1) ? <i><FontAwesomeIcon icon={faCheckCircle}/></i> : <span className='circle-icon'>1</span>}
             <h3>Your Information</h3>
           </li>
           <li id='step-2'>
-            <span className='circle-icon'>2</span>
+            {(this.state.step > 2) ? <i><FontAwesomeIcon icon={faCheckCircle}/></i> : <span className='circle-icon'>2</span>}
             <h3>Open Account</h3>
           </li>
           <li id='step-3'>
@@ -69,7 +89,7 @@ class OpenAccountPage extends React.Component {
               </div>
               {window.currentUser && 
               <div>
-                <p>For your security, we ask that you confirm your credentials before moving to the next step.</p>
+                <p className='credentials-note'>For your security, we ask that you confirm your credentials before moving to the next step.</p>
                 <LoginForm updateParent={this.moveToNextStep.bind(this)}/>
               </div>
               }
@@ -78,7 +98,7 @@ class OpenAccountPage extends React.Component {
                   <h2>Choose the option that describes you best.</h2>
                   <div>
                     <input type='radio' id='no' name='existing-customer' value='no' onChange={this.selectExistingCustomer.bind(this)}/>
-                    <label htmlFor='no'>I’m not an existing Ally Bank customer </label> 
+                    <label htmlFor='no'>I’m not an existing Align Bank customer </label> 
                   </div>
                   <div>
                     <input type='radio' id='yes' name='existing-customer' value='yes' onChange={this.selectExistingCustomer.bind(this)}/>
@@ -98,7 +118,7 @@ class OpenAccountPage extends React.Component {
 
           {/* Step 3: 'Fund Account' -> creates a new transfer */}
           <section id='fund-account-section'>
-            { this.state.step === 3 && <TransferPage/>}
+            { this.state.step === 3 && <NewTransferForm accounts={this.props.accounts} defaultToAcct={this.state.newAcctId}/>}
           </section>
 
         </ul>
@@ -107,4 +127,4 @@ class OpenAccountPage extends React.Component {
   }
 };
 
-export default withRouter(OpenAccountPage);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(OpenAccountPage));

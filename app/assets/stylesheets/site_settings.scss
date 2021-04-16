@@ -2,7 +2,7 @@
   background-color: #000;
   color: #fff;
 
-  textarea, input[type='text'], input[type='password'] {
+  textarea, input[type='text'], input[type='password'], select {
     background-color: #221b24;
     color: #fff;
   }
@@ -33,6 +33,10 @@
         border-top: 1px solid rgb(204, 204, 204)
       }
     }
+  }
+
+  .main-info-box {
+    background-color: #221b24;
   }
 }
 

@@ -1,0 +1,126 @@
+.external-accts-container {
+  
+
+  .user-nav {
+    box-shadow: 0 0 0 0;
+  }
+  .dash-nav {
+    box-shadow: 0 0 6px gray;
+  }
+
+  .external-accts-content {
+    margin: 0 11.5% 0 13.5%;
+
+    h1 {
+      font-size: 26px;
+      font-weight: 700;
+      color: #650360;
+      margin-top: 25px;
+    }
+
+    .external-accts-header, .table {
+      margin-left: 7%;
+      width: 700px;
+    }
+
+    .external-accts-header {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 50px;
+      margin-bottom: 15px;
+
+      h2 {
+        font-size: 20px;
+        padding: 5px;
+      }
+
+      button {
+        background-color: #005e8a;
+        border-radius: 0;
+        border: 1px solid #000000;
+      }
+    }
+
+    .table {
+      display: flex;
+      flex-direction: column;
+
+      .row, .row-dropdown {
+        display: flex;
+        width: 100%;
+        font-size: 14px;
+      }
+      
+      .row {
+        align-items: center;
+        background-color: #fff;
+        color: #006899;
+        box-sizing: border-box;
+        border-bottom: 1px solid rgb(221, 221, 221);
+
+        li {
+          padding: 10px;
+        }
+
+        li:first-child {
+          flex: 2
+        }
+
+        li:nth-child(2) {
+          flex: 1;
+          text-align: center;
+        }
+
+        li:last-child {
+          flex: 1;
+          text-align: right;
+          
+          button {
+            background-color: transparent;
+            font-size: 30px;
+            font-weight: 900;
+            color: #006899;
+            padding: 0;
+          }
+        }
+      }
+
+      .row:hover {
+        border: 1px solid rgb(221, 221, 221);
+      }
+
+      > .row:first-child {
+        background-color: rgb(153, 153, 153);
+        color: white;
+        font-size: 12px;
+        font-weight: 700;
+      }
+
+      .row-dropdown {
+        flex-direction: column;
+        align-items: flex-start;
+        background-color: #fff;
+        border-bottom: 1px solid rgb(221, 221, 221);
+
+        li {
+          display: flex;
+          margin: 10px 20px;
+        }
+
+        h3 {
+          font-weight: 900;
+          padding-right: 5px;
+        }
+
+        button {
+          background-color: #d8e1e6;
+          border-radius: 0;
+          border: 1px solid #006899;
+          color: #006899
+        }
+      }
+    }
+
+  }
+
+}

@@ -1,12 +1,19 @@
 import React from 'react';
 import { PieChart } from 'react-minimal-pie-chart';
 import { connect } from 'react-redux';
+import { formatMoney } from '../../utils/formatting_util';
 
 const mapStateToProps = state => {
   return { lastLogin: state.session.lastLogin }
 }
 
 class Snapshot extends React.Component{
+  constructor(props){
+    super(props);
+    this.state = { infoTooltip: false }
+    this.toggleTooltip = this.toggleTooltip.bind(this);
+  }
+
   formatDate(date){
     let dateString = date.toDateString();
     dateString = dateString.slice(4,10) + ',' + dateString.slice(10);
@@ -15,25 +22,30 @@ class Snapshot extends React.Component{
     return (dateString + ' • ' + timeString)
   };
 
-  formatMoney(amount){
-    var formatter = new Intl.NumberFormat('en-US', {
-      style: 'currency',
-      currency: 'USD',
-    });
-    return formatter.format(amount);
+  toggleTooltip(){
+    this.setState({ infoTooltip: !this.state.infoTooltip })
   }
 
   render(){
     const totalBalance = Object.values(this.props.categoryBalances).reduce((sum, balance) => sum + balance)
     return(
       <div className='snapshot-container'>
+          {this.state.infoTooltip && 
+            <div className='info-tooltip-container'>
+              <div className='arrow-holder'><span id='dropdown-arrow'></span></div>
+              <p>Your Total Balance is the sum of the available balances of your Money Market, Online Savings and Interest Checking accounts. </p>
+            </div>
+          }
         <section className='left-view'>
           <h1>Snapshot</h1>
           <p>Hello, {this.props.currentUser.fname}</p>
           <p>Last Login: {this.formatDate(new Date(window.lastLogin))}</p>
 
-          <h2 id='balance-header'>TOTAL BALANCE<span className='question-icon'>?</span></h2>
-          <h2 id='balance'>{this.formatMoney(totalBalance)}</h2>
+          <h2 id='balance-header'>
+            TOTAL BALANCE
+            <span className='question-icon' onMouseOver={this.toggleTooltip} onMouseOut={this.toggleTooltip}>?</span>
+          </h2>
+          <h2 id='balance'>{formatMoney(totalBalance)}</h2>
         </section>
 
         <svg>
@@ -60,7 +72,7 @@ class Snapshot extends React.Component{
                 return <li key={Math.floor(Math.random() * 1000)}>
                   <div className='account-div'>
                     <h1>{category}</h1>
-                    <h1>{this.formatMoney(this.props.categoryBalances[category])}</h1>
+                    <h1>{formatMoney(this.props.categoryBalances[category])}</h1>
                   </div>
                 </li>
               })}
