@@ -17,8 +17,8 @@ demoAccounts = Account.create!([
   { nickname: 'Core Savings', acct_type: 'savings', user_id: demoUser[0].id, external: false, balance: 3217.09},
   { nickname: 'Vacation Fund', acct_type: 'savings', user_id: demoUser[0].id, external: false, balance: 6332.74},
   { nickname: 'Long-term Savings', acct_type: 'money market', user_id: demoUser[0].id, external: false, balance: 17324.51},
-  { nickname: 'ABC Credit Union', acct_type: 'checkings', user_id: demoUser[0].id, external: true},
-  { nickname: 'ABC Emergency Fund', acct_type: 'savings', user_id: demoUser[0].id, external: true},
+  { nickname: 'ABC Credit Union', acct_type: 'checkings', user_id: demoUser[0].id, external: true, acct_num: 98739837, routing_num: 29472940},
+  { nickname: 'ABC Emergency Fund', acct_type: 'savings', user_id: demoUser[0].id, external: true, acct_num: 97386355, routing_num: 1183794},
 ]);
 
 demoTransfers = Transfer.create!([
