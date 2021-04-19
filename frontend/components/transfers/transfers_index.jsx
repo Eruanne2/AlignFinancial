@@ -75,6 +75,7 @@ class TransfersIndex extends React.Component {
             <p>MEMO</p>
           </li>
           {filteredTransfers.map((transfer, idx) => {
+            console.log(transfer);
             return <li key={idx}>
               {/* <p>{this.formatDate(transfer.createdAt)}</p> */}
               <p>{accounts[transfer.fromAcctId].nickname}••••{accounts[transfer.fromAcctId].acctNum % 10000}</p>
