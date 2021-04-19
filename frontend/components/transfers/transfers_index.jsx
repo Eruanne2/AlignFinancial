@@ -77,17 +77,22 @@ class TransfersIndex extends React.Component {
           {filteredTransfers.map((transfer, idx) => {
             console.log('transfer', transfer);
             console.log('accounts', accounts);
-            console.log('accounts[transfer.fromAcct]', accounts[transfer.fromAcct]);
-            console.log('accounts[transfer.toAcct]', accounts[transfer.toAcct]);
+            console.log('accounts[transfer.fromAcctId]', accounts[transfer.fromAcct]);
+            console.log('accounts[transfer.toAcctId]', accounts[transfer.toAcct]);
             return <li key={idx}>
               <p>{this.formatDate(transfer.createdAt)}</p>
               <p>
-                {(!!accounts[transfer.id])
+                {(!!accounts[transfer.fromAcctId])
                   ? accounts[transfer.fromAcctId].nickname + '••••' + accounts[transfer.fromAcctId].acctNum % 10000
                   : ' [Closed Account]'
                 }
               </p>
-              <p>{accounts[transfer.toAcctId].nickname}••••{accounts[transfer.toAcctId].acctNum % 10000}</p>
+              <p>
+                {(!!accounts[transfer.toAcctId])
+                  ? accounts[transfer.toAcctId].nickname + '••••' + accounts[transfer.toAcctId].acctNum % 10000
+                  : ' [Closed Account]'
+                }
+              </p>
               <p>{formatMoney(transfer.amount)}</p>
               <p>{transfer.memo}</p>
             </li>
