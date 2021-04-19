@@ -76,7 +76,7 @@ class TransfersIndex extends React.Component {
           </li>
           {filteredTransfers.map((transfer, idx) => {
             return <li key={idx}>
-              <p>{this.formatDate(transfer.createdAt)}</p>
+              {/* <p>{this.formatDate(transfer.createdAt)}</p> */}
               <p>{accounts[transfer.fromAcctId].nickname}••••{accounts[transfer.fromAcctId].acctNum % 10000}</p>
               <p>{accounts[transfer.toAcctId].nickname}••••{accounts[transfer.toAcctId].acctNum % 10000}</p>
               <p>{formatMoney(transfer.amount)}</p>
