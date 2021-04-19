@@ -75,10 +75,6 @@ class TransfersIndex extends React.Component {
             <p>MEMO</p>
           </li>
           {filteredTransfers.map((transfer, idx) => {
-            console.log('transfer', transfer);
-            console.log('accounts', accounts);
-            console.log('accounts[transfer.fromAcctId]', accounts[transfer.fromAcct]);
-            console.log('accounts[transfer.toAcctId]', accounts[transfer.toAcct]);
             return <li key={idx}>
               <p>{this.formatDate(transfer.createdAt)}</p>
               <p>
