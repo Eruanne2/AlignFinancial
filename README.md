@@ -9,7 +9,7 @@
 </div>
 
 # Table of Contents
-* [Technologies-Used](#technologies-used)
+* [Stack](#stack)
 * [Features](#features)
   * [User Auth](#user-auth)
   * [Accounts](#accounts)
