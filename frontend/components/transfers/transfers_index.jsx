@@ -64,7 +64,7 @@ class TransfersIndex extends React.Component {
     return(
       <div className='transfers-index-container'>
         {this.props.filter.acctId ? <h1>Transaction History</h1> : <h1>Activity</h1>}
-        {this.props.filter.acctId && <p id='transfer-note'>To view all acitivity or create new transfers, go to <Link to='/transfer'>Transfers</Link>.</p>}
+        {this.props.filter.acctId && <p id='transfer-note'>To view all activity or create new transfers, go to <Link to='/transfer'>Transfers</Link>.</p>}
         <br/>
         <ul>
           <li>
