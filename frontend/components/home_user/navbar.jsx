@@ -65,7 +65,7 @@ class Navbar extends React.Component{
     ); 
     return(
       <div>
-        {this.state.dropdown && <AccountsDropdown accounts={this.props.accounts}/>}
+        {this.state.dropdown && <AccountsDropdown accounts={this.props.accounts} closeDropdown={this.toggleDropdown}/>}
         <nav className='user-nav'>
           <ul className='left-nav'>
             <li><Link to='/'><img src={window.logoURL} alt="the word 'align' in white lettering on a purple background" width='74'/></Link></li>
