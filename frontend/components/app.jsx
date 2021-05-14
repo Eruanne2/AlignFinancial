@@ -16,9 +16,13 @@ import Footer from './footer';
 import LoginSidebar from './home_guest/login_sidebar';
 import SettingsSidebar from './home_user/settings_sidebar';
 import { connect } from 'react-redux';
+import { toggleSidebar } from '../actions/ui_actions';
 
 const mapDispatchToProps = dispatch => {
-  return { logout: () => dispatch(logout()) }
+  return { 
+    logout: () => dispatch(logout()),
+    toggleSidebar: () => dispatch(toggleSidebar())
+  }
 }
 
 class App extends React.Component{
@@ -30,6 +34,14 @@ class App extends React.Component{
 
   handleOnIdle(e){
     if (window.currentUser) this.props.logout();
+  }
+
+  clickAwaySidebar(e){
+    if (e.target === document.getElementById('background-modal')) {
+      e.preventDefault();
+      document.querySelector('.sidebar').classList.add('close-sidebar-animate');
+      setTimeout(this.props.toggleSidebar, 300);
+    }
   }
 
   render(){
@@ -46,7 +58,7 @@ class App extends React.Component{
         <div className='app-container'>
           <LoginSidebar/>
           <SettingsSidebar/>
-          <div id='background-modal'></div>
+          <div id='background-modal' onClick={this.clickAwaySidebar.bind(this)}></div>
           <div>
             <Switch>
               <AuthRoute path='/' exact={true} component={Splash}/>
