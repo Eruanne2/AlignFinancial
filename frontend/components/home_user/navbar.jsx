@@ -31,6 +31,7 @@ class Navbar extends React.Component{
   }
 
   toggleDropdown(e){
+    (this.state.dropdown) ? document.body.classList.remove('stop-scrolling') : document.body.classList.add('stop-scrolling')
     this.setState({ dropdown: !this.state.dropdown })
   };
 
