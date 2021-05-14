@@ -7,10 +7,10 @@ class AccountsDropdown extends React.Component{
     return(
       <div className='accts-dropdown-container'>
         <div className='arrow-holder'><span id='dropdown-arrow'></span></div>
-        <div>
-          <h1><Link to='/dashboard'>View Snapshot</Link></h1>
-          <h1 onClick={this.props.closeDropdown}>{`\u00D7`}</h1>
-        </div>
+        <h1>
+          <Link to='/dashboard'>View Snapshot</Link>
+          <i onClick={this.props.closeDropdown}>{`\u00D7`}</i>
+        </h1>
         <ul className='acct-dropdown-list'>        
           {this.props.accounts.map((account, idx) => {
             if (account.userId !== window.currentUser.id || account.external) return null;

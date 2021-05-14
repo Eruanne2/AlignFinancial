@@ -8,12 +8,27 @@
   box-shadow: 0 2px 0 rgba(0,0,0,.15);
 
   h1 {
+    display: flex;
+    justify-content: space-between;
     border: 1px solid #959595;
     background-color: #fff;
     color: #0071C4;
     font-size: 16px;
-    padding: 12.6px;
     box-shadow: 0 2px 0 rgba(0,0,0,.15);
+
+    a {
+      padding: 12.6px;
+    }
+
+    i {
+      font-size: 30px;
+      font-weight: 900;
+      padding: 7px;
+    }
+
+    i:hover {
+      cursor: pointer;
+    }
   }
 
   h1:last-child {
