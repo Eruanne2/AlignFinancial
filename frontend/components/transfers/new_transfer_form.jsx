@@ -68,7 +68,6 @@ class NewTransferForm extends React.Component {
 
   render(){
     if (!this.props.accounts) return null;
-    // debugger
     if (!this.state.ready) return(
       <div className='transfer-form-container'>
         {this.state.externalAcctPopup &&

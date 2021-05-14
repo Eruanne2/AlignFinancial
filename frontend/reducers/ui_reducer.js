@@ -25,6 +25,10 @@ const UIReducer = (state=defaultState, action) => {
         newState.sidebar = false;
         document.body.classList.remove('modal')
       }
+      if (state.nightMode) {
+        newState.nightMode = false;
+        document.body.classList.remove('night-mode')
+      }
       return newState;
     case TOGGLE_NIGHTMODE:
       newState.nightMode = !state.nightMode;

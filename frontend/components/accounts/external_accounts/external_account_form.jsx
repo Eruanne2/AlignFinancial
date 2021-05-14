@@ -46,7 +46,6 @@ class ExternalAccountForm extends React.Component {
       if (error.includes('Nickname')) return error.replace('Nickname', '');
       else return error;
     });
-    // debugger
     if (fieldErrors.length < 1) return '';
     else return <span className='error' key={Math.floor(Math.random() * 1000)}>
       <i><FontAwesomeIcon icon={faExclamationCircle}/></i>
