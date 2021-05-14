@@ -2,7 +2,7 @@
 
 [Align Financial](https://align-financial.herokuapp.com/#/), an [Ally Bank](https://www.ally.com/bank/) clone, is an online-only bank that offers interest checking, high-yield savings, and money market accounts. Because Align has no offices and all business is conducted online, their website is a clean interface designed around functionality and easy navigation.
 
-<a href="https://align-financial.herokuapp.com/#/" target="_blank">Align Financial</a>, an <a href="https://www.ally.com/bank/" target="_blank">Ally Bank</a> clone, is an online-only bank that offers interest checking, high-yield savings, and money market accounts. Because Align has no offices and all business is conducted online, their website is a clean interface designed around functionality and easy navigation.
+<a onclick="window.open(this.href,'_blank');return false;" href="https://align-financial.herokuapp.com/#/">Align Financial</a>, an <a href="https://www.ally.com/bank/" target="_blank">Ally Bank</a> clone, is an online-only bank that offers interest checking, high-yield savings, and money market accounts. Because Align has no offices and all business is conducted online, their website is a clean interface designed around functionality and easy navigation.
 
 
 <div align='center'>
