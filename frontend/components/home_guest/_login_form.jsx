@@ -4,13 +4,17 @@ import { login } from '../../actions/session_actions';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExclamationCircle, faLock } from "@fortawesome/free-solid-svg-icons";
+import { toggleSidebar } from '../../actions/ui_actions';
 
 const mapStateToProps = state => {
   return { errors: state.errors.sessionErrors }
 };
 
 const mapDispatchToProps = dispatch => {
-  return { login: userCreds => dispatch(login(userCreds)) }
+  return { 
+    login: userCreds => dispatch(login(userCreds)),
+    toggleSidebar: () => dispatch(toggleSidebar())
+  }
 };
 
 
@@ -69,9 +73,9 @@ class LoginForm extends React.Component{
             </label> */}
           </div>
           <p>Forgot 
-            <span id='forgot-username' className='blue'><Link to="/forgotten-info/username">username</Link></span> 
+            <span onClick={e => this.props.toggleSidebar()} className='blue'><Link to="/forgotten-info/username">username</Link></span> 
             or 
-            <span id='forgot-password' className='blue'><Link to="/forgotten-info/password">password</Link></span>?
+            <span onClick={e => this.props.toggleSidebar()} className='blue'><Link to="/forgotten-info/password">password</Link></span>?
           </p>
         </section>
       </form>

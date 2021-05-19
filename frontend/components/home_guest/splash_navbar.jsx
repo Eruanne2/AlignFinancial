@@ -19,12 +19,6 @@ class SplashNavbar extends React.Component {
       document.querySelector('.sidebar').classList.add('close-sidebar-animate');
       setTimeout(this.props.toggleSidebar, 300);
     } else this.props.toggleSidebar();
-
-    window.addEventListener('load', function () {
-      debugger
-      document.getElementById('forgot-username').addEventListener('click', () => this.props.toggleSidebar())
-      document.getElementById('forgot-password').addEventListener('click', () => this.props.toggleSidebar())
-    })
   };
 
   render(){
