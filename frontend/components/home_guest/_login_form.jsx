@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { login } from '../../actions/session_actions';
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExclamationCircle, faLock } from "@fortawesome/free-solid-svg-icons";
 
@@ -67,7 +68,11 @@ class LoginForm extends React.Component{
               <input type='checkbox'/>Save Username
             </label> */}
           </div>
-          <p>Forgot <span className='blue'>username</span> or <span className='blue'>password</span>?</p> {/* have a popup that says 'too bad, remember better'*/}
+          <p>Forgot 
+            <span id='forgot-username' className='blue'><Link to="/forgotten-info/username">username</Link></span> 
+            or 
+            <span id='forgot-password' className='blue'><Link to="/forgotten-info/password">password</Link></span>?
+          </p>
         </section>
       </form>
 

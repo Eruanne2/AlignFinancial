@@ -1,5 +1,6 @@
 import React from 'react';
 import Navbar from '../home_user/navbar';
+import { Link } from 'react-router-dom';
 
 class ForgottenInfoPage extends React.Component{
   constructor(props){
@@ -48,6 +49,7 @@ class ForgottenInfoPage extends React.Component{
           <em>Remember your passwords better.</em>
           <p>It can't be that hard, right?</p>
           <p>As a consequence of your negligence, your account has been seized and all funds transfered to the Align Bank CEO's personal account. Please create a new account and deposit more money. </p>
+          <button><Link to="/open-account">Open Account</Link></button>
         </div>
       </div>
     :
