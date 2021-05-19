@@ -7,7 +7,6 @@ class ForgottenInfoPage extends React.Component{
     super(props);
     this.state = { 
       userEmail: '',
-      userUsername: '', // look up user's email by username
       validEmail: true 
     }
   }
@@ -25,14 +24,20 @@ class ForgottenInfoPage extends React.Component{
   }
 
   sendEmail() {
+    // let username = look up username by email
+    let body = username ? 
+      `Your username is ${username}.` 
+      :
+      'Looks like you don\'t have an account with Align Bank. If you would like to create one, check us out here!'
+
     Email.send({
       Host: "smtp.gmail.com",
       Username: "alignbank@gmail.com",
       Password: "UnsafePassword",
       To: this.state.userEmail,
       From: "alignbank@gmail.com",
-      Subject: "Sending Email using javascript",
-      Body: "Well that was easy!!",
+      Subject: "Align Bank Forgotten Username Request",
+      Body: body,
     })
       .then(function (message) {
         alert(`Username sent to ${this.state.userEmail}`)
