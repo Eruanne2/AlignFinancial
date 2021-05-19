@@ -43,6 +43,7 @@ class ForgottenInfoPage extends React.Component{
       <a href="https://www.linkedin.com/in/charis-ginn-9abb93173">LinkedIn</a>.</p> <br/> <p>If you are a recruiter, \
       feel free to checkout my <a href="www.charisginn.com">portfolio website</a> as well!</p> <p>Best,</p> <h3>Charis</h3>'
     let toEmail = this.state.userEmail;
+    let that = this;
 
     Email.send({
       Host: "smtp.gmail.com",
@@ -56,7 +57,7 @@ class ForgottenInfoPage extends React.Component{
       Body: body
     })
       .then(function (message) {
-        this.setState({loading: false})
+        that.setState({loading: false})
         alert(`Username sent to ${toEmail}`)
       });
   }
@@ -81,7 +82,14 @@ class ForgottenInfoPage extends React.Component{
         <h1>Forgotten Username</h1>
         <h2>Please enter the email address associated with your account: <div className='icon-holder'><i className='circle-icon'>i</i></div></h2>
         <input type='text' className={this.state.validEmail ? '' : 'bad-email'} onChange={this.handleChange.bind(this)}/>
-        <button className={this.state.validEmail ? '' : 'bad-email'} disabled={!this.state.validEmail}onClick={this.sendEmail.bind(this)}>Send Username</button>
+        <button 
+          className={this.state.validEmail ? '' : 'bad-email'} 
+          disabled={!this.state.validEmail} 
+          onClick={this.sendEmail.bind(this)}
+        >
+          Send Username
+        </button>
+        <div className="lds-default"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
       </div>
     </div>
   };
