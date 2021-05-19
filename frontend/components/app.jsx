@@ -17,6 +17,7 @@ import LoginSidebar from './home_guest/login_sidebar';
 import SettingsSidebar from './home_user/settings_sidebar';
 import { connect } from 'react-redux';
 import { toggleSidebar } from '../actions/ui_actions';
+import ForgottenInfoPage from './home_guest/forgotten_info';
 
 const mapDispatchToProps = dispatch => {
   return { 
@@ -63,6 +64,7 @@ class App extends React.Component{
             <Switch>
               <AuthRoute path='/' exact={true} component={Splash}/>
               <AuthRoute path='/login' component={LoginPage}/>
+              <AuthRoute path='/forgotten-info/:forgotten' component={ForgottenInfoPage}/>
               <ProtectedRoute path='/dashboard' component={Dashboard}/>
               <ProtectedRoute path='/account-detail/:accountId' component={AccountDetail}/>
               <ProtectedRoute path='/profile' component={ProfilePage}/>
