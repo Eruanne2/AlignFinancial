@@ -55,7 +55,7 @@ class ForgottenInfoPage extends React.Component{
       <Navbar />
       <div className='forgot-username'>
         <h1>Forgotten Username</h1>
-        <h2>Please enter the email address associated with your account: <i>i</i></h2>
+        <h2>Please enter the email address associated with your account: <div className='icon-holder'><i className='circle-icon'>i</i></div></h2>
         <input type='text' className={this.state.validEmail ? '' : 'bad-email'} onChange={this.handleChange.bind(this)}/>
         <button className={this.state.validEmail ? '' : 'bad-email'} onClick={this.sendEmail.bind(this)}>Send Username</button>
       </div>
