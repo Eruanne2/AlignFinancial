@@ -10,9 +10,9 @@ function Footer(props){
       </ul>
       <p>A FEW THINGS YOU SHOULD KNOW</p>
 
-      <p>Align Bank is not a real financial institution. It is not backed by the FDIC and you cannot deposit real money here.</p>
-      <p>If you wish to deposit funds somewhere, you may transfer them via Venmo to @Charis-Ginn. Charis-Ginn is also not a real financial</p>
-      <p>instution and is also not backed by the FDIC. Any funds sent to Charis-Ginn are legally forfeited and will never be seen again.</p>
+      <p id='footer-text'>Align Bank is not a real financial institution. It is not backed by the FDIC and you cannot deposit real money here.
+      If you wish to deposit funds somewhere, you may transfer them via Venmo to @Charis-Ginn. Charis-Ginn is also not a real financial
+      instution and is also not backed by the FDIC. Any funds sent to Charis-Ginn are legally forfeited and will never be seen again.</p>
       <p>©2021 Charis Ginn</p>
 
     </footer>
