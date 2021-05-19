@@ -13,6 +13,8 @@ class ForgottenInfoPage extends React.Component{
       infoTooltip: false
     }
     this.users = {};
+
+    this.toggleTooltip = this.toggleTooltip.bind(this)
   }
 
   componentDidMount() {
@@ -20,7 +22,7 @@ class ForgottenInfoPage extends React.Component{
   }
 
   toggleTooltip(){
-    this.setState({ infoTooltip: !this.state.infoTooltip })
+    this.setState({ infoTooltip: !this.state.infoTooltip }, console.log(this.state.infoTooltip))
   }
 
   isValidEmail() {
@@ -81,10 +83,12 @@ class ForgottenInfoPage extends React.Component{
       </div>
     :
     <div>
-      <div className='hidden' id='email-info-tooltip'>
-        <div className='arrow-holder'><span id='dropdown-arrow'></span></div>
-        <p>Feel free to enter a real email address here. This information will not be saved, and you will receive an email even if the email is not associated with an account.</p>
-      </div>
+      {this.state.infoTooltip &&
+        <div className='' id='email-info-tooltip'>
+          <div className='arrow-holder'><span id='dropdown-arrow'></span></div>
+          <p>Feel free to enter a real email address here. This information will not be saved, and you will receive an email even if the email is not associated with an account.</p>
+        </div>
+      }
       <Navbar />
       <div className='forgot-username'>
         <h1>Forgotten Username</h1>
