@@ -1,14 +1,21 @@
 import React from 'react';
 import Navbar from '../home_user/navbar';
 import { Link } from 'react-router-dom';
+import { getAllUsers } from '../../utils/users_api';
 
 class ForgottenInfoPage extends React.Component{
   constructor(props){
     super(props);
     this.state = { 
       userEmail: '',
-      validEmail: true 
+      validEmail: true,
+      loading: false
     }
+    this.users = {};
+  }
+
+  componentDidMount() {
+    getAllUsers().then(res => this.users = res )
   }
 
 
@@ -24,23 +31,33 @@ class ForgottenInfoPage extends React.Component{
   }
 
   sendEmail() {
-    // let username = look up username by email
-    let body = username ? 
-      `Your username is ${username}.` 
+    this.setState({loading: true})
+    let user = Object.values(this.users).filter(user => user.email === this.userEmail )[0];
+    let body = user ? 
+      `Your username is ${user.username}.` 
       :
-      'Looks like you don\'t have an account with Align Bank. If you would like to create one, check us out here!'
+      '<h1>Forgot Username</h1> <p>Oops, looks like this email isn\'t associated with an Align Bank account. To create one, \
+      check us out <a href="https://align-financial.herokuapp.com/#/">here</a>!</p> <br/> <h2>All right, in all \
+      seriousness...</h2> <p>Thank you so much for taking the time to check out my website! I\'d love to hear what \
+      you thought. Feel free to shoot me an email at charis.ginn222@gmail.com or message me on \
+      <a href="https://www.linkedin.com/in/charis-ginn-9abb93173">LinkedIn</a>.</p> <br/> <p>If you are a recruiter, \
+      feel free to checkout my <a href="www.charisginn.com">portfolio website</a> as well!</p> <p>Best,</p> <h3>Charis</h3>'
+    let toEmail = this.state.userEmail;
 
     Email.send({
       Host: "smtp.gmail.com",
       Username: "alignbank@gmail.com",
       Password: "UnsafePassword",
-      To: this.state.userEmail,
+      To: toEmail,
       From: "alignbank@gmail.com",
       Subject: "Align Bank Forgotten Username Request",
-      Body: body,
+      'MIME-Version': '1.0rn',
+      'Content-Type': "text/html; charset=ISO-8859-1rn",
+      Body: body
     })
       .then(function (message) {
-        alert(`Username sent to ${this.state.userEmail}`)
+        this.setState({loading: false})
+        alert(`Username sent to ${toEmail}`)
       });
   }
 
@@ -64,7 +81,7 @@ class ForgottenInfoPage extends React.Component{
         <h1>Forgotten Username</h1>
         <h2>Please enter the email address associated with your account: <div className='icon-holder'><i className='circle-icon'>i</i></div></h2>
         <input type='text' className={this.state.validEmail ? '' : 'bad-email'} onChange={this.handleChange.bind(this)}/>
-        <button className={this.state.validEmail ? '' : 'bad-email'} onClick={this.sendEmail.bind(this)}>Send Username</button>
+        <button className={this.state.validEmail ? '' : 'bad-email'} disabled={!this.state.validEmail}onClick={this.sendEmail.bind(this)}>Send Username</button>
       </div>
     </div>
   };
