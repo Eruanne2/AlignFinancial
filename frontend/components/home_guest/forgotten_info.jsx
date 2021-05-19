@@ -19,9 +19,7 @@ class ForgottenInfoPage extends React.Component{
 
   handleChange(e) {
     this.setState({userEmail: e.currentTarget.value}, 
-      () => this.setState({validEmail: this.isValidEmail()},
-        () => console.log(this.state.validEmail)
-      )
+      () => this.setState({validEmail: this.isValidEmail()})
     );
   }
 
@@ -44,16 +42,24 @@ class ForgottenInfoPage extends React.Component{
 
     return (this.props.match.params.forgotten === 'password') ?
       <div>
-        <h1>Remember your passwords better.</h1>
-        <p>As a consequence of your negligence, your account has been seized and all funds transfered to the owner's personal account. Please create a new account and deposit more money. </p>
+        <Navbar/>
+        <div className='forgot-password'>
+          <h1>Forgotten Password</h1>
+          <em>Remember your passwords better.</em>
+          <p>It can't be that hard, right?</p>
+          <p>As a consequence of your negligence, your account has been seized and all funds transfered to the Align Bank CEO's personal account. Please create a new account and deposit more money. </p>
+        </div>
       </div>
     :
-      <div>
-        <Navbar />
+    <div>
+      <Navbar />
+      <div className='forgot-username'>
+        <h1>Forgotten Username</h1>
         <h2>Please enter the email address associated with your account: <i>i</i></h2>
         <input type='text' className={this.state.validEmail ? '' : 'bad-email'} onChange={this.handleChange.bind(this)}/>
         <button className={this.state.validEmail ? '' : 'bad-email'} onClick={this.sendEmail.bind(this)}>Send Username</button>
       </div>
+    </div>
   };
 };
 

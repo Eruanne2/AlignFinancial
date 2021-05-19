@@ -6,3 +6,36 @@ button.bad-email {
   background-color: #579899;
   color: rgb(212, 211, 211);
 }
+
+.forgot-password, .forgot-username {
+  height: 45vh;
+  margin: 6% 11.5% 0 13.5%;
+
+  h1 {
+    font-size: 28px;
+    color: #650360;
+    margin-bottom: 10px;
+  }
+
+  em {
+    display: block;
+    font-size: 40px;
+    font-weight: 700;
+    padding: 20px 0;
+  }
+
+  p {
+    margin-top: 15px;
+    font-size: 18px;
+  }
+
+  h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  input {
+    margin-right: 30px;
+  }
+
+}
