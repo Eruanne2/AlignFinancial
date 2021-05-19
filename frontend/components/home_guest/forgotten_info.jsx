@@ -9,7 +9,8 @@ class ForgottenInfoPage extends React.Component{
     this.state = { 
       userEmail: '',
       validEmail: true,
-      loading: false
+      loading: false,
+      infoTooltip: false
     }
     this.users = {};
   }
@@ -18,6 +19,9 @@ class ForgottenInfoPage extends React.Component{
     getAllUsers().then(res => this.users = res )
   }
 
+  toggleTooltip(){
+    this.setState({ infoTooltip: !this.state.infoTooltip })
+  }
 
   isValidEmail() {
     const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -77,10 +81,14 @@ class ForgottenInfoPage extends React.Component{
       </div>
     :
     <div>
+      <div className='hidden' id='email-info-tooltip'>
+        <div className='arrow-holder'><span id='dropdown-arrow'></span></div>
+        <p>Feel free to enter a real email address here. This information will not be saved, and you will receive an email even if the email is not associated with an account.</p>
+      </div>
       <Navbar />
       <div className='forgot-username'>
         <h1>Forgotten Username</h1>
-        <h2>Please enter the email address associated with your account: <div className='icon-holder'><i className='circle-icon'>i</i></div></h2>
+        <h2>Please enter the email address associated with your account: <div className='icon-holder' onMouseOver={this.toggleTooltip} onMouseOut={this.toggleTooltip}><i className='circle-icon'>i</i></div></h2>
         <input type='text' className={this.state.validEmail ? '' : 'bad-email'} onChange={this.handleChange.bind(this)}/>
         <button 
           className={this.state.validEmail ? '' : 'bad-email'} 
@@ -89,7 +97,7 @@ class ForgottenInfoPage extends React.Component{
         >
           Send Username
         </button>
-        <div className="lds-default"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+        {this.state.loading && <div className="lds-default"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>}
       </div>
     </div>
   };

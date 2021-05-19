@@ -42,5 +42,39 @@ button.bad-email {
   input {
     margin-right: 30px;
   }
+  
+}
+
+#email-info-tooltip {
+  position: absolute;
+  top: 21%;
+  left: 49%;
+  
+  .arrow-holder {
+    position: relative;
+    left: -10px;
+    background: transparent;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    
+    #dropdown-arrow {
+      position: absolute;
+      margin-top: 33%;
+      width: 0;
+      height: 0;
+      border-top: 15px solid transparent;
+      border-bottom: 15px solid transparent;
+      border-right: 15px solid #fff;
+    }
+  }
+  
+  p {
+    background-color: #fff;
+    border: 1px solid black;
+    width: 300px;
+    padding: 10px;
+    line-height: 1.2;
+  }
 
 }
