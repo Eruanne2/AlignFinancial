@@ -46,11 +46,9 @@ button.bad-email {
 }
 
 #email-tooltip {
-  display: inline-block;
   position: relative;
   left: 30px;
-  top: -85px;
-  width: 300px;
+  top: -75px;
 }
 
 [data-email-tooltip]:after {

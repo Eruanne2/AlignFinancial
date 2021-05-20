@@ -89,7 +89,7 @@ class ForgottenInfoPage extends React.Component{
         <h2>Please enter the email address associated with your account: 
           <div className='icon-holder' onMouseOver={this.toggleTooltip} onMouseOut={this.toggleTooltip}>
             <i className='circle-icon'>i</i>
-            <div id='email-tooltip' data-email-tooltip="Feel free to enter a real email address here. This information will not be saved, and you will receive an email even if the email is not associated with an account.."></div>
+            {this.state.infoTooltip && <div id='email-tooltip' data-email-tooltip="Feel free to enter a real email address here. This information will not be saved, and you will receive an email even if the email is not associated with an account.."></div>}
           </div>
         </h2>
         <input type='text' className={this.state.validEmail ? '' : 'bad-email'} onChange={this.handleChange.bind(this)}/>
