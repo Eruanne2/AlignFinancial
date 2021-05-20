@@ -38,7 +38,7 @@ class Snapshot extends React.Component{
           <h2 id='balance-header'>
             TOTAL BALANCE
             <span className='question-icon' onMouseOver={this.toggleTooltip} onMouseOut={this.toggleTooltip}>?</span>
-            {true && <div id='balance-tooltip' data-balance-tooltip="Your Total Balance is the sum of the available balances of your Money Market, Online Savings and Interest Checking accounts."></div>}
+            {this.state.infoTooltip && <div id='balance-tooltip' data-balance-tooltip="Your Total Balance is the sum of the available balances of your Money Market, Online Savings and Interest Checking accounts."></div>}
           </h2>
           <h2 id='balance'>{formatMoney(totalBalance)}</h2>
         </section>

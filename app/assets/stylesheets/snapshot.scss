@@ -47,6 +47,10 @@
       border: 2px solid rgb(180, 220, 255);
       border-radius: 18px;
     }
+
+    .question-icon {
+      cursor: help;
+    }
   }
 
   svg {
@@ -121,6 +125,12 @@
   position: relative;
   left: 10px;
   top: -35px;
+  //fadeIn is defined on forgotten_info.scss:69
+  animation: fadeIn 1s; 
+  -webkit-animation: fadeIn 1s;
+  -moz-animation: fadeIn 1s;
+  -o-animation: fadeIn 1s;
+  -ms-animation: fadeIn 1s;
 }
 
 [data-balance-tooltip]:after {
