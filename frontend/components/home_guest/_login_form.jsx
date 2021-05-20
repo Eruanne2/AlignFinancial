@@ -115,12 +115,11 @@ class LoginForm extends React.Component{
           <section className='submit-btns'>
             <div>
               <input type='submit' value='Log In'/>
-              <p>or</p>
-              <button onClick={this.demoLogin.bind(this)}>Demo Log In</button>
-              {/* <label>
-                <input type='checkbox'/>Save Username
-              </label> */}
+              <label id='save-username-label'>
+                <input type='checkbox' checked={this.state.savedUser} onChange={this.handleSaveUser.bind(this)} />Save Username
+              </label>
             </div>
+            <button onClick={this.demoLogin.bind(this)}>Demo Log In</button>
             <p>Forgot <span className='blue'>username</span> or <span className='blue'>password</span>?</p> {/* have a popup that says 'too bad, remember better'*/}
           </section>
         </form>

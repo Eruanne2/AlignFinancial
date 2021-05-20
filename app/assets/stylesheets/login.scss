@@ -55,10 +55,20 @@
         }
       }
       
-       p {
+      p {
          font-size: 14px;
          padding-top: 5px;
-       }
+      }
+
+      #save-username-label {
+        display: flex;
+        align-items: center;
+      }
+  
+      button {
+        margin-bottom: 20px;
+      }
+       
     }
   }
   
