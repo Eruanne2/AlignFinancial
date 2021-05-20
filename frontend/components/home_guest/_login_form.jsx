@@ -119,7 +119,9 @@ class LoginForm extends React.Component{
                 <input type='checkbox' checked={this.state.savedUser} onChange={this.handleSaveUser.bind(this)} />Save Username
               </label>
             </div>
-            <button onClick={this.demoLogin.bind(this)}>Demo Log In</button>
+            <div>
+              <button onClick={this.demoLogin.bind(this)}>Demo Log In</button>
+            </div>
             <p>Forgot <span className='blue'>username</span> or <span className='blue'>password</span>?</p> {/* have a popup that says 'too bad, remember better'*/}
           </section>
         </form>
