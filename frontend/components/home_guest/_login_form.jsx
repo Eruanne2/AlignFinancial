@@ -104,11 +104,6 @@ class LoginForm extends React.Component{
 
         <form onSubmit={this.userLogin.bind(this)}>
           <section className='login-inputs'>
-            {(this.state.password !== '' && true) && 
-            <div>
-
-              </div>
-            }
             <div className='labels'>
               <label htmlFor='login-username'>Username</label>
               <label htmlFor='login-password'>Password</label>
