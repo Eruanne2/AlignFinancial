@@ -30,12 +30,6 @@ class Snapshot extends React.Component{
     const totalBalance = Object.values(this.props.categoryBalances).reduce((sum, balance) => sum + balance)
     return(
       <div className='snapshot-container'>
-          {this.state.infoTooltip && 
-            <div className='info-tooltip-container'>
-              <div className='arrow-holder'><span id='dropdown-arrow'></span></div>
-              <p>Your Total Balance is the sum of the available balances of your Money Market, Online Savings and Interest Checking accounts. </p>
-            </div>
-          }
         <section className='left-view'>
           <h1>Snapshot</h1>
           <p>Hello, {this.props.currentUser.fname}</p>
@@ -44,6 +38,7 @@ class Snapshot extends React.Component{
           <h2 id='balance-header'>
             TOTAL BALANCE
             <span className='question-icon' onMouseOver={this.toggleTooltip} onMouseOut={this.toggleTooltip}>?</span>
+            <div id='balance-tooltip' data-balance-tooltip="Your Total Balance is the sum of the available balances of your Money Market, Online Savings and Interest Checking accounts."></div>
           </h2>
           <h2 id='balance'>{formatMoney(totalBalance)}</h2>
         </section>
