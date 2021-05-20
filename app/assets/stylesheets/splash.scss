@@ -200,10 +200,16 @@
       button {
         position: absolute;
         bottom: 30px;
-        left: 100px;
+        left: 30%;
         background-color: #e7f6fd;
         color: #0071c4;
         margin-top: 10px;
+      }
+    }
+
+    @media only screen and (max-width: 1180px) {
+      .acct-display {
+        height: 900px;
       }
     }
   }
