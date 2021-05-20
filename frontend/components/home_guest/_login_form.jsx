@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { login } from '../../actions/session_actions';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExclamationCircle, faLock } from "@fortawesome/free-solid-svg-icons";
 import { toggleSidebar } from '../../actions/ui_actions';
@@ -53,6 +53,7 @@ class LoginForm extends React.Component{
     }
   };
 
+
   render(){
     if (this.props.sidebar) return (
       <div className='sidebar-login-form-container'>
@@ -92,17 +93,22 @@ class LoginForm extends React.Component{
 
     </div>
     )
+
     else return(
       <div className='login-form-container'>
-
-          <h1>Login</h1>
-          <span className='error'>
-            {this.props.errors.length > 0 ? <i><FontAwesomeIcon icon={faExclamationCircle}/></i> : null }
-            {this.props.errors}
-          </span>
+        <h1>Login</h1>
+        <span className='error'>
+          {this.props.errors.length > 0 ? <i><FontAwesomeIcon icon={faExclamationCircle}/></i> : null }
+          {this.props.errors}
+        </span>
 
         <form onSubmit={this.userLogin.bind(this)}>
           <section className='login-inputs'>
+            {(this.state.password !== '' && true) && 
+            <div>
+
+              </div>
+            }
             <div className='labels'>
               <label htmlFor='login-username'>Username</label>
               <label htmlFor='login-password'>Password</label>
@@ -111,6 +117,11 @@ class LoginForm extends React.Component{
               <input id='login-username' type='text' value={this.state.username} onChange={this.handleChange('username')}/>
               <input id='login-password' type='password' value={this.state.password} onChange={this.handleChange('password')}/>
             </div>
+            {this.state.password !== '' && this.props.location.pathname === '/login' &&
+                <div className='pw-popup'>
+                  <p>Password is at least 6 characters</p>
+                </div>
+              }
           </section>
           <section className='submit-btns'>
             <div>
@@ -131,4 +142,4 @@ class LoginForm extends React.Component{
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(LoginForm));
