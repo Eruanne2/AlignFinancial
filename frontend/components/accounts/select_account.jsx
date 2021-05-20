@@ -31,7 +31,11 @@ class SelectAccount extends React.Component{
       this.setState({ selectionError: true })
       return;
     }
-    this.props.createAccount(this.state)
+    
+    let acctData = this.state;
+    acctData.nickname = document.getElementById('acct-nickname-field').value;
+
+    this.props.createAccount(acctData)
       .then(res => {
         if (!!this.props.updateParent) {
           this.props.updateParent(3, res.acct.id);
@@ -94,18 +98,25 @@ class SelectAccount extends React.Component{
 
         <div>
           <h2>Account Type</h2>
-          <div className='account-selections'>
-            <button onClick={this.handleSelection('checkings')}>
-              <img src={window.selectChecking} height={115} alt="the word 'align' in purple lettering on a white background"/>
-            </button>
-            <button onClick={this.handleSelection('savings')}>
-              <img src={window.selectSavings} height={115} alt="the word 'align' in purple lettering on a white background"/>
-            </button>
-            <button onClick={this.handleSelection('money market')}>
-              <img src={window.selectMM} height={115} alt="the word 'align' in purple lettering on a white background"/>
-            </button>
-            {this.displayInfo(this.state.acctType)}
+          <div>
+            <div className='account-selections'>
+              <button onClick={this.handleSelection('checkings')}>
+                <img src={window.selectChecking} height={115} alt="the word 'align' in purple lettering on a white background"/>
+              </button>
+              <button onClick={this.handleSelection('savings')}>
+                <img src={window.selectSavings} height={115} alt="the word 'align' in purple lettering on a white background"/>
+              </button>
+              <button onClick={this.handleSelection('money market')}>
+                <img src={window.selectMM} height={115} alt="the word 'align' in purple lettering on a white background"/>
+              </button>
+              {this.displayInfo(this.state.acctType)}
+            </div>
           </div>
+        </div>
+
+        <div className='acct-nickname-div'>
+          <h2>Account Nickname</h2>
+          <input type='text' id='acct-nickname-field'/>
         </div>
 
         {!!(this.state.acctType === 'checkings' || this.state.acctType === 'money market') &&

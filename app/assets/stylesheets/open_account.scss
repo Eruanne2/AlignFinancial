@@ -164,6 +164,13 @@
   > div {
     display: flex;
     align-items: flex-start;
+
+    .acct-option-headers {
+      height: 190px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
     
     h2 {
       width: 200px;
@@ -171,6 +178,14 @@
       font-weight: 700;
       padding-right: 10px;
     }
+
+    h2:first-of-type {
+      padding-top: 10px;
+    }
+  }
+
+  #acct-nickname-field {
+    margin-bottom: 20px;
   }
 
   .account-selections {
