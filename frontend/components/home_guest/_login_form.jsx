@@ -77,12 +77,11 @@ class LoginForm extends React.Component{
         <section>
           <div className='login-btns'>
             <input type='submit' value='Log In'/>
-            <p>or</p>
-            <button onClick={this.demoLogin.bind(this)}>Demo Log In</button>
-            <label>
+            <label id='save-username-label'>
               <input type='checkbox' checked={this.state.savedUser} onChange={this.handleSaveUser.bind(this)} />Save Username
             </label>
           </div>
+          <button onClick={this.demoLogin.bind(this)}>Demo Log In</button>
           <p>Forgot 
             <span onClick={e => this.props.toggleSidebar()} className='blue'><Link to="/forgotten-info/username">username</Link></span> 
             or 
