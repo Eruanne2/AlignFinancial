@@ -21,7 +21,11 @@ const mapDispatchToProps = dispatch => {
 class LoginForm extends React.Component{
   constructor(props){
     super(props);
-    this.state = { username: '', password: ''};
+    this.state = { 
+      username: localStorage.getItem('savedUser') || '', 
+      password: '',
+      savedUser: !!localStorage.getItem('savedUser'),
+    };
   };
 
   userLogin(e){
@@ -33,6 +37,13 @@ class LoginForm extends React.Component{
   handleChange(field){
     return e => this.setState({ [field]: e.currentTarget.value })
   };
+
+  handleSaveUser(e){
+    e.currentTarget.checked
+      ? localStorage.setItem('savedUser', this.state.username)
+      : localStorage.setItem('savedUser', '')
+    this.setState({savedUser: !this.state.savedUser})
+  }
 
   demoLogin(e){
     e.preventDefault();
@@ -68,9 +79,9 @@ class LoginForm extends React.Component{
             <input type='submit' value='Log In'/>
             <p>or</p>
             <button onClick={this.demoLogin.bind(this)}>Demo Log In</button>
-            {/* <label>
-              <input type='checkbox'/>Save Username
-            </label> */}
+            <label>
+              <input type='checkbox' checked={this.state.savedUser} onChange={this.handleSaveUser.bind(this)} />Save Username
+            </label>
           </div>
           <p>Forgot 
             <span onClick={e => this.props.toggleSidebar()} className='blue'><Link to="/forgotten-info/username">username</Link></span> 
