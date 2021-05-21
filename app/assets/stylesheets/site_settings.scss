@@ -38,6 +38,37 @@
   .main-info-box {
     background-color: #221b24;
   }
+
+  .user-form-container .update-complete-popup {
+    background-color: #650360;
+    
+    i {
+      color: #fff;
+    }
+  }
+  .external-accts-container .external-accts-content .table .row {
+    background-color: rgb(44, 38, 46);
+    font-weight: 700;
+  }
+
+  .external-acct-form #external-acct-header {
+    color: #006899;
+  }
+
+  .transfer-review-container .acct-review div {
+    background-color: rgb(44, 38, 36);
+  }
+
+  .accts-dropdown-container {
+    h1, ul {
+      background-color: #000;
+    }
+
+    #dropdown-arrow {
+      border-bottom-color: #000;
+    }
+  }
+
 }
 
 // .accessible-view {
