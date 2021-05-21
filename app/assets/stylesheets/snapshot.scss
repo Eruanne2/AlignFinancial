@@ -17,12 +17,12 @@
     width: 430px;
 
     h1 {
-      font-size: 30px;
+      font-size: 2em;
       margin: 18px 0;
     }
 
     p {
-      font-size: 14px;
+      font-size: .9em;
       margin-top: 6px;
       margin-bottom: 5px;
     }
@@ -34,13 +34,14 @@
 
     #balance {
       font-size: 26px;
+      padding-top: 5px;
     }
 
     .question-icon {
       margin-left: 3px;
       height: 16px;
       width: 16px;
-      font-size: 12px;
+      font-size: .75em;;
       font-weight: 700;
       color: rgb(180, 220, 255);
       padding: 0 4px;
@@ -63,7 +64,7 @@
   .right-view {
     margin-right: 11.5%;
     width: 430px;
-    font-size: 14px;
+    font-size: .9em;
     
     div {
       display: flex;
@@ -71,7 +72,7 @@
     }
 
     > div:first-child {
-      font-size: 11px;
+      font-size: .7em;
       font-weight: 900;
       margin-top: 20px;
 

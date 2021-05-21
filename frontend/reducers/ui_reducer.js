@@ -39,6 +39,10 @@ const UIReducer = (state=defaultState, action) => {
       return newState;
     case TOGGLE_ACCESSIBILE_VIEW:
       newState.accessibleView = !state.accessibleView;
+      (newState.accessibleView) ?
+        document.body.classList.add('accessible-view')
+        :
+        document.body.classList.remove('accessible-view')
       return newState;
     default:
       return state;

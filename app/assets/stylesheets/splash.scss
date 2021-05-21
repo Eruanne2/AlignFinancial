@@ -7,7 +7,7 @@
   align-items: center;
   background-color: #fff;
   color: #2a2a2a;
-  font-size: 14px;
+  font-size: .9em;
   box-sizing: border-box;
   box-shadow: 0 0 5px 0 rgba(0,0,0,0.5);
   
@@ -48,13 +48,13 @@
   }
 
   p {
-    font-size: 20px;
+    font-size: 1.25em;
     padding: 5px;
   }
 
   button {
     margin-top: 30px;
-    font-size: 16px;
+    font-size: 1em;
     padding: 5px 20px;
     background: transparent;
     border: 2px solid #fff;
@@ -71,13 +71,13 @@
   box-sizing: border-box;
   
   > h1 {
-    font-size: 30px;
+    font-size: 2em;
     font-weight: 700;
     padding-bottom: 15px;
   }
   
   p {
-    font-size: 20px;
+    font-size: 1.25em;
     padding: 5px;
     
     span {
@@ -87,7 +87,7 @@
   }
   
   p:nth-last-child(-n+2) {
-    font-size: 16px;
+    font-size: 1em;
   }
   
   .mini-nav {
@@ -102,7 +102,7 @@
       border: 1px solid #959595;
       border-right: none;
       padding: 10px 20px;
-      font-size: 14px;
+      font-size: .9em;
       font-weight: 700;
       cursor: pointer;
     }
@@ -154,14 +154,14 @@
 
         i {
           float: left;
-          font-size: 30px;
+          font-size: 2em;
           color: #008486;
           padding: 5px 10px 15% 5px;
         }
 
         p {
           padding: 15px 5px;
-          font-size: 16px;
+          font-size: 1em;
           span {
             font-weight: 700;
           }
@@ -178,7 +178,7 @@
         }
 
         p {
-          font-size: 14px;
+          font-size: .9em;
         }
         
         p:first-child {
@@ -190,7 +190,7 @@
         list-style: disc;
         text-align: left;
         padding: 10px 35px;
-        font-size: 16px;
+        font-size: 1em;
         * {
           line-height: 2;
           padding: 0 8px;
