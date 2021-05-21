@@ -75,19 +75,14 @@
   font-size: calc(15px * 1.2);
   color: #000;
 
-  .dashboard-container .acct-index-container {
+  .dashboard-container .acct-index-container, .external-acct-form #external-acct-header, [data-balance-tooltip]:after, .splash-nav{
     color: #000;
   }
 
-  .external-acct-form #external-acct-header {
-    color: #000;
-  }
-
-  [data-balance-tooltip]:after {
-    color: #000;
-  }
-
-  .splash-nav {
+  *:focus {
+    background-color: yellow;
+    border: 4px solid yellow;
+    box-sizing: border-box;
     color: #000;
   }
 
