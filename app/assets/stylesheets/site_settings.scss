@@ -71,6 +71,24 @@
 
 }
 
-// .accessible-view {
+.accessible-view {
+  font-size: calc(15px * 1.2);
+  color: #000;
 
-// }
+  .dashboard-container .acct-index-container {
+    color: #000;
+  }
+
+  .external-acct-form #external-acct-header {
+    color: #000;
+  }
+
+  [data-balance-tooltip]:after {
+    color: #000;
+  }
+
+  .splash-nav {
+    color: #000;
+  }
+
+}

@@ -43,7 +43,7 @@ class SettingsSidebar extends React.Component{
 
   handleChange(type){
     if (type === 'nightMode') return e => this.props.toggleNightMode();
-    if (type === 'accessibleView') return e => this.props.toggleaccessibleView();
+    if (type === 'accessibleView') return e => this.props.toggleAccessibleView();
   };
 
   handleLogout(e){
