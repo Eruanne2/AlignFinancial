@@ -6,13 +6,19 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+require 'securerandom'
+
 User.destroy_all
 Account.destroy_all
 Transfer.destroy_all
 
-demoUser = User.create!([ { username: "DemoUser", password: "password", fname: "Demo", lname: "User", email: "example@email.com", address: "1234 Example Ln", phone: "123-456-7890" }]);
+demoUser = User.create!([ 
+  { username: "DemoUser", password: "password", fname: "Demo", lname: "User", email: "example@email.com", address: "1234 Example Ln", phone: "123-456-7890" },
+  { username: "MasterUser", password: SecureRandom.hex(10), fname: "Master", lname: "User", email: "master@align.com", address: "1234 Example Ln", phone: "123-456-7890" }
+]);
 
 demoAccounts = Account.create!([
+  { nickname: 'Master Interest', acct_type: 'checkings', user_id: demoUser[1].id, external: false, balance: 0 }
   { nickname: 'Primary Checking', acct_type: 'checkings', user_id: demoUser[0].id, external: false, balance: 2824.55},
   { nickname: 'Core Savings', acct_type: 'savings', user_id: demoUser[0].id, external: false, balance: 3217.09},
   { nickname: 'Vacation Fund', acct_type: 'savings', user_id: demoUser[0].id, external: false, balance: 6332.74},

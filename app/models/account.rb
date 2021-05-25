@@ -15,6 +15,7 @@
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #
+require 'transfer.rb'
 
 ACCT_BENEFITS = { 
   'checkings'=> { interest_rate: 0.5, transfer_limit: 10000, nickname: 'Interest Checking'}, 
@@ -62,6 +63,7 @@ class Account < ApplicationRecord
 
   def accrue_interest
     puts "interest accruing"
+
   end
 
 end
