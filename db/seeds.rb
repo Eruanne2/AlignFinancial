@@ -18,7 +18,7 @@ demoUser = User.create!([
 ]);
 
 demoAccounts = Account.create!([
-  { nickname: 'Master Interest', acct_type: 'checkings', user_id: demoUser[1].id, external: false, balance: 0 }
+  { nickname: 'Master Interest', acct_type: 'checkings', user_id: demoUser[1].id, external: false, balance: 0 },
   { nickname: 'Primary Checking', acct_type: 'checkings', user_id: demoUser[0].id, external: false, balance: 2824.55},
   { nickname: 'Core Savings', acct_type: 'savings', user_id: demoUser[0].id, external: false, balance: 3217.09},
   { nickname: 'Vacation Fund', acct_type: 'savings', user_id: demoUser[0].id, external: false, balance: 6332.74},

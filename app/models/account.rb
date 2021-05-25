@@ -60,9 +60,24 @@ class Account < ApplicationRecord
     errors.add(:transfer_limit, "can't be blank") unless transfer_limit.present?
   end
 
-
-  def accrue_interest
-    puts "interest accruing"
+  def self.accrue_interest
+    
+    interest_acct = Account.find_by({nickname: "Master Interest"})
+    Account.all.each do |acct| 
+      unless acct.id == interest_acct.id || acct.external
+        transfer = Transfer.new({ 
+          from_acct_id: interest_acct.id,
+          to_acct_id: acct.id,
+          amount: (acct.balance * acct.interest_rate / 36500),
+          memo: 'Daily Interest Accrual',
+          user_id: acct.user_id
+        })
+        if transfer.save
+          new_balance = acct.balance + (acct.balance * acct.interest_rate / 36500)
+          acct.update_attributes({balance: new_balance })
+        end
+      end
+    end
 
   end
 
