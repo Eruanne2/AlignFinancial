@@ -8,6 +8,9 @@ gem 'bcrypt'
 gem 'jquery-rails'
 
 
+gem 'whenever', require: false
+
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'
 # Use pg as the database for Active Record

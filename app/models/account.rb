@@ -59,4 +59,9 @@ class Account < ApplicationRecord
     errors.add(:transfer_limit, "can't be blank") unless transfer_limit.present?
   end
 
+
+  def accrue_interest
+    puts "interest accruing"
+  end
+
 end

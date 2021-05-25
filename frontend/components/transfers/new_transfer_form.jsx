@@ -66,6 +66,13 @@ class NewTransferForm extends React.Component {
     return (date.slice(4,10) + ',' + date.slice(10)).toUpperCase();
   };
 
+  getRemainingTransfers(acct){
+    return acct.transferLimit;
+    // find all transfers by acct
+    // count transfers where transfer.fromAcct === acct
+    // return acct.transferLimit - count
+  }
+
   render(){
     if (!this.props.accounts) return null;
     if (!this.state.ready) return(
@@ -158,6 +165,9 @@ class NewTransferForm extends React.Component {
             </ul>
           </section>
           <section className='review-submit'>
+            {(fromAcct.acctType !== 'checkings' && !fromAcct.external)&& 
+              <p>You have <span>{this.getRemainingTransfers(fromAcct)}</span> transfers remaining for {new Date().toLocaleString('default', { month: 'long' })}.</p>
+            }
             <p>By choosing <span>Submit This Transfer</span>, you authorize this transfer. Once we start the transfer, you can't cancel it.</p>
             <button onClick={this.handleSubmit}>Submit This Transfer</button>
             <button onClick={this.toggleReady}>Edit</button>
