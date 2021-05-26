@@ -25,7 +25,7 @@ class AccountsIndex extends React.Component{
       totals = {
         available: totals.available + account.balance,
         current: totals.current + account.balance,
-        interestYTD: totals.interestYTD + 12.34
+        interestYTD: totals.interestYTD + account.interestYtd
       };
     });
     if (this.props.updateBalance) this.props.updateBalance(totals.available);
