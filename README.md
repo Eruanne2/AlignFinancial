@@ -31,8 +31,6 @@
 * Ruby on Rails
 * Node.js
 * React-Redux
-## Notable Dependencies
-* `whenever`
 
 # Features
 ## User Auth
