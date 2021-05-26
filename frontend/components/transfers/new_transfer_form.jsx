@@ -71,7 +71,9 @@ class NewTransferForm extends React.Component {
 
   getRemainingTransfers(acct){
     let transfers = Object.values(this.props.transfers);
-    let count = transfers.filter(transfer => transfer.fromAcctId === acct.id ).length;
+    let count = transfers.filter(transfer => {
+      transfer.fromAcctId === acct.id && transfer.createdAt.includes(new Date().toISOString().slice(0,7)) 
+    }).length;
     return (acct.transferLimit - count);
   }
 
