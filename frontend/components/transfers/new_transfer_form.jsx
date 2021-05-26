@@ -71,10 +71,10 @@ class NewTransferForm extends React.Component {
 
   getRemainingTransfers(acct){
     let transfers = Object.values(this.props.transfers);
-    let count = transfers.filter(transfer => {
-      transfer.fromAcctId === acct.id && transfer.createdAt.includes(new Date().toISOString().slice(0,7)) 
-    }).length;
-    return (acct.transferLimit - count);
+    let count = transfers.filter(transfer => 
+      transfer.fromAcctId === acct.id && transfer.createdAt.includes(new Date().toISOString().slice(0,7))
+    ).length
+    return count < 6 ? (acct.transferLimit - count) : 'no'
   }
 
   render(){
@@ -170,7 +170,9 @@ class NewTransferForm extends React.Component {
           </section>
           <section className='review-submit'>
             {(fromAcct.acctType !== 'checkings' && !fromAcct.external)&& 
-              <p>{fromAcct.nickname}({fromAcct.acctNum % 10000}) has <span>{this.getRemainingTransfers(fromAcct)}</span> transfers remaining for {new Date().toLocaleString('default', { month: 'long' })}.</p>
+              <p className={[3,4,5,6].includes(this.getRemainingTransfers(fromAcct)) ? '' : 'error'}>
+                {fromAcct.nickname}({fromAcct.acctNum % 10000}) has <span>&nbsp;{this.getRemainingTransfers(fromAcct)}&nbsp;</span> transfers remaining for {new Date().toLocaleString('default', { month: 'long' })}.
+              </p>
             }
             <p>By choosing <span>Submit This Transfer</span>, you authorize this transfer. Once we start the transfer, you can't cancel it.</p>
             <button onClick={this.handleSubmit}>Submit This Transfer</button>
