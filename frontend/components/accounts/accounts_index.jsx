@@ -66,7 +66,7 @@ class AccountsIndex extends React.Component{
               <li><Link to={`/account-detail/${account.id}`}><span>{account.nickname}</span> ••••{account.acctNum % 10000}</Link></li>
               <li>{formatMoney(account.balance)}</li>
               <li>{formatMoney(account.balance)}</li>
-              <li>12.34</li>
+              <li>{formatMoney(account.interestYtd)}</li>
               <li>{account.interestRate.toFixed(2)}%</li>
             </ul>
           )

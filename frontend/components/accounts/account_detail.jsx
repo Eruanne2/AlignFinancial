@@ -115,7 +115,7 @@ class AccountDetail extends React.Component{
             </div>
             <div>
               <h2>INTEREST YTD</h2>
-              <h3>{formatMoney(12.34)}</h3>
+              <h3>{formatMoney(account.interestYtd)}</h3>
             </div>
             <div>
               <h2>ANNUAL PERCENTAGE YIELD</h2>

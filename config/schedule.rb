@@ -20,6 +20,6 @@
 # Learn more: http://github.com/javan/whenever
 
 
-every 1.day, at: '4:00 am' do
+every 1.day, at: '6:00 pm' do
   runner "Account.accrue_interest"
 end

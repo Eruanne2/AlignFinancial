@@ -15,7 +15,6 @@
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #
-require 'transfer.rb'
 
 ACCT_BENEFITS = { 
   'checkings'=> { interest_rate: 0.5, transfer_limit: 10000, nickname: 'Interest Checking'}, 
@@ -74,7 +73,8 @@ class Account < ApplicationRecord
         })
         if transfer.save
           new_balance = acct.balance + (acct.balance * acct.interest_rate / 36500)
-          acct.update_attributes({balance: new_balance })
+          new_ytd = acct.interest_ytd + (acct.balance * acct.interest_rate / 36500)
+          acct.update_attributes({balance: new_balance, interest_ytd: new_ytd })
         end
       end
     end
