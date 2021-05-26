@@ -8,7 +8,10 @@ import { formatMoney } from '../../utils/formatting_util';
 import { clearErrors } from '../../actions/ui_actions';
 
 const mapStateToProps = state => {
-  return { transferErrors: state.errors.transferErrors }
+  return { 
+    transferErrors: state.errors.transferErrors,
+    transfers: state.entities.transfers
+  }
 }
 
 const mapDispatchToProps = dispatch => {
@@ -67,10 +70,9 @@ class NewTransferForm extends React.Component {
   };
 
   getRemainingTransfers(acct){
-    return acct.transferLimit;
-    // find all transfers by acct
-    // count transfers where transfer.fromAcct === acct
-    // return acct.transferLimit - count
+    let transfers = Object.values(this.props.transfers);
+    let count = transfers.filter(transfer => transfer.fromAcctId === acct.id ).length;
+    return (acct.transferLimit - count);
   }
 
   render(){
