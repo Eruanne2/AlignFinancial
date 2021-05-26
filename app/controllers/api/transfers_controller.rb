@@ -38,7 +38,8 @@ class Api::TransfersController < ApplicationController
     end
 
     month_transfer_count = @from_acct.transfers_from.count { |transfer| transfer.created_at.to_s.include?(Date.today.to_s[0..6]) }
-    if month_transfer_count >= @from_acct.transfer_limit
+    debugger
+    if !@from_acct.external && @from_acct.acct_type !== 'checkings' && month_transfer_count >= @from_acct.transfer_limit
       render json: ["#{@from_acct.nickname}(#{@from_acct.acct_num % 10000}) has reached its transfer limit for the month of #{Date::MONTHNAMES[Date.today.month]}."], status: 401
       return
     end
