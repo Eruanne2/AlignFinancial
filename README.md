@@ -11,7 +11,7 @@
 </div>
 
 # Table of Contents
-* [Stack](#stack)
+* [Technologies](#technologies)
 * [Features](#features)
   * [User Auth](#user-auth)
   * [Accounts](#accounts)
@@ -25,18 +25,22 @@
   * [Component Design](#component-design)
   * [Methodology](#methodology) 
 
-# Stack
+# Technologies
+## Stack
 * PostgreSQL
 * Ruby on Rails
 * Node.js
 * React-Redux
+## Notable Dependencies
+* `whenever`
 
 # Features
 ## User Auth
-
 ## Accounts
-## Transfers
+### Transfers
+### Interest Accrual
 ## Dashboard
+## Site Settings
 
 # Features In Progress
 ## Interactive Graph
