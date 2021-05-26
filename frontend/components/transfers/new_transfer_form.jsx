@@ -168,7 +168,7 @@ class NewTransferForm extends React.Component {
           </section>
           <section className='review-submit'>
             {(fromAcct.acctType !== 'checkings' && !fromAcct.external)&& 
-              <p>You have <span>{this.getRemainingTransfers(fromAcct)}</span> transfers remaining for {new Date().toLocaleString('default', { month: 'long' })}.</p>
+              <p>{fromAcct.nickname}({fromAcct.acctNum % 10000}) has <span>{this.getRemainingTransfers(fromAcct)}</span> transfers remaining for {new Date().toLocaleString('default', { month: 'long' })}.</p>
             }
             <p>By choosing <span>Submit This Transfer</span>, you authorize this transfer. Once we start the transfer, you can't cancel it.</p>
             <button onClick={this.handleSubmit}>Submit This Transfer</button>
