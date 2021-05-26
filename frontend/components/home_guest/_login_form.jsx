@@ -7,7 +7,10 @@ import { faExclamationCircle, faLock } from "@fortawesome/free-solid-svg-icons";
 import { toggleSidebar } from '../../actions/ui_actions';
 
 const mapStateToProps = state => {
-  return { errors: state.errors.sessionErrors }
+  return { 
+    errors: state.errors.sessionErrors,
+    sidebarOpen: state.ui.sidebar
+  }
 };
 
 const mapDispatchToProps = dispatch => {
@@ -84,9 +87,9 @@ class LoginForm extends React.Component{
           </div>
           <button onClick={this.demoLogin.bind(this)}>Demo Log In</button>
           <p>Forgot 
-            <span onClick={e => this.props.toggleSidebar()} className='blue'><Link to="/forgotten-info/username">username</Link></span> 
+            <span onClick={e => {if (this.props.sidebarOpen) this.props.toggleSidebar()}} className='blue'><Link to="/forgotten-info/username">username</Link></span> 
             or 
-            <span onClick={e => this.props.toggleSidebar()} className='blue'><Link to="/forgotten-info/password">password</Link></span>?
+            <span onClick={e => {if (this.props.sidebarOpen) this.props.toggleSidebar()}} className='blue'><Link to="/forgotten-info/password">password</Link></span>?
           </p>
         </section>
       </form>
@@ -128,7 +131,11 @@ class LoginForm extends React.Component{
             <div>
               <button onClick={this.demoLogin.bind(this)}>Demo Log In</button>
             </div>
-            <p>Forgot <span className='blue'>username</span> or <span className='blue'>password</span>?</p> {/* have a popup that says 'too bad, remember better'*/}
+            <p>Forgot 
+            <span onClick={e => {if (this.props.sidebarOpen) this.props.toggleSidebar()}} className='blue'><Link to="/forgotten-info/username">username</Link></span> 
+            or 
+            <span onClick={e => {if (this.props.sidebarOpen) this.props.toggleSidebar()}} className='blue'><Link to="/forgotten-info/password">password</Link></span>?
+          </p>
           </section>
         </form>
 
