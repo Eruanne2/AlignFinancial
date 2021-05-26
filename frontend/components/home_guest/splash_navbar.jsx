@@ -28,7 +28,7 @@ class SplashNavbar extends React.Component {
           <Link to='/'><img src={window.logoWhiteURL}alt="the word 'align' in purple lettering on a white background" width='63'/></Link>
           <ul className='right-nav'>
             <a href='https://github.com/Eruanne2' target="_blank">Github</a>
-            <a href='https://www.linkedin.com/in/charis-ginn-9abb93173' target="_blank">LinkedIn</a>
+            <a href='https://www.linkedin.com/in/charis-ginn-9abb93173/' target="_blank">LinkedIn</a>
             <a href='https://www.charisginn.com' target="_blank">Porfolio</a>
             <button onClick={this.openSidebar.bind(this)}>Log In</button>
           </ul>

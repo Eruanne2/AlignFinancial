@@ -82,7 +82,7 @@ class AccountDetail extends React.Component{
           <ul>
             <Link to='/transfer'>Transfers</Link>
             <a href='https://github.com/Eruanne2' target="_blank">Github</a>
-            <a href='https://www.linkedin.com/in/charis-ginn-9abb93173' target="_blank">LinkedIn</a>
+            <a href='https://www.linkedin.com/in/charis-ginn-9abb93173/' target="_blank">LinkedIn</a>
             <a href='https://www.charisginn.com' target="_blank">Porfolio</a>
           </ul>
         </nav>

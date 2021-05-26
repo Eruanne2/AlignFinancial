@@ -46,7 +46,7 @@ class ForgottenInfoPage extends React.Component{
       check us out <a href="https://align-financial.herokuapp.com/#/">here</a>!</p> <br/> <h2>All right, in all \
       seriousness...</h2> <p>Thank you so much for taking the time to check out my website! I\'d love to hear what \
       you thought. Feel free to shoot me an email at charis.ginn222@gmail.com or message me on \
-      <a href="https://www.linkedin.com/in/charis-ginn-9abb93173">LinkedIn</a>.</p> <br/> <p>If you are a recruiter, \
+      <a href="https://www.linkedin.com/in/charis-ginn-9abb93173/">LinkedIn</a>.</p> <br/> <p>If you are a recruiter, \
       feel free to checkout my <a href="www.charisginn.com">portfolio website</a> as well!</p> <p>Best,</p> <h3>Charis</h3>'
     let toEmail = this.state.userEmail;
     let that = this;
