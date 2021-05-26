@@ -61,7 +61,7 @@ class TransfersIndex extends React.Component {
     if (transfer.memo === 'Daily Interest Accrual')
       return ''
     else if (!!accounts[transfer.fromAcctId])
-      return accounts[transfer.fromAcctId].nickname + '••••' + accounts[transfer.fromAcctId].acctNum % 10000
+      return <Link to={`/account-detail/${accounts[transfer.fromAcctId]}`}><span className='blue'>{accounts[transfer.fromAcctId].nickname}</span> ••••{accounts[transfer.fromAcctId].acctNum % 10000}</Link>
     else
       return ' [Closed Account]'
   }
@@ -92,7 +92,7 @@ class TransfersIndex extends React.Component {
               </p>
               <p>
                 {(!!accounts[transfer.toAcctId])
-                  ? accounts[transfer.toAcctId].nickname + '••••' + accounts[transfer.toAcctId].acctNum % 10000
+                  ? <Link to={`/account-detail/${accounts[transfer.toAcctId]}`}><span className='blue'>{accounts[transfer.toAcctId].nickname}</span> ••••{accounts[transfer.toAcctId].acctNum % 10000}</Link>
                   : ' [Closed Account]'
                 }
               </p>
