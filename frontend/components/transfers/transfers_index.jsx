@@ -56,6 +56,16 @@ class TransfersIndex extends React.Component {
     return (date.slice(4,10) + ',' + date.slice(10)).toUpperCase();
   };
 
+  getFromAccountName(transfer){
+    let accounts = this.props.accounts
+    if (transfer.memo === 'Daily Interest Accrual')
+      return ''
+    else if (!!accounts[transfer.fromAcctId])
+      return accounts[transfer.fromAcctId].nickname + '••••' + accounts[transfer.fromAcctId].acctNum % 10000
+    else
+      return ' [Closed Account]'
+  }
+
   render(){
     const { accounts, transfers } = this.props;
     const filteredTransfers = transfers.filter(transfer => this.matchesFilterProp(transfer)).sort((a,b) => a.createdAt < b.createdAt ? 1 : -1)
@@ -78,10 +88,7 @@ class TransfersIndex extends React.Component {
             return <li key={idx}>
               <p>{this.formatDate(transfer.createdAt)}</p>
               <p>
-                {(!!accounts[transfer.fromAcctId])
-                  ? accounts[transfer.fromAcctId].nickname + '••••' + accounts[transfer.fromAcctId].acctNum % 10000
-                  : ' [Closed Account]'
-                }
+                {this.getFromAccountName(transfer)}
               </p>
               <p>
                 {(!!accounts[transfer.toAcctId])
