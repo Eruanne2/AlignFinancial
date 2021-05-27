@@ -6,14 +6,14 @@
  <a href='https://align-financial.herokuapp.com/#/' target='_blank'>
   <img src="https://github.com/Eruanne2/AlignFinancial/blob/main/app/assets/images/logo-on-white.png" width="200" alt="The 'Align' logo in purple letters">
   <br/>
-  <img src="https://github.com/Eruanne2/AlignFinancial/blob/main/recording.gif" width="600" height="300" />
+  <img src="https://github.com/Eruanne2/AlignFinancial/blob/main/app/assets/gifs/login.gif" width="600" height="300" />
  </a>
 </div>
 
 # Table of Contents
 * [Technologies](#technologies)
 * [Notable Features](#noteable-features)
-  * [User Auth](#user-auth)
+  * [User Authentication](#user-authentication)
   * [Transfers](#transfers)
   * [Interest Accrual](#interest-accrual)
   * [Site Settings](#site-settings)
@@ -31,14 +31,78 @@
 * React-Redux
 
 # Notable Features
-## User Auth
+## User Authentication
 
+The auth pattern was implemented in the Ruby on Rails models and controllers. Explain how it works with the cookie and with saving the last login time
+```
+```
+
+At runtime the current user is set onto the window so that React has access to the user object.
+```
+
+```
+
+Due to the sensitive nature of financial information, the user will be automatically logged out after 5 minutes of inactivity.
+```
+```
+
+If the user checks the "Save Username" box, their username will be saved to local storage, allowing them to sign in more easily.
+```
+ <label id='save-username-label'>
+   <input type='checkbox' checked={this.state.savedUser} onChange={this.handleSaveUser.bind(this)} />Save Username
+ </label>
+ 
+ ...
+ 
+   handleSaveUser(e){
+    e.currentTarget.checked
+      ? localStorage.setItem('savedUser', this.state.username)
+      : localStorage.setItem('savedUser', '')
+    this.setState({savedUser: !this.state.savedUser})
+  }
+```
+
+If the user forgets their username, they will be prompted to enter the email address associated with their account. An email will then be sent to them using Simple Mail Transfer Protocol (SMTP). If the email address provided is associated with an account, the email will contain their username. If no account is found, the email will inform the user of this and direct them to visit the website and create an account. 
+
+```
+ sendEmail() {
+    this.setState({loading: true})
+    let user = Object.values(this.users).filter(user => user.email === this.userEmail )[0];
+    let body = user ? 
+      `Your username is ${user.username}.` 
+      :
+      '<h1>Forgot Username</h1> <p>Oops, looks like this email isn\'t associated with an Align Bank account. To create one, \
+      check us out <a href="https://align-financial.herokuapp.com/#/">here</a>!</p> <br/> <h2>All right, in all \
+      seriousness...</h2> <p>Thank you so much for taking the time to check out my website! I\'d love to hear what \
+      you thought. Feel free to shoot me an email at charis.ginn222@gmail.com or message me on \
+      <a href="https://www.linkedin.com/in/charis-ginn-9abb93173/">LinkedIn</a>.</p> <br/> <p>If you are a recruiter, \
+      feel free to checkout my <a href="www.charisginn.com">portfolio website</a> as well!</p> <p>Best,</p> <h3>Charis</h3>'
+    let toEmail = this.state.userEmail;
+    let that = this;
+
+    Email.send({
+      Host: "smtp.gmail.com",
+      Username: "alignbank@gmail.com",
+      To: toEmail,
+      From: "alignbank@gmail.com",
+      Subject: "Align Bank Forgotten Username Request",
+      'MIME-Version': '1.0rn',
+      'Content-Type': "text/html; charset=ISO-8859-1rn",
+      Body: body
+    })
+      .then(function (message) {
+        that.setState({loading: false})
+        alert(`Username sent to ${toEmail}`)
+      });
+  }
+```
+At this time, there is no option for the user to reset a forgotten password. They will simply be redirected to a page which informs them that their account is lost and that I have seized all their assets. 
 
 
 ## Transfers
 
 <div align="center">
-  <img src="https://github.com/Eruanne2/AlignFinancial/blob/main/recording.gif" width="600" height="300" />
+  <img src="https://github.com/Eruanne2/AlignFinancial/blob/main/app/assets/gifs/transfers.gif" width="600" height="300" />
 </div>
 
 Users can make transfers between two of their accounts. These transfers are carefully vetted in the `TransfersController` to verify proper account ownership, balance availability, and transfer limit allowance for non-checking accounts. 
@@ -75,7 +139,7 @@ This creates a new Transfer record from the Master Interest account (which belon
 ## Site Settings
 
 <div align="center">
-  <img src="https://github.com/Eruanne2/AlignFinancial/blob/main/recording.gif" width="600" height="300" />
+  <img src="https://github.com/Eruanne2/AlignFinancial/blob/main/app/assets/gifs/settings.gif" width="600" height="300" />
 </div>
 
 Since many different components interact with the ui features, I needed global access to check whether or not they are active. So I dedicated a slice of my Redux store's state to manage the various ui states.
