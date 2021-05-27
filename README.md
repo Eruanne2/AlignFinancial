@@ -33,11 +33,36 @@
 # Notable Features
 ## User Authentication
 
-The auth pattern was implemented in the Ruby on Rails models and controllers. Explain how it works with the cookie and with saving the last login time
+The auth pattern was implemented in the Ruby on Rails models and controllers. The users table stores usernames, encrypted passwords, and session tokens. Passwords are encrypted with BCrypt for secure lookup. When a user logs in, a session token is generated for them and the browser's `session` cookie is used to store this token to keep the user logged in. The current time is also recorded, to be stored as `last_login` which will be displayed on the user's dashboard. 
 ```
+# user.rb
+
+ def self.find_by_credentials(username, pw)
+   user = User.find_by(username: username)
+   (user && user.is_password?(pw)) ? user : nil
+ end
+
+ def is_password?(pw)
+   BCrypt::Password.new(self.password_digest).is_password?(pw)
+ end
+  
+ ...
+# application_controller.rb
+
+ def login!(user)
+   session[:session_token] = user.reset_session_token!
+   session[:current_login] = DateTime.now.to_s
+ end
+  
+ def logout
+   current_user.reset_session_token!
+   session[:session_token] = nil
+   session[:last_login] = session[:current_login]
+   @current_user = nil
+ end
 ```
 
-At runtime the current user is set onto the window so that React has access to the user object.
+The current user is also set onto the window so that React has access to the user object and the last login time.
 ```
 # app/views/layouts/application.html.erb
 
@@ -47,7 +72,8 @@ At runtime the current user is set onto the window so that React has access to t
    </script>
  <% end %>
  
-# frontend/entry.js
+// frontend/entry.jsx
+
  if (window.currentUser){
    const preloadedState = { 
      entities: {
@@ -65,6 +91,23 @@ At runtime the current user is set onto the window so that React has access to t
 
 Due to the sensitive nature of financial information, the user will be automatically logged out after 5 minutes of inactivity.
 ```
+// frontend/components/app.jsx
+
+ <IdleTimer
+  ref={ref => { this.idleTimer = ref }}
+  timeout={1000 * 90 }
+  onActive={this.handleOnActive}
+  onIdle={this.handleOnIdle}
+  onAction={this.handleOnAction}
+  debounce={250}
+ />
+ 
+ ...
+ 
+ handleOnIdle(e){
+  if (window.currentUser) this.props.logout();
+ }
+
 ```
 
 If the user checks the "Save Username" box, their username will be saved to local storage, allowing them to sign in more easily.
