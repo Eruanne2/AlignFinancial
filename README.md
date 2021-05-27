@@ -42,7 +42,7 @@
 
 gif here
 
-I dedicated a slice of my Redux store's state to manage various ui elements. 
+I dedicated a slice of my Redux store's state to manage various ui elements. (why???)
 
 ```
 ui {
