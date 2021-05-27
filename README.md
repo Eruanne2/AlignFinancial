@@ -39,7 +39,28 @@ The auth pattern was implemented in the Ruby on Rails models and controllers. Ex
 
 At runtime the current user is set onto the window so that React has access to the user object.
 ```
+# app/views/layouts/application.html.erb
 
+ <% if logged_in? %>
+   <script type='text/javascript'>
+     window.currentUser = <%= render('/api/users/user.json.jbuilder', user: current_user).html_safe %>
+   </script>
+ <% end %>
+ 
+# frontend/entry.js
+ if (window.currentUser){
+   const preloadedState = { 
+     entities: {
+       users: { [window.currentUser.id]: window.currentUser }
+     },
+     session: { 
+       id: window.currentUser.id, 
+       lastLogin: new Date(window.lastLogin.replace(/-/g, '/').replace(' /', ' -')),
+       currentLogin: new Date()
+     }
+   };
+   store = configureStore(preloadedState);
+ }
 ```
 
 Due to the sensitive nature of financial information, the user will be automatically logged out after 5 minutes of inactivity.
@@ -54,12 +75,12 @@ If the user checks the "Save Username" box, their username will be saved to loca
  
  ...
  
-   handleSaveUser(e){
-    e.currentTarget.checked
-      ? localStorage.setItem('savedUser', this.state.username)
-      : localStorage.setItem('savedUser', '')
-    this.setState({savedUser: !this.state.savedUser})
-  }
+  handleSaveUser(e){
+   e.currentTarget.checked
+     ? localStorage.setItem('savedUser', this.state.username)
+     : localStorage.setItem('savedUser', '')
+   this.setState({savedUser: !this.state.savedUser})
+ }
 ```
 
 If the user forgets their username, they will be prompted to enter the email address associated with their account. An email will then be sent to them using Simple Mail Transfer Protocol (SMTP). If the email address provided is associated with an account, the email will contain their username. If no account is found, the email will inform the user of this and direct them to visit the website and create an account. 
@@ -72,11 +93,7 @@ If the user forgets their username, they will be prompted to enter the email add
       `Your username is ${user.username}.` 
       :
       '<h1>Forgot Username</h1> <p>Oops, looks like this email isn\'t associated with an Align Bank account. To create one, \
-      check us out <a href="https://align-financial.herokuapp.com/#/">here</a>!</p> <br/> <h2>All right, in all \
-      seriousness...</h2> <p>Thank you so much for taking the time to check out my website! I\'d love to hear what \
-      you thought. Feel free to shoot me an email at charis.ginn222@gmail.com or message me on \
-      <a href="https://www.linkedin.com/in/charis-ginn-9abb93173/">LinkedIn</a>.</p> <br/> <p>If you are a recruiter, \
-      feel free to checkout my <a href="www.charisginn.com">portfolio website</a> as well!</p> <p>Best,</p> <h3>Charis</h3>'
+      check us out <a href="https://align-financial.herokuapp.com/#/">here</a>!</p>'
     let toEmail = this.state.userEmail;
     let that = this;
 
