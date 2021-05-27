@@ -35,16 +35,40 @@
 # Features
 ## User Auth
 ## Accounts
-### Transfers
-### Interest Accrual
-## Dashboard
+## Transfers
+## Interest Accrual
+
 ## Site Settings
 
-# Features In Progress
-## Interactive Graph
+gif here
+
+I dedicated a slice of my Redux store's state to manage various ui elements. 
+
+```
+ui {
+  sidebar: true,
+  nightMode: false,
+  accessibleView: false
+}
+```
+
+The `sidebar` key manages the modal state 
+
+The `night mode` feature adds a CSS class to the body which overrides background and font colors. The colors chosen are the brand shades of purple and blue scaled into a dark gray. 
+
+The `accessible view` feature adds a CSS class to the body which sets the font size to be larger and more darkly colored site-wide. This improves readability both for dyslexic and visually impaired users. 
+``` 
+  font-size: calc(15px * 1.2);
+  color: #000;
+```
+In addition, the accessible view adds a bright yellow background for all elements under `:focus`. This is to add increased accessibility both for visually impaired users and for users who do not use a mouse. 
+
+# Features Coming Soon
 ## Transaction Search
+I would like to have a search icon above each transactions index. When the user clicks the icon, a search bar would slide out to the left and allow them to type. Keywords will be checked against all fields (the to account, the from account, the amount, the date, and the memo). The index would filter to show only matching transactions. 
 
 # Lessons Learned
 ## Database Design
+One lesson I learned is to not try to accomplish too many different things with one table. One of the first decisions that I had to make was on 
 ## Front-end Design
-## Methodology
+Mostly, I learned that React classes suck and Hooks is the way to go. I wrote this entire project using classes, and deeply regretted it! Managing state was a headache, ComponentDidMount was a pain, and conditional rendering/updating was far more complicated than in other projects where I have used only Hooks. 
