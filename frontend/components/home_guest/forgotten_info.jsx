@@ -1,4 +1,5 @@
 import React from 'react';
+import { EMAIL_PASSWORD } from '../../../secret';
 import Navbar from '../home_user/navbar';
 import { Link } from 'react-router-dom';
 import { getAllUsers } from '../../utils/users_api';
@@ -54,7 +55,7 @@ class ForgottenInfoPage extends React.Component{
     Email.send({
       Host: "smtp.gmail.com",
       Username: "alignbank@gmail.com",
-      Password: "UnsafePassword",
+      Password: EMAIL_PASSWORD,
       To: toEmail,
       From: "alignbank@gmail.com",
       Subject: "Align Bank Forgotten Username Request",
