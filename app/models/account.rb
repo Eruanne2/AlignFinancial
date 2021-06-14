@@ -67,13 +67,13 @@ class Account < ApplicationRecord
         transfer = Transfer.new({ 
           from_acct_id: interest_acct.id,
           to_acct_id: acct.id,
-          amount: (acct.balance * acct.interest_rate / 36500),
+          amount: (acct.balance * acct.interest_rate / 5200),
           memo: 'Daily Interest Accrual',
           user_id: acct.user_id
         })
         if transfer.save
-          new_balance = acct.balance + (acct.balance * acct.interest_rate / 36500)
-          new_ytd = acct.interest_ytd + (acct.balance * acct.interest_rate / 36500)
+          new_balance = acct.balance + (acct.balance * acct.interest_rate / 5200)
+          new_ytd = acct.interest_ytd + (acct.balance * acct.interest_rate / 5200)
           acct.update_attributes({balance: new_balance, interest_ytd: new_ytd })
         end
       end
