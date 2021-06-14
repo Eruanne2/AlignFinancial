@@ -68,7 +68,7 @@ class Account < ApplicationRecord
           from_acct_id: interest_acct.id,
           to_acct_id: acct.id,
           amount: (acct.balance * acct.interest_rate / 5200),
-          memo: 'Daily Interest Accrual',
+          memo: 'Weekly Interest Accrual',
           user_id: acct.user_id
         })
         if transfer.save
