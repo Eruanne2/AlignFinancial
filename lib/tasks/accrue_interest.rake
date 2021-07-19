@@ -1,5 +1,5 @@
 task :mytask => :environment do
-  if (new Date().getDay() === 1){
+  if (Date.today.strftime("%A") == "Monday"){
     Account.accrue_interest
   }
 end
