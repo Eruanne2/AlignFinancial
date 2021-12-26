@@ -23,7 +23,7 @@ class ForgottenInfoPage extends React.Component{
   }
 
   toggleTooltip(){
-    this.setState({ infoTooltip: !this.state.infoTooltip }, console.log(this.state.infoTooltip))
+    this.setState({ infoTooltip: !this.state.infoTooltip })
   }
 
   isValidEmail() {
